@@ -115,33 +115,7 @@ public class WaterRun {
                         switch (eleccion) { 
 
                             case 1:
-                                eleccion=1; // Jugar
-                                break;
-
-                            case 2:
-                                eleccion=2; // Aspecto            
-                                break;
-
-                            case 3:
-                                eleccion=3; // Historial
-                                break;
-
-                            case 4:
-                                eleccion=4; // Salir    
-                                break;
-
-                            default:
-                                System.out.println("Has elegido un número que no corresponde a ninguna opción. Prueba otra vez.");
-                                break;
-                                }    
-
-                    } while (eleccion<=0 || eleccion>=5); //Repite hasta que la elección sea 1, 2, 3 o 4.
-
-                } catch (NumberFormatException e) { //Si escribe una letra le muestra este error 
-                    System.out.println("No has escrito un número. Prueba otra vez");
-                }
-
-                if (eleccion==1) { //Entra en caso de elegir Jugar
+                                //Entra en caso de elegir Jugar
                     salirJuego=false; //Pone en false el salir. Si has jugado sin recargar el programa te sacaria en la primera seleccion de salir.
                         
                     do{ //Repite hasta que el jugador indique que quiera salir. Más adelante, cuando se
@@ -440,274 +414,294 @@ public class WaterRun {
                                 salirJuego=true; //Variable salir del bucle juego.
                             }
                     }while(salirJuego==false);
-                }else if (eleccion==2) { //Aspecto
-                    salirAspecto=false; //Pone salirAspecto en false, ya que sino cuando eligieras cualquier cosa dentro de los submenús
-                                        //Te sacaraía instantaneamente al menú general. 
-                    do { //Repite hasta que el usuario seleccione salir.
-                        do{
-                            //Muestra opciones de aspecto.
-                            System.out.println("""
-                                Has elegido la opción de aspecto.
-                                En este menú, puedes personalizar el color de tu personaje entre la siguiente selección y el color del agua también.
-                                ¿Que quieres personalizar?
-                                \t1) Color del personaje.
-                                \t2) Color del agua.
-                                \t3) Salir.
-                                """);
-                            try { //Comprueba que escribas solo números.
-                                reAspecto = Integer.parseInt(bf.readLine()); //Lee respuesta y la guarda en reAspecto
-
-                                if (reAspecto==1) { 
-                                    System.out.println("Has elegido cambiaR el aspecto de tu personaje.");
-                                    cambiarAspectoPJ=true; //pone cambiar Aspecto del personaje en verdadero
-                                }else if (reAspecto==2) {
-                                    System.out.println("Has elegido cambiar el aspecto del agua.");
-                                    cambiarAspectoW=true;//pone cambiar Aspecto del agua en verdadero
-                                }else if (reAspecto==3){
-                                    System.out.println("Has elegido salir. Volviendo al menú principal.");
-                                    salirAspecto=true;//sale al menú principal.
-                                }else{
-                                    System.out.println("Opción no reconocida, prueba otra vez."); //Si no has escrito un número, te lo pide hasta que escribas uno. 
-                                }
-                        
-                            } catch (NumberFormatException e) {
-                            System.out.println("No has escrito un número. Prueba otra vez");
-                            }
-
-                        }while (cambiarAspectoW==false && cambiarAspectoPJ==false && salirAspecto==false);
-
-
-
-                        if (cambiarAspectoPJ==true) { //cambias el aspecto del Personaje
-                            try{ //comprueba que solo escribas números.
-                                //Muestra las opciones de colores.
-                            System.out.println("""
-                                Elige un color para tu personaje:
-                                \t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir
-                                    """);
-                            eleccionColorPJ = Integer.parseInt(bf.readLine()); //Lee la elección del color
-                            switch (eleccionColorPJ) { //Según la elección se mete en el case correspondiente.
-                                case 1:
-                                System.out.println("Has elegido el color rojo.");
-                                cambiarAspectoPJ=false; //CambiarAspecto a false para que no colapse.
-                                if (colorW==COLOR_W_RED) { //Comprueba que el agua no tenga ese color.
-                                    System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                                }else{
-                                    colorPj=COLOR_PJ_RED; //Si el agua es de otro color, asigna el color seleccionado al jugador.
-                                }
+                
                                 break;
+
                             case 2:
-                                System.out.println("Has elegido el color verde.");
-                                cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                if (colorW==COLOR_W_GREEN) {//Comprueba que el agua no tenga ese color.
-                                    System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                                }else{
-                                    colorPj=COLOR_PJ_GREEN;  //Si el agua es de otro color, asigna el color seleccionado al jugador.
-                                }                          
+                                //Aspecto
+                                salirAspecto=false; //Pone salirAspecto en false, ya que sino cuando eligieras cualquier cosa dentro de los submenús
+                                //Te sacaraía instantaneamente al menú general. 
+                                do { //Repite hasta que el usuario seleccione salir.
+                                    do{
+                                        //Muestra opciones de aspecto.
+                                        System.out.println("""
+                                            Has elegido la opción de aspecto.
+                                            En este menú, puedes personalizar el color de tu personaje entre la siguiente selección y el color del agua también.
+                                            ¿Que quieres personalizar?
+                                            \t1) Color del personaje.
+                                            \t2) Color del agua.
+                                            \t3) Salir.
+                                            """);
+                                        try { //Comprueba que escribas solo números.
+                                            reAspecto = Integer.parseInt(bf.readLine()); //Lee respuesta y la guarda en reAspecto
+
+                                            if (reAspecto==1) { 
+                                                System.out.println("Has elegido cambiaR el aspecto de tu personaje.");
+                                                cambiarAspectoPJ=true; //pone cambiar Aspecto del personaje en verdadero
+                                            }else if (reAspecto==2) {
+                                                System.out.println("Has elegido cambiar el aspecto del agua.");
+                                                cambiarAspectoW=true;//pone cambiar Aspecto del agua en verdadero
+                                            }else if (reAspecto==3){
+                                                System.out.println("Has elegido salir. Volviendo al menú principal.");
+                                                salirAspecto=true;//sale al menú principal.
+                                            }else{
+                                                System.out.println("Opción no reconocida, prueba otra vez."); //Si no has escrito un número, te lo pide hasta que escribas uno. 
+                                            }
+                                    
+                                        } catch (NumberFormatException e) {
+                                        System.out.println("No has escrito un número. Prueba otra vez");
+                                        }
+
+                                    }while (cambiarAspectoW==false && cambiarAspectoPJ==false && salirAspecto==false);
+
+
+
+                                    if (cambiarAspectoPJ==true) { //cambias el aspecto del Personaje
+                                        try{ //comprueba que solo escribas números.
+                                            //Muestra las opciones de colores.
+                                        System.out.println("""
+                                            Elige un color para tu personaje:
+                                            \t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir
+                                                """);
+                                        eleccionColorPJ = Integer.parseInt(bf.readLine()); //Lee la elección del color
+                                        switch (eleccionColorPJ) { //Según la elección se mete en el case correspondiente.
+                                            case 1:
+                                            System.out.println("Has elegido el color rojo.");
+                                            cambiarAspectoPJ=false; //CambiarAspecto a false para que no colapse.
+                                            if (colorW==COLOR_W_RED) { //Comprueba que el agua no tenga ese color.
+                                                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+                                            }else{
+                                                colorPj=COLOR_PJ_RED; //Si el agua es de otro color, asigna el color seleccionado al jugador.
+                                            }
+                                            break;
+                                        case 2:
+                                            System.out.println("Has elegido el color verde.");
+                                            cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
+                                            if (colorW==COLOR_W_GREEN) {//Comprueba que el agua no tenga ese color.
+                                                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+                                            }else{
+                                                colorPj=COLOR_PJ_GREEN;  //Si el agua es de otro color, asigna el color seleccionado al jugador.
+                                            }                          
+                                            break;
+                                        case 3:
+                                            System.out.println("Has elegido el color amarillo.");
+                                            cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
+                                            if (colorW==COLOR_W_YELLOW) {//Comprueba que el agua no tenga ese color.
+                                                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+                                            }else{
+                                                colorPj=COLOR_PJ_YELLOW;     //Si el agua es de otro color, asigna el color seleccionado al jugador.   
+                                            }                      
+                                            break;
+                                        case 4:
+                                            System.out.println("Has elegido el color azul.");
+                                            cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
+                                            if (colorW==COLOR_W_BLUE) {//Comprueba que el agua no tenga ese color.
+                                                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+                                            }else{
+                                                colorPj=COLOR_PJ_BLUE;         //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
+                                            }
+                                            break;
+                                        case 5:
+                                            System.out.println("Has elegido el color morado.");
+                                            cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
+                                            if (colorW==COLOR_W_PURPLE) {//Comprueba que el agua no tenga ese color.
+                                                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+                                            }else{
+                                                colorPj=COLOR_PJ_PURPLE;       //Si el agua es de otro color, asigna el color seleccionado al jugador.                       
+                                            }
+                                            break;
+                                        case 6:
+                                            System.out.println("Has elegido el color Cian.");
+                                            cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
+                                            if (colorW==COLOR_W_CYAN) {//Comprueba que el agua no tenga ese color.
+                                                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+                                            }else{
+                                                colorPj=COLOR_PJ_CYAN;             //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
+                                            }
+                                            break;
+                                        case 7:
+                                            System.out.println("Has elegido el color Blanco.");
+                                            cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
+                                            if (colorW==COLOR_W_WHITE) {//Comprueba que el agua no tenga ese color.
+                                                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+                                            }else{
+                                                colorPj=COLOR_PJ_WHITE;  //Si el agua es de otro color, asigna el color seleccionado al jugador.
+                                            }                            
+                                            break;
+                                        case 8:
+                                            System.out.println("Has elegido el color Negro.");
+                                            cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
+                                            if (colorW==COLOR_W_BLACK) {//Comprueba que el agua no tenga ese color.
+                                                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+                                            }else{
+                                                colorPj=COLOR_PJ_BLACK;     //Si el agua es de otro color, asigna el color seleccionado al jugador.                         
+                                            }
+                                            break;
+                                        case 9:
+                                            System.out.println("Has elegido salir. Volviendo al menú de aspecto."); 
+                                            cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
+                                            break;
+                                        default:
+                                            System.out.println("Has escrito un número que no coincide con los de selección. Prueba otra vez.");
+                                            break;
+                                        }
+                                        } catch (NumberFormatException e) {
+                                            System.out.println("No has escrito un número. Prueba otra vez");
+                                        }
+
+                                    } else if (cambiarAspectoW==true) {
+                                        try{ //Prueba que escribas un número.
+                                            //Muestra las opciones de colores.
+                                            System.out.println("""
+                                                Elige un color para el fondo:
+                                                \t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir
+                                                    """);
+                                            eleccionColorW = Integer.parseInt(bf.readLine()); //Lee el color elegido.
+                                            switch (eleccionColorW) { //selecciona segun el número elegido.
+                                                case 1:
+                                                    System.out.println("Has elegido el color rojo.");
+                                                    cambiarAspectoW=false; //CambiarAspecto a false para que no colapse.
+                                                    if (colorPj==COLOR_PJ_RED) { //Comprueba que el personaje no tenga ese color
+                                                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                                                    }else{
+                                                        colorW=COLOR_W_RED; //Si el personaje es de otro color, asigna el color seleccionado al agua.
+                                                    }
+                                                    break;
+                                                case 2:
+                                                    System.out.println("Has elegido el color verde.");
+                                                    cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
+                                                    if (colorPj==COLOR_PJ_GREEN) {//Comprueba que el personaje no tenga ese color
+                                                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                                                    }else{
+                                                        colorW=COLOR_W_GREEN;  //Si el personaje es de otro color, asigna el color seleccionado al agua.
+                                                    }                          
+                                                    break;
+                                                case 3:
+                                                    System.out.println("Has elegido el color amarillo.");
+                                                    cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
+                                                    if (colorPj==COLOR_PJ_YELLOW) {//Comprueba que el personaje no tenga ese color
+                                                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                                                    }else{
+                                                        colorW=COLOR_W_YELLOW; //Si el personaje es de otro color, asigna el color seleccionado al agua.       
+                                                    }                      
+                                                    break;
+                                                case 4:
+                                                    System.out.println("Has elegido el color azul.");
+                                                    cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
+                                                    if (colorPj==COLOR_PJ_BLUE) {//Comprueba que el personaje no tenga ese color
+                                                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                                                    }else{
+                                                        colorW=COLOR_W_BLUE;  //Si el personaje es de otro color, asigna el color seleccionado al agua.                        
+                                                    }
+                                                    break;
+                                                case 5:
+                                                    System.out.println("Has elegido el color morado.");
+                                                    cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
+                                                    if (colorPj==COLOR_PJ_PURPLE) {//Comprueba que el personaje no tenga ese color
+                                                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                                                    }else{
+                                                        colorW=COLOR_W_PURPLE;  //Si el personaje es de otro color, asigna el color seleccionado al agua.                            
+                                                    }
+                                                    break;
+                                                case 6:
+                                                    System.out.println("Has elegido el color Cian.");
+                                                    cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
+                                                    if (colorPj==COLOR_PJ_CYAN) {//Comprueba que el personaje no tenga ese color
+                                                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                                                    }else{
+                                                        colorW=COLOR_W_CYAN;//Si el personaje es de otro color, asigna el color seleccionado al agua.                              
+                                                    }
+                                                    break;
+                                                case 7:
+                                                    System.out.println("Has elegido el color Blanco.");
+                                                    cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
+                                                    if (colorPj==COLOR_PJ_WHITE) {//Comprueba que el personaje no tenga ese color
+                                                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                                                    }else{
+                                                        colorW=COLOR_W_WHITE;//Si el personaje es de otro color, asigna el color seleccionado al agua.  
+                                                    }                            
+                                                    break;
+                                                case 8:
+                                                    System.out.println("Has elegido el color Negro.");
+                                                    cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
+                                                    if (colorPj==COLOR_PJ_BLACK) {//Comprueba que el personaje no tenga ese color
+                                                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                                                    }else{
+                                                        colorW=COLOR_W_BLACK; //Si el personaje es de otro color, asigna el color seleccionado al agua.                             
+                                                    }
+                                                    break;    
+                                                case 9:
+                                                    System.out.println("Has elegido salir. Volviendo al menú principal.");
+                                                    cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
+                                                    break;
+                                                default:
+                                                    System.out.println("Has escrito un número que no coincide con los de selección. Prueba otra vez.");
+                                                    break;
+                                            }
+                                        } catch (NumberFormatException e) {
+                                            System.out.println("No has escrito un número. Prueba otra vez");
+                                        }
+                                        }
+                                }while (salirAspecto==false);
                                 break;
+
                             case 3:
-                                System.out.println("Has elegido el color amarillo.");
-                                cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                if (colorW==COLOR_W_YELLOW) {//Comprueba que el agua no tenga ese color.
-                                    System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                                }else{
-                                    colorPj=COLOR_PJ_YELLOW;     //Si el agua es de otro color, asigna el color seleccionado al jugador.   
-                                }                      
+                                //Historial
+                                salirHistorial=false; //Pone en false el salirHistorial. Si has seleccionado previamente esta opción y has salido, 
+                                //Te sacaria en cuanto eligieras algo que te mueva a este menú.
+                                do{ //Repite hasta que el usuario seleccione salir.
+                                    //Muestra las opciones. (No disponible de momento.)
+                                    System.out.println("""
+                                            Este menú aun no esta disponible. Pulse 3 para salir.
+                                            \t1) Jugar una partida guardada. (Proximamente)
+                                            \t2) Revisar elecciónes de partida. (Proximamente)
+                                            \t3) Salir.
+                                            """);
+                                    try { //Comprueba que escribas solo números
+                                        eleccionHistorial=Integer.parseInt(bf.readLine()); //Lee la elección
+                                        switch (eleccionHistorial) { //Selecciona según haya elegido.
+                                            case 1:
+                                                System.out.println("Ha selecionado \'Jugar partida guardada\', Este menú aun no esta disponible.");
+                                                System.out.println("Prueba otra vez");
+
+                                                break;
+                                            case 2:
+                                                System.out.println("Ha selecionado \'Jugar partida guardada\', Este menú aun no esta disponible.");
+                                                System.out.println("Prueba otra vez");
+
+                                                break;
+                                            case 3:
+                                                System.out.println("Ha selecionado salir. Volviendo al menú principal");
+                                                salirHistorial=true; //Vuelve al menú principal.
+                                                break;    
+
+                                            default:
+                                                System.out.println("El número seleccionado no corresponde a nada. Prueba otra vez.");
+                                                break;
+                                        }
+                                    } catch (NumberFormatException e) {
+                                        System.out.println("No has escrito un número. Prueba otra vez");
+                                    }
+
+                                }while (salirHistorial==false);
+
                                 break;
+
                             case 4:
-                                System.out.println("Has elegido el color azul.");
-                                cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                if (colorW==COLOR_W_BLUE) {//Comprueba que el agua no tenga ese color.
-                                    System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                                }else{
-                                    colorPj=COLOR_PJ_BLUE;         //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
-                                }
+                                // Salir
+                                System.out.println("Saliendo del juego");
+                                salir=true; //Pone salir en true para salir del bucle del menú. 
                                 break;
-                            case 5:
-                                System.out.println("Has elegido el color morado.");
-                                cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                if (colorW==COLOR_W_PURPLE) {//Comprueba que el agua no tenga ese color.
-                                    System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                                }else{
-                                    colorPj=COLOR_PJ_PURPLE;       //Si el agua es de otro color, asigna el color seleccionado al jugador.                       
-                                }
-                                break;
-                            case 6:
-                                System.out.println("Has elegido el color Cian.");
-                                cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                if (colorW==COLOR_W_CYAN) {//Comprueba que el agua no tenga ese color.
-                                    System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                                }else{
-                                    colorPj=COLOR_PJ_CYAN;             //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
-                                }
-                                break;
-                            case 7:
-                                System.out.println("Has elegido el color Blanco.");
-                                cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                if (colorW==COLOR_W_WHITE) {//Comprueba que el agua no tenga ese color.
-                                    System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                                }else{
-                                    colorPj=COLOR_PJ_WHITE;  //Si el agua es de otro color, asigna el color seleccionado al jugador.
-                                }                            
-                                break;
-                            case 8:
-                                System.out.println("Has elegido el color Negro.");
-                                cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                if (colorW==COLOR_W_BLACK) {//Comprueba que el agua no tenga ese color.
-                                    System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                                }else{
-                                    colorPj=COLOR_PJ_BLACK;     //Si el agua es de otro color, asigna el color seleccionado al jugador.                         
-                                }
-                                break;
-                            case 9:
-                                System.out.println("Has elegido salir. Volviendo al menú de aspecto."); 
-                                cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                break;
+
                             default:
-                                System.out.println("Has escrito un número que no coincide con los de selección. Prueba otra vez.");
+                                System.out.println("Has elegido un número que no corresponde a ninguna opción. Prueba otra vez.");
                                 break;
-                            }
-                            } catch (NumberFormatException e) {
-                                System.out.println("No has escrito un número. Prueba otra vez");
-                            }
+                                }    
 
-                        } else if (cambiarAspectoW==true) {
-                            try{ //Prueba que escribas un número.
-                                //Muestra las opciones de colores.
-                                System.out.println("""
-                                    Elige un color para el fondo:
-                                    \t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir
-                                        """);
-                                eleccionColorW = Integer.parseInt(bf.readLine()); //Lee el color elegido.
-                                switch (eleccionColorW) { //selecciona segun el número elegido.
-                                    case 1:
-                                        System.out.println("Has elegido el color rojo.");
-                                        cambiarAspectoW=false; //CambiarAspecto a false para que no colapse.
-                                        if (colorPj==COLOR_PJ_RED) { //Comprueba que el personaje no tenga ese color
-                                            System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                                        }else{
-                                            colorW=COLOR_W_RED; //Si el personaje es de otro color, asigna el color seleccionado al agua.
-                                        }
-                                        break;
-                                    case 2:
-                                        System.out.println("Has elegido el color verde.");
-                                        cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                        if (colorPj==COLOR_PJ_GREEN) {//Comprueba que el personaje no tenga ese color
-                                            System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                                        }else{
-                                            colorW=COLOR_W_GREEN;  //Si el personaje es de otro color, asigna el color seleccionado al agua.
-                                        }                          
-                                        break;
-                                    case 3:
-                                        System.out.println("Has elegido el color amarillo.");
-                                        cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                        if (colorPj==COLOR_PJ_YELLOW) {//Comprueba que el personaje no tenga ese color
-                                            System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                                        }else{
-                                            colorW=COLOR_W_YELLOW; //Si el personaje es de otro color, asigna el color seleccionado al agua.       
-                                        }                      
-                                        break;
-                                    case 4:
-                                        System.out.println("Has elegido el color azul.");
-                                        cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                        if (colorPj==COLOR_PJ_BLUE) {//Comprueba que el personaje no tenga ese color
-                                            System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                                        }else{
-                                            colorW=COLOR_W_BLUE;  //Si el personaje es de otro color, asigna el color seleccionado al agua.                        
-                                        }
-                                        break;
-                                    case 5:
-                                        System.out.println("Has elegido el color morado.");
-                                        cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                        if (colorPj==COLOR_PJ_PURPLE) {//Comprueba que el personaje no tenga ese color
-                                            System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                                        }else{
-                                            colorW=COLOR_W_PURPLE;  //Si el personaje es de otro color, asigna el color seleccionado al agua.                            
-                                        }
-                                        break;
-                                    case 6:
-                                        System.out.println("Has elegido el color Cian.");
-                                        cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                        if (colorPj==COLOR_PJ_CYAN) {//Comprueba que el personaje no tenga ese color
-                                            System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                                        }else{
-                                            colorW=COLOR_W_CYAN;//Si el personaje es de otro color, asigna el color seleccionado al agua.                              
-                                        }
-                                        break;
-                                    case 7:
-                                        System.out.println("Has elegido el color Blanco.");
-                                        cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                        if (colorPj==COLOR_PJ_WHITE) {//Comprueba que el personaje no tenga ese color
-                                            System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                                        }else{
-                                            colorW=COLOR_W_WHITE;//Si el personaje es de otro color, asigna el color seleccionado al agua.  
-                                        }                            
-                                        break;
-                                    case 8:
-                                        System.out.println("Has elegido el color Negro.");
-                                        cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                        if (colorPj==COLOR_PJ_BLACK) {//Comprueba que el personaje no tenga ese color
-                                            System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                                        }else{
-                                            colorW=COLOR_W_BLACK; //Si el personaje es de otro color, asigna el color seleccionado al agua.                             
-                                        }
-                                        break;    
-                                    case 9:
-                                        System.out.println("Has elegido salir. Volviendo al menú principal.");
-                                        cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                        break;
-                                    default:
-                                        System.out.println("Has escrito un número que no coincide con los de selección. Prueba otra vez.");
-                                        break;
-                                }
-                            } catch (NumberFormatException e) {
-                                System.out.println("No has escrito un número. Prueba otra vez");
-                            }
-                            }
-                    }while (salirAspecto==false);
+                    } while (eleccion<=0 || eleccion>=5); //Repite hasta que la elección sea 1, 2, 3 o 4.
 
-
-                }else if (eleccion==3) { //Historial
-                    salirHistorial=false; //Pone en false el salirHistorial. Si has seleccionado previamente esta opción y has salido, 
-                                          //Te sacaria en cuanto eligieras algo que te mueva a este menú.
-                    do{ //Repite hasta que el usuario seleccione salir.
-                        //Muestra las opciones. (No disponible de momento.)
-                        System.out.println("""
-                                Este menú aun no esta disponible. Pulse 3 para salir.
-                                \t1) Jugar una partida guardada. (Proximamente)
-                                \t2) Revisar elecciónes de partida. (Proximamente)
-                                \t3) Salir.
-                                """);
-                        try { //Comprueba que escribas solo números
-                            eleccionHistorial=Integer.parseInt(bf.readLine()); //Lee la elección
-                            switch (eleccionHistorial) { //Selecciona según haya elegido.
-                                case 1:
-                                    System.out.println("Ha selecionado \'Jugar partida guardada\', Este menú aun no esta disponible.");
-                                    System.out.println("Prueba otra vez");
-
-                                    break;
-                                case 2:
-                                    System.out.println("Ha selecionado \'Jugar partida guardada\', Este menú aun no esta disponible.");
-                                    System.out.println("Prueba otra vez");
-
-                                    break;
-                                case 3:
-                                    System.out.println("Ha selecionado salir. Volviendo al menú principal");
-                                    salirHistorial=true; //Vuelve al menú principal.
-                                    break;    
-
-                                default:
-                                    System.out.println("El número seleccionado no corresponde a nada. Prueba otra vez.");
-                                    break;
-                            }
-                        } catch (NumberFormatException e) {
-                            System.out.println("No has escrito un número. Prueba otra vez");
-                        }
-
-                    }while (salirHistorial==false);
-                }else if (eleccion==4) {// Salir
-                    System.out.println("Saliendo del juego");
-                    salir=true; //Pone salir en true para salir del bucle del menú.
+                } catch (NumberFormatException e) { //Si escribe una letra le muestra este error 
+                    System.out.println("No has escrito un número. Prueba otra vez");
                 }
 
             }while (salir==false); 
