@@ -48,26 +48,28 @@ public class WaterRun {
 
         //Colores para los personajes.
         String colorPj = "\u001B[37m";
-        final String COLOR_PJ_BLACK = "\u001B[30m";
-        final String COLOR_PJ_RED = "\u001B[31m";
-        final String COLOR_PJ_GREEN = "\u001B[32m";
-        final String COLOR_PJ_YELLOW = "\u001B[33m";
-        final String COLOR_PJ_BLUE = "\u001B[34m";
-        final String COLOR_PJ_PURPLE = "\u001B[35m";
-        final String COLOR_PJ_CYAN = "\u001B[36m";
-        final String COLOR_PJ_WHITE = "\u001B[37m";
+        final String[] COLORESPJ = {
+            "\u001B[31m",//0=Rojo
+            "\u001B[32m",//1=Verde
+            "\u001B[33m",//2=Amarillo
+            "\u001B[34m",//3=Azul
+            "\u001B[35m",//4=Morado
+            "\u001B[36m",//5=Cyan
+            "\u001B[37m",//6=Blanco
+            "\u001B[30m"// 7=Negro
+        };
 
         //Colores del fondo.
         String colorW = "\u001B[40m";
         final String[] COLORESAGUA= {
-            "\u001B[40m",//NEGRO
-            "\u001B[41m",//Rojo
-            "\u001B[42m",//Verde
-            "\u001B[43m",//Amarillo
-            "\u001B[44m",//Azul
-            "\u001B[45m",//Morado
-            "\u001B[46m",//Cyan
-            "\u001B[47m",//Blanco
+            "\u001B[41m",//0=Rojo
+            "\u001B[42m",//1=Verde
+            "\u001B[43m",//2=Amarillo
+            "\u001B[44m",//3=Azul
+            "\u001B[45m",//4=Morado
+            "\u001B[46m",//5=Cyan
+            "\u001B[47m",//6=Blanco
+            "\u001B[40m",//7=NEGRO
         };
 
 
@@ -162,144 +164,10 @@ public class WaterRun {
                                     } while (caracterCorrecto==false);
 
                                         if (jugar==true) { //Inicio del juego
-                                            do{
-                                            reAcertadas=0;
-                                            System.out.printf("""
-                                            █████████████████████████████████████████████████████     
-                                            █                                                   █
-                                            ██                                                  █
-                                                                                               | |
-                                                                                               | | 
-                                            ██                                                 | |
-                                            █                                                   █
-                                            █                                         ███████████
-                                            █                                         ███████████
-                                            █                                         ███████████                
-                                            █                                         ███████████
-                                            █                                         ███████████
-                                            █                                         ███████████
-                                            █                               █████████████████████
-                                            █                               █████████████████████
-                                            █                               █████████████████████
-                                            █"""  + colorPj +     """
-                                                    \t  o  """ + COLOR_RESET + """
-                                                                 █████████████████████
-                                            █""" + colorPj + """
-                                                    \t /L """ + COLOR_RESET + """
-                                                                 █████████████████████
-                                            █""" + colorPj + """
-                                                    \t | """ + COLOR_RESET + """
-                                                                  █████████████████████
-                                            █████████████████████████████████████████████████████          
-                                                            """ + """
-                                            ¿Cuanto es 2 + 2?
 
-                                            1) 2\t\t 2) 4\t\t 3) 75\t\t 4)185
-                                                    """); //Mas adelante, incluido el color del personaje y del agua
-                                            reQ1 = Integer.parseInt(bf.readLine()); //Comprueba la respuesta 1
-                                            if (reQ1 == 2) { 
-                                                reAcertadas=reAcertadas+1;
-                                                System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
-                                                System.out.printf("""
-                                                    █████████████████████████████████████████████████████     
-                                                    █                                                   █
-                                                    ██                                                  █
-                                                                                                    | |
-                                                                                                o      | | 
-                                                    ██                                         /L      | |
-                                                    █                                          |        █
-                                                    █                                         ███████████
-                                                    █                                         ███████████
-                                                    █                                         ███████████                
-                                                    █                                         ███████████
-                                                    █                                         ███████████
-                                                    █                                         ███████████
-                                                    █                               █████████████████████
-                                                    █                               █████████████████████
-                                                    █                               █████████████████████
-                                                    █                               █████████████████████
-                                                    █                               █████████████████████
-                                                    █                               █████████████████████
-                                                    █████████████████████████████████████████████████████
-                                    
-                                                    ¿Tiene 5 letras tiene la palabra \"QUESO\"?
-                                                    \t1) Verdadero \t\t 2) Falso
-                                                            """);
-                                                reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
-                                                if (reQ2==1) { 
-
-                                                    System.out.println("¡Has acertado! Tu personaje empieza a abrir la cerradura.");
+                                                do{
+                                                    reAcertadas=0;
                                                     System.out.printf("""
-                                                        █████████████████████████████████████████████████████     
-                                                        █                                                   █
-                                                        ██                                                  █
-                                                                                                        | |
-                                                                                                    o      | | 
-                                                        ██                                         /L      | |
-                                                        █                                          |        █
-                                                        █                                         ███████████
-                                                        █                                         ███████████
-                                                        █                                         ███████████                
-                                                        █                                         ███████████
-                                                        █                                         ███████████
-                                                        █                                         ███████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █████████████████████████████████████████████████████
-                                        
-                                                        ¿Cuanto es 5x5?
-                                                            """);
-                                                    reQ3 = Integer.parseInt(bf.readLine()); //Lee la respuesta 3
-                                                    if (reQ3==25) {
-                                                        System.out.println("¡Has acertado! Tu personaje ha huido.");
-                                                        lvlPasado = true; //pone lvlPasado en true para salir del bucle.
-                                                        salirJuego = true; //Te manda al menú princial.
-                                                    }else{
-                                                        System.out.println("Has fallado.");
-                                                        System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
-                                                        salirJuego=true; //Te saca del juego tras perder
-                                                    }
-                                                }else{
-                                                    System.out.println("Has fallado.");
-                                                    System.out.printf("""
-                                                        █████████████████████████████████████████████████████     
-                                                        █                                                   █
-                                                        ██                                                  █
-                                                                                                        | |
-                                                                                                    o      | | 
-                                                        ██                                         /L      | |
-                                                        █                                          |        █
-                                                        █                                         ███████████
-                                                        █                                         ███████████
-                                                        █                                         ███████████                
-                                                        █                                         ███████████
-                                                        █                                         ███████████
-                                                        █                                         ███████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █████████████████████████████████████████████████████
-                                        
-                                                        ¿Cuanto es 5x5?
-                                                            """);
-                                                    reQ3 = Integer.parseInt(bf.readLine());
-                                                    if (reQ3==25) {
-                                                        System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
-                                                        System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
-                                                        salirJuego=true;
-                                                    }
-                                                }    
-                                            }else{
-                                                System.out.printf("""
-                                                    Has fallado.\n
-                                                    
                                                     █████████████████████████████████████████████████████     
                                                     █                                                   █
                                                     ██                                                  █
@@ -325,48 +193,116 @@ public class WaterRun {
                                                     █""" + colorPj + """
                                                             \t | """ + COLOR_RESET + """
                                                                         █████████████████████
-                                                    █████████████████████████████████████████████████████      
+                                                    █████████████████████████████████████████████████████          
+                                                                    """ + """
+                                                    ¿Cuanto es 2 + 2?
 
-                                                    ¿Tiene 5 letras tiene la palabra \"QUESO\"?
-                                                    \t1) Verdadero \t\t 2) Falso
-                                                                    """);
-                                                reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
-                                                if (reQ2==1) { 
-                                
-                                                    System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
-                                                    System.out.printf("""
-                                                        █████████████████████████████████████████████████████     
-                                                        █                                                   █
-                                                        ██                                                  █
-                                                                                                        | |
-                                                                                                    o      | | 
-                                                        ██                                         /L      | |
-                                                        █                                          |        █
-                                                        █                                         ███████████
-                                                        █                                         ███████████
-                                                        █                                         ███████████                
-                                                        █                                         ███████████
-                                                        █                                         ███████████
-                                                        █                                         ███████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █                               █████████████████████
-                                                        █████████████████████████████████████████████████████
-                                                        
-                                                        ¿Cuanto es 5x5?
-                                                            """);
-                                                    reQ3 = Integer.parseInt(bf.readLine());//lee la respuesta 3
-                                                    if (reQ3==25) {
-                                                        System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
-                                                        System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
-                                                        salirJuego=true; //te saca del juego tras perder
-                                                    }
-                                                    }else{
-                                                        System.out.println("Has fallado.");
+                                                    1) 2\t\t 2) 4\t\t 3) 75\t\t 4)185
+                                                            """); //Mas adelante, incluido el color del personaje y del agua
+                                                    reQ1 = Integer.parseInt(bf.readLine()); //Comprueba la respuesta 1
+                                                    if (reQ1 == 2) { 
+                                                        reAcertadas=reAcertadas+1;
+                                                        System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
                                                         System.out.printf("""
+                                                            █████████████████████████████████████████████████████     
+                                                            █                                                   █
+                                                            ██                                                  █
+                                                                                                            | |
+                                                                                                        o      | | 
+                                                            ██                                         /L      | |
+                                                            █                                          |        █
+                                                            █                                         ███████████
+                                                            █                                         ███████████
+                                                            █                                         ███████████                
+                                                            █                                         ███████████
+                                                            █                                         ███████████
+                                                            █                                         ███████████
+                                                            █                               █████████████████████
+                                                            █                               █████████████████████
+                                                            █                               █████████████████████
+                                                            █                               █████████████████████
+                                                            █                               █████████████████████
+                                                            █                               █████████████████████
+                                                            █████████████████████████████████████████████████████
+                                            
+                                                            ¿Tiene 5 letras tiene la palabra \"QUESO\"?
+                                                            \t1) Verdadero \t\t 2) Falso
+                                                                    """);
+                                                        reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
+                                                        if (reQ2==1) { 
+
+                                                            System.out.println("¡Has acertado! Tu personaje empieza a abrir la cerradura.");
+                                                            System.out.printf("""
+                                                                █████████████████████████████████████████████████████     
+                                                                █                                                   █
+                                                                ██                                                  █
+                                                                                                                | |
+                                                                                                            o      | | 
+                                                                ██                                         /L      | |
+                                                                █                                          |        █
+                                                                █                                         ███████████
+                                                                █                                         ███████████
+                                                                █                                         ███████████                
+                                                                █                                         ███████████
+                                                                █                                         ███████████
+                                                                █                                         ███████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █████████████████████████████████████████████████████
+                                                
+                                                                ¿Cuanto es 5x5?
+                                                                    """);
+                                                            reQ3 = Integer.parseInt(bf.readLine()); //Lee la respuesta 3
+                                                            if (reQ3==25) {
+                                                                System.out.println("¡Has acertado! Tu personaje ha huido.");
+                                                                lvlPasado = true; //pone lvlPasado en true para salir del bucle.
+                                                                salirJuego = true; //Te manda al menú princial.
+                                                            }else{
+                                                                System.out.println("Has fallado.");
+                                                                System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
+                                                                salirJuego=true; //Te saca del juego tras perder
+                                                            }
+                                                        }else{
+                                                            System.out.println("Has fallado.");
+                                                            System.out.printf("""
+                                                                █████████████████████████████████████████████████████     
+                                                                █                                                   █
+                                                                ██                                                  █
+                                                                                                                | |
+                                                                                                            o      | | 
+                                                                ██                                         /L      | |
+                                                                █                                          |        █
+                                                                █                                         ███████████
+                                                                █                                         ███████████
+                                                                █                                         ███████████                
+                                                                █                                         ███████████
+                                                                █                                         ███████████
+                                                                █                                         ███████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █████████████████████████████████████████████████████
+                                                
+                                                                ¿Cuanto es 5x5?
+                                                                    """);
+                                                            reQ3 = Integer.parseInt(bf.readLine());
+                                                            if (reQ3==25) {
+                                                                System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
+                                                                System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
+                                                                salirJuego=true;
+                                                            }
+                                                        }    
+                                                    }else{
+                                                        System.out.printf("""
+                                                            Has fallado.\n
+                                                            
                                                             █████████████████████████████████████████████████████     
                                                             █                                                   █
                                                             ██                                                  █
@@ -394,23 +330,92 @@ public class WaterRun {
                                                                                 █████████████████████
                                                             █████████████████████████████████████████████████████      
 
-                                                                            ¿Cuanto es 5x5?
-                                                                                """);
-                                                        reQ3 = Integer.parseInt(bf.readLine());//lee la respuesta 3
-                                                        if (reQ3==25) {
-                                                            System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
-                                                            System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
-                                                            salirJuego=true; //Te saca del juego tras perder
-                                                        }else{
-                                                            System.out.println("Has fallado.");
-                                                            System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
-                                                            salirJuego=true; //Te saca del juego tras perder
-                                                        }
+                                                            ¿Tiene 5 letras tiene la palabra \"QUESO\"?
+                                                            \t1) Verdadero \t\t 2) Falso
+                                                                            """);
+                                                        reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
+                                                        if (reQ2==1) { 
                                         
-                                                    }
-                                                }
+                                                            System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
+                                                            System.out.printf("""
+                                                                █████████████████████████████████████████████████████     
+                                                                █                                                   █
+                                                                ██                                                  █
+                                                                                                                | |
+                                                                                                            o      | | 
+                                                                ██                                         /L      | |
+                                                                █                                          |        █
+                                                                █                                         ███████████
+                                                                █                                         ███████████
+                                                                █                                         ███████████                
+                                                                █                                         ███████████
+                                                                █                                         ███████████
+                                                                █                                         ███████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █                               █████████████████████
+                                                                █████████████████████████████████████████████████████
+                                                                
+                                                                ¿Cuanto es 5x5?
+                                                                    """);
+                                                            reQ3 = Integer.parseInt(bf.readLine());//lee la respuesta 3
+                                                            if (reQ3==25) {
+                                                                System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
+                                                                System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
+                                                                salirJuego=true; //te saca del juego tras perder
+                                                            }
+                                                            }else{
+                                                                System.out.println("Has fallado.");
+                                                                System.out.printf("""
+                                                                    █████████████████████████████████████████████████████     
+                                                                    █                                                   █
+                                                                    ██                                                  █
+                                                                                                                    | |
+                                                                                                                    | | 
+                                                                    ██                                                 | |
+                                                                    █                                                   █
+                                                                    █                                         ███████████
+                                                                    █                                         ███████████
+                                                                    █                                         ███████████                
+                                                                    █                                         ███████████
+                                                                    █                                         ███████████
+                                                                    █                                         ███████████
+                                                                    █                               █████████████████████
+                                                                    █                               █████████████████████
+                                                                    █                               █████████████████████
+                                                                    █"""  + colorPj +     """
+                                                                            \t  o  """ + COLOR_RESET + """
+                                                                                        █████████████████████
+                                                                    █""" + colorPj + """
+                                                                            \t /L """ + COLOR_RESET + """
+                                                                                        █████████████████████
+                                                                    █""" + colorPj + """
+                                                                            \t | """ + COLOR_RESET + """
+                                                                                        █████████████████████
+                                                                    █████████████████████████████████████████████████████      
+
+                                                                                    ¿Cuanto es 5x5?
+                                                                                        """);
+                                                                reQ3 = Integer.parseInt(bf.readLine());//lee la respuesta 3
+                                                                if (reQ3==25) {
+                                                                    System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
+                                                                    System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
+                                                                    salirJuego=true; //Te saca del juego tras perder
+                                                                }else{
+                                                                    System.out.println("Has fallado.");
+                                                                    System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
+                                                                    salirJuego=true; //Te saca del juego tras perder
+                                                                }
+                                                
+                                                            }
+                                                        
+                                                        }
 
                                             }while(salirJuego==false && lvlPasado==false);
+
                                         }else{ //Si eliges no jugar 
                                             System.out.println("Volviendo al menú principal.");
                                             salirJuego=true; //Variable salir del bucle juego.
@@ -470,73 +475,73 @@ public class WaterRun {
                                             case 1:
                                             System.out.println("Has elegido el color rojo.");
                                             cambiarAspectoPJ=false; //CambiarAspecto a false para que no colapse.
-                                            if (colorW==COLOR_W_RED) { //Comprueba que el agua no tenga ese color.
+                                            if (colorW==COLORESAGUA[0]) { //Comprueba que el agua no tenga ese color.
                                                 System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
                                             }else{
-                                                colorPj=COLOR_PJ_RED; //Si el agua es de otro color, asigna el color seleccionado al jugador.
+                                                colorPj=COLORESPJ[0]; //Si el agua es de otro color, asigna el color seleccionado al jugador.
                                             }
                                             break;
                                         case 2:
                                             System.out.println("Has elegido el color verde.");
                                             cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                            if (colorW==COLOR_W_GREEN) {//Comprueba que el agua no tenga ese color.
+                                            if (colorW==COLORESAGUA[1]) {//Comprueba que el agua no tenga ese color.
                                                 System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
                                             }else{
-                                                colorPj=COLOR_PJ_GREEN;  //Si el agua es de otro color, asigna el color seleccionado al jugador.
+                                                colorPj=COLORESPJ[1];  //Si el agua es de otro color, asigna el color seleccionado al jugador.
                                             }                          
                                             break;
                                         case 3:
                                             System.out.println("Has elegido el color amarillo.");
                                             cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                            if (colorW==COLOR_W_YELLOW) {//Comprueba que el agua no tenga ese color.
+                                            if (colorW==COLORESAGUA[2]) {//Comprueba que el agua no tenga ese color.
                                                 System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
                                             }else{
-                                                colorPj=COLOR_PJ_YELLOW;     //Si el agua es de otro color, asigna el color seleccionado al jugador.   
+                                                colorPj=COLORESPJ[2];     //Si el agua es de otro color, asigna el color seleccionado al jugador.   
                                             }                      
                                             break;
                                         case 4:
                                             System.out.println("Has elegido el color azul.");
                                             cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                            if (colorW==COLOR_W_BLUE) {//Comprueba que el agua no tenga ese color.
+                                            if (colorW==COLORESAGUA[3]) {//Comprueba que el agua no tenga ese color.
                                                 System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
                                             }else{
-                                                colorPj=COLOR_PJ_BLUE;         //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
+                                                colorPj=COLORESPJ[3];         //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
                                             }
                                             break;
                                         case 5:
                                             System.out.println("Has elegido el color morado.");
                                             cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                            if (colorW==COLOR_W_PURPLE) {//Comprueba que el agua no tenga ese color.
+                                            if (colorW==COLORESAGUA[4]) {//Comprueba que el agua no tenga ese color.
                                                 System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
                                             }else{
-                                                colorPj=COLOR_PJ_PURPLE;       //Si el agua es de otro color, asigna el color seleccionado al jugador.                       
+                                                colorPj=COLORESPJ[4];       //Si el agua es de otro color, asigna el color seleccionado al jugador.                       
                                             }
                                             break;
                                         case 6:
                                             System.out.println("Has elegido el color Cian.");
                                             cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                            if (colorW==COLOR_W_CYAN) {//Comprueba que el agua no tenga ese color.
+                                            if (colorW==COLORESAGUA[5]) {//Comprueba que el agua no tenga ese color.
                                                 System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
                                             }else{
-                                                colorPj=COLOR_PJ_CYAN;             //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
+                                                colorPj=COLORESPJ[5];             //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
                                             }
                                             break;
                                         case 7:
                                             System.out.println("Has elegido el color Blanco.");
                                             cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                            if (colorW==COLOR_W_WHITE) {//Comprueba que el agua no tenga ese color.
+                                            if (colorW==COLORESAGUA[6]) {//Comprueba que el agua no tenga ese color.
                                                 System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
                                             }else{
-                                                colorPj=COLOR_PJ_WHITE;  //Si el agua es de otro color, asigna el color seleccionado al jugador.
+                                                colorPj=COLORESPJ[6];  //Si el agua es de otro color, asigna el color seleccionado al jugador.
                                             }                            
                                             break;
                                         case 8:
                                             System.out.println("Has elegido el color Negro.");
                                             cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                                            if (colorW==COLOR_W_BLACK) {//Comprueba que el agua no tenga ese color.
+                                            if (colorW==COLORESAGUA[7]) {//Comprueba que el agua no tenga ese color.
                                                 System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
                                             }else{
-                                                colorPj=COLOR_PJ_BLACK;     //Si el agua es de otro color, asigna el color seleccionado al jugador.                         
+                                                colorPj=COLORESPJ[7];     //Si el agua es de otro color, asigna el color seleccionado al jugador.                         
                                             }
                                             break;
                                         case 9:
@@ -563,73 +568,73 @@ public class WaterRun {
                                                 case 1:
                                                     System.out.println("Has elegido el color rojo.");
                                                     cambiarAspectoW=false; //CambiarAspecto a false para que no colapse.
-                                                    if (colorPj==COLOR_PJ_RED) { //Comprueba que el personaje no tenga ese color
+                                                    if (colorPj==COLORESPJ[0]) { //Comprueba que el personaje no tenga ese color
                                                         System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
                                                     }else{
-                                                        colorW=COLOR_W_RED; //Si el personaje es de otro color, asigna el color seleccionado al agua.
+                                                        colorW=COLORESAGUA[0]; //Si el personaje es de otro color, asigna el color seleccionado al agua.
                                                     }
                                                     break;
                                                 case 2:
                                                     System.out.println("Has elegido el color verde.");
                                                     cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                                    if (colorPj==COLOR_PJ_GREEN) {//Comprueba que el personaje no tenga ese color
+                                                    if (colorPj==COLORESPJ[1]) {//Comprueba que el personaje no tenga ese color
                                                         System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
                                                     }else{
-                                                        colorW=COLOR_W_GREEN;  //Si el personaje es de otro color, asigna el color seleccionado al agua.
+                                                        colorW=COLORESAGUA[1];  //Si el personaje es de otro color, asigna el color seleccionado al agua.
                                                     }                          
                                                     break;
                                                 case 3:
                                                     System.out.println("Has elegido el color amarillo.");
                                                     cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                                    if (colorPj==COLOR_PJ_YELLOW) {//Comprueba que el personaje no tenga ese color
+                                                    if (colorPj==COLORESPJ[2]) {//Comprueba que el personaje no tenga ese color
                                                         System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
                                                     }else{
-                                                        colorW=COLOR_W_YELLOW; //Si el personaje es de otro color, asigna el color seleccionado al agua.       
+                                                        colorW=COLORESAGUA[2]; //Si el personaje es de otro color, asigna el color seleccionado al agua.       
                                                     }                      
                                                     break;
                                                 case 4:
                                                     System.out.println("Has elegido el color azul.");
                                                     cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                                    if (colorPj==COLOR_PJ_BLUE) {//Comprueba que el personaje no tenga ese color
+                                                    if (colorPj==COLORESPJ[3]) {//Comprueba que el personaje no tenga ese color
                                                         System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
                                                     }else{
-                                                        colorW=COLOR_W_BLUE;  //Si el personaje es de otro color, asigna el color seleccionado al agua.                        
+                                                        colorW=COLORESAGUA[3];  //Si el personaje es de otro color, asigna el color seleccionado al agua.                        
                                                     }
                                                     break;
                                                 case 5:
                                                     System.out.println("Has elegido el color morado.");
                                                     cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                                    if (colorPj==COLOR_PJ_PURPLE) {//Comprueba que el personaje no tenga ese color
+                                                    if (colorPj==COLORESPJ[4]) {//Comprueba que el personaje no tenga ese color
                                                         System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
                                                     }else{
-                                                        colorW=COLOR_W_PURPLE;  //Si el personaje es de otro color, asigna el color seleccionado al agua.                            
+                                                        colorW=COLORESAGUA[4];  //Si el personaje es de otro color, asigna el color seleccionado al agua.                            
                                                     }
                                                     break;
                                                 case 6:
                                                     System.out.println("Has elegido el color Cian.");
                                                     cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                                    if (colorPj==COLOR_PJ_CYAN) {//Comprueba que el personaje no tenga ese color
+                                                    if (colorPj==COLORESPJ[5]) {//Comprueba que el personaje no tenga ese color
                                                         System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
                                                     }else{
-                                                        colorW=COLOR_W_CYAN;//Si el personaje es de otro color, asigna el color seleccionado al agua.                              
+                                                        colorW=COLORESAGUA[5];//Si el personaje es de otro color, asigna el color seleccionado al agua.                              
                                                     }
                                                     break;
                                                 case 7:
                                                     System.out.println("Has elegido el color Blanco.");
                                                     cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                                    if (colorPj==COLOR_PJ_WHITE) {//Comprueba que el personaje no tenga ese color
+                                                    if (colorPj==COLORESPJ[6]) {//Comprueba que el personaje no tenga ese color
                                                         System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
                                                     }else{
-                                                        colorW=COLOR_W_WHITE;//Si el personaje es de otro color, asigna el color seleccionado al agua.  
+                                                        colorW=COLORESAGUA[6];//Si el personaje es de otro color, asigna el color seleccionado al agua.  
                                                     }                            
                                                     break;
                                                 case 8:
                                                     System.out.println("Has elegido el color Negro.");
                                                     cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                                                    if (colorPj==COLOR_PJ_BLACK) {//Comprueba que el personaje no tenga ese color
+                                                    if (colorPj==COLORESPJ[7]) {//Comprueba que el personaje no tenga ese color
                                                         System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
                                                     }else{
-                                                        colorW=COLOR_W_BLACK; //Si el personaje es de otro color, asigna el color seleccionado al agua.                             
+                                                        colorW=COLORESAGUA[7]; //Si el personaje es de otro color, asigna el color seleccionado al agua.                             
                                                     }
                                                     break;    
                                                 case 9:
