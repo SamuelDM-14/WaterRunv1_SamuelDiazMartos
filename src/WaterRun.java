@@ -65,11 +65,12 @@ public class WaterRun {
                 }
             } while (empezar==false);
     }
+    
     private static void Menu1(BufferedReader bf){
 
     }
     private static void Jugar(BufferedReader bf){
-        
+
     }
     public static void main(String[] args) throws IOException {
         // Crear un BufferedReader para leer de la entrada estándar
