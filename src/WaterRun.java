@@ -9,16 +9,75 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class WaterRun {
+
+    // Deja el color como al principio.
+    private final String COLOR_RESET = "\u001B[0m";
+
+    //Colores para los personajes.
+    private String colorPj = "\u001B[37m";
+    private final String[] COLORESPJ = {
+        "\u001B[31m",//0=Rojo
+        "\u001B[32m",//1=Verde
+        "\u001B[33m",//2=Amarillo
+        "\u001B[34m",//3=Azul
+        "\u001B[35m",//4=Morado
+        "\u001B[36m",//5=Cyan
+        "\u001B[37m",//6=Blanco
+        "\u001B[30m"// 7=Negro
+    };
+    
+    //Colores del fondo.
+    private String colorW = "\u001B[40m";
+    private final String[] COLORESAGUA= {
+        "\u001B[41m",//0=Rojo
+        "\u001B[42m",//1=Verde
+        "\u001B[43m",//2=Amarillo
+        "\u001B[44m",//3=Azul
+        "\u001B[45m",//4=Morado
+        "\u001B[46m",//5=Cyan
+        "\u001B[47m",//6=Blanco
+        "\u001B[40m",//7=NEGRO
+    };
+
+    private static void Bienvenida(BufferedReader bf, String entrada) throws IOException{
+        // Variables del programa.
+        boolean empezar=false; // Para comprobar que haya puesto un enter
+
+        System.out.println(""" 
+
+        ██████  ██ ███████ ███    ██ ██    ██ ███████ ███    ██ ██ ██████   ██████  
+        ██   ██ ██ ██      ████   ██ ██    ██ ██      ████   ██ ██ ██   ██ ██    ██ 
+        ██████  ██ █████   ██ ██  ██ ██    ██ █████   ██ ██  ██ ██ ██   ██ ██    ██ 
+        ██   ██ ██ ██      ██  ██ ██  ██  ██  ██      ██  ██ ██ ██ ██   ██ ██    ██ 
+        ██████  ██ ███████ ██   ████   ████   ███████ ██   ████ ██ ██████   ██████  
+                
+        
+        Pulsa \'Enter\' para continuar
+                """);
+
+            do {
+                entrada=bf.readLine();//Guarda en entrada el caracter introducido.
+                if (entrada.isEmpty()) { // Comprueba que la entrada esté vacía
+                    System.out.println("¡Vamos a empezar a jugar!\n");
+                    empezar=true;//Cambia la variable a verdadero para salir del bucle.
+                }else{
+                    System.out.println("Has introducido un caracter incorrecto, pulse enter para empezar.");
+                }
+            } while (empezar==false);
+    }
+    private static void Menu1(BufferedReader bf){
+
+    }
+    private static void Jugar(BufferedReader bf){
+        
+    }
     public static void main(String[] args) throws IOException {
         // Crear un BufferedReader para leer de la entrada estándar
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-
-        // Variables del programa.
-        boolean empezar=false; // Para comprobar que haya puesto un enter
+        
+        String entrada=""; // Leer una línea de texto.
         int eleccion=0;// Lee la elección del primer menú.
-        String entrada; // Leer una línea de texto.
-        boolean salir=false;//variable para acabar el programa;
-    
+        boolean salir=false;//variable para acabar el programa;   
        
         //Respuestas del juego
         char re1; //Respuesta jugar o no jugar.
@@ -43,61 +102,16 @@ public class WaterRun {
         int eleccionHistorial;// Respuesta de elección de historial.
         boolean salirHistorial=false;
 
-        // Deja el color como al principio.
-        final String COLOR_RESET = "\u001B[0m";
 
-        //Colores para los personajes.
-        String colorPj = "\u001B[37m";
-        final String[] COLORESPJ = {
-            "\u001B[31m",//0=Rojo
-            "\u001B[32m",//1=Verde
-            "\u001B[33m",//2=Amarillo
-            "\u001B[34m",//3=Azul
-            "\u001B[35m",//4=Morado
-            "\u001B[36m",//5=Cyan
-            "\u001B[37m",//6=Blanco
-            "\u001B[30m"// 7=Negro
-        };
-
-        //Colores del fondo.
-        String colorW = "\u001B[40m";
-        final String[] COLORESAGUA= {
-            "\u001B[41m",//0=Rojo
-            "\u001B[42m",//1=Verde
-            "\u001B[43m",//2=Amarillo
-            "\u001B[44m",//3=Azul
-            "\u001B[45m",//4=Morado
-            "\u001B[46m",//5=Cyan
-            "\u001B[47m",//6=Blanco
-            "\u001B[40m",//7=NEGRO
-        };
 
 
 
         //Bienvenida. Usamos tres comillas para poder escribir en varias lineas.
         //Este recurso lo vamos a usar bastante a lo largo del codigo.
-        System.out.println(""" 
+        Bienvenida(bf, entrada);
+        Menu1(bf);
 
-        ██████  ██ ███████ ███    ██ ██    ██ ███████ ███    ██ ██ ██████   ██████  
-        ██   ██ ██ ██      ████   ██ ██    ██ ██      ████   ██ ██ ██   ██ ██    ██ 
-        ██████  ██ █████   ██ ██  ██ ██    ██ █████   ██ ██  ██ ██ ██   ██ ██    ██ 
-        ██   ██ ██ ██      ██  ██ ██  ██  ██  ██      ██  ██ ██ ██ ██   ██ ██    ██ 
-        ██████  ██ ███████ ██   ████   ████   ███████ ██   ████ ██ ██████   ██████  
-                
-        
-        Pulsa \'Enter\' para continuar
-                """);
-
-            do {
-                entrada=bf.readLine();//Guarda en entrada el caracter introducido.
-                if (entrada.isEmpty()) { // Comprueba que la entrada esté vacía
-                    System.out.println("¡Vamos a empezar a jugar!\n");
-                    empezar=true;//Cambia la variable a verdadero para salir del bucle.
-                }else{
-                    System.out.println("Has introducido un caracter incorrecto, pulse enter para empezar.");
-                }
-            } while (empezar==false); 
-
+        /*
 
 
             do{ //Bucle menú (Se repite hasta indicar salir.)
@@ -119,6 +133,7 @@ public class WaterRun {
                         switch (eleccion) { 
 
                             case 1:
+                                Jugar(bf)
                                 //Entra en caso de elegir Jugar
                                 salirJuego=false; //Pone en false el salir. Si has jugado sin recargar el programa te sacaria en la primera seleccion de salir.
                                     
@@ -713,7 +728,7 @@ public class WaterRun {
 
             }while (salir==false); 
             System.out.println("Muchas gracias por participar."); //Muestra mensaje de agradecimiento.
-        
+         */
             }
 }
     
