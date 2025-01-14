@@ -11,11 +11,11 @@ import java.io.InputStreamReader;
 public class WaterRun {
 
     // Deja el color como al principio.
-    private final String COLOR_RESET = "\u001B[0m";
+    private static final String COLOR_RESET = "\u001B[0m";
 
     //Colores para los personajes.
-    private String colorPj = "\u001B[37m";
-    private final String[] COLORESPJ = {
+    private static String colorPj = "\u001B[37m";
+    private static final String[] COLORESPJ = {
         "\u001B[31m",//0=Rojo
         "\u001B[32m",//1=Verde
         "\u001B[33m",//2=Amarillo
@@ -25,10 +25,10 @@ public class WaterRun {
         "\u001B[37m",//6=Blanco
         "\u001B[30m"// 7=Negro
     };
-    
+        
     //Colores del fondo.
-    private String colorW = "\u001B[40m";
-    private final String[] COLORESAGUA= {
+    private static String colorW = "\u001B[40m";
+    private static final String[] COLORESAGUA= {
         "\u001B[41m",//0=Rojo
         "\u001B[42m",//1=Verde
         "\u001B[43m",//2=Amarillo
@@ -38,48 +38,82 @@ public class WaterRun {
         "\u001B[47m",//6=Blanco
         "\u001B[40m",//7=NEGRO
     };
-
-    private static void Bienvenida(BufferedReader bf, String entrada) throws IOException{
-        // Variables del programa.
-        boolean empezar=false; // Para comprobar que haya puesto un enter
-
-        System.out.println(""" 
-
-        ██████  ██ ███████ ███    ██ ██    ██ ███████ ███    ██ ██ ██████   ██████  
-        ██   ██ ██ ██      ████   ██ ██    ██ ██      ████   ██ ██ ██   ██ ██    ██ 
-        ██████  ██ █████   ██ ██  ██ ██    ██ █████   ██ ██  ██ ██ ██   ██ ██    ██ 
-        ██   ██ ██ ██      ██  ██ ██  ██  ██  ██      ██  ██ ██ ██ ██   ██ ██    ██ 
-        ██████  ██ ███████ ██   ████   ████   ███████ ██   ████ ██ ██████   ██████  
-                
-        
-        Pulsa \'Enter\' para continuar
-                """);
-
-            do {
-                entrada=bf.readLine();//Guarda en entrada el caracter introducido.
-                if (entrada.isEmpty()) { // Comprueba que la entrada esté vacía
-                    System.out.println("¡Vamos a empezar a jugar!\n");
-                    empezar=true;//Cambia la variable a verdadero para salir del bucle.
-                }else{
-                    System.out.println("Has introducido un caracter incorrecto, pulse enter para empezar.");
-                }
-            } while (empezar==false);
-    }
     
-    private static void Menu1(BufferedReader bf){
-
-    }
-    private static void Jugar(BufferedReader bf){
-
-    }
-    public static void main(String[] args) throws IOException {
-        // Crear un BufferedReader para leer de la entrada estándar
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        private static void bienvenida(BufferedReader bf, String entrada) throws IOException{
+            // Variables del programa.
+            boolean empezar=false; // Para comprobar que haya puesto un enter
+    
+            System.out.println(""" 
+    
+            ██████  ██ ███████ ███    ██ ██    ██ ███████ ███    ██ ██ ██████   ██████  
+            ██   ██ ██ ██      ████   ██ ██    ██ ██      ████   ██ ██ ██   ██ ██    ██ 
+            ██████  ██ █████   ██ ██  ██ ██    ██ █████   ██ ██  ██ ██ ██   ██ ██    ██ 
+            ██   ██ ██ ██      ██  ██ ██  ██  ██  ██      ██  ██ ██ ██ ██   ██ ██    ██ 
+            ██████  ██ ███████ ██   ████   ████   ███████ ██   ████ ██ ██████   ██████  
+                    
+            
+            Pulsa \'Enter\' para continuar
+                    """);
+    
+                do {
+                    entrada=bf.readLine();//Guarda en entrada el caracter introducido.
+                    if (entrada.isEmpty()) { // Comprueba que la entrada esté vacía
+                        System.out.println("¡Vamos a empezar a jugar!\n");
+                        empezar=true;//Cambia la variable a verdadero para salir del bucle.
+                    }else{
+                        System.out.println("Has introducido un caracter incorrecto, pulse enter para empezar.");
+                    }
+                } while (empezar==false);
+        }
         
-        String entrada=""; // Leer una línea de texto.
-        int eleccion=0;// Lee la elección del primer menú.
-        boolean salir=false;//variable para acabar el programa;   
-       
+        private static void menu1(BufferedReader bf) throws IOException{
+            boolean salir=false;//variable para acabar el programa; 
+            int eleccion=0;// Lee la elección del primer menú.
+            do{ //Bucle menú (Se repite hasta indicar salir.)
+    
+                try { 
+                    
+                    do {
+    
+                        System.out.println(""" 
+                            Elige una opcón del menú.
+                            \t1) Jugar.
+                            \t2) Aspecto.
+                            \t3) Historial de juego.
+                            \t4) Salir.
+                            """);
+    
+                        eleccion=Integer.parseInt(bf.readLine()); //Lee la entrada.
+    
+                        switch (eleccion) { 
+    
+                            case 1:
+                                jugar(bf);//Entra en caso de elegir Jugar
+                                break;
+                            case 2:
+                                //Aspecto
+                                break;
+                            case 3:
+                                //Historial
+                                break;
+                            case 4:
+                                // Salir
+                                break;
+                            default:
+                                System.out.println("Has elegido un número que no corresponde a ninguna opción. Prueba otra vez.");
+                                break;
+                                }  
+                    } while (eleccion<=0 || eleccion>=5); //Repite hasta que la elección sea 1, 2, 3 o 4.
+    
+                } catch (NumberFormatException e) { //Si escribe una letra le muestra este error 
+                    System.out.println("No has escrito un número. Prueba otra vez");
+                }
+        
+            }while (salir==false); 
+                    System.out.println("Muchas gracias por participar."); //Muestra mensaje de agradecimiento.
+        }
+    private static void jugar(BufferedReader bf) throws IOException{
+            
         //Respuestas del juego
         char re1; //Respuesta jugar o no jugar.
         Boolean jugar =false; //Comprobar si el jugador quiere jugar o no.
@@ -90,6 +124,320 @@ public class WaterRun {
         int reQ3=0;
         boolean salirJuego=false;
         int reAcertadas=0;
+            
+    
+        salirJuego=false; //Pone en false el salir. Si has jugado sin recargar el programa te sacaria en la primera seleccion de salir.
+                
+        do{ //Repite hasta que el jugador indique que quiera salir. Más adelante, cuando se
+            //pase un nivel, le dará la opcion de guardar y de salir. 
+            System.out.println("""
+                    
+                Has elegico jugar.\n
+                Para ponerte en contexto, eres un prisionero condenado injustametne a muerte por ahogamiento.\n
+                Tu desafío inicial es encontrar la manera de escapar de la sala que se irá inundando.\n
+                Para ello, deberas resolver una serie de acertijos o preguntas que te iremos mostrando.\n
+                Al responder las preguntas o acertijos deberas de poner el número correspondiente indicado.\n
+                Ejemplo: ¿Cuantas letras tiene Hola?\n
+                1) 4 \t\t 2) 7 \t\t 3) 5 \t\t 4) 1 \n
+                En este caso tendrias que poner como respuesta \'1\'. \n
+                Si fallas al responder o ponea un caracter no valido se contará como error.\n
+            """); //Explicación de como funcionan las respuestas y como funciona el juego.
+    
+            do { //Repite hasta que escribas el caracter correcto.
+    
+                System.out.println("¿Estas preparado? (Respuesta con 'S' para si y 'N' para no)");
+                String caracter = bf.readLine(); //Guarda la respuesta en un string.
+    
+                if (caracter.length()==1) { //Comprueba que el string sea de 1 caracter.
+                    re1 = caracter.charAt(0); //combierte el string en caracter y lo guarda en re1
+                    re1 = Character.toUpperCase(re1); //pasa el re1 a mayusculas y lo guarda de nuevo en re1
+                    if (re1=='S') {
+                        System.out.println("Pues que empiece el juego.");     
+                        jugar=true; //Variable para entrar al juego
+                        caracterCorrecto=true;//variable del caracter para salir del bucle
+    
+                    }else if (re1 == 'N') {
+                        jugar=false; //Variable para entrar al juego
+                        caracterCorrecto=true;//variable del caracter para salir del bucle
+                        salirJuego=true; //Variable para volver al menú
+                    }else{
+                        System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
+                    }  
+    
+                }else{
+                    System.out.println("No has escrito ningun caracter o has escrito uno incorrecto. Prueba otra vez.");
+                }
+            } while (caracterCorrecto==false);
+    
+                if (jugar==true) { //Inicio del juego
+    
+                    do{
+                        reAcertadas=0;
+                        System.out.printf("""
+                            █████████████████████████████████████████████████████     
+                            █                                                   █
+                            ██                                                  █
+                                                                               | |
+                                                                               | | 
+                            ██                                                 | |
+                            █                                                   █
+                            █                                         ███████████
+                            █                                         ███████████
+                            █                                         ███████████                
+                            █                                         ███████████
+                            █                                         ███████████
+                            █                                         ███████████
+                            █                               █████████████████████
+                            █                               █████████████████████
+                            █                               █████████████████████
+                            █"""  + colorPj +     """
+                                \t  o  """ + COLOR_RESET + """
+                                                 █████████████████████
+                            █""" + colorPj + """
+                                \t /L """ + COLOR_RESET + """
+                                                 █████████████████████
+                            █""" + colorPj + """
+                                \t | """ + COLOR_RESET + """
+                                                  █████████████████████
+                            █████████████████████████████████████████████████████          
+                                            """ + """
+                            ¿Cuanto es 2 + 2?
+
+                            1) 2\t\t 2) 4\t\t 3) 75\t\t 4)185
+                        """); //Mas adelante, incluido el color del personaje y del agua
+                        reQ1 = Integer.parseInt(bf.readLine()); //Comprueba la respuesta 1
+                        if (reQ1 == 2) { 
+                            reAcertadas=reAcertadas+1;
+                            System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
+                            System.out.printf("""
+                                █████████████████████████████████████████████████████     
+                                █                                                   █
+                                ██                                                  █
+                                                                                   | |
+                                                                            o      | | 
+                                ██                                         /L      | |
+                                █                                          |        █
+                                █                                         ███████████
+                                █                                         ███████████
+                                █                                         ███████████                
+                                █                                         ███████████
+                                █                                         ███████████
+                                █                                         ███████████
+                                █                               █████████████████████
+                                █                               █████████████████████
+                                █                               █████████████████████
+                                █                               █████████████████████
+                                █                               █████████████████████
+                                █                               █████████████████████
+                                █████████████████████████████████████████████████████
+                    
+                                ¿Tiene 5 letras tiene la palabra \"QUESO\"?
+                                \t1) Verdadero \t\t 2) Falso
+                            """);
+                            reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
+                            if (reQ2==1) { 
+
+                                System.out.println("¡Has acertado! Tu personaje empieza a abrir la cerradura.");
+                                System.out.printf("""
+                                    █████████████████████████████████████████████████████     
+                                    █                                                   █
+                                    ██                                                  █
+                                                                                       | |
+                                                                                o      | | 
+                                    ██                                         /L      | |
+                                    █                                          |        █
+                                    █                                         ███████████
+                                    █                                         ███████████
+                                    █                                         ███████████                
+                                    █                                         ███████████
+                                    █                                         ███████████
+                                    █                                         ███████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █████████████████████████████████████████████████████
+                        
+                                    ¿Cuanto es 5x5?
+                                """);
+                                reQ3 = Integer.parseInt(bf.readLine()); //Lee la respuesta 3
+                                if (reQ3==25) {
+                                    System.out.println("¡Has acertado! Tu personaje ha huido.");
+                                    lvlPasado = true; //pone lvlPasado en true para salir del bucle.
+                                    salirJuego = true; //Te manda al menú princial.
+                                }else{
+                                    System.out.println("Has fallado.");
+                                    System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
+                                    salirJuego=true; //Te saca del juego tras perder
+                                }
+                            }else{
+                                System.out.println("Has fallado.");
+                                System.out.printf("""
+                                    █████████████████████████████████████████████████████     
+                                    █                                                   █
+                                    ██                                                  █
+                                                                                        | |
+                                                                                    o      | | 
+                                    ██                                         /L      | |
+                                    █                                          |        █
+                                    █                                         ███████████
+                                    █                                         ███████████
+                                    █                                         ███████████                
+                                    █                                         ███████████
+                                    █                                         ███████████
+                                    █                                         ███████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █████████████████████████████████████████████████████
+                        
+                                    ¿Cuanto es 5x5?
+                                """);
+                                reQ3 = Integer.parseInt(bf.readLine());
+                                if (reQ3==25) {
+                                    System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
+                                    System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
+                                    salirJuego=true;
+                                }
+                            }    
+                        }else{
+                            System.out.printf("""
+                                Has fallado.\n
+                                    
+                                █████████████████████████████████████████████████████     
+                                █                                                   █
+                                ██                                                  █
+                                                                                   | |
+                                                                                   | | 
+                                ██                                                 | |
+                                █                                                   █
+                                █                                         ███████████
+                                █                                         ███████████
+                                █                                         ███████████                
+                                █                                         ███████████
+                                █                                         ███████████
+                                █                                         ███████████
+                                █                               █████████████████████
+                                █                               █████████████████████
+                                █                               █████████████████████
+                                █"""  + colorPj +     """
+                                        \t  o  """ + COLOR_RESET + """
+                                                     █████████████████████
+                                █""" + colorPj + """
+                                        \t /L """ + COLOR_RESET + """
+                                                     █████████████████████
+                                █""" + colorPj + """
+                                        \t | """ + COLOR_RESET + """
+                                                  █████████████████████
+                            █████████████████████████████████████████████████████      
+
+                                ¿Tiene 5 letras tiene la palabra \"QUESO\"?
+                                \t1) Verdadero \t\t 2) Falso
+                            """);
+                            reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
+                            if (reQ2==1) { 
+                
+                                System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
+                                System.out.printf("""
+                                    █████████████████████████████████████████████████████     
+                                    █                                                   █
+                                    ██                                                  █
+                                                                                       | |
+                                                                                o      | | 
+                                    ██                                         /L      | |
+                                    █                                          |        █
+                                    █                                         ███████████
+                                    █                                         ███████████
+                                    █                                         ███████████                
+                                    █                                         ███████████
+                                    █                                         ███████████
+                                    █                                         ███████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █████████████████████████████████████████████████████
+                                        
+                                    ¿Cuanto es 5x5?
+                                """);
+                                reQ3 = Integer.parseInt(bf.readLine());//lee la respuesta 3
+                                if (reQ3==25) {
+                                    System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
+                                    System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
+                                    salirJuego=true; //te saca del juego tras perder
+                                }
+                            }else{
+                                System.out.println("Has fallado.");
+                                System.out.printf("""
+                                    █████████████████████████████████████████████████████     
+                                    █                                                   █
+                                    ██                                                  █
+                                                                                            | |
+                                                                                            | | 
+                                    ██                                                 | |
+                                    █                                                   █
+                                    █                                         ███████████
+                                    █                                         ███████████
+                                    █                                         ███████████                
+                                    █                                         ███████████
+                                    █                                         ███████████
+                                    █                                         ███████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █                               █████████████████████
+                                    █"""  + colorPj +     """
+                                            \t  o  """ + COLOR_RESET + """
+                                                        █████████████████████
+                                    █""" + colorPj + """
+                                            \t /L """ + COLOR_RESET + """
+                                                        █████████████████████
+                                    █""" + colorPj + """
+                                            \t | """ + COLOR_RESET + """
+                                                            █████████████████████
+                                    █████████████████████████████████████████████████████      
+
+                                    ¿Cuanto es 5x5?
+                                """);
+                                reQ3 = Integer.parseInt(bf.readLine());//lee la respuesta 3
+                                if (reQ3==25) {
+                                    System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
+                                    System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
+                                    salirJuego=true; //Te saca del juego tras perder
+                                }else{
+                                    System.out.println("Has fallado.");
+                                    System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
+                                    salirJuego=true; //Te saca del juego tras perder
+                                }
+                        
+                            }
+                                
+                        }
+
+                    }while(salirJuego==false && lvlPasado==false);
+
+                }else{ //Si eliges no jugar 
+                    System.out.println("Volviendo al menú principal.");
+                    salirJuego=true; //Variable salir del bucle juego.
+                }
+        }while(salirJuego==false);
+       
+    }
+    public static void main(String[] args) throws IOException {
+        // Crear un BufferedReader para leer de la entrada estándar
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        
+        String entrada=""; // Leer una línea de texto.
+
+         
+       
+
 
         //Respuestas aspecto
         int reAspecto;// respuesta de elección de aspecto.
@@ -109,12 +457,12 @@ public class WaterRun {
 
         //Bienvenida. Usamos tres comillas para poder escribir en varias lineas.
         //Este recurso lo vamos a usar bastante a lo largo del codigo.
-        Bienvenida(bf, entrada);
-        Menu1(bf);
+        bienvenida(bf, entrada);
+        menu1(bf);
 
-        /*
+        
 
-
+/* 
             do{ //Bucle menú (Se repite hasta indicar salir.)
 
                 try { 
@@ -135,310 +483,7 @@ public class WaterRun {
 
                             case 1:
                                 Jugar(bf)
-                                //Entra en caso de elegir Jugar
-                                salirJuego=false; //Pone en false el salir. Si has jugado sin recargar el programa te sacaria en la primera seleccion de salir.
-                                    
-                                do{ //Repite hasta que el jugador indique que quiera salir. Más adelante, cuando se
-                                    //pase un nivel, le dará la opcion de guardar y de salir. 
-                                    System.out.println("""
-                                        
-                                    Has elegico jugar.\n
-                                    Para ponerte en contexto, eres un prisionero condenado injustametne a muerte por ahogamiento.\n
-                                    Tu desafío inicial es encontrar la manera de escapar de la sala que se irá inundando.\n
-                                    Para ello, deberas resolver una serie de acertijos o preguntas que te iremos mostrando.\n
-                                    Al responder las preguntas o acertijos deberas de poner el número correspondiente indicado.\n
-                                    Ejemplo: ¿Cuantas letras tiene Hola?\n
-                                    1) 4 \t\t 2) 7 \t\t 3) 5 \t\t 4) 1 \n
-                                    En este caso tendrias que poner como respuesta \'1\'. \n
-                                    Si fallas al responder o ponea un caracter no valido se contará como error.\n
-                                    """); //Explicación de como funcionan las respuestas y como funciona el juego.
-
-                                    do { //Repite hasta que escribas el caracter correcto.
-
-                                        System.out.println("¿Estas preparado? (Respuesta con 'S' para si y 'N' para no)");
-                                        String caracter = bf.readLine(); //Guarda la respuesta en un string.
-
-                                            if (caracter.length()==1) { //Comprueba que el string sea de 1 caracter.
-                                                re1 = caracter.charAt(0); //combierte el string en caracter y lo guarda en re1
-                                                re1 = Character.toUpperCase(re1); //pasa el re1 a mayusculas y lo guarda de nuevo en re1
-                                                if (re1=='S') {
-                                                    System.out.println("Pues que empiece el juego.");     
-                                                    jugar=true; //Variable para entrar al juego
-                                                    caracterCorrecto=true;//variable del caracter para salir del bucle
-
-                                                }else if (re1 == 'N') {
-                                                    jugar=false; //Variable para entrar al juego
-                                                    caracterCorrecto=true;//variable del caracter para salir del bucle
-                                                    salirJuego=true; //Variable para volver al menú
-                                                }else{
-                                                    System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
-                                                }  
-
-                                        }else{
-                                            System.out.println("No has escrito ningun caracter o has escrito uno incorrecto. Prueba otra vez.");
-                                        }
-                                    } while (caracterCorrecto==false);
-
-                                        if (jugar==true) { //Inicio del juego
-
-                                                do{
-                                                    reAcertadas=0;
-                                                    System.out.printf("""
-                                                    █████████████████████████████████████████████████████     
-                                                    █                                                   █
-                                                    ██                                                  █
-                                                                                                    | |
-                                                                                                    | | 
-                                                    ██                                                 | |
-                                                    █                                                   █
-                                                    █                                         ███████████
-                                                    █                                         ███████████
-                                                    █                                         ███████████                
-                                                    █                                         ███████████
-                                                    █                                         ███████████
-                                                    █                                         ███████████
-                                                    █                               █████████████████████
-                                                    █                               █████████████████████
-                                                    █                               █████████████████████
-                                                    █"""  + colorPj +     """
-                                                            \t  o  """ + COLOR_RESET + """
-                                                                        █████████████████████
-                                                    █""" + colorPj + """
-                                                            \t /L """ + COLOR_RESET + """
-                                                                        █████████████████████
-                                                    █""" + colorPj + """
-                                                            \t | """ + COLOR_RESET + """
-                                                                        █████████████████████
-                                                    █████████████████████████████████████████████████████          
-                                                                    """ + """
-                                                    ¿Cuanto es 2 + 2?
-
-                                                    1) 2\t\t 2) 4\t\t 3) 75\t\t 4)185
-                                                            """); //Mas adelante, incluido el color del personaje y del agua
-                                                    reQ1 = Integer.parseInt(bf.readLine()); //Comprueba la respuesta 1
-                                                    if (reQ1 == 2) { 
-                                                        reAcertadas=reAcertadas+1;
-                                                        System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
-                                                        System.out.printf("""
-                                                            █████████████████████████████████████████████████████     
-                                                            █                                                   █
-                                                            ██                                                  █
-                                                                                                            | |
-                                                                                                        o      | | 
-                                                            ██                                         /L      | |
-                                                            █                                          |        █
-                                                            █                                         ███████████
-                                                            █                                         ███████████
-                                                            █                                         ███████████                
-                                                            █                                         ███████████
-                                                            █                                         ███████████
-                                                            █                                         ███████████
-                                                            █                               █████████████████████
-                                                            █                               █████████████████████
-                                                            █                               █████████████████████
-                                                            █                               █████████████████████
-                                                            █                               █████████████████████
-                                                            █                               █████████████████████
-                                                            █████████████████████████████████████████████████████
-                                            
-                                                            ¿Tiene 5 letras tiene la palabra \"QUESO\"?
-                                                            \t1) Verdadero \t\t 2) Falso
-                                                                    """);
-                                                        reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
-                                                        if (reQ2==1) { 
-
-                                                            System.out.println("¡Has acertado! Tu personaje empieza a abrir la cerradura.");
-                                                            System.out.printf("""
-                                                                █████████████████████████████████████████████████████     
-                                                                █                                                   █
-                                                                ██                                                  █
-                                                                                                                | |
-                                                                                                            o      | | 
-                                                                ██                                         /L      | |
-                                                                █                                          |        █
-                                                                █                                         ███████████
-                                                                █                                         ███████████
-                                                                █                                         ███████████                
-                                                                █                                         ███████████
-                                                                █                                         ███████████
-                                                                █                                         ███████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █████████████████████████████████████████████████████
-                                                
-                                                                ¿Cuanto es 5x5?
-                                                                    """);
-                                                            reQ3 = Integer.parseInt(bf.readLine()); //Lee la respuesta 3
-                                                            if (reQ3==25) {
-                                                                System.out.println("¡Has acertado! Tu personaje ha huido.");
-                                                                lvlPasado = true; //pone lvlPasado en true para salir del bucle.
-                                                                salirJuego = true; //Te manda al menú princial.
-                                                            }else{
-                                                                System.out.println("Has fallado.");
-                                                                System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
-                                                                salirJuego=true; //Te saca del juego tras perder
-                                                            }
-                                                        }else{
-                                                            System.out.println("Has fallado.");
-                                                            System.out.printf("""
-                                                                █████████████████████████████████████████████████████     
-                                                                █                                                   █
-                                                                ██                                                  █
-                                                                                                                | |
-                                                                                                            o      | | 
-                                                                ██                                         /L      | |
-                                                                █                                          |        █
-                                                                █                                         ███████████
-                                                                █                                         ███████████
-                                                                █                                         ███████████                
-                                                                █                                         ███████████
-                                                                █                                         ███████████
-                                                                █                                         ███████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █████████████████████████████████████████████████████
-                                                
-                                                                ¿Cuanto es 5x5?
-                                                                    """);
-                                                            reQ3 = Integer.parseInt(bf.readLine());
-                                                            if (reQ3==25) {
-                                                                System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
-                                                                System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
-                                                                salirJuego=true;
-                                                            }
-                                                        }    
-                                                    }else{
-                                                        System.out.printf("""
-                                                            Has fallado.\n
-                                                            
-                                                            █████████████████████████████████████████████████████     
-                                                            █                                                   █
-                                                            ██                                                  █
-                                                                                                            | |
-                                                                                                            | | 
-                                                            ██                                                 | |
-                                                            █                                                   █
-                                                            █                                         ███████████
-                                                            █                                         ███████████
-                                                            █                                         ███████████                
-                                                            █                                         ███████████
-                                                            █                                         ███████████
-                                                            █                                         ███████████
-                                                            █                               █████████████████████
-                                                            █                               █████████████████████
-                                                            █                               █████████████████████
-                                                            █"""  + colorPj +     """
-                                                                    \t  o  """ + COLOR_RESET + """
-                                                                                █████████████████████
-                                                            █""" + colorPj + """
-                                                                    \t /L """ + COLOR_RESET + """
-                                                                                █████████████████████
-                                                            █""" + colorPj + """
-                                                                    \t | """ + COLOR_RESET + """
-                                                                                █████████████████████
-                                                            █████████████████████████████████████████████████████      
-
-                                                            ¿Tiene 5 letras tiene la palabra \"QUESO\"?
-                                                            \t1) Verdadero \t\t 2) Falso
-                                                                            """);
-                                                        reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
-                                                        if (reQ2==1) { 
-                                        
-                                                            System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
-                                                            System.out.printf("""
-                                                                █████████████████████████████████████████████████████     
-                                                                █                                                   █
-                                                                ██                                                  █
-                                                                                                                | |
-                                                                                                            o      | | 
-                                                                ██                                         /L      | |
-                                                                █                                          |        █
-                                                                █                                         ███████████
-                                                                █                                         ███████████
-                                                                █                                         ███████████                
-                                                                █                                         ███████████
-                                                                █                                         ███████████
-                                                                █                                         ███████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █                               █████████████████████
-                                                                █████████████████████████████████████████████████████
-                                                                
-                                                                ¿Cuanto es 5x5?
-                                                                    """);
-                                                            reQ3 = Integer.parseInt(bf.readLine());//lee la respuesta 3
-                                                            if (reQ3==25) {
-                                                                System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
-                                                                System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
-                                                                salirJuego=true; //te saca del juego tras perder
-                                                            }
-                                                            }else{
-                                                                System.out.println("Has fallado.");
-                                                                System.out.printf("""
-                                                                    █████████████████████████████████████████████████████     
-                                                                    █                                                   █
-                                                                    ██                                                  █
-                                                                                                                    | |
-                                                                                                                    | | 
-                                                                    ██                                                 | |
-                                                                    █                                                   █
-                                                                    █                                         ███████████
-                                                                    █                                         ███████████
-                                                                    █                                         ███████████                
-                                                                    █                                         ███████████
-                                                                    █                                         ███████████
-                                                                    █                                         ███████████
-                                                                    █                               █████████████████████
-                                                                    █                               █████████████████████
-                                                                    █                               █████████████████████
-                                                                    █"""  + colorPj +     """
-                                                                            \t  o  """ + COLOR_RESET + """
-                                                                                        █████████████████████
-                                                                    █""" + colorPj + """
-                                                                            \t /L """ + COLOR_RESET + """
-                                                                                        █████████████████████
-                                                                    █""" + colorPj + """
-                                                                            \t | """ + COLOR_RESET + """
-                                                                                        █████████████████████
-                                                                    █████████████████████████████████████████████████████      
-
-                                                                                    ¿Cuanto es 5x5?
-                                                                                        """);
-                                                                reQ3 = Integer.parseInt(bf.readLine());//lee la respuesta 3
-                                                                if (reQ3==25) {
-                                                                    System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
-                                                                    System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
-                                                                    salirJuego=true; //Te saca del juego tras perder
-                                                                }else{
-                                                                    System.out.println("Has fallado.");
-                                                                    System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
-                                                                    salirJuego=true; //Te saca del juego tras perder
-                                                                }
-                                                
-                                                            }
-                                                        
-                                                        }
-
-                                            }while(salirJuego==false && lvlPasado==false);
-
-                                        }else{ //Si eliges no jugar 
-                                            System.out.println("Volviendo al menú principal.");
-                                            salirJuego=true; //Variable salir del bucle juego.
-                                        }
-                                }while(salirJuego==false);
-                            
-                                            break;
+                                
 
                             case 2:
                                 //Aspecto
@@ -729,7 +774,7 @@ public class WaterRun {
 
             }while (salir==false); 
             System.out.println("Muchas gracias por participar."); //Muestra mensaje de agradecimiento.
-         */
+        */
             }
 }
     
