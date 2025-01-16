@@ -39,9 +39,13 @@ public class WaterRun {
         "\u001B[40m",//7=NEGRO
     };
     
-    private static void bienvenida(BufferedReader bf) throws IOException{// Variables del programa.
+    private static void bienvenida(BufferedReader bf) throws IOException{
+        //variables Bienvenida
         boolean empezar=false; // Para comprobar que haya puesto un enter
         String entrada=""; // Leer una línea de texto.
+
+        //Bienvenida. Usamos tres comillas para poder escribir en varias lineas.
+        //Este recurso lo vamos a usar bastante a lo largo del codigo.
         System.out.println(""" 
     
             ██████  ██ ███████ ███    ██ ██    ██ ███████ ███    ██ ██ ██████   ██████  
@@ -63,12 +67,15 @@ public class WaterRun {
                 System.out.println("Has introducido un caracter incorrecto, pulse enter para empezar.");
             }
         } while (empezar==false);
+        //Llamamos al metodo menu1 y le enviamos el bufferedReader
         menu1(bf);
     }
         
     private static void menu1(BufferedReader bf) throws IOException{
+        //variables menu1
         boolean salir=false;//variable para acabar el programa; 
         int eleccion=0;// Lee la elección del primer menú.
+
         do{ //Bucle menú (Se repite hasta indicar salir.)
     
             try { 
@@ -89,18 +96,18 @@ public class WaterRun {
     
                         case 1:
                             //Entra en caso de elegir Jugar
-                            jugar(bf);
+                            jugar(bf); // Llama al metodo jugar y le envia el bufferedReader
                             break;
 
                         case 2:
                             //Entra en caso de elegir Aspecto
-                            cambiarAspecto(bf);
+                            cambiarAspecto(bf);// Llama al metodo cambiarAspecto y le envia el bufferedReader
                             
                             break;
 
                         case 3:
                             //Entra en caso de elegir Historial
-                            historial(bf);
+                            historial(bf);// Llama al metodo historial y le envia el bufferedReader
                             
                             break;
 
@@ -289,8 +296,8 @@ public class WaterRun {
                                     █████████████████████████████████████████████████████     
                                     █                                                   █
                                     ██                                                  █
-                                                                                        | |
-                                                                                    o      | | 
+                                                                                       | |
+                                                                                o      | | 
                                     ██                                         /L      | |
                                     █                                          |        █
                                     █                                         ███████████
@@ -390,8 +397,8 @@ public class WaterRun {
                                     █████████████████████████████████████████████████████     
                                     █                                                   █
                                     ██                                                  █
-                                                                                            | |
-                                                                                            | | 
+                                                                                       | |
+                                                                                       | | 
                                     ██                                                 | |
                                     █                                                   █
                                     █                                         ███████████
@@ -726,9 +733,7 @@ public class WaterRun {
         // Crear un BufferedReader para leer de la entrada estándar
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         
-
-        //Bienvenida. Usamos tres comillas para poder escribir en varias lineas.
-        //Este recurso lo vamos a usar bastante a lo largo del codigo.
+        //Llamamos al metodo bienvenida y le enviamos nuestro bufferedReader
         bienvenida(bf);
 
 
