@@ -321,6 +321,10 @@ public class WaterRun {
                                     System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
                                     System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                     salirJuego=true;
+                                }else{
+                                    System.out.println("Has fallado.");
+                                    System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
+                                    salirJuego=true; //Te saca del juego tras perder
                                 }
                             }    
                         }else{
@@ -390,6 +394,10 @@ public class WaterRun {
                                     System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
                                     System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                     salirJuego=true; //te saca del juego tras perder
+                                }else{
+                                    System.out.println("Has fallado.");
+                                    System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
+                                    salirJuego=true; //Te saca del juego tras perder
                                 }
                             }else{
                                 System.out.println("Has fallado.");
