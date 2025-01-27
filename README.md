@@ -53,10 +53,11 @@ WATERRUNVX_SAMUELDIAZMARTOS/
 
 ## Funcionalidades Principales
 
-- ****:
-- ****:
-- ****:
-- ****:
+- **bienvenida**: Se encarga de mostrar el mensaje de bienvenida.
+- **menu1**: Se encarga de mostrar el menú principal del juego donde nos dejará elegir entre: `Jugar`, `Aspecto`, `Historial` o `Salir`
+- **jugar**: Se encarga de mostrar el juego, comprobar las respuestas y mostrarte si has acertado o fallado. También te muestra si has ganado o perdido
+- **cambiarAspecto**: Se encarga de mostrar una selección de colores para elegir de personaje o del agua. Valida la respuesta y asigna dichos colores.
+- **historial**: Muestra un menú que actualmente está en proceso.
 - **Validaciones**: Impide avanzar entre menús si pones un caracter incorrecto. 
 - **Colores**: Puedes elegir tanto el color del agua como el color de tu personaje.
 - **Victoria**: Si respondes a todas las preguntas correctamente ganarás y se te devolverá al menú principal.
