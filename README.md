@@ -5,9 +5,9 @@ Este poryecto es una implementacion de un juego de resolucion de acertijos en Ja
 ___________________________________________
 |   Detalle           |   Información     |
 |---------------------|-------------------|
-| **Autor**           |   SDM             |
-| **Fecha de Inicio** |                   |
-| **Última versión**  |   v3 26/01/2025   |
+| **Autor**           |     SDM           |
+| **Fecha de Inicio** |   v1 18/11/2024   |
+| **Última versión**  |   v3 27/01/2025   |
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 
 ## Contenido del Proyecto
