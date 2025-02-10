@@ -22,7 +22,7 @@ public class Preguntas {
     };
 
     
-    public static String getPreguntas(int dificultad, int pregunta) {
+    public static String getPreguntas(int dificultad, int pregunta) { // obtiene la pregunta que hacer segun la dificultad
         return preguntas[dificultad][pregunta];
     }
 
@@ -30,16 +30,16 @@ public class Preguntas {
         Preguntas.preguntas[dificultad][numeroPregunta]= pregunta;
     }
 
-    public static int getRespuestas(int dificultad, int respuesta){
+    public static int getRespuestas(int dificultad, int respuesta){ // obtiene la respuesta correspondiente
 
         return respuestaCorrecta[dificultad][respuesta];
     }
 
-    public static void setRespuestaCorrecta(String pregunta, int dificultad, int numeroPregunta, int respuestaCorrecta) {
+    public static void setRespuestaCorrecta(int dificultad, int numeroPregunta, int respuestaCorrecta) {
         Preguntas.respuestaCorrecta[dificultad][numeroPregunta]= respuestaCorrecta;
     }
 
-    public String toString() {
+    public String toString() { // muesta la lista de todas las preguntas posibles.
         StringBuilder sb = new StringBuilder();
         sb.append("Listado de Preguntas y Respuestas Correctas:\n");
     

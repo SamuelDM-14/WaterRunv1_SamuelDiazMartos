@@ -39,6 +39,13 @@ public class WaterRun {
         "\u001B[40m",//7=NEGRO
     };
     private static int dificultad=0;
+
+    /**
+     * Bienvenida al juego. Comprueba que solo pongas un enter.
+     * @author SDM 
+     * @param bf
+     * @throws IOException
+     */
     private static void bienvenida(BufferedReader bf) throws IOException{
         //variables Bienvenida
         boolean empezar=false; // Para comprobar que haya puesto un enter
@@ -70,7 +77,13 @@ public class WaterRun {
         //Llamamos al metodo menu1 y le enviamos el bufferedReader
         menu1(bf);
     }
-        
+    
+    /**
+     * Menu1. Muestra las diferentes opciones de menú y te manda según tu selección al apartado correspondiente.
+     * @author SDM
+     * @param bf
+     * @throws IOException
+     */
     private static void menu1(BufferedReader bf) throws IOException{
         //variables menu1
         boolean salir=false;//variable para acabar el programa; 
@@ -135,6 +148,12 @@ public class WaterRun {
         System.out.println("Muchas gracias por participar."); //Muestra mensaje de agradecimiento.
     }
     
+    /**
+     * Jugar. Muestra el juego, el cual va sacando preguntas y respuestas y comprobandolas.
+     * @author SDM
+     * @param bf
+     * @throws IOException
+     */
     private static void jugar(BufferedReader bf) throws IOException{
         //Respuestas del juego
         char re1; //Respuesta jugar o no jugar.
@@ -899,6 +918,12 @@ public class WaterRun {
        
     }
     
+    /**
+     * Dificultad. Te permite elegir la dificultad con la que jugar.
+     * @author SDM
+     * @param bf
+     * @throws IOException
+     */
     private static void dificultadDelJuego(BufferedReader bf) throws IOException{
         boolean salirDificultad = false;
         do{
@@ -938,6 +963,12 @@ public class WaterRun {
         }while (salirDificultad=false);
     }
     
+    /**
+     * Aspecto. Te permite cambiar el Aspecto del personaje.
+     * @author SDM
+     * @param bf
+     * @throws IOException
+     */
     private static void cambiarAspecto(BufferedReader bf) throws IOException{
         
         //Respuestas aspecto
@@ -1174,6 +1205,12 @@ public class WaterRun {
         }while (salirAspecto==false);
     }
     
+    /**
+     * Historial. Actualmente sin funcionamiento.
+     * @author SDM
+     * @param bf
+     * @throws IOException
+     */
     private static void historial(BufferedReader bf) throws IOException{
     //Respuestas Historial
     int eleccionHistorial;// Respuesta de elección de historial.
@@ -1219,6 +1256,13 @@ public class WaterRun {
     }while (salirHistorial==false);
 
     }
+
+    /**
+     * Main WaterRun. Llama a bienvendia.
+     * @author SDM
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         // Crear un BufferedReader para leer de la entrada estándar
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));

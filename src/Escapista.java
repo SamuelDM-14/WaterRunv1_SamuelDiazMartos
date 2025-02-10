@@ -3,7 +3,7 @@ public class Escapista extends Personajes {
     private Random random; // generador de números aleatorios
 
     public Escapista(String color) {
-        super(color);
+        super(color); // hereda el color del personaje
         this.random = new Random();
 
     }
