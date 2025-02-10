@@ -7,15 +7,20 @@ ___________________________________________
 |---------------------|-------------------|
 | **Autor**           |     SDM           |
 | **Fecha de Inicio** |   v1 18/11/2024   |
-| **Última versión**  |   v3 27/01/2025   |
+| **Última versión**  |   v4 10/02/2025   |
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 
 ## Contenido del Proyecto
 
-- **Java (`WaterRun.java`)**: .
+- **Java (`WaterRun.java`)**: Codigo base.
+- **Java (`Preguntas.java`)**: Clase para las preguntas.
+- **Java (`Personaje.java`)**: Superclase de tipos de personajes.
+- **Java (`Policia.java`)**: Subclase de Personaje con atributos y metodos diferentes a escapista.
+- **Java (`Escapista.java`)**: Subclase de Personaje con atributos y metodos diferentes a policia.
 - **Jar (`WaterRun.jar`)**: versión ejecutable del juego.
 - **Class (`WaterRun.class`)**: .
 - **Manifest (`Manifest.txt`)**: Archivo para crear el WaterRun.Jar.
+
 
 
 ## Estructura del Proyecto
@@ -28,6 +33,10 @@ WATERRUNVX_SAMUELDIAZMARTOS/
     lib/            # Carpeta para bibliotecas externas (vacía)
     src/            # Carpeta con el código fuente
         WaterRun.java
+        Preguntas.java
+        Personajes.java
+        Policia.java
+        Escapista.java            
         WaterRun.jar
         WaterRun.class
         Manifest.txt
@@ -72,3 +81,4 @@ Este proyecto está diseñado para la asignatura `Fundamentos de programación` 
 - **Modularización**: Descomposición del programa en métodos
 - **Documentación**: Creación de un documento de análisis técnico del software.
 - **Buenas Prácticas**: Uso de buenas prácticas en nuestro código.
+- **Clases**: Creación de clases y superclases con herencia.
