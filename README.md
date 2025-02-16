@@ -28,10 +28,19 @@ ___________________________________________
 
 ```
 WATERRUNVX_SAMUELDIAZMARTOS/
+    WaterRun.jar    # Archivo ejecutable del juego (.jar)
     README.md       # Este archivo
     .vscode/        # Configuraciones para Visual Studio Code
         settings.json
-    lib/            # Carpeta para bibliotecas externas (vacía)
+    bin/            # Carpeta con los .Class de los archivos
+        WaterRun.class
+        Preguntas.class
+        Personajes.class
+        GestionPreguntas.class
+        Policia.class
+        Escapista.class            
+        WaterRun.class
+        Manifest.txt
     src/            # Carpeta con el código fuente
         WaterRun.java
         Preguntas.java
@@ -39,8 +48,6 @@ WATERRUNVX_SAMUELDIAZMARTOS/
         GestionPreguntas.java
         Policia.java
         Escapista.java            
-        WaterRun.jar
-        WaterRun.class
         Manifest.txt
 ```
 
