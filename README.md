@@ -7,13 +7,14 @@ ___________________________________________
 |---------------------|-------------------|
 | **Autor**           |     SDM           |
 | **Fecha de Inicio** |   v1 18/11/2024   |
-| **Última versión**  |   v4 10/02/2025   |
+| **Última versión**  |   v5 17/02/2025   |
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 
 ## Contenido del Proyecto
 
 - **Java (`WaterRun.java`)**: Codigo base.
-- **Java (`Preguntas.java`)**: Clase para las preguntas.
+- **Java (`Pregunta.java`)**: Clase para las preguntas.
+- **Java (`GestionPregunta.java`)**: Clase para gestionar las preguntas.
 - **Java (`Personaje.java`)**: Superclase de tipos de personajes.
 - **Java (`Policia.java`)**: Subclase de Personaje con atributos y metodos diferentes a escapista.
 - **Java (`Escapista.java`)**: Subclase de Personaje con atributos y metodos diferentes a policia.
@@ -35,6 +36,7 @@ WATERRUNVX_SAMUELDIAZMARTOS/
         WaterRun.java
         Preguntas.java
         Personajes.java
+        GestionPreguntas.java
         Policia.java
         Escapista.java            
         WaterRun.jar

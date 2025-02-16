@@ -1,14 +1,29 @@
-/*
+/**
  * WaterRun
- * Autor: Samuel Díaz Martos
+ * @author SDM
  * 18-11-2024
  */
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+/**
+ * Clase WaterRun.
+ * Maneja todo el juego en sí. 
+ */
 public class WaterRun {
+
+    private static final String[] MOSTRARMENUS= {"Elige una opcón del menú.\n\t1) Jugar.\n\t2) Dificultad\n\t3) Aspecto\n\t4) Historial de juego.\n\t5) Salir.",
+        "Has elegico jugar.\nPara ponerte en contexto, eres un prisionero condenado injustametne a muerte por ahogamiento.\nTu desafío inicial es encontrar la manera de escapar de la sala que se irá inundando.\nPara ello, deberas resolver una serie de acertijos o preguntas que te iremos mostrando.\nAl responder las preguntas o acertijos deberas de poner el número correspondiente indicado.\nEjemplo: ¿Cuantas letras tiene Hola?\n1) 4 \t\t 2) 7 \t\t 3) 5 \t\t 4) 1 \nEn este caso tendrias que poner como respuesta \'1\'. \nSi fallas al responder o ponea un caracter no valido se contará como error.\n¿Estas preparado? (Respuesta con 'S' para si y 'N' para no)\n",
+        "Selecciona la dificultad en la que desea jugar. Por defecto esta la dificultad FÁCIL.\n\t 0) FÁCIL\n\t 1) MEDIA\n\t 2) DIFÍCIL\n\t 3) SALIR", 
+        "Has elegido la opción de aspecto.\nEn este menú, puedes personalizar el color de tu personaje entre la siguiente selección y el color del agua también.\n¿Que quieres personalizar?\n\t1) Color del personaje.\n\t2) Color del Policia.\n\t3) Salir.",
+        "Elige un color para tu personaje:\n\t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir",
+        "Elige un color para el policia:\n\t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir",
+        "Este menú aun no esta disponible. Pulse 3 para salir.\n\t1) Jugar una partida guardada. (Proximamente)\n\t2) Revisar elecciónes de partida. (Proximamente)\n\t3) Salir."
+    };
+    private static int opcionMenu=0;
+    private static int max = 5;
+    private static int min = 0;
 
     // Deja el color como al principio.
     private static final String COLOR_RESET = "\u001B[0m";
@@ -90,64 +105,104 @@ public class WaterRun {
         int eleccion=0;// Lee la elección del primer menú.
 
         do{ //Bucle menú (Se repite hasta indicar salir.)
+            max = 5;
+            min = 1;
+            opcionMenu = 0;
+            System.out.println(MOSTRARMENUS[opcionMenu]);
     
-            try { 
-                    
-                do {
+            eleccion=leerEnteroValidado(bf, min, max); //Lee la entrada.
     
-                    System.out.println(""" 
-                        Elige una opcón del menú.
-                        \t1) Jugar.
-                        \t2) Dificultad
-                        \t3) Aspecto.
-                        \t4) Historial de juego.
-                        \t5) Salir.
-                    """);
+            switch (eleccion) { 
     
-                    eleccion=Integer.parseInt(bf.readLine()); //Lee la entrada.
-    
-                    switch (eleccion) { 
-    
-                        case 1:
-                            //Entra en caso de elegir Jugar
-                            jugar(bf); // Llama al metodo jugar y le envia el bufferedReader
-                            break;
+                case 1:
+                    //Entra en caso de elegir Jugar
+                    jugar(bf); // Llama al metodo jugar y le envia el bufferedReader
+                    break;
 
-                        case 2:
-                            dificultadDelJuego(bf);
-                            break;
-                        case 3:
-                            //Entra en caso de elegir Aspecto
-                            cambiarAspecto(bf);// Llama al metodo cambiarAspecto y le envia el bufferedReader
-                            
-                            break;
+                case 2:
+                    //Entra en caso de elegir Dificultad
+                    dificultadDelJuego(bf);// Llama al metodo dificultadDelJuego y le envia el BufferedReader
+                    break;
+                case 3:
+                    //Entra en caso de elegir Aspecto
+                    cambiarAspecto(bf);// Llama al metodo cambiarAspecto y le envia el bufferedReader
+                    break;
 
-                        case 4:
-                            //Entra en caso de elegir Historial
-                            historial(bf);// Llama al metodo historial y le envia el bufferedReader
-                            
-                            break;
+                case 4:
+                    //Entra en caso de elegir Historial
+                    historial(bf);// Llama al metodo historial y le envia el bufferedReader
+                    break;
 
-                        case 5:
-                            //Entra en caso de elegir Salir
-                            System.out.println("Saliendo del juego");
-                            salir=true; //Pone salir en true para salir del bucle del menú. 
-                            break;
-
-                        default:
-                            System.out.println("Has elegido un número que no corresponde a ninguna opción. Prueba otra vez.");
-                            break;
-                    };  
-                } while (eleccion<=0 || eleccion>=6); //Repite hasta que la elección sea 1, 2, 3 o 4.
-    
-            } catch (NumberFormatException e) { //Si escribe una letra le muestra este error 
-                System.out.println("No has escrito un número. Prueba otra vez");
-            }
-        
+                case 5:
+                    //Entra en caso de elegir Salir
+                    System.out.println("Saliendo del juego");
+                    salir=true; //Pone salir en true para salir del bucle del menú. 
+                    break;
+            };  
         }while (salir==false); 
         System.out.println("Muchas gracias por participar."); //Muestra mensaje de agradecimiento.
     }
-    
+
+
+    /**
+     * Lee un número entero, validando que esté entre min y max.
+     * Si el usuario escribe algo inválido (caracteres no numéricos o número fuera de rango),
+     * el método vuelve a pedirlo.
+     *
+     * @param bf  el BufferedReader para leer la entrada
+     * @param min límite inferior aceptado (inclusive)
+     * @param max límite superior aceptado (inclusive)
+     * @return el número entero válido que el usuario introduzca
+     ****/
+    private static int leerEnteroValidado(BufferedReader bf, int min, int max) throws IOException {
+        boolean valido = false;
+        int valor = 0; // variable para guardar la lectura
+        while (!valido) {
+            try {
+                String linea = bf.readLine(); // leer texto
+                valor = Integer.parseInt(linea); // convertir a int
+                if (valor >= min && valor <= max) {
+                    valido = true;  // se cumple la condición → marcamos como válido
+                } else {
+                    System.out.println("Error: Debes escribir un número entre " + min + " y " + max + ". Inténtalo de nuevo.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error: No has escrito un número válido. Inténtalo de nuevo.");
+            }
+        }
+        // Cuando salgamos del while, 'valido == true', y 'valor' está en rango
+        return valor;
+    }
+
+    /**
+     * Lee un único caracter desde teclado ('S' o 'N'), validando que no sea otro.
+     * @param bf BufferedReader para leer de teclado
+     * @return 'S' o 'N' en mayúscula
+     * @throws IOException
+     */
+    private static char leerSN(BufferedReader bf) throws IOException {
+        boolean valido = false;
+        char c = ' '; // variable donde guardaremos la elección
+        do { //Repite hasta que escribas el caracter correcto.
+
+            String caracter = bf.readLine(); //Guarda la respuesta en un string.
+
+            if (caracter.length()==1) { //Comprueba que el string sea de 1 caracter.
+                c = caracter.charAt(0); //combierte el string en caracter y lo guarda en re1
+                c = Character.toUpperCase(c); //pasa el re1 a mayusculas y lo guarda de nuevo en re1
+                if (c == 'S' || c == 'N'){
+                    valido = true;
+                } else {
+                    System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
+                }
+            } else {
+                System.out.println("No has escrito un único caracter. Prueba otra vez.");
+            }
+        } while (!valido);
+
+        return c;
+    }
+
     /**
      * Jugar. Muestra el juego, el cual va sacando preguntas y respuestas y comprobandolas.
      * @author SDM
@@ -156,65 +211,44 @@ public class WaterRun {
      */
     private static void jugar(BufferedReader bf) throws IOException{
         //Respuestas del juego
+        opcionMenu= 1;
+        max=4;
+        min=1;
         char re1; //Respuesta jugar o no jugar.
         Boolean jugar =false; //Comprobar si el jugador quiere jugar o no.
-        Boolean caracterCorrecto=false; //Comprueba si el caracter que ha puesto en re1 es S o N para salir del bucle.
         Boolean lvlPasado = false; //Variable que comprueba si te has pasdo un nivel.
-        int reQ1=0; //Variables que guardan las respuestas de las preguntas.
-        int reQ2=0;
-        int reQ3=0;
         boolean salirJuego=false;
         int reAcertadas=0;
-        int reCorrecta; 
+        int reJugador;
+        int enunciado=0;
+        String[] opciones;
+        String respuestaElegida;
     
         salirJuego=false; //Pone en false el salir. Si has jugado sin recargar el programa te sacaria en la primera seleccion de salir.
-                
+            
         do{ //Repite hasta que el jugador indique que quiera salir. Más adelante, cuando se
             //pase un nivel, le dará la opcion de guardar y de salir. 
-            System.out.println("""
-                    
-                Has elegico jugar.\n
-                Para ponerte en contexto, eres un prisionero condenado injustametne a muerte por ahogamiento.\n
-                Tu desafío inicial es encontrar la manera de escapar de la sala que se irá inundando.\n
-                Para ello, deberas resolver una serie de acertijos o preguntas que te iremos mostrando.\n
-                Al responder las preguntas o acertijos deberas de poner el número correspondiente indicado.\n
-                Ejemplo: ¿Cuantas letras tiene Hola?\n
-                1) 4 \t\t 2) 7 \t\t 3) 5 \t\t 4) 1 \n
-                En este caso tendrias que poner como respuesta \'1\'. \n
-                Si fallas al responder o ponea un caracter no valido se contará como error.\n
-            """); //Explicación de como funcionan las respuestas y como funciona el juego.
-    
-            do { //Repite hasta que escribas el caracter correcto.
-    
-                System.out.println("¿Estas preparado? (Respuesta con 'S' para si y 'N' para no)");
-                String caracter = bf.readLine(); //Guarda la respuesta en un string.
-    
-                if (caracter.length()==1) { //Comprueba que el string sea de 1 caracter.
-                    re1 = caracter.charAt(0); //combierte el string en caracter y lo guarda en re1
-                    re1 = Character.toUpperCase(re1); //pasa el re1 a mayusculas y lo guarda de nuevo en re1
-                    if (re1=='S') {
-                        System.out.println("Pues que empiece el juego.");     
-                        jugar=true; //Variable para entrar al juego
-                        caracterCorrecto=true;//variable del caracter para salir del bucle
-    
-                    }else if (re1 == 'N') {
-                        jugar=false; //Variable para entrar al juego
-                        caracterCorrecto=true;//variable del caracter para salir del bucle
-                        salirJuego=true; //Variable para volver al menú
-                    }else{
-                        System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
-                    }  
-    
-                }else{
-                    System.out.println("No has escrito ningun caracter o has escrito uno incorrecto. Prueba otra vez.");
-                }
-            } while (caracterCorrecto==false);
-    
+            System.out.println(MOSTRARMENUS[opcionMenu]); //Explicación de como funcionan las respuestas y como funciona el juego.
+            re1=leerSN(bf);
+
+            if (re1=='S') {
+                jugar=true; //Variable para entrar al juego                
+            }else if (re1 == 'N') {
+                jugar=false; //Variable para entrar al juego
+                salirJuego=true; //Variable para volver al menú
+            }else{
+                System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
+            }  
                 if (jugar==true) { //Inicio del juego
                     Escapista escapista = new Escapista(colorPj);
                     Policia policia = new Policia(colorPo, 5);
+                    GestionPreguntas gp = new GestionPreguntas();
+                    Pregunta p = gp.getPregunta(dificultad, enunciado);
+
                     if (dificultad==2) {
                         do{
+                            opciones=p.getOpciones();    
+
                             reAcertadas=0;
                             System.out.printf("""
                                 █████████████████████████████████████████████████████     
@@ -244,15 +278,19 @@ public class WaterRun {
                                                   █████████████████████
                             █████████████████████████████████████████████████████          
                             """); //Mas adelante, incluido el color del personaje y del agua
-                            System.out.println(Preguntas.getPreguntas(dificultad, 0));
-                            
-                            reQ1 = Integer.parseInt(bf.readLine()); //Comprueba la respuesta 1
-                            reCorrecta= Preguntas.getRespuestas(dificultad, 0);
-                            
-
-
-                            if (reQ1 == reCorrecta) { 
+                            System.out.println(p.getEnunciado());
+                            for(int i = 0; i < opciones.length; i++){
+                                if (!opciones[i].isEmpty()) {
+                                    System.out.println((i + 1) + ") " + opciones[i]);
+                                }
+                            }
+                            reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                            respuestaElegida = opciones[reJugador - 1];
+                            if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                 reAcertadas=reAcertadas+1;
+                                enunciado++;
+                                p = gp.getPregunta(dificultad, enunciado);
+                                opciones=p.getOpciones();  
                                 if (policia.disparar(escapista, dificultad)) {
                                     System.out.println("¡OH NO! El policia ha acertado el disparo, el escapista permanece inmovil 1 turno.");
 
@@ -285,11 +323,19 @@ public class WaterRun {
                                     █████████████████████████████████████████████████████          
                                     """);
 
-                                    System.out.println(Preguntas.getPreguntas(dificultad,1));
-                                    reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
-                                    reCorrecta= Preguntas.getRespuestas(dificultad, 1);
-                                    if (reQ2==reCorrecta) { 
-    
+                                    System.out.println(p.getEnunciado());
+                                    for(int i = 0; i < opciones.length; i++){
+                                        if (!opciones[i].isEmpty()) {
+                                            System.out.println((i + 1) + ") " + opciones[i]);
+                                        }
+                                    }
+                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    respuestaElegida = opciones[reJugador - 1];
+                                    if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
+                                        reAcertadas=reAcertadas+1;
+                                        enunciado++;
+                                        p = gp.getPregunta(dificultad, enunciado);
+                                        opciones=p.getOpciones(); 
                                         System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
                                         System.out.printf("""
                                             █████████████████████████████████████████████████████     
@@ -314,10 +360,15 @@ public class WaterRun {
                                             █████████████████████████████████████████████████████
             
                                         """);
-                                        System.out.println(Preguntas.getPreguntas(dificultad,2));
-                                        reQ3 = Integer.parseInt(bf.readLine()); //Lee la respuesta 3
-                                        reCorrecta= Preguntas.getRespuestas(dificultad, 2);
-                                        if (reQ3==reCorrecta) {
+                                        System.out.println(p.getEnunciado());
+                                        for(int i = 0; i < opciones.length; i++){
+                                            if (!opciones[i].isEmpty()) {
+                                                System.out.println((i + 1) + ") " + opciones[i]);
+                                            }
+                                        }
+                                        reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                        respuestaElegida = opciones[reJugador - 1];
+                                        if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                                             System.out.println("¡Has acertado! Tu personaje empieza a abrir la cerradura.");
                                             System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                             salirJuego=true; //Te saca del juego tras perder
@@ -326,7 +377,10 @@ public class WaterRun {
                                             System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                             salirJuego=true; //Te saca del juego tras perder
                                         }
-                                    }else{
+                                    }else {
+                                        enunciado++;
+                                        p = gp.getPregunta(dificultad, enunciado);
+                                        opciones=p.getOpciones(); 
                                         System.out.println("Has fallado.");
                                         System.out.printf("""
                                             █████████████████████████████████████████████████████     
@@ -356,11 +410,15 @@ public class WaterRun {
                                                             █████████████████████
                                             █████████████████████████████████████████████████████          
                                         """);
-
-                                        System.out.println(Preguntas.getPreguntas(dificultad,2));
-                                        reQ3 = Integer.parseInt(bf.readLine());
-                                        reCorrecta= Preguntas.getRespuestas(dificultad, 2);
-                                        if (reQ3==reCorrecta) {
+                                        System.out.println(p.getEnunciado());
+                                        for(int i = 0; i < opciones.length; i++){
+                                            if (!opciones[i].isEmpty()) {
+                                                System.out.println((i + 1) + ") " + opciones[i]);
+                                            }
+                                        }
+                                        reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                        respuestaElegida = opciones[reJugador - 1];
+                                        if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                             System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
                                             System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                             salirJuego=true;
@@ -371,7 +429,7 @@ public class WaterRun {
                                         }
                                     }
 
-                                } else {
+                                } else {  
                                     System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
                                     System.out.printf("""
                                         █████████████████████████████████████████████████████     
@@ -396,10 +454,19 @@ public class WaterRun {
                                         █████████████████████████████████████████████████████
         
                                     """);
-                                    System.out.println(Preguntas.getPreguntas(dificultad,1));
-                                    reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
-                                    reCorrecta= Preguntas.getRespuestas(dificultad, 1);
-                                    if (reQ2==reCorrecta) { 
+                                    System.out.println(p.getEnunciado());
+                                    for(int i = 0; i < opciones.length; i++){
+                                        if (!opciones[i].isEmpty()) {
+                                            System.out.println((i + 1) + ") " + opciones[i]);
+                                        }
+                                    }
+                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    respuestaElegida = opciones[reJugador - 1];
+                                    if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
+                                        reAcertadas=reAcertadas+1;
+                                        enunciado++;
+                                        p = gp.getPregunta(dificultad, enunciado);
+                                        opciones=p.getOpciones(); 
                                         if (policia.disparar(escapista, dificultad)) {
                                             System.out.println("¡OH NO! El policia ha acertado el disparo, el escapista permanece inmovil 1 turno.");
                                             System.out.printf("""
@@ -425,10 +492,15 @@ public class WaterRun {
                                                 █████████████████████████████████████████████████████
                 
                                             """);
-                                            System.out.println(Preguntas.getPreguntas(dificultad,2));
-                                            reQ3 = Integer.parseInt(bf.readLine()); //Lee la respuesta 3
-                                            reCorrecta= Preguntas.getRespuestas(dificultad, 2);
-                                            if (reQ3==reCorrecta) {
+                                            System.out.println(p.getEnunciado());
+                                            for(int i = 0; i < opciones.length; i++){
+                                                if (!opciones[i].isEmpty()) {
+                                                    System.out.println((i + 1) + ") " + opciones[i]);
+                                                }
+                                            }
+                                            reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                            respuestaElegida = opciones[reJugador - 1];
+                                            if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                                 System.out.println("¡Has acertado! Tu personaje empieza a abrir la cerradura.");
                                                 System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                                 salirJuego=true; //Te saca del juego tras perder
@@ -437,7 +509,7 @@ public class WaterRun {
                                                 System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                                 salirJuego=true; //Te saca del juego tras perder
                                             }
-                                        } else {
+                                        } else { 
                                             System.out.println("¡Has acertado! Tu personaje empieza a abrir la cerradura.");
                                             System.out.printf("""
                                                 █████████████████████████████████████████████████████     
@@ -462,10 +534,15 @@ public class WaterRun {
                                                 █████████████████████████████████████████████████████
             
                                             """);
-                                            System.out.println(Preguntas.getPreguntas(dificultad,2));
-                                            reQ3 = Integer.parseInt(bf.readLine()); //Lee la respuesta 3
-                                            reCorrecta= Preguntas.getRespuestas(dificultad, 2);
-                                            if (reQ3==reCorrecta) {
+                                            System.out.println(p.getEnunciado());
+                                            for(int i = 0; i < opciones.length; i++){
+                                                if (!opciones[i].isEmpty()) {
+                                                    System.out.println((i + 1) + ") " + opciones[i]);
+                                                }
+                                            }
+                                            reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                            respuestaElegida = opciones[reJugador - 1];
+                                            if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                                 System.out.println("¡Has acertado! Tu personaje ha huido.");
                                                 lvlPasado = true; //pone lvlPasado en true para salir del bucle.
                                                 salirJuego = true; //Te manda al menú princial.
@@ -476,7 +553,10 @@ public class WaterRun {
                                             }
                                             
                                         }
-                                    }else{
+                                    }else {
+                                        enunciado++;
+                                        p = gp.getPregunta(dificultad, enunciado);
+                                        opciones=p.getOpciones(); 
                                         System.out.println("Has fallado.");
                                         System.out.printf("""
                                             █████████████████████████████████████████████████████     
@@ -501,10 +581,15 @@ public class WaterRun {
                                             █████████████████████████████████████████████████████
             
                                         """);
-                                        System.out.println(Preguntas.getPreguntas(dificultad,2));
-                                        reQ3 = Integer.parseInt(bf.readLine());
-                                        reCorrecta= Preguntas.getRespuestas(dificultad, 2);
-                                        if (reQ3==reCorrecta) {
+                                        System.out.println(p.getEnunciado());
+                                        for(int i = 0; i < opciones.length; i++){
+                                            if (!opciones[i].isEmpty()) {
+                                                System.out.println((i + 1) + ") " + opciones[i]);
+                                            }
+                                        }
+                                        reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                        respuestaElegida = opciones[reJugador - 1];
+                                        if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                             System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
                                             System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                             salirJuego=true;
@@ -516,7 +601,10 @@ public class WaterRun {
                                     }     
 
                                 }
-                            }else{
+                            }else {
+                                enunciado++;
+                                p = gp.getPregunta(dificultad, enunciado);
+                                opciones=p.getOpciones(); 
                                 System.out.printf("""
                                     Has fallado.\n
                                         
@@ -548,11 +636,19 @@ public class WaterRun {
                                 █████████████████████████████████████████████████████      
     
                                 """);
-                                System.out.println(Preguntas.getPreguntas(dificultad,1));
-                                reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
-                                reCorrecta= Preguntas.getRespuestas(dificultad, 1);
-                                if (reQ2==reCorrecta) { 
-                    
+                                System.out.println(p.getEnunciado());
+                                for(int i = 0; i < opciones.length; i++){
+                                    if (!opciones[i].isEmpty()) {
+                                        System.out.println((i + 1) + ") " + opciones[i]);
+                                    }
+                                }
+                                reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                respuestaElegida = opciones[reJugador - 1];
+                                if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
+                                    reAcertadas=reAcertadas+1;
+                                    enunciado++;
+                                    p = gp.getPregunta(dificultad, enunciado);
+                                    opciones=p.getOpciones(); 
                                     System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
                                     System.out.printf("""
                                         █████████████████████████████████████████████████████     
@@ -577,10 +673,15 @@ public class WaterRun {
                                         █████████████████████████████████████████████████████
     
                                     """);
-                                    System.out.println(Preguntas.getPreguntas(dificultad,2));
-                                    reQ3 = Integer.parseInt(bf.readLine());//lee la respuesta 3
-                                    reCorrecta= Preguntas.getRespuestas(dificultad, 2);
-                                    if (reQ3==reCorrecta) {
+                                    System.out.println(p.getEnunciado());
+                                    for(int i = 0; i < opciones.length; i++){
+                                        if (!opciones[i].isEmpty()) {
+                                            System.out.println((i + 1) + ") " + opciones[i]);
+                                        }
+                                    }
+                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    respuestaElegida = opciones[reJugador - 1];
+                                    if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
                                         System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                         salirJuego=true; //te saca del juego tras perder
@@ -589,7 +690,10 @@ public class WaterRun {
                                         System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                         salirJuego=true; //Te saca del juego tras perder
                                     }
-                                }else{
+                                }else {
+                                    enunciado++;
+                                    p = gp.getPregunta(dificultad, enunciado);
+                                    opciones=p.getOpciones(); 
                                     System.out.println("Has fallado.");
                                     System.out.printf("""
                                         █████████████████████████████████████████████████████     
@@ -620,10 +724,15 @@ public class WaterRun {
                                         █████████████████████████████████████████████████████      
     
                                     """);
-                                    System.out.println(Preguntas.getPreguntas(dificultad,2));
-                                    reQ3 = Integer.parseInt(bf.readLine());//lee la respuesta 3
-                                    reCorrecta=Preguntas.getRespuestas(dificultad, 2);
-                                    if (reQ3==reCorrecta) {
+                                    System.out.println(p.getEnunciado());
+                                    for(int i = 0; i < opciones.length; i++){
+                                        if (!opciones[i].isEmpty()) {
+                                            System.out.println((i + 1) + ") " + opciones[i]);
+                                        }
+                                    }
+                                    reJugador = leerEnteroValidado(bf, min, max);
+                                    respuestaElegida = opciones[reJugador - 1];
+                                    if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
                                         System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                         salirJuego=true; //Te saca del juego tras perder
@@ -636,16 +745,10 @@ public class WaterRun {
                                 }
                                     
                             }
-    
-                            if (policia.disparar(escapista, dificultad)) {
-                                System.out.println("¡OH NO! El policia ha acertado el disparo, el escapista permanece inmovil 1 turno.");
-                            
-                            } else {
-                                
-                            }
                         }while(salirJuego==false && lvlPasado==false);
                             
                     }else{
+                        opciones=p.getOpciones();
                         do{
                             reAcertadas=0;
                             System.out.printf("""
@@ -676,12 +779,19 @@ public class WaterRun {
                                                   █████████████████████
                             █████████████████████████████████████████████████████          
                             """); //Mas adelante, incluido el color del personaje y del agua
-                            System.out.println(Preguntas.getPreguntas(dificultad, 0));
-                            
-                            reQ1 = Integer.parseInt(bf.readLine()); //Comprueba la respuesta 1
-                            reCorrecta= Preguntas.getRespuestas(dificultad, 0);
-                            if (reQ1 == reCorrecta) { 
+                            System.out.println(p.getEnunciado());
+                            for(int i = 0; i < opciones.length; i++){
+                                if (!opciones[i].isEmpty()) {
+                                    System.out.println((i + 1) + ") " + opciones[i]);
+                                }
+                            }
+                            reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                            respuestaElegida = opciones[reJugador - 1];
+                            if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                 reAcertadas=reAcertadas+1;
+                                enunciado++;
+                                p = gp.getPregunta(dificultad, enunciado);
+                                opciones=p.getOpciones(); 
                                 System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
                                 System.out.printf("""
                                     █████████████████████████████████████████████████████     
@@ -706,11 +816,19 @@ public class WaterRun {
                                     █████████████████████████████████████████████████████
     
                                 """);
-                                System.out.println(Preguntas.getPreguntas(dificultad,1));
-                                reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
-                                reCorrecta= Preguntas.getRespuestas(dificultad, 1);
-                                if (reQ2==reCorrecta) { 
-    
+                                System.out.println(p.getEnunciado());
+                                for(int i = 0; i < opciones.length; i++){
+                                    if (!opciones[i].isEmpty()) {
+                                        System.out.println((i + 1) + ") " + opciones[i]);
+                                    }
+                                }
+                                reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                respuestaElegida = opciones[reJugador - 1];
+                                if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
+                                    reAcertadas=reAcertadas+1;
+                                    enunciado++;
+                                    p = gp.getPregunta(dificultad, enunciado);
+                                    opciones=p.getOpciones(); 
                                     System.out.println("¡Has acertado! Tu personaje empieza a abrir la cerradura.");
                                     System.out.printf("""
                                         █████████████████████████████████████████████████████     
@@ -735,10 +853,16 @@ public class WaterRun {
                                         █████████████████████████████████████████████████████
     
                                     """);
-                                    System.out.println(Preguntas.getPreguntas(dificultad,2));
-                                    reQ3 = Integer.parseInt(bf.readLine()); //Lee la respuesta 3
-                                    reCorrecta= Preguntas.getRespuestas(dificultad, 2);
-                                    if (reQ3==reCorrecta) {
+                                    System.out.println(p.getEnunciado());
+                                    for(int i = 0; i < opciones.length; i++){
+                                        if (!opciones[i].isEmpty()) {
+                                            System.out.println((i + 1) + ") " + opciones[i]);
+                                        }
+                                    }
+                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    respuestaElegida = opciones[reJugador - 1];
+                                    if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
+                                        p = gp.getPregunta(dificultad, enunciado);
                                         System.out.println("¡Has acertado! Tu personaje ha huido.");
                                         lvlPasado = true; //pone lvlPasado en true para salir del bucle.
                                         salirJuego = true; //Te manda al menú princial.
@@ -747,7 +871,10 @@ public class WaterRun {
                                         System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                         salirJuego=true; //Te saca del juego tras perder
                                     }
-                                }else{
+                                }else {
+                                    enunciado++;
+                                    p = gp.getPregunta(dificultad, enunciado);
+                                    opciones=p.getOpciones(); 
                                     System.out.println("Has fallado.");
                                     System.out.printf("""
                                         █████████████████████████████████████████████████████     
@@ -772,10 +899,15 @@ public class WaterRun {
                                         █████████████████████████████████████████████████████
     
                                     """);
-                                    System.out.println(Preguntas.getPreguntas(dificultad,2));
-                                    reQ3 = Integer.parseInt(bf.readLine());
-                                    reCorrecta= Preguntas.getRespuestas(dificultad, 2);
-                                    if (reQ3==reCorrecta) {
+                                    System.out.println(p.getEnunciado());
+                                    for(int i = 0; i < opciones.length; i++){
+                                        if (!opciones[i].isEmpty()) {
+                                            System.out.println((i + 1) + ") " + opciones[i]);
+                                        }
+                                    }
+                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    respuestaElegida = opciones[reJugador - 1];
+                                    if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
                                         System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                         salirJuego=true;
@@ -785,7 +917,10 @@ public class WaterRun {
                                         salirJuego=true; //Te saca del juego tras perder
                                     }
                                 }    
-                            }else{
+                            }else {
+                                enunciado++;
+                                p = gp.getPregunta(dificultad, enunciado);
+                                opciones=p.getOpciones(); 
                                 System.out.printf("""
                                     Has fallado.\n
                                         
@@ -817,11 +952,19 @@ public class WaterRun {
                                 █████████████████████████████████████████████████████      
     
                                 """);
-                                System.out.println(Preguntas.getPreguntas(dificultad,1));
-                                reQ2=Integer.parseInt(bf.readLine()); //Lee la segunda respuesta
-                                reCorrecta= Preguntas.getRespuestas(dificultad, 1);
-                                if (reQ2==reCorrecta) { 
-                    
+                                System.out.println(p.getEnunciado());
+                                for(int i = 0; i < opciones.length; i++){
+                                    if (!opciones[i].isEmpty()) {
+                                        System.out.println((i + 1) + ") " + opciones[i]);
+                                    }
+                                }
+                                reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                respuestaElegida = opciones[reJugador - 1];
+                                if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
+                                    reAcertadas=reAcertadas+1;
+                                    enunciado++;
+                                    p = gp.getPregunta(dificultad, enunciado);
+                                    opciones=p.getOpciones(); 
                                     System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
                                     System.out.printf("""
                                         █████████████████████████████████████████████████████     
@@ -846,10 +989,15 @@ public class WaterRun {
                                         █████████████████████████████████████████████████████
     
                                     """);
-                                    System.out.println(Preguntas.getPreguntas(dificultad,2));
-                                    reQ3 = Integer.parseInt(bf.readLine());//lee la respuesta 3
-                                    reCorrecta= Preguntas.getRespuestas(dificultad, 2);
-                                    if (reQ3==reCorrecta) {
+                                    System.out.println(p.getEnunciado());
+                                    for(int i = 0; i < opciones.length; i++){
+                                        if (!opciones[i].isEmpty()) {
+                                            System.out.println((i + 1) + ") " + opciones[i]);
+                                        }
+                                    }
+                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    respuestaElegida = opciones[reJugador - 1];
+                                    if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
                                         System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                         salirJuego=true; //te saca del juego tras perder
@@ -858,7 +1006,10 @@ public class WaterRun {
                                         System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                         salirJuego=true; //Te saca del juego tras perder
                                     }
-                                }else{
+                                }else {
+                                    enunciado++;
+                                    p = gp.getPregunta(dificultad, enunciado);
+                                    opciones=p.getOpciones(); 
                                     System.out.println("Has fallado.");
                                     System.out.printf("""
                                         █████████████████████████████████████████████████████     
@@ -889,10 +1040,15 @@ public class WaterRun {
                                         █████████████████████████████████████████████████████      
     
                                     """);
-                                    System.out.println(Preguntas.getPreguntas(dificultad,2));
-                                    reQ3 = Integer.parseInt(bf.readLine());//lee la respuesta 3
-                                    reCorrecta=Preguntas.getRespuestas(dificultad, 2);
-                                    if (reQ3==reCorrecta) {
+                                    System.out.println(p.getEnunciado());
+                                    for(int i = 0; i < opciones.length; i++){
+                                        if (!opciones[i].isEmpty()) {
+                                            System.out.println((i + 1) + ") " + opciones[i]);
+                                        }
+                                    }
+                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    respuestaElegida = opciones[reJugador - 1];
+                                    if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
                                         System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");
                                         salirJuego=true; //Te saca del juego tras perder
@@ -925,43 +1081,207 @@ public class WaterRun {
      * @throws IOException
      */
     private static void dificultadDelJuego(BufferedReader bf) throws IOException{
+        opcionMenu= 2;
+        max=3;
+        min=0;
         boolean salirDificultad = false;
         do{
-            try{
-                System.out.println("""
-                                        Selecciona la dificultad en la que desea jugar. Por defecto esta la dificultad FÁCIL. 
-                                        \t 0) FÁCIL
-                                        \t 1) MEDIA
-                                        \t 2) DIFÍCIL
-                                        \t 3) SALIR 
-                                            """);
-                dificultad=Integer.parseInt(bf.readLine());
+                System.out.println(MOSTRARMENUS[opcionMenu]);
+                dificultad=leerEnteroValidado(bf, min, max);
                 switch (dificultad) {
                     case 0:
-                        System.out.println("Has elegido la dificultad \"FÁCIL\". Volviendo al menú principal.");
-                        salirDificultad=true;
+                        System.out.println("Has elegido la dificultad \"FÁCIL\".");
                         break;
                     case 1:
-                        System.out.println("Has elegido la dificultad \"MEDIA\". Volviendo al menú principal.");
-                        salirDificultad=true;
+                        System.out.println("Has elegido la dificultad \"MEDIA\".");
                         break;
                     case 2:
-                        System.out.println("Has elegido la dificultad \"DIFÍCIL\". Volviendo al menú principal.");
-                        salirDificultad=true;
+                        System.out.println("Has elegido la dificultad \"DIFÍCIL\".");
                         break;   
                     case 3:
                         System.out.println("Has elegido \"SALIR\". Volviendo al menú principal.");
                         salirDificultad=true;
-                        break;     
-                    default:
-                        System.out.println("No has elegido un número de la selección, prueba otra vez.");
                         break;
                 }
-            } catch (NumberFormatException e) {
-                System.out.println("No has escrito un número. Prueba otra vez");
-            }
-        }while (salirDificultad=false);
+        }while (salirDificultad==false);
     }
+    
+    /**
+     * cambiarAspectoPJ. Te permite elegir el color del personaje.
+     * @param bf
+     * @throws IOException
+     */
+    private static void cambiarAspectoPJ(BufferedReader bf) throws IOException{
+        //cambias el aspecto del Personaje
+        int eleccionColorPJ;
+        opcionMenu= 4;
+        max=9;
+        min=1;
+        //Muestra las opciones de colores.
+        System.out.println("Has elegido cambiaR el aspecto de tu personaje.");
+        System.out.println(MOSTRARMENUS[opcionMenu]);
+        eleccionColorPJ = leerEnteroValidado(bf, min, max); //Lee la elección del color
+        switch (eleccionColorPJ) { //Según la elección se mete en el case correspondiente.
+            case 1:
+            System.out.println("Has elegido el color rojo.");
+            if (colorPo==COLORESPOLICIA[0]) { //Comprueba que el agua no tenga ese color.
+                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+            }else{
+                colorPj=COLORESPJ[0]; //Si el agua es de otro color, asigna el color seleccionado al jugador.
+            }
+            break;
+        case 2:
+            System.out.println("Has elegido el color verde.");
+            if (colorPo==COLORESPOLICIA[1]) {//Comprueba que el agua no tenga ese color.
+                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+            }else{
+                colorPj=COLORESPJ[1];  //Si el agua es de otro color, asigna el color seleccionado al jugador.
+            }                          
+            break;
+        case 3:
+            System.out.println("Has elegido el color amarillo.");
+            if (colorPo==COLORESPOLICIA[2]) {//Comprueba que el agua no tenga ese color.
+                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+            }else{
+                colorPj=COLORESPJ[2];     //Si el agua es de otro color, asigna el color seleccionado al jugador.   
+            }                      
+            break;
+        case 4:
+            System.out.println("Has elegido el color azul.");
+            if (colorPo==COLORESPOLICIA[3]) {//Comprueba que el agua no tenga ese color.
+                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+            }else{
+                colorPj=COLORESPJ[3];         //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
+            }
+            break;
+        case 5:
+            System.out.println("Has elegido el color morado.");
+            if (colorPo==COLORESPOLICIA[4]) {//Comprueba que el agua no tenga ese color.
+                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+            }else{
+                colorPj=COLORESPJ[4];       //Si el agua es de otro color, asigna el color seleccionado al jugador.                       
+            }
+            break;
+        case 6:
+            System.out.println("Has elegido el color Cian.");
+            if (colorPo==COLORESPOLICIA[5]) {//Comprueba que el agua no tenga ese color.
+                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+            }else{
+                colorPj=COLORESPJ[5];             //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
+            }
+            break;
+        case 7:
+            System.out.println("Has elegido el color Blanco.");
+            if (colorPo==COLORESPOLICIA[6]) {//Comprueba que el agua no tenga ese color.
+                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+            }else{
+                colorPj=COLORESPJ[6];  //Si el agua es de otro color, asigna el color seleccionado al jugador.
+            }                            
+            break;
+        case 8:
+            System.out.println("Has elegido el color Negro.");
+            if (colorPo==COLORESPOLICIA[7]) {//Comprueba que el agua no tenga ese color.
+                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+            }else{
+                colorPj=COLORESPJ[7];     //Si el agua es de otro color, asigna el color seleccionado al jugador.                         
+            }
+            break;
+        case 9:
+            System.out.println("Has elegido salir. Volviendo al menú de aspecto."); 
+            break;
+        default:
+            //No pongo nada debido a que las validaciones correspondientes estan hechas.
+            break;
+        }
+    }
+
+    /**
+     * cambiarAspectoPo. Te permite elegir el color del policia (AUN NO INCLUIDO EN EL JUEGO).
+     * @param bf
+     * @throws IOException
+     */
+    private static void cambiarAspectoPo(BufferedReader bf) throws IOException{
+        int eleccioncolorPo;
+        opcionMenu= 5;
+        max=9;
+        min=1;
+            //Muestra las opciones de colores.
+            System.out.println("Has elegido cambiar el aspecto del Policia.");
+            System.out.println(MOSTRARMENUS[opcionMenu]);
+            eleccioncolorPo = leerEnteroValidado(bf, min, max); //Lee el color elegido.
+            switch (eleccioncolorPo) { //selecciona segun el número elegido.
+                case 1:
+                    System.out.println("Has elegido el color rojo.");
+                    if (colorPj==COLORESPJ[0]) { //Comprueba que el personaje no tenga ese color
+                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                    }else{
+                        colorPo=COLORESPOLICIA[0]; //Si el personaje es de otro color, asigna el color seleccionado al agua.
+                    }
+                    break;
+                case 2:
+                    System.out.println("Has elegido el color verde.");                    
+                    if (colorPj==COLORESPJ[1]) {//Comprueba que el personaje no tenga ese color
+                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                    }else{
+                        colorPo=COLORESPOLICIA[1];  //Si el personaje es de otro color, asigna el color seleccionado al agua.
+                    }                          
+                    break;
+                case 3:
+                    System.out.println("Has elegido el color amarillo.");                    
+                    if (colorPj==COLORESPJ[2]) {//Comprueba que el personaje no tenga ese color
+                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                    }else{
+                        colorPo=COLORESPOLICIA[2]; //Si el personaje es de otro color, asigna el color seleccionado al agua.       
+                    }                      
+                    break;
+                case 4:
+                    System.out.println("Has elegido el color azul.");                    
+                    if (colorPj==COLORESPJ[3]) {//Comprueba que el personaje no tenga ese color
+                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                    }else{
+                        colorPo=COLORESPOLICIA[3];  //Si el personaje es de otro color, asigna el color seleccionado al agua.                        
+                    }
+                    break;
+                case 5:
+                    System.out.println("Has elegido el color morado.");                    
+                    if (colorPj==COLORESPJ[4]) {//Comprueba que el personaje no tenga ese color
+                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                    }else{
+                        colorPo=COLORESPOLICIA[4];  //Si el personaje es de otro color, asigna el color seleccionado al agua.                            
+                    }
+                    break;
+                case 6:
+                    System.out.println("Has elegido el color Cian.");                    
+                    if (colorPj==COLORESPJ[5]) {//Comprueba que el personaje no tenga ese color
+                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                    }else{
+                        colorPo=COLORESPOLICIA[5];//Si el personaje es de otro color, asigna el color seleccionado al agua.                              
+                    }
+                    break;
+                case 7:
+                    System.out.println("Has elegido el color Blanco.");                    
+                    if (colorPj==COLORESPJ[6]) {//Comprueba que el personaje no tenga ese color
+                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                    }else{
+                        colorPo=COLORESPOLICIA[6];//Si el personaje es de otro color, asigna el color seleccionado al agua.  
+                    }                            
+                    break;
+                case 8:
+                    System.out.println("Has elegido el color Negro.");                    
+                    if (colorPj==COLORESPJ[7]) {//Comprueba que el personaje no tenga ese color
+                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
+                    }else{
+                        colorPo=COLORESPOLICIA[7]; //Si el personaje es de otro color, asigna el color seleccionado al agua.                             
+                    }
+                    break;    
+                case 9:
+                    System.out.println("Has elegido salir. Volviendo al menú principal.");                    
+                    break;
+                default:
+                    //No pongo nada debido a que las validaciones correspondientes estan hechas.
+                    break;
+            }
+        }
     
     /**
      * Aspecto. Te permite cambiar el Aspecto del personaje.
@@ -970,239 +1290,42 @@ public class WaterRun {
      * @throws IOException
      */
     private static void cambiarAspecto(BufferedReader bf) throws IOException{
-        
+
         //Respuestas aspecto
         int reAspecto;// respuesta de elección de aspecto.
-        boolean cambiarAspectoPJ=false;
-        int eleccionColorPJ;
-        boolean cambiarAspectoW=false;
-        int eleccioncolorPo;
+
+
         boolean salirAspecto=false;
         //Aspecto
         salirAspecto=false; //Pone salirAspecto en false, ya que sino cuando eligieras cualquier cosa dentro de los submenús
         //Te sacaraía instantaneamente al menú general. 
         do { //Repite hasta que el usuario seleccione salir.
-            do{
-                //Muestra opciones de aspecto.
-                System.out.println("""
-                    Has elegido la opción de aspecto.
-                    En este menú, puedes personalizar el color de tu personaje entre la siguiente selección y el color del agua también.
-                    ¿Que quieres personalizar?
-                    \t1) Color del personaje.
-                    \t2) Color del Policia.
-                    \t3) Salir.
-                    """);
-                try { //Comprueba que escribas solo números.
-                    reAspecto = Integer.parseInt(bf.readLine()); //Lee respuesta y la guarda en reAspecto
+            opcionMenu= 3;
+            max=3;
+            min=1;
+            //Muestra opciones de aspecto.
+            System.out.println(MOSTRARMENUS[opcionMenu]);
 
-                    if (reAspecto==1) { 
-                        System.out.println("Has elegido cambiaR el aspecto de tu personaje.");
-                        cambiarAspectoPJ=true; //pone cambiar Aspecto del personaje en verdadero
-                    }else if (reAspecto==2) {
-                        System.out.println("Has elegido cambiar el aspecto del Policia.");
-                        cambiarAspectoW=true;//pone cambiar Aspecto del agua en verdadero
-                    }else if (reAspecto==3){
-                        System.out.println("Has elegido salir. Volviendo al menú principal.");
-                        salirAspecto=true;//sale al menú principal.
-                    }else{
-                        System.out.println("Opción no reconocida, prueba otra vez."); //Si no has escrito un número, te lo pide hasta que escribas uno. 
-                    }
-            
-                } catch (NumberFormatException e) {
-                System.out.println("No has escrito un número. Prueba otra vez");
-                }
+            reAspecto = leerEnteroValidado(bf, min, max); //Lee respuesta y la guarda en reAspecto
 
-            }while (cambiarAspectoW==false && cambiarAspectoPJ==false && salirAspecto==false);
-
-
-
-            if (cambiarAspectoPJ==true) { //cambias el aspecto del Personaje
-                try{ //comprueba que solo escribas números.
-                    //Muestra las opciones de colores.
-                System.out.println("""
-                    Elige un color para tu personaje:
-                    \t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir
-                        """);
-                eleccionColorPJ = Integer.parseInt(bf.readLine()); //Lee la elección del color
-                switch (eleccionColorPJ) { //Según la elección se mete en el case correspondiente.
-                    case 1:
-                    System.out.println("Has elegido el color rojo.");
-                    cambiarAspectoPJ=false; //CambiarAspecto a false para que no colapse.
-                    if (colorPo==COLORESPOLICIA[0]) { //Comprueba que el agua no tenga ese color.
-                        System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                    }else{
-                        colorPj=COLORESPJ[0]; //Si el agua es de otro color, asigna el color seleccionado al jugador.
-                    }
+            switch (reAspecto) {
+                case 1:
+                    cambiarAspectoPJ(bf);// Llama al meteodo cambiarAspectoPJ y le envia el BufferedReader
                     break;
                 case 2:
-                    System.out.println("Has elegido el color verde.");
-                    cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                    if (colorPo==COLORESPOLICIA[1]) {//Comprueba que el agua no tenga ese color.
-                        System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                    }else{
-                        colorPj=COLORESPJ[1];  //Si el agua es de otro color, asigna el color seleccionado al jugador.
-                    }                          
+                    cambiarAspectoPo(bf);// Llama al meteodo cambiarAspectoPo y le envia el BufferedReader
                     break;
-                case 3:
-                    System.out.println("Has elegido el color amarillo.");
-                    cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                    if (colorPo==COLORESPOLICIA[2]) {//Comprueba que el agua no tenga ese color.
-                        System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                    }else{
-                        colorPj=COLORESPJ[2];     //Si el agua es de otro color, asigna el color seleccionado al jugador.   
-                    }                      
-                    break;
-                case 4:
-                    System.out.println("Has elegido el color azul.");
-                    cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                    if (colorPo==COLORESPOLICIA[3]) {//Comprueba que el agua no tenga ese color.
-                        System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                    }else{
-                        colorPj=COLORESPJ[3];         //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
-                    }
-                    break;
-                case 5:
-                    System.out.println("Has elegido el color morado.");
-                    cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                    if (colorPo==COLORESPOLICIA[4]) {//Comprueba que el agua no tenga ese color.
-                        System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                    }else{
-                        colorPj=COLORESPJ[4];       //Si el agua es de otro color, asigna el color seleccionado al jugador.                       
-                    }
-                    break;
-                case 6:
-                    System.out.println("Has elegido el color Cian.");
-                    cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                    if (colorPo==COLORESPOLICIA[5]) {//Comprueba que el agua no tenga ese color.
-                        System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                    }else{
-                        colorPj=COLORESPJ[5];             //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
-                    }
-                    break;
-                case 7:
-                    System.out.println("Has elegido el color Blanco.");
-                    cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                    if (colorPo==COLORESPOLICIA[6]) {//Comprueba que el agua no tenga ese color.
-                        System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                    }else{
-                        colorPj=COLORESPJ[6];  //Si el agua es de otro color, asigna el color seleccionado al jugador.
-                    }                            
-                    break;
-                case 8:
-                    System.out.println("Has elegido el color Negro.");
-                    cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
-                    if (colorPo==COLORESPOLICIA[7]) {//Comprueba que el agua no tenga ese color.
-                        System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-                    }else{
-                        colorPj=COLORESPJ[7];     //Si el agua es de otro color, asigna el color seleccionado al jugador.                         
-                    }
-                    break;
-                case 9:
-                    System.out.println("Has elegido salir. Volviendo al menú de aspecto."); 
-                    cambiarAspectoPJ=false;//CambiarAspecto a false para que no colapse.
+                case 3: 
+                    System.out.println("Has elegido salir. Volviendo al menú principal.");
+                    salirAspecto=true;//sale al menú principal.
                     break;
                 default:
-                    System.out.println("Has escrito un número que no coincide con los de selección. Prueba otra vez.");
+                    //No pongo nada debido a que las validaciones correspondientes estan hechas.
                     break;
-                }
-                } catch (NumberFormatException e) {
-                    System.out.println("No has escrito un número. Prueba otra vez");
-                }
+            }
 
-            } else if (cambiarAspectoW==true) {
-                try{ //Prueba que escribas un número.
-                    //Muestra las opciones de colores.
-                    System.out.println("""
-                        Elige un color para el fondo:
-                        \t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir
-                            """);
-                    eleccioncolorPo = Integer.parseInt(bf.readLine()); //Lee el color elegido.
-                    switch (eleccioncolorPo) { //selecciona segun el número elegido.
-                        case 1:
-                            System.out.println("Has elegido el color rojo.");
-                            cambiarAspectoW=false; //CambiarAspecto a false para que no colapse.
-                            if (colorPj==COLORESPJ[0]) { //Comprueba que el personaje no tenga ese color
-                                System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                            }else{
-                                colorPo=COLORESPOLICIA[0]; //Si el personaje es de otro color, asigna el color seleccionado al agua.
-                            }
-                            break;
-                        case 2:
-                            System.out.println("Has elegido el color verde.");
-                            cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                            if (colorPj==COLORESPJ[1]) {//Comprueba que el personaje no tenga ese color
-                                System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                            }else{
-                                colorPo=COLORESPOLICIA[1];  //Si el personaje es de otro color, asigna el color seleccionado al agua.
-                            }                          
-                            break;
-                        case 3:
-                            System.out.println("Has elegido el color amarillo.");
-                            cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                            if (colorPj==COLORESPJ[2]) {//Comprueba que el personaje no tenga ese color
-                                System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                            }else{
-                                colorPo=COLORESPOLICIA[2]; //Si el personaje es de otro color, asigna el color seleccionado al agua.       
-                            }                      
-                            break;
-                        case 4:
-                            System.out.println("Has elegido el color azul.");
-                            cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                            if (colorPj==COLORESPJ[3]) {//Comprueba que el personaje no tenga ese color
-                                System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                            }else{
-                                colorPo=COLORESPOLICIA[3];  //Si el personaje es de otro color, asigna el color seleccionado al agua.                        
-                            }
-                            break;
-                        case 5:
-                            System.out.println("Has elegido el color morado.");
-                            cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                            if (colorPj==COLORESPJ[4]) {//Comprueba que el personaje no tenga ese color
-                                System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                            }else{
-                                colorPo=COLORESPOLICIA[4];  //Si el personaje es de otro color, asigna el color seleccionado al agua.                            
-                            }
-                            break;
-                        case 6:
-                            System.out.println("Has elegido el color Cian.");
-                            cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                            if (colorPj==COLORESPJ[5]) {//Comprueba que el personaje no tenga ese color
-                                System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                            }else{
-                                colorPo=COLORESPOLICIA[5];//Si el personaje es de otro color, asigna el color seleccionado al agua.                              
-                            }
-                            break;
-                        case 7:
-                            System.out.println("Has elegido el color Blanco.");
-                            cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                            if (colorPj==COLORESPJ[6]) {//Comprueba que el personaje no tenga ese color
-                                System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                            }else{
-                                colorPo=COLORESPOLICIA[6];//Si el personaje es de otro color, asigna el color seleccionado al agua.  
-                            }                            
-                            break;
-                        case 8:
-                            System.out.println("Has elegido el color Negro.");
-                            cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                            if (colorPj==COLORESPJ[7]) {//Comprueba que el personaje no tenga ese color
-                                System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                            }else{
-                                colorPo=COLORESPOLICIA[7]; //Si el personaje es de otro color, asigna el color seleccionado al agua.                             
-                            }
-                            break;    
-                        case 9:
-                            System.out.println("Has elegido salir. Volviendo al menú principal.");
-                            cambiarAspectoW=false;//CambiarAspecto a false para que no colapse.
-                            break;
-                        default:
-                            System.out.println("Has escrito un número que no coincide con los de selección. Prueba otra vez.");
-                            break;
-                    }
-                } catch (NumberFormatException e) {
-                    System.out.println("No has escrito un número. Prueba otra vez");
-                }
-                }
-        }while (salirAspecto==false);
+
+       }while (salirAspecto==false);
     }
     
     /**
@@ -1221,42 +1344,31 @@ public class WaterRun {
     //Te sacaria en cuanto eligieras algo que te mueva a este menú.
     do{ //Repite hasta que el usuario seleccione salir.
         //Muestra las opciones. (No disponible de momento.)
-        System.out.println("""
-                Este menú aun no esta disponible. Pulse 3 para salir.
-                \t1) Jugar una partida guardada. (Proximamente)
-                \t2) Revisar elecciónes de partida. (Proximamente)
-                \t3) Salir.
-                """);
-        try { //Comprueba que escribas solo números
-            eleccionHistorial=Integer.parseInt(bf.readLine()); //Lee la elección
-            switch (eleccionHistorial) { //Selecciona según haya elegido.
-                case 1:
-                    System.out.println("Ha selecionado \'Jugar partida guardada\', Este menú aun no esta disponible.");
-                    System.out.println("Prueba otra vez");
-
-                    break;
-                case 2:
-                    System.out.println("Ha selecionado \'Revisar elecciónes de partida.\', Este menú aun no esta disponible.");
-                    System.out.println("Prueba otra vez");
-
-                    break;
-                case 3:
-                    System.out.println("Ha selecionado salir. Volviendo al menú principal");
-                    salirHistorial=true; //Vuelve al menú principal.
-                    break;    
-
-                default:
-                    System.out.println("El número seleccionado no corresponde a nada. Prueba otra vez.");
-                    break;
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("No has escrito un número. Prueba otra vez");
+        max = 3;
+        min = 1;
+        opcionMenu = 6;
+        System.out.println(MOSTRARMENUS[opcionMenu]);
+        eleccionHistorial=leerEnteroValidado(bf, min, max); //Lee la elección
+        switch (eleccionHistorial) { //Selecciona según haya elegido.
+            case 1:
+                System.out.println("Ha selecionado \'Jugar partida guardada\', Este menú aun no esta disponible.");
+                break;
+            case 2:
+                System.out.println("Ha selecionado \'Revisar elecciónes de partida.\', Este menú aun no esta disponible.");
+                break;
+            case 3:
+                System.out.println("Ha selecionado salir. Volviendo al menú principal");
+                salirHistorial=true; //Vuelve al menú principal.
+                break;    
+            default:
+                //No pongo nada debido a que las validaciones correspondientes estan hechas.
+                break;
         }
 
     }while (salirHistorial==false);
 
     }
-
+    
     /**
      * Main WaterRun. Llama a bienvendia.
      * @author SDM
@@ -1269,10 +1381,6 @@ public class WaterRun {
         
         //Llamamos al metodo bienvenida y le enviamos nuestro bufferedReader
         bienvenida(bf);
-
-
-
-        
     }
 }
     
