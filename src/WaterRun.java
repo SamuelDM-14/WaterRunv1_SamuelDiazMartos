@@ -7,6 +7,12 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import Utilidades.Utilidades;
+import Clases.Escapista;
+import Clases.GestionPreguntas;
+import Clases.Policia;
+import Clases.Pregunta;
 /**
  * Clase WaterRun.
  * Maneja todo el juego en sí. 
@@ -110,7 +116,7 @@ public class WaterRun {
             opcionMenu = 0;
             System.out.println(MOSTRARMENUS[opcionMenu]);
     
-            eleccion=leerEnteroValidado(bf, min, max); //Lee la entrada.
+            eleccion=Utilidades.leerEnteroValidado(min, max); //Lee la entrada.
     
             switch (eleccion) { 
     
@@ -144,64 +150,9 @@ public class WaterRun {
     }
 
 
-    /**
-     * Lee un número entero, validando que esté entre min y max.
-     * Si el usuario escribe algo inválido (caracteres no numéricos o número fuera de rango),
-     * el método vuelve a pedirlo.
-     *
-     * @param bf  el BufferedReader para leer la entrada
-     * @param min límite inferior aceptado (inclusive)
-     * @param max límite superior aceptado (inclusive)
-     * @return el número entero válido que el usuario introduzca
-     ****/
-    private static int leerEnteroValidado(BufferedReader bf, int min, int max) throws IOException {
-        boolean valido = false;
-        int valor = 0; // variable para guardar la lectura
-        while (!valido) {
-            try {
-                String linea = bf.readLine(); // leer texto
-                valor = Integer.parseInt(linea); // convertir a int
-                if (valor >= min && valor <= max) {
-                    valido = true;  // se cumple la condición → marcamos como válido
-                } else {
-                    System.out.println("Error: Debes escribir un número entre " + min + " y " + max + ". Inténtalo de nuevo.");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Error: No has escrito un número válido. Inténtalo de nuevo.");
-            }
-        }
-        // Cuando salgamos del while, 'valido == true', y 'valor' está en rango
-        return valor;
-    }
+    
 
-    /**
-     * Lee un único caracter desde teclado ('S' o 'N'), validando que no sea otro.
-     * @param bf BufferedReader para leer de teclado
-     * @return 'S' o 'N' en mayúscula
-     * @throws IOException
-     */
-    private static char leerSN(BufferedReader bf) throws IOException {
-        boolean valido = false;
-        char c = ' '; // variable donde guardaremos la elección
-        do { //Repite hasta que escribas el caracter correcto.
-
-            String caracter = bf.readLine(); //Guarda la respuesta en un string.
-
-            if (caracter.length()==1) { //Comprueba que el string sea de 1 caracter.
-                c = caracter.charAt(0); //combierte el string en caracter y lo guarda en re1
-                c = Character.toUpperCase(c); //pasa el re1 a mayusculas y lo guarda de nuevo en re1
-                if (c == 'S' || c == 'N'){
-                    valido = true;
-                } else {
-                    System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
-                }
-            } else {
-                System.out.println("No has escrito un único caracter. Prueba otra vez.");
-            }
-        } while (!valido);
-
-        return c;
-    }
+    
 
     /**
      * Jugar. Muestra el juego, el cual va sacando preguntas y respuestas y comprobandolas.
@@ -229,7 +180,7 @@ public class WaterRun {
         do{ //Repite hasta que el jugador indique que quiera salir. Más adelante, cuando se
             //pase un nivel, le dará la opcion de guardar y de salir. 
             System.out.println(MOSTRARMENUS[opcionMenu]); //Explicación de como funcionan las respuestas y como funciona el juego.
-            re1=leerSN(bf);
+            re1=Utilidades.leerSN();
 
             if (re1=='S') {
                 jugar=true; //Variable para entrar al juego                
@@ -239,6 +190,7 @@ public class WaterRun {
             }else{
                 System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
             }  
+                                
                 if (jugar==true) { //Inicio del juego
                     Escapista escapista = new Escapista(colorPj);
                     Policia policia = new Policia(colorPo, 5);
@@ -284,7 +236,7 @@ public class WaterRun {
                                     System.out.println((i + 1) + ") " + opciones[i]);
                                 }
                             }
-                            reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                            reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                             respuestaElegida = opciones[reJugador - 1];
                             if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                 reAcertadas=reAcertadas+1;
@@ -329,7 +281,7 @@ public class WaterRun {
                                             System.out.println((i + 1) + ") " + opciones[i]);
                                         }
                                     }
-                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                     respuestaElegida = opciones[reJugador - 1];
                                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         reAcertadas=reAcertadas+1;
@@ -366,7 +318,7 @@ public class WaterRun {
                                                 System.out.println((i + 1) + ") " + opciones[i]);
                                             }
                                         }
-                                        reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                        reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                         respuestaElegida = opciones[reJugador - 1];
                                         if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                                             System.out.println("¡Has acertado! Tu personaje empieza a abrir la cerradura.");
@@ -416,7 +368,7 @@ public class WaterRun {
                                                 System.out.println((i + 1) + ") " + opciones[i]);
                                             }
                                         }
-                                        reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                        reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                         respuestaElegida = opciones[reJugador - 1];
                                         if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                             System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
@@ -460,7 +412,7 @@ public class WaterRun {
                                             System.out.println((i + 1) + ") " + opciones[i]);
                                         }
                                     }
-                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                     respuestaElegida = opciones[reJugador - 1];
                                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         reAcertadas=reAcertadas+1;
@@ -498,7 +450,7 @@ public class WaterRun {
                                                     System.out.println((i + 1) + ") " + opciones[i]);
                                                 }
                                             }
-                                            reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                            reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                             respuestaElegida = opciones[reJugador - 1];
                                             if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                                 System.out.println("¡Has acertado! Tu personaje empieza a abrir la cerradura.");
@@ -540,7 +492,7 @@ public class WaterRun {
                                                     System.out.println((i + 1) + ") " + opciones[i]);
                                                 }
                                             }
-                                            reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                            reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                             respuestaElegida = opciones[reJugador - 1];
                                             if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                                 System.out.println("¡Has acertado! Tu personaje ha huido.");
@@ -587,7 +539,7 @@ public class WaterRun {
                                                 System.out.println((i + 1) + ") " + opciones[i]);
                                             }
                                         }
-                                        reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                        reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                         respuestaElegida = opciones[reJugador - 1];
                                         if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                             System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
@@ -642,7 +594,7 @@ public class WaterRun {
                                         System.out.println((i + 1) + ") " + opciones[i]);
                                     }
                                 }
-                                reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                 respuestaElegida = opciones[reJugador - 1];
                                 if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                     reAcertadas=reAcertadas+1;
@@ -679,7 +631,7 @@ public class WaterRun {
                                             System.out.println((i + 1) + ") " + opciones[i]);
                                         }
                                     }
-                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                     respuestaElegida = opciones[reJugador - 1];
                                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
@@ -730,7 +682,7 @@ public class WaterRun {
                                             System.out.println((i + 1) + ") " + opciones[i]);
                                         }
                                     }
-                                    reJugador = leerEnteroValidado(bf, min, max);
+                                    reJugador = Utilidades.leerEnteroValidado(min, max);
                                     respuestaElegida = opciones[reJugador - 1];
                                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
@@ -785,7 +737,7 @@ public class WaterRun {
                                     System.out.println((i + 1) + ") " + opciones[i]);
                                 }
                             }
-                            reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                            reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                             respuestaElegida = opciones[reJugador - 1];
                             if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                 reAcertadas=reAcertadas+1;
@@ -822,7 +774,7 @@ public class WaterRun {
                                         System.out.println((i + 1) + ") " + opciones[i]);
                                     }
                                 }
-                                reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                 respuestaElegida = opciones[reJugador - 1];
                                 if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                     reAcertadas=reAcertadas+1;
@@ -859,7 +811,7 @@ public class WaterRun {
                                             System.out.println((i + 1) + ") " + opciones[i]);
                                         }
                                     }
-                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                     respuestaElegida = opciones[reJugador - 1];
                                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         p = gp.getPregunta(dificultad, enunciado);
@@ -905,7 +857,7 @@ public class WaterRun {
                                             System.out.println((i + 1) + ") " + opciones[i]);
                                         }
                                     }
-                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                     respuestaElegida = opciones[reJugador - 1];
                                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
@@ -958,7 +910,7 @@ public class WaterRun {
                                         System.out.println((i + 1) + ") " + opciones[i]);
                                     }
                                 }
-                                reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                 respuestaElegida = opciones[reJugador - 1];
                                 if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                     reAcertadas=reAcertadas+1;
@@ -995,7 +947,7 @@ public class WaterRun {
                                             System.out.println((i + 1) + ") " + opciones[i]);
                                         }
                                     }
-                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                     respuestaElegida = opciones[reJugador - 1];
                                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
@@ -1046,7 +998,7 @@ public class WaterRun {
                                             System.out.println((i + 1) + ") " + opciones[i]);
                                         }
                                     }
-                                    reJugador = leerEnteroValidado(bf, min, max); //Comprueba la respuesta 1
+                                    reJugador = Utilidades.leerEnteroValidado(min, max); //Comprueba la respuesta 1
                                     respuestaElegida = opciones[reJugador - 1];
                                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) { 
                                         System.out.println("¡Has acertado! Tu personaje empieza a abir la cerradura.");
@@ -1085,17 +1037,21 @@ public class WaterRun {
         max=3;
         min=0;
         boolean salirDificultad = false;
+        int lecturaDif = 0;
         do{
                 System.out.println(MOSTRARMENUS[opcionMenu]);
-                dificultad=leerEnteroValidado(bf, min, max);
-                switch (dificultad) {
+                lecturaDif=Utilidades.leerEnteroValidado(min, max);
+                switch (lecturaDif) {
                     case 0:
+                        dificultad = lecturaDif;
                         System.out.println("Has elegido la dificultad \"FÁCIL\".");
                         break;
                     case 1:
+                        dificultad = lecturaDif;
                         System.out.println("Has elegido la dificultad \"MEDIA\".");
                         break;
                     case 2:
+                        dificultad = lecturaDif;
                         System.out.println("Has elegido la dificultad \"DIFÍCIL\".");
                         break;   
                     case 3:
@@ -1120,7 +1076,7 @@ public class WaterRun {
         //Muestra las opciones de colores.
         System.out.println("Has elegido cambiaR el aspecto de tu personaje.");
         System.out.println(MOSTRARMENUS[opcionMenu]);
-        eleccionColorPJ = leerEnteroValidado(bf, min, max); //Lee la elección del color
+        eleccionColorPJ = Utilidades.leerEnteroValidado(min, max); //Lee la elección del color
         switch (eleccionColorPJ) { //Según la elección se mete en el case correspondiente.
             case 1:
             System.out.println("Has elegido el color rojo.");
@@ -1208,7 +1164,7 @@ public class WaterRun {
             //Muestra las opciones de colores.
             System.out.println("Has elegido cambiar el aspecto del Policia.");
             System.out.println(MOSTRARMENUS[opcionMenu]);
-            eleccioncolorPo = leerEnteroValidado(bf, min, max); //Lee el color elegido.
+            eleccioncolorPo = Utilidades.leerEnteroValidado(min, max); //Lee el color elegido.
             switch (eleccioncolorPo) { //selecciona segun el número elegido.
                 case 1:
                     System.out.println("Has elegido el color rojo.");
@@ -1306,7 +1262,7 @@ public class WaterRun {
             //Muestra opciones de aspecto.
             System.out.println(MOSTRARMENUS[opcionMenu]);
 
-            reAspecto = leerEnteroValidado(bf, min, max); //Lee respuesta y la guarda en reAspecto
+            reAspecto = Utilidades.leerEnteroValidado(min, max); //Lee respuesta y la guarda en reAspecto
 
             switch (reAspecto) {
                 case 1:
@@ -1348,7 +1304,7 @@ public class WaterRun {
         min = 1;
         opcionMenu = 6;
         System.out.println(MOSTRARMENUS[opcionMenu]);
-        eleccionHistorial=leerEnteroValidado(bf, min, max); //Lee la elección
+        eleccionHistorial=Utilidades.leerEnteroValidado(min, max); //Lee la elección
         switch (eleccionHistorial) { //Selecciona según haya elegido.
             case 1:
                 System.out.println("Ha selecionado \'Jugar partida guardada\', Este menú aun no esta disponible.");

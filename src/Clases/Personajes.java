@@ -1,3 +1,4 @@
+package Clases;
 /**
  * Clase abstracta que representa a un personaje del juego.
  * Contiene un color y define una acción básica.

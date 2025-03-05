@@ -1,3 +1,4 @@
+package Clases;
 /**
  * Clase que gestiona las preguntas del juego separadas por dificultad,
  * usando un array bidimensional de objetos Pregunta.
@@ -33,7 +34,7 @@ public class GestionPreguntas {
 
         // Pregunta 1:
         String[] opcionesF2 = {"Verdadero", "Falso", " 6", ""};
-        preguntas[0][1] = new Pregunta("La palabra 'QUESO' tiene 5 letras?", opcionesF2, "verdadero");
+        preguntas[0][1] = new Pregunta("La palabra 'QUESO' tiene 5 letras?", opcionesF2, "Verdadero");
 
         // Pregunta 2:
         String[] opcionesF3 = {"10", "20", "25", "0"};
