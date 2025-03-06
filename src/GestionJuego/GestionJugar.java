@@ -136,7 +136,20 @@ public class GestionJugar {
                 }
         }while (salirDificultad==false);
     }
-    
+
+    /**
+     * Gestiona la eleccion de los colores comprobando que no estes eligiendo el mismo color
+     * @param eleccionColor
+     */
+    private static void gestorColor(int eleccionColor){
+        eleccionColor=eleccionColor-1;
+        if (colorPo==COLORESPOLICIA[eleccionColor]) {//Comprueba que el agua no tenga ese color.
+            System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
+        }else{
+            colorPj=COLORESPJ[eleccionColor];     //Si el agua es de otro color, asigna el color seleccionado al jugador.   
+        }  
+    }
+
     /**
      * cambiarAspectoPJ. Te permite elegir el color del personaje.
      * @param bf
@@ -155,67 +168,35 @@ public class GestionJugar {
         switch (eleccionColorPJ) { //Según la elección se mete en el case correspondiente.
             case 1:
             System.out.println("Has elegido el color rojo.");
-            if (colorPo==COLORESPOLICIA[0]) { //Comprueba que el agua no tenga ese color.
-                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-            }else{
-                colorPj=COLORESPJ[0]; //Si el agua es de otro color, asigna el color seleccionado al jugador.
-            }
+            gestorColor(eleccionColorPJ);
             break;
         case 2:
             System.out.println("Has elegido el color verde.");
-            if (colorPo==COLORESPOLICIA[1]) {//Comprueba que el agua no tenga ese color.
-                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-            }else{
-                colorPj=COLORESPJ[1];  //Si el agua es de otro color, asigna el color seleccionado al jugador.
-            }                          
+            gestorColor(eleccionColorPJ);                        
             break;
         case 3:
             System.out.println("Has elegido el color amarillo.");
-            if (colorPo==COLORESPOLICIA[2]) {//Comprueba que el agua no tenga ese color.
-                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-            }else{
-                colorPj=COLORESPJ[2];     //Si el agua es de otro color, asigna el color seleccionado al jugador.   
-            }                      
+            gestorColor(eleccionColorPJ);                    
             break;
         case 4:
             System.out.println("Has elegido el color azul.");
-            if (colorPo==COLORESPOLICIA[3]) {//Comprueba que el agua no tenga ese color.
-                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-            }else{
-                colorPj=COLORESPJ[3];         //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
-            }
+            gestorColor(eleccionColorPJ);
             break;
         case 5:
             System.out.println("Has elegido el color morado.");
-            if (colorPo==COLORESPOLICIA[4]) {//Comprueba que el agua no tenga ese color.
-                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-            }else{
-                colorPj=COLORESPJ[4];       //Si el agua es de otro color, asigna el color seleccionado al jugador.                       
-            }
+            gestorColor(eleccionColorPJ);
             break;
         case 6:
             System.out.println("Has elegido el color Cian.");
-            if (colorPo==COLORESPOLICIA[5]) {//Comprueba que el agua no tenga ese color.
-                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-            }else{
-                colorPj=COLORESPJ[5];             //Si el agua es de otro color, asigna el color seleccionado al jugador.                 
-            }
+            gestorColor(eleccionColorPJ);
             break;
         case 7:
             System.out.println("Has elegido el color Blanco.");
-            if (colorPo==COLORESPOLICIA[6]) {//Comprueba que el agua no tenga ese color.
-                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-            }else{
-                colorPj=COLORESPJ[6];  //Si el agua es de otro color, asigna el color seleccionado al jugador.
-            }                            
+            gestorColor(eleccionColorPJ);                          
             break;
         case 8:
             System.out.println("Has elegido el color Negro.");
-            if (colorPo==COLORESPOLICIA[7]) {//Comprueba que el agua no tenga ese color.
-                System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
-            }else{
-                colorPj=COLORESPJ[7];     //Si el agua es de otro color, asigna el color seleccionado al jugador.                         
-            }
+            gestorColor(eleccionColorPJ);
             break;
         case 9:
             System.out.println("Has elegido salir. Volviendo al menú de aspecto."); 
@@ -243,67 +224,35 @@ public class GestionJugar {
             switch (eleccioncolorPo) { //selecciona segun el número elegido.
                 case 1:
                     System.out.println("Has elegido el color rojo.");
-                    if (colorPj==COLORESPJ[0]) { //Comprueba que el personaje no tenga ese color
-                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                    }else{
-                        colorPo=COLORESPOLICIA[0]; //Si el personaje es de otro color, asigna el color seleccionado al agua.
-                    }
+                    gestorColor(eleccioncolorPo);
                     break;
                 case 2:
                     System.out.println("Has elegido el color verde.");                    
-                    if (colorPj==COLORESPJ[1]) {//Comprueba que el personaje no tenga ese color
-                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                    }else{
-                        colorPo=COLORESPOLICIA[1];  //Si el personaje es de otro color, asigna el color seleccionado al agua.
-                    }                          
+                    gestorColor(eleccioncolorPo);                       
                     break;
                 case 3:
                     System.out.println("Has elegido el color amarillo.");                    
-                    if (colorPj==COLORESPJ[2]) {//Comprueba que el personaje no tenga ese color
-                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                    }else{
-                        colorPo=COLORESPOLICIA[2]; //Si el personaje es de otro color, asigna el color seleccionado al agua.       
-                    }                      
+                    gestorColor(eleccioncolorPo);                      
                     break;
                 case 4:
                     System.out.println("Has elegido el color azul.");                    
-                    if (colorPj==COLORESPJ[3]) {//Comprueba que el personaje no tenga ese color
-                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                    }else{
-                        colorPo=COLORESPOLICIA[3];  //Si el personaje es de otro color, asigna el color seleccionado al agua.                        
-                    }
+                    gestorColor(eleccioncolorPo);
                     break;
                 case 5:
                     System.out.println("Has elegido el color morado.");                    
-                    if (colorPj==COLORESPJ[4]) {//Comprueba que el personaje no tenga ese color
-                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                    }else{
-                        colorPo=COLORESPOLICIA[4];  //Si el personaje es de otro color, asigna el color seleccionado al agua.                            
-                    }
+                    gestorColor(eleccioncolorPo);
                     break;
                 case 6:
                     System.out.println("Has elegido el color Cian.");                    
-                    if (colorPj==COLORESPJ[5]) {//Comprueba que el personaje no tenga ese color
-                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                    }else{
-                        colorPo=COLORESPOLICIA[5];//Si el personaje es de otro color, asigna el color seleccionado al agua.                              
-                    }
+                    gestorColor(eleccioncolorPo);
                     break;
                 case 7:
                     System.out.println("Has elegido el color Blanco.");                    
-                    if (colorPj==COLORESPJ[6]) {//Comprueba que el personaje no tenga ese color
-                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                    }else{
-                        colorPo=COLORESPOLICIA[6];//Si el personaje es de otro color, asigna el color seleccionado al agua.  
-                    }                            
+                    gestorColor(eleccioncolorPo);                         
                     break;
                 case 8:
                     System.out.println("Has elegido el color Negro.");                    
-                    if (colorPj==COLORESPJ[7]) {//Comprueba que el personaje no tenga ese color
-                        System.out.println("No se puede hacer esta selección de color. El agua no puede ser del mismo color que tu personaje.");
-                    }else{
-                        colorPo=COLORESPOLICIA[7]; //Si el personaje es de otro color, asigna el color seleccionado al agua.                             
-                    }
+                    gestorColor(eleccioncolorPo);
                     break;    
                 case 9:
                     System.out.println("Has elegido salir. Volviendo al menú principal.");                    
