@@ -9,6 +9,72 @@ import Clases.Pregunta;
 import Utilidades.Utilidades;
 
 public class Jugar {
+
+
+    private static String[] gestorPantallas(String colorPj, String COLOR_RESET){
+        String pantalla1="""
+        █████████████████████████████████████████████████████     
+        █                                                   █
+        ██                                                  █
+                                                           | |
+                                                           | | 
+        ██                                                 | |
+        █                                                   █
+        █                                         ███████████
+        █                                         ███████████
+        █                                         ███████████                
+        █                                         ███████████
+        █                                         ███████████
+        █                                         ███████████
+        █                               █████████████████████
+        █                               █████████████████████
+        █                               █████████████████████
+        █"""  + colorPj + """
+            \t  o  """ + COLOR_RESET + """
+                             █████████████████████
+        █""" + colorPj + """
+            \t /L """ + COLOR_RESET + """
+                             █████████████████████
+        █""" + colorPj + """
+            \t | """ + COLOR_RESET + """
+                          █████████████████████
+    █████████████████████████████████████████████████████  
+            """;
+
+        String pantalla2 ="""
+            █████████████████████████████████████████████████████     
+            █                                                   █
+            ██                                                  █
+                                                               | |
+                                                        """ + colorPj + """
+                                                        \t\t\t\t\t     o""" + COLOR_RESET  + """
+            \t   | |
+            ██                                         """ + colorPj + """
+                                                        \t\t\t\t\t    /L""" + COLOR_RESET  + """
+                 | |
+            █                                          """ + colorPj + """
+                                                        \t\t\t\t\t    |""" + COLOR_RESET  + """
+            \t    █
+            █                                         ███████████
+            █                                         ███████████
+            █                                         ███████████                
+            █                                         ███████████
+            █                                         ███████████
+            █                                         ███████████
+            █                               █████████████████████
+            █                               █████████████████████
+            █                               █████████████████████
+            █                               █████████████████████
+            █                               █████████████████████
+            █                               █████████████████████
+            █████████████████████████████████████████████████████
+                """;
+        String[] pantallas = {pantalla1, pantalla2 };
+        return pantallas;
+    }
+
+
+
     /**
      * Jugar. Muestra el juego, el cual va sacando preguntas y respuestas y comprobandolas.
      * @author SDM
@@ -51,40 +117,14 @@ public class Jugar {
                     Policia policia = new Policia(colorPo, 5);
                     GestionPreguntas gp = new GestionPreguntas();
                     Pregunta p = gp.getPregunta(dificultad, enunciado);
-
+                    String[] pantallas = gestorPantallas(colorPj, COLOR_RESET);
+                    int mostrarPantalla = 0;
+                    String pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
                     if (dificultad==2) {
                         do{
-                            opciones=p.getOpciones();    
-
+                            opciones=p.getOpciones();   
                             reAcertadas=0;
-                            System.out.printf("""
-                                █████████████████████████████████████████████████████     
-                                █                                                   █
-                                ██                                                  █
-                                                                                   | |
-                                                                                   | | 
-                                ██                                                 | |
-                                █                                                   █
-                                █                                         ███████████
-                                █                                         ███████████
-                                █                                         ███████████                
-                                █                                         ███████████
-                                █                                         ███████████
-                                █                                         ███████████
-                                █                               █████████████████████
-                                █                               █████████████████████
-                                █                               █████████████████████
-                                █"""  + colorPj +     """
-                                    \t  o  """ + COLOR_RESET + """
-                                                     █████████████████████
-                                █""" + colorPj + """
-                                    \t /L """ + COLOR_RESET + """
-                                                     █████████████████████
-                                █""" + colorPj + """
-                                    \t | """ + COLOR_RESET + """
-                                                  █████████████████████
-                            █████████████████████████████████████████████████████          
-                            """); //Mas adelante, incluido el color del personaje y del agua
+                            System.out.println(pantalla);
                             System.out.println(p.getEnunciado());
                             for(int i = 0; i < opciones.length; i++){
                                 if (!opciones[i].isEmpty()) {
@@ -100,35 +140,8 @@ public class Jugar {
                                 opciones=p.getOpciones();  
                                 if (policia.disparar(escapista, dificultad)) {
                                     System.out.println("¡OH NO! El policia ha acertado el disparo, el escapista permanece inmovil 1 turno.");
-
-                                    System.out.printf("""
-                                    █████████████████████████████████████████████████████     
-                                    █                                                   █
-                                    ██                                                  █
-                                                                                       | |
-                                                                                       | | 
-                                    ██                                                 | |
-                                    █                                                   █
-                                    █                                         ███████████
-                                    █                                         ███████████
-                                    █                                         ███████████                
-                                    █                                         ███████████
-                                    █                                         ███████████
-                                    █                                         ███████████
-                                    █                               █████████████████████
-                                    █                               █████████████████████
-                                    █                               █████████████████████
-                                    █"""  + colorPj +     """
-                                        \t  o  """ + COLOR_RESET + """
-                                                        █████████████████████
-                                    █""" + colorPj + """
-                                        \t /L """ + COLOR_RESET + """
-                                                        █████████████████████
-                                    █""" + colorPj + """
-                                        \t | """ + COLOR_RESET + """
-                                                    █████████████████████
-                                    █████████████████████████████████████████████████████          
-                                    """);
+                                    pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                    System.out.println(pantalla);
 
                                     System.out.println(p.getEnunciado());
                                     for(int i = 0; i < opciones.length; i++){
@@ -145,26 +158,7 @@ public class Jugar {
                                         opciones=p.getOpciones(); 
                                         System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
                                         System.out.printf("""
-                                            █████████████████████████████████████████████████████     
-                                            █                                                   █
-                                            ██                                                  █
-                                                                                               | |
-                                                                                        o      | | 
-                                            ██                                         /L      | |
-                                            █                                          |        █
-                                            █                                         ███████████
-                                            █                                         ███████████
-                                            █                                         ███████████                
-                                            █                                         ███████████
-                                            █                                         ███████████
-                                            █                                         ███████████
-                                            █                               █████████████████████
-                                            █                               █████████████████████
-                                            █                               █████████████████████
-                                            █                               █████████████████████
-                                            █                               █████████████████████
-                                            █                               █████████████████████
-                                            █████████████████████████████████████████████████████
+
             
                                         """);
                                         System.out.println(p.getEnunciado());
@@ -237,30 +231,11 @@ public class Jugar {
                                     }
 
                                 } else {  
+                                    mostrarPantalla++;
                                     System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
-                                    System.out.printf("""
-                                        █████████████████████████████████████████████████████     
-                                        █                                                   █
-                                        ██                                                  █
-                                                                                           | |
-                                                                                    o      | | 
-                                        ██                                         /L      | |
-                                        █                                          |        █
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████                
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █████████████████████████████████████████████████████
-        
-                                    """);
+                                    pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                    System.out.println(pantalla);
+
                                     System.out.println(p.getEnunciado());
                                     for(int i = 0; i < opciones.length; i++){
                                         if (!opciones[i].isEmpty()) {
@@ -276,29 +251,8 @@ public class Jugar {
                                         opciones=p.getOpciones(); 
                                         if (policia.disparar(escapista, dificultad)) {
                                             System.out.println("¡OH NO! El policia ha acertado el disparo, el escapista permanece inmovil 1 turno.");
-                                            System.out.printf("""
-                                                █████████████████████████████████████████████████████     
-                                                █                                                   █
-                                                ██                                                  █
-                                                                                                   | |
-                                                                                            o      | | 
-                                                ██                                         /L      | |
-                                                █                                          |        █
-                                                █                                         ███████████
-                                                █                                         ███████████
-                                                █                                         ███████████                
-                                                █                                         ███████████
-                                                █                                         ███████████
-                                                █                                         ███████████
-                                                █                               █████████████████████
-                                                █                               █████████████████████
-                                                █                               █████████████████████
-                                                █                               █████████████████████
-                                                █                               █████████████████████
-                                                █                               █████████████████████
-                                                █████████████████████████████████████████████████████
-                
-                                            """);
+                                            pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                            System.out.println(pantalla);
                                             System.out.println(p.getEnunciado());
                                             for(int i = 0; i < opciones.length; i++){
                                                 if (!opciones[i].isEmpty()) {
@@ -317,30 +271,8 @@ public class Jugar {
                                                 salirJuego=true; //Te saca del juego tras perder
                                             }
                                         } else { 
-                                            System.out.println("¡Has acertado! Tu personaje empieza a abrir la cerradura.");
-                                            System.out.printf("""
-                                                █████████████████████████████████████████████████████     
-                                                █                                                   █
-                                                ██                                                  █
-                                                                                                | |
-                                                                                            o      | | 
-                                                ██                                         /L      | |
-                                                █                                          |        █
-                                                █                                         ███████████
-                                                █                                         ███████████
-                                                █                                         ███████████                
-                                                █                                         ███████████
-                                                █                                         ███████████
-                                                █                                         ███████████
-                                                █                               █████████████████████
-                                                █                               █████████████████████
-                                                █                               █████████████████████
-                                                █                               █████████████████████
-                                                █                               █████████████████████
-                                                █                               █████████████████████
-                                                █████████████████████████████████████████████████████
-            
-                                            """);
+                                            pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                            System.out.println(pantalla);
                                             System.out.println(p.getEnunciado());
                                             for(int i = 0; i < opciones.length; i++){
                                                 if (!opciones[i].isEmpty()) {
@@ -365,29 +297,8 @@ public class Jugar {
                                         p = gp.getPregunta(dificultad, enunciado);
                                         opciones=p.getOpciones(); 
                                         System.out.println("Has fallado.");
-                                        System.out.printf("""
-                                            █████████████████████████████████████████████████████     
-                                            █                                                   █
-                                            ██                                                  █
-                                                                                               | |
-                                                                                        o      | | 
-                                            ██                                         /L      | |
-                                            █                                          |        █
-                                            █                                         ███████████
-                                            █                                         ███████████
-                                            █                                         ███████████                
-                                            █                                         ███████████
-                                            █                                         ███████████
-                                            █                                         ███████████
-                                            █                               █████████████████████
-                                            █                               █████████████████████
-                                            █                               █████████████████████
-                                            █                               █████████████████████
-                                            █                               █████████████████████
-                                            █                               █████████████████████
-                                            █████████████████████████████████████████████████████
-            
-                                        """);
+                                        pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                        System.out.println(pantalla);
                                         System.out.println(p.getEnunciado());
                                         for(int i = 0; i < opciones.length; i++){
                                             if (!opciones[i].isEmpty()) {
@@ -411,38 +322,10 @@ public class Jugar {
                             }else {
                                 enunciado++;
                                 p = gp.getPregunta(dificultad, enunciado);
-                                opciones=p.getOpciones(); 
-                                System.out.printf("""
-                                    Has fallado.\n
-                                        
-                                    █████████████████████████████████████████████████████     
-                                    █                                                   █
-                                    ██                                                  █
-                                                                                       | |
-                                                                                       | | 
-                                    ██                                                 | |
-                                    █                                                   █
-                                    █                                         ███████████
-                                    █                                         ███████████
-                                    █                                         ███████████                
-                                    █                                         ███████████
-                                    █                                         ███████████
-                                    █                                         ███████████
-                                    █                               █████████████████████
-                                    █                               █████████████████████
-                                    █                               █████████████████████
-                                    █"""  + colorPj +     """
-                                            \t  o  """ + COLOR_RESET + """
-                                                         █████████████████████
-                                    █""" + colorPj + """
-                                            \t /L """ + COLOR_RESET + """
-                                                         █████████████████████
-                                    █""" + colorPj + """
-                                            \t | """ + COLOR_RESET + """
-                                                      █████████████████████
-                                █████████████████████████████████████████████████████      
-    
-                                """);
+                                opciones=p.getOpciones();
+                                System.out.println("Has fallado."); 
+                                pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                System.out.println(pantalla);
                                 System.out.println(p.getEnunciado());
                                 for(int i = 0; i < opciones.length; i++){
                                     if (!opciones[i].isEmpty()) {
@@ -457,29 +340,9 @@ public class Jugar {
                                     p = gp.getPregunta(dificultad, enunciado);
                                     opciones=p.getOpciones(); 
                                     System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
-                                    System.out.printf("""
-                                        █████████████████████████████████████████████████████     
-                                        █                                                   █
-                                        ██                                                  █
-                                                                                           | |
-                                                                                    o      | | 
-                                        ██                                         /L      | |
-                                        █                                          |        █
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████                
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █████████████████████████████████████████████████████
-    
-                                    """);
+                                    mostrarPantalla++;
+                                    pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                    System.out.println(pantalla);
                                     System.out.println(p.getEnunciado());
                                     for(int i = 0; i < opciones.length; i++){
                                         if (!opciones[i].isEmpty()) {
@@ -502,35 +365,8 @@ public class Jugar {
                                     p = gp.getPregunta(dificultad, enunciado);
                                     opciones=p.getOpciones(); 
                                     System.out.println("Has fallado.");
-                                    System.out.printf("""
-                                        █████████████████████████████████████████████████████     
-                                        █                                                   █
-                                        ██                                                  █
-                                                                                           | |
-                                                                                           | | 
-                                        ██                                                 | |
-                                        █                                                   █
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████                
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █"""  + colorPj +     """
-                                                \t  o  """ + COLOR_RESET + """
-                                                            █████████████████████
-                                        █""" + colorPj + """
-                                                \t /L """ + COLOR_RESET + """
-                                                            █████████████████████
-                                        █""" + colorPj + """
-                                                \t | """ + COLOR_RESET + """
-                                                                █████████████████████
-                                        █████████████████████████████████████████████████████      
-    
-                                    """);
+                                    pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                    System.out.println(pantalla);
                                     System.out.println(p.getEnunciado());
                                     for(int i = 0; i < opciones.length; i++){
                                         if (!opciones[i].isEmpty()) {
@@ -558,34 +394,8 @@ public class Jugar {
                         opciones=p.getOpciones();
                         do{
                             reAcertadas=0;
-                            System.out.printf("""
-                                █████████████████████████████████████████████████████     
-                                █                                                   █
-                                ██                                                  █
-                                                                                   | |
-                                                                                   | | 
-                                ██                                                 | |
-                                █                                                   █
-                                █                                         ███████████
-                                █                                         ███████████
-                                █                                         ███████████                
-                                █                                         ███████████
-                                █                                         ███████████
-                                █                                         ███████████
-                                █                               █████████████████████
-                                █                               █████████████████████
-                                █                               █████████████████████
-                                █"""  + colorPj +     """
-                                    \t  o  """ + COLOR_RESET + """
-                                                     █████████████████████
-                                █""" + colorPj + """
-                                    \t /L """ + COLOR_RESET + """
-                                                     █████████████████████
-                                █""" + colorPj + """
-                                    \t | """ + COLOR_RESET + """
-                                                  █████████████████████
-                            █████████████████████████████████████████████████████          
-                            """); //Mas adelante, incluido el color del personaje y del agua
+                            pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                            System.out.println(pantalla);
                             System.out.println(p.getEnunciado());
                             for(int i = 0; i < opciones.length; i++){
                                 if (!opciones[i].isEmpty()) {
@@ -600,29 +410,9 @@ public class Jugar {
                                 p = gp.getPregunta(dificultad, enunciado);
                                 opciones=p.getOpciones(); 
                                 System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
-                                System.out.printf("""
-                                    █████████████████████████████████████████████████████     
-                                    █                                                   █
-                                    ██                                                  █
-                                                                                       | |
-                                                                                o      | | 
-                                    ██                                         /L      | |
-                                    █                                          |        █
-                                    █                                         ███████████
-                                    █                                         ███████████
-                                    █                                         ███████████                
-                                    █                                         ███████████
-                                    █                                         ███████████
-                                    █                                         ███████████
-                                    █                               █████████████████████
-                                    █                               █████████████████████
-                                    █                               █████████████████████
-                                    █                               █████████████████████
-                                    █                               █████████████████████
-                                    █                               █████████████████████
-                                    █████████████████████████████████████████████████████
-    
-                                """);
+                                mostrarPantalla++;
+                                pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                System.out.println(pantalla);
                                 System.out.println(p.getEnunciado());
                                 for(int i = 0; i < opciones.length; i++){
                                     if (!opciones[i].isEmpty()) {
@@ -637,29 +427,8 @@ public class Jugar {
                                     p = gp.getPregunta(dificultad, enunciado);
                                     opciones=p.getOpciones(); 
                                     System.out.println("¡Has acertado! Tu personaje empieza a abrir la cerradura.");
-                                    System.out.printf("""
-                                        █████████████████████████████████████████████████████     
-                                        █                                                   █
-                                        ██                                                  █
-                                                                                           | |
-                                                                                    o      | | 
-                                        ██                                         /L      | |
-                                        █                                          |        █
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████                
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █████████████████████████████████████████████████████
-    
-                                    """);
+                                    pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                    System.out.println(pantalla);
                                     System.out.println(p.getEnunciado());
                                     for(int i = 0; i < opciones.length; i++){
                                         if (!opciones[i].isEmpty()) {
@@ -683,29 +452,8 @@ public class Jugar {
                                     p = gp.getPregunta(dificultad, enunciado);
                                     opciones=p.getOpciones(); 
                                     System.out.println("Has fallado.");
-                                    System.out.printf("""
-                                        █████████████████████████████████████████████████████     
-                                        █                                                   █
-                                        ██                                                  █
-                                                                                           | |
-                                                                                    o      | | 
-                                        ██                                         /L      | |
-                                        █                                          |        █
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████                
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █████████████████████████████████████████████████████
-    
-                                    """);
+                                    pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                    System.out.println(pantalla);
                                     System.out.println(p.getEnunciado());
                                     for(int i = 0; i < opciones.length; i++){
                                         if (!opciones[i].isEmpty()) {
@@ -728,37 +476,9 @@ public class Jugar {
                                 enunciado++;
                                 p = gp.getPregunta(dificultad, enunciado);
                                 opciones=p.getOpciones(); 
-                                System.out.printf("""
-                                    Has fallado.\n
-                                        
-                                    █████████████████████████████████████████████████████     
-                                    █                                                   █
-                                    ██                                                  █
-                                                                                       | |
-                                                                                       | | 
-                                    ██                                                 | |
-                                    █                                                   █
-                                    █                                         ███████████
-                                    █                                         ███████████
-                                    █                                         ███████████                
-                                    █                                         ███████████
-                                    █                                         ███████████
-                                    █                                         ███████████
-                                    █                               █████████████████████
-                                    █                               █████████████████████
-                                    █                               █████████████████████
-                                    █"""  + colorPj +     """
-                                            \t  o  """ + COLOR_RESET + """
-                                                         █████████████████████
-                                    █""" + colorPj + """
-                                            \t /L """ + COLOR_RESET + """
-                                                         █████████████████████
-                                    █""" + colorPj + """
-                                            \t | """ + COLOR_RESET + """
-                                                      █████████████████████
-                                █████████████████████████████████████████████████████      
-    
-                                """);
+                                System.out.println("Has fallado.");
+                                pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                System.out.println(pantalla);
                                 System.out.println(p.getEnunciado());
                                 for(int i = 0; i < opciones.length; i++){
                                     if (!opciones[i].isEmpty()) {
@@ -773,29 +493,9 @@ public class Jugar {
                                     p = gp.getPregunta(dificultad, enunciado);
                                     opciones=p.getOpciones(); 
                                     System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
-                                    System.out.printf("""
-                                        █████████████████████████████████████████████████████     
-                                        █                                                   █
-                                        ██                                                  █
-                                                                                           | |
-                                                                                    o      | | 
-                                        ██                                         /L      | |
-                                        █                                          |        █
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████                
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █████████████████████████████████████████████████████
-    
-                                    """);
+                                    mostrarPantalla++;
+                                    pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                    System.out.println(pantalla);
                                     System.out.println(p.getEnunciado());
                                     for(int i = 0; i < opciones.length; i++){
                                         if (!opciones[i].isEmpty()) {
@@ -818,35 +518,8 @@ public class Jugar {
                                     p = gp.getPregunta(dificultad, enunciado);
                                     opciones=p.getOpciones(); 
                                     System.out.println("Has fallado.");
-                                    System.out.printf("""
-                                        █████████████████████████████████████████████████████     
-                                        █                                                   █
-                                        ██                                                  █
-                                                                                           | |
-                                                                                           | | 
-                                        ██                                                 | |
-                                        █                                                   █
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████                
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                                         ███████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █                               █████████████████████
-                                        █"""  + colorPj +     """
-                                                \t  o  """ + COLOR_RESET + """
-                                                            █████████████████████
-                                        █""" + colorPj + """
-                                                \t /L """ + COLOR_RESET + """
-                                                            █████████████████████
-                                        █""" + colorPj + """
-                                                \t | """ + COLOR_RESET + """
-                                                                █████████████████████
-                                        █████████████████████████████████████████████████████      
-    
-                                    """);
+                                    pantalla= pantallas[mostrarPantalla]; //Mas adelante, incluido el color del personaje y del agua
+                                    System.out.println(pantalla);
                                     System.out.println(p.getEnunciado());
                                     for(int i = 0; i < opciones.length; i++){
                                         if (!opciones[i].isEmpty()) {
