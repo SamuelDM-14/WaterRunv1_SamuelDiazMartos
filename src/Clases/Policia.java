@@ -1,4 +1,4 @@
-package Clases;
+package clases;
 /**
  * Clase Policia, extiende de Personajes y permite disparar a otros personajes.
  */

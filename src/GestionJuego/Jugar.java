@@ -1,12 +1,12 @@
-package GestionJuego;
+package gestionjuego;
 
 import java.io.IOException;
 
-import Clases.Escapista;
-import Clases.GestionPreguntas;
-import Clases.Policia;
-import Clases.Pregunta;
-import Utilidades.Utilidades;
+import clases.Escapista;
+import clases.GestionPreguntas;
+import clases.Policia;
+import clases.Pregunta;
+import utilidades.Utilidades;
 
 public class Jugar {
 

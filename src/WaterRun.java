@@ -6,7 +6,7 @@
 
 import java.io.IOException;
 
-import GestionJuego.GestionJugar;
+import gestionjuego.GestionJugar;
 /**
  * Clase WaterRun.
  * Maneja todo el juego en sí. 

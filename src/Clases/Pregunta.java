@@ -1,4 +1,4 @@
-package Clases;
+package clases;
 /**
  * Clase que representa una pregunta con un enunciado, sus opciones de respuesta
  * y la respuesta correcta (en texto).

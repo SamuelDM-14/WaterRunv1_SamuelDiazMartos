@@ -1,9 +1,9 @@
-package GestionJuego;
+package gestionjuego;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import Utilidades.Utilidades;
+import utilidades.Utilidades;
 
 public class GestionJugar {
     private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));

@@ -1,4 +1,4 @@
-package Clases;
+package clases;
 /**
  * Clase que gestiona las preguntas del juego separadas por dificultad,
  * usando un array bidimensional de objetos Pregunta.
