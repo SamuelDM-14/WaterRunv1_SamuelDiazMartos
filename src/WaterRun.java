@@ -9,7 +9,7 @@ import java.io.IOException;
 import gestionjuego.GestionJugar;
 /**
  * Clase WaterRun.
- * Maneja todo el juego en sí. 
+ * Es el motor inicial del juego. Llama a GestionJugar para gestionar todos los menús
  */
 public class WaterRun {
 

@@ -7,7 +7,7 @@ ___________________________________________
 |---------------------|-------------------|
 | **Autor**           |     SDM           |
 | **Fecha de Inicio** |   v1 18/11/2024   |
-| **Última versión**  |   v5 17/02/2025   |
+| **Última versión**  |   v6 07/03/2025   |
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 
 ## Contenido del Proyecto
@@ -18,8 +18,11 @@ ___________________________________________
 - **Java (`Personaje.java`)**: Superclase de tipos de personajes.
 - **Java (`Policia.java`)**: Subclase de Personaje con atributos y metodos diferentes a escapista.
 - **Java (`Escapista.java`)**: Subclase de Personaje con atributos y metodos diferentes a policia.
-- **Jar (`WaterRun.jar`)**: versión ejecutable del juego.
-- **Class (`WaterRun.class`)**: .
+- **Java (`Jugador.java`)**: Clase que se encargará de registrar los datos del jugador.
+- **Java (`Utilidades.java`)**: Clase encargada de gestionar todas las validaciones de respuestas.
+- **Java (`GestionJugar.java`)**: Clase con el codigo general. Se encarga de gestionar los menús.
+- **Java (`Jugar.java`)**: Clase que gestiona la opción de Jugar. 
+- **Jar (`WaterRun.jar`)**: Versión ejecutable del juego.
 - **Manifest (`Manifest.txt`)**: Archivo para crear el WaterRun.Jar.
 
 
@@ -34,20 +37,33 @@ WATERRUNVX_SAMUELDIAZMARTOS/
         settings.json
     bin/            # Carpeta con los .Class de los archivos
         WaterRun.class
-        Preguntas.class
-        Personajes.class
-        GestionPreguntas.class
-        Policia.class
-        Escapista.class            
-        WaterRun.class
+        clases/         #Carpeta con las clases
+            Preguntas.class
+            Personajes.class
+            GestionPreguntas.class
+            Policia.class
+            Escapista.class   
+            Jugador.class
+        utilidades/     #Carpeta de Utilidades
+            Utilidades.class
+        gestionjuego/   #Carpeta de gestión del juego
+            GestionJugar.class
+            Jugar.class
         Manifest.txt
     src/            # Carpeta con el código fuente
         WaterRun.java
-        Preguntas.java
-        Personajes.java
-        GestionPreguntas.java
-        Policia.java
-        Escapista.java            
+        clases/         #Carpeta con las clases
+            Preguntas.java
+            Personajes.java
+            GestionPreguntas.java
+            Policia.java
+            Escapista.java 
+            Jugadro.java
+        utilidades/     #Carpeta de Utilidades
+            Utilidades.java
+        gestionjuego/   #Carpeta de gestión del juego
+            GestionJugar.java
+            Jugar.java           
         Manifest.txt
 ```
 
@@ -72,8 +88,9 @@ WATERRUNVX_SAMUELDIAZMARTOS/
 ## Funcionalidades Principales
 
 - **bienvenida**: Se encarga de mostrar el mensaje de bienvenida.
-- **menu1**: Se encarga de mostrar el menú principal del juego donde nos dejará elegir entre: `Jugar`, `Aspecto`, `Historial` o `Salir`
-- **jugar**: Se encarga de mostrar el juego, comprobar las respuestas y mostrarte si has acertado o fallado. También te muestra si has ganado o perdido
+- **menu1**: Se encarga de mostrar el menú principal del juego donde nos dejará elegir entre: `Jugar`, `Dificultad`, `Aspecto`, `Historial` o `Salir`
+- **jugar**: Se encarga de mostrar el juego, comprobar las respuestas y mostrarte si has acertado o fallado. También te muestra si has ganado o perdido y las preguntas cambian en función de la dificultad.
+- **dificultadDelJuego**: Se encarga de gestionar la dificultad del juego.
 - **cambiarAspecto**: Se encarga de mostrar una selección de colores para elegir de personaje o del agua. Valida la respuesta y asigna dichos colores.
 - **historial**: Muestra un menú que actualmente está en proceso.
 - **Validaciones**: Impide avanzar entre menús si pones un caracter incorrecto. 
@@ -87,7 +104,8 @@ WATERRUNVX_SAMUELDIAZMARTOS/
 Este proyecto está diseñado para la asignatura `Fundamentos de programación` donde implementamos código en `java` y aprendemos a programar en dicho lenguaje.
 
 **Este proyecto conitene:**
-- **Modularización**: Descomposición del programa en métodos
+- **Modularización**: Descomposición del programa en métodos y archivos diferentes.
+- **Empaquetado**: Mantener un orden de paquetes en el programa.
 - **Documentación**: Creación de un documento de análisis técnico del software.
 - **Buenas Prácticas**: Uso de buenas prácticas en nuestro código.
 - **Clases**: Creación de clases y superclases con herencia.

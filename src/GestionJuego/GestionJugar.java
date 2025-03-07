@@ -1,13 +1,26 @@
+/**
+ * GestionJugar
+ * @author SDM
+ * 07-03-2025
+ */
 package gestionjuego;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 import utilidades.Utilidades;
 
+/**
+ * GestionJugar
+ * Se encarga de gestionar los menús, las selecciones y las variables del juego generales.
+ */
 public class GestionJugar {
+
+    //Usamos BufferedReader para leer. Creación del objeto.
     private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        private static final String[] MOSTRARMENUS= {"Elige una opcón del menú.\n\t1) Jugar.\n\t2) Dificultad\n\t3) Aspecto\n\t4) Historial de juego.\n\t5) Salir.",
+
+    // Todos los menús del juego estan aqui. Accederemos a ellos mencionando directamente a MOSTRARMENUS.
+    private static final String[] MOSTRARMENUS= {"Elige una opcón del menú.\n\t1) Jugar.\n\t2) Dificultad\n\t3) Aspecto\n\t4) Historial de juego.\n\t5) Salir.",
         "Has elegico jugar.\nPara ponerte en contexto, eres un prisionero condenado injustametne a muerte por ahogamiento.\nTu desafío inicial es encontrar la manera de escapar de la sala que se irá inundando.\nPara ello, deberas resolver una serie de acertijos o preguntas que te iremos mostrando.\nAl responder las preguntas o acertijos deberas de poner el número correspondiente indicado.\nEjemplo: ¿Cuantas letras tiene Hola?\n1) 4 \t\t 2) 7 \t\t 3) 5 \t\t 4) 1 \nEn este caso tendrias que poner como respuesta \'1\'. \nSi fallas al responder o ponea un caracter no valido se contará como error.\n¿Estas preparado? (Respuesta con 'S' para si y 'N' para no)\n",
         "Selecciona la dificultad en la que desea jugar. Por defecto esta la dificultad FÁCIL.\n\t 0) FÁCIL\n\t 1) MEDIA\n\t 2) DIFÍCIL\n\t 3) SALIR", 
         "Has elegido la opción de aspecto.\nEn este menú, puedes personalizar el color de tu personaje entre la siguiente selección y el color del agua también.\n¿Que quieres personalizar?\n\t1) Color del personaje.\n\t2) Color del Policia.\n\t3) Salir.",
@@ -15,7 +28,10 @@ public class GestionJugar {
         "Elige un color para el policia:\n\t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir",
         "Este menú aun no esta disponible. Pulse 3 para salir.\n\t1) Jugar una partida guardada. (Proximamente)\n\t2) Revisar elecciónes de partida. (Proximamente)\n\t3) Salir."
     };
+    //Variable para mostrar el menú adecuado. En cada metodo cambia.
     private static int opcionMenu=0;
+
+    //Variables utilizadas para leer números enteros y validar las respuestas.
     private static int max = 5;
     private static int min = 0;
 
@@ -47,6 +63,8 @@ public class GestionJugar {
         "\u001B[47m",//6=Blanco
         "\u001B[40m",//7=NEGRO
     };
+
+    //Variable para seleccionar la dificultad del jnuego
     private static int dificultad=0;
 
     

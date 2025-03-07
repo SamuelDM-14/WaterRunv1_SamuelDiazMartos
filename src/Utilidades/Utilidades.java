@@ -1,11 +1,22 @@
+/**
+ * Utilidades
+ * @author SDM
+ * 07-03-2025
+ */
 package utilidades;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Archivo Utilidades que usaremos para metodos de validación
+ */
 public class Utilidades {
+
+    //Usamos BufferedReader para leer. Creación del objeto.
     private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));    
+
     /**
     * Lee un único caracter desde teclado ('S' o 'N'), validando que no sea otro.
     * @param bf BufferedReader para leer de teclado
@@ -39,7 +50,6 @@ public class Utilidades {
      * Lee un número entero, validando que esté entre min y max.
      * Si el usuario escribe algo inválido (caracteres no numéricos o número fuera de rango),
      * el método vuelve a pedirlo.
-     *
      * @param bf  el BufferedReader para leer la entrada
      * @param min límite inferior aceptado (inclusive)
      * @param max límite superior aceptado (inclusive)
