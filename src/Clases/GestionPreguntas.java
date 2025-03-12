@@ -79,13 +79,14 @@ public class GestionPreguntas {
      * @return El objeto Pregunta correspondiente, o null si está fuera de rango.
      */
     public Pregunta getPregunta(int dificultad, int indicePregunta) {
-        if (dificultad < 0 || dificultad >= NUM_DIFICULTADES) {
-            return null;
+        Pregunta resultado = null;
+    
+        if (dificultad >= 0 && dificultad < NUM_DIFICULTADES
+                && indicePregunta >= 0 && indicePregunta < NUM_PREGUNTAS) {
+            resultado = preguntas[dificultad][indicePregunta];
         }
-        if (indicePregunta < 0 || indicePregunta >= NUM_PREGUNTAS) {
-            return null;
-        }
-        return preguntas[dificultad][indicePregunta];
+    
+        return resultado;
     }
 
     /**
