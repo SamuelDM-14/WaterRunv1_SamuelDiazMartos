@@ -1,3 +1,8 @@
+/**
+ * Escapista
+ * @author SDM
+ * 07-03-2025
+ */
 package clases;
 import java.util.Random;
 

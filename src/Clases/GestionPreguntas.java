@@ -1,3 +1,8 @@
+/**
+ * GestionPregunta
+ * @author SDM
+ * 07-03-2025
+ */
 package clases;
 /**
  * Clase que gestiona las preguntas del juego separadas por dificultad,

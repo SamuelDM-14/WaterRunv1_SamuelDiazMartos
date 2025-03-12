@@ -1,3 +1,8 @@
+/**
+ * Personajes
+ * @author SDM
+ * 07-03-2025
+ */
 package clases;
 /**
  * Clase abstracta que representa a un personaje del juego.

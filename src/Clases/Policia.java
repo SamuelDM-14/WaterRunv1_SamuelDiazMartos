@@ -1,3 +1,8 @@
+/**
+ * Policia
+ * @author SDM
+ * 07-03-2025
+ */
 package clases;
 /**
  * Clase Policia, extiende de Personajes y permite disparar a otros personajes.
