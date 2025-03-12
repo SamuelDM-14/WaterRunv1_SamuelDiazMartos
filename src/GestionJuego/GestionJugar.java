@@ -81,7 +81,7 @@ public class GestionJugar {
                     break;
                 case 3:
                     //Entra en caso de elegir Aspecto
-                    Aspecto.cambiarAspecto(MOSTRARMENUS);// Llama al metodo cambiarAspecto y le envia el bufferedReader
+                    Aspecto.cambiarAspecto(MOSTRARMENUS, colorPj, colorPo);// Llama al metodo cambiarAspecto y le envia el bufferedReader
                     break;
 
                 case 4:

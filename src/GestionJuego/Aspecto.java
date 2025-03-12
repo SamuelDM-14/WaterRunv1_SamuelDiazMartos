@@ -21,7 +21,7 @@ public class Aspecto {
         private static final String COLOR_RESET = "\u001B[0m";
 
         //Colores para los personajes.
-        private static String colorPj = "\u001B[37m";
+
         private static final String[] COLORESPJ = {
             "\u001B[31m",//0=Rojo
             "\u001B[32m",//1=Verde
@@ -34,7 +34,7 @@ public class Aspecto {
         };
             
         //Colores del fondo.
-        private static String colorPo = "\u001B[40m";
+
         private static final String[] COLORESPOLICIA= {
             "\u001B[41m",//0=Rojo
             "\u001B[42m",//1=Verde
@@ -50,7 +50,7 @@ public class Aspecto {
      * Gestiona la eleccion de los colores del Escapista comprobando que no estes eligiendo el mismo color que el Policia
      * @param eleccionColor
      */
-    private static void gestorColorPj(int eleccionColor){
+    private static void gestorColorPj(int eleccionColor, String colorPj, String colorPo){
         eleccionColor=eleccionColor-1;
         if (colorPj==COLORESPOLICIA[eleccionColor]) {//Comprueba que el agua no tenga ese color.
             System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
@@ -63,7 +63,7 @@ public class Aspecto {
      * Gestiona la eleccion de los colores del Policia comprobando que no estes eligiendo el mismo color que el Escapista.
      * @param eleccionColor
      */
-    private static void gestorColorPo(int eleccionColor){
+    private static void gestorColorPo(int eleccionColor, String colorPj, String colorPo){
         eleccionColor=eleccionColor-1;
         if (colorPo==COLORESPJ[eleccionColor]) {//Comprueba que el agua no tenga ese color.
             System.out.println("No se puede hacer esta selección de color. El personaje no puede ser del mismo color que el agua.");
@@ -77,7 +77,7 @@ public class Aspecto {
      * @param bf
      * @throws IOException
      */
-    private static void cambiarAspectoPJ(String[] MOSTRARMENUS) throws IOException{
+    private static void cambiarAspectoPJ(String[] MOSTRARMENUS, String colorPj, String colorPo) throws IOException{
         //cambias el aspecto del Personaje
         int eleccionColorPJ;
         opcionMenu= 4;
@@ -90,35 +90,35 @@ public class Aspecto {
         switch (eleccionColorPJ) { //Según la elección se mete en el case correspondiente.
             case 1:
             System.out.println("Has elegido el color rojo.");
-            gestorColorPj(eleccionColorPJ);
+            gestorColorPj(eleccionColorPJ, colorPj, colorPo);
             break;
         case 2:
             System.out.println("Has elegido el color verde.");
-            gestorColorPj(eleccionColorPJ);                        
+            gestorColorPj(eleccionColorPJ, colorPj, colorPo);                        
             break;
         case 3:
             System.out.println("Has elegido el color amarillo.");
-            gestorColorPj(eleccionColorPJ);                    
+            gestorColorPj(eleccionColorPJ, colorPj, colorPo);                    
             break;
         case 4:
             System.out.println("Has elegido el color azul.");
-            gestorColorPj(eleccionColorPJ);
+            gestorColorPj(eleccionColorPJ, colorPj, colorPo);
             break;
         case 5:
             System.out.println("Has elegido el color morado.");
-            gestorColorPj(eleccionColorPJ);
+            gestorColorPj(eleccionColorPJ, colorPj, colorPo);
             break;
         case 6:
             System.out.println("Has elegido el color Cian.");
-            gestorColorPj(eleccionColorPJ);
+            gestorColorPj(eleccionColorPJ, colorPj, colorPo);
             break;
         case 7:
             System.out.println("Has elegido el color Blanco.");
-            gestorColorPj(eleccionColorPJ);                          
+            gestorColorPj(eleccionColorPJ, colorPj, colorPo);                          
             break;
         case 8:
             System.out.println("Has elegido el color Negro.");
-            gestorColorPj(eleccionColorPJ);
+            gestorColorPj(eleccionColorPJ, colorPj, colorPo);
             break;
         case 9:
             System.out.println("Has elegido salir. Volviendo al menú de aspecto."); 
@@ -134,7 +134,7 @@ public class Aspecto {
      * @param bf
      * @throws IOException
      */
-    private static void cambiarAspectoPo(String[] MOSTRARMENUS) throws IOException{
+    private static void cambiarAspectoPo(String[] MOSTRARMENUS, String colorPj, String colorPo) throws IOException{
         int eleccioncolorPo;
         opcionMenu= 5;
         max=9;
@@ -146,35 +146,35 @@ public class Aspecto {
             switch (eleccioncolorPo) { //selecciona segun el número elegido.
                 case 1:
                     System.out.println("Has elegido el color rojo.");
-                    gestorColorPo(eleccioncolorPo);
+                    gestorColorPo(eleccioncolorPo, colorPj, colorPo);
                     break;
                 case 2:
                     System.out.println("Has elegido el color verde.");                    
-                    gestorColorPo(eleccioncolorPo);                       
+                    gestorColorPo(eleccioncolorPo, colorPj, colorPo);                       
                     break;
                 case 3:
                     System.out.println("Has elegido el color amarillo.");                    
-                    gestorColorPo(eleccioncolorPo);                      
+                    gestorColorPo(eleccioncolorPo, colorPj, colorPo);                      
                     break;
                 case 4:
                     System.out.println("Has elegido el color azul.");                    
-                    gestorColorPo(eleccioncolorPo);
+                    gestorColorPo(eleccioncolorPo, colorPj, colorPo);
                     break;
                 case 5:
                     System.out.println("Has elegido el color morado.");                    
-                    gestorColorPo(eleccioncolorPo);
+                    gestorColorPo(eleccioncolorPo, colorPj, colorPo);
                     break;
                 case 6:
                     System.out.println("Has elegido el color Cian.");                    
-                    gestorColorPo(eleccioncolorPo);
+                    gestorColorPo(eleccioncolorPo, colorPj, colorPo);
                     break;
                 case 7:
                     System.out.println("Has elegido el color Blanco.");                    
-                    gestorColorPo(eleccioncolorPo);                         
+                    gestorColorPo(eleccioncolorPo, colorPj, colorPo);                         
                     break;
                 case 8:
                     System.out.println("Has elegido el color Negro.");                    
-                    gestorColorPo(eleccioncolorPo);
+                    gestorColorPo(eleccioncolorPo, colorPj, colorPo);
                     break;    
                 case 9:
                     System.out.println("Has elegido salir. Volviendo al menú principal.");                    
@@ -191,7 +191,7 @@ public class Aspecto {
      * @param bf
      * @throws IOException
      */
-    public static void cambiarAspecto(String[] MOSTRARMENUS) throws IOException{
+    public static void cambiarAspecto(String[] MOSTRARMENUS, String colorPj, String colorPo) throws IOException{
 
         //Respuestas aspecto
         int reAspecto;// respuesta de elección de aspecto.
@@ -212,10 +212,10 @@ public class Aspecto {
 
             switch (reAspecto) {
                 case 1:
-                    cambiarAspectoPJ(MOSTRARMENUS);// Llama al meteodo cambiarAspectoPJ y le envia el BufferedReader
+                    cambiarAspectoPJ(MOSTRARMENUS, colorPj, colorPo);// Llama al meteodo cambiarAspectoPJ y le envia el BufferedReader
                     break;
                 case 2:
-                    cambiarAspectoPo(MOSTRARMENUS);// Llama al meteodo cambiarAspectoPo y le envia el BufferedReader
+                    cambiarAspectoPo(MOSTRARMENUS, colorPj, colorPo);// Llama al meteodo cambiarAspectoPo y le envia el BufferedReader
                     break;
                 case 3: 
                     System.out.println("Has elegido salir. Volviendo al menú principal.");
