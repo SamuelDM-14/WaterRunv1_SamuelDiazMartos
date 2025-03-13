@@ -21,8 +21,6 @@ public class Jugar {
     /**
      * Metodo qeu devuelve un array de pantallas para mostrar en el juego.
      * 
-     * @param colorPj     Color del jugador.
-     * @param COLOR_RESET Color de reinicio.
      * @return Devuelve un array con las pantallas a mostrar.
      */
     private static String[] gestorPantallas() {
@@ -87,17 +85,15 @@ public class Jugar {
                     """;
 
         // Array de pantallas
-        String[] pantallas = { pantalla1, pantalla2};
+        String[] pantallas = { pantalla1, pantalla2 };
         return pantallas;
     }
 
     /**
      * Metodo que gestiona la partida de dificultad Dificil
+     * 
      * @param dificultad Dificultad de la partida
-     * @param colorPj Color del personaje
-     * @param COLOR_RESET Color de reinicio
-     * @param colorPo Color del Policia (Aun no introducido)
-     * @param salirJuego Variable de salida del juego 
+     * @param salirJuego Variable de salida del juego
      * @throws IOException
      */
     private static void jugarDificil(int dificultad, boolean salirJuego) throws IOException {
@@ -365,14 +361,11 @@ public class Jugar {
 
     }
 
-
     /**
      * Metodo que gestiona la partida de dificultad Facil y Medio
+     * 
      * @param dificultad Dificultad de la partida
-     * @param colorPj Color del personaje
-     * @param COLOR_RESET Color de reinicio
-     * @param colorPo Color del Policia (Aun no introducido)
-     * @param salirJuego Variable de salida del juego 
+     * @param salirJuego Variable de salida del juego
      * @throws IOException
      */
     private static void jugarFaMe(int dificultad, boolean salirJuego) throws IOException {
@@ -580,8 +573,8 @@ public class Jugar {
             if (jugar == true) { // Inicio del juego
 
                 if (dificultad == 2) {
-                    // Llama al metodo jugarDificil para gestionar el juego en esa dificultad 
-                    jugarDificil(dificultad, salirJuego); 
+                    // Llama al metodo jugarDificil para gestionar el juego en esa dificultad
+                    jugarDificil(dificultad, salirJuego);
                 } else {
                     // Llama al metodo jugarFaMe para gestionar el juego en facil y medio
                     jugarFaMe(dificultad, salirJuego);
