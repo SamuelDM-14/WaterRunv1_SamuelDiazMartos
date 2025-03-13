@@ -35,15 +35,7 @@ public class GestionJugar {
     private static int max = 5;
     private static int min = 0;
 
-    // Deja el color como al principio.
-    private static final String COLOR_RESET = "\u001B[0m";
 
-    //Colores para los personajes.
-    private static String colorPj = "\u001B[37m";
-
-        
-    //Colores del fondo.
-    private static String colorPo = "\u001B[40m";
 
     //Variable para seleccionar la dificultad del jnuego
     private static int dificultad=0;
@@ -72,7 +64,7 @@ public class GestionJugar {
     
                 case 1:
                     //Entra en caso de elegir Jugar
-                    Jugar.jugar(MOSTRARMENUS, colorPj, colorPo, dificultad, COLOR_RESET);; // Llama al metodo jugar y le envia el bufferedReader
+                    Jugar.jugar(MOSTRARMENUS, dificultad);; // Llama al metodo jugar y le envia el bufferedReader
                     break;
 
                 case 2:
@@ -81,7 +73,7 @@ public class GestionJugar {
                     break;
                 case 3:
                     //Entra en caso de elegir Aspecto
-                    Aspecto.cambiarAspecto(MOSTRARMENUS, colorPj, colorPo);// Llama al metodo cambiarAspecto y le envia el bufferedReader
+                    Aspecto.cambiarAspecto(MOSTRARMENUS);// Llama al metodo cambiarAspecto y le envia el bufferedReader
                     break;
 
                 case 4:

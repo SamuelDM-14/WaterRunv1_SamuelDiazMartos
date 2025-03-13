@@ -11,6 +11,7 @@ import clases.GestionPreguntas;
 import clases.Policia;
 import clases.Pregunta;
 import utilidades.Utilidades;
+import utilidades.VarGenYConst;
 
 /**
  * Esta clase se encarga de toda la gestion del apartado jugar en concreto.
@@ -24,7 +25,7 @@ public class Jugar {
      * @param COLOR_RESET Color de reinicio.
      * @return Devuelve un array con las pantallas a mostrar.
      */
-    private static String[] gestorPantallas(String colorPj, String COLOR_RESET) {
+    private static String[] gestorPantallas() {
 
         // pantalla1 del juego
         String pantalla1 = """
@@ -44,14 +45,14 @@ public class Jugar {
                 █                               █████████████████████
                 █                               █████████████████████
                 █                               █████████████████████
-                █""" + colorPj + """
-                \t  o  """ + COLOR_RESET + """
+                █""" + VarGenYConst.colorPj + """
+                \t  o  """ + VarGenYConst.COLOR_RESET + """
                                      █████████████████████
-                █""" + colorPj + """
-                \t /L """ + COLOR_RESET + """
+                █""" + VarGenYConst.colorPj + """
+                \t /L """ + VarGenYConst.COLOR_RESET + """
                                      █████████████████████
-                █""" + colorPj + """
-                \t | """ + COLOR_RESET + """
+                █""" + VarGenYConst.colorPj + """
+                \t | """ + VarGenYConst.COLOR_RESET + """
                                       █████████████████████
                 █████████████████████████████████████████████████████
                         """;
@@ -61,14 +62,14 @@ public class Jugar {
                 █                                                   █
                 ██                                                  █
                                                                    | |
-                                                            """ + colorPj + """
-                \t\t\t\t\t     o""" + COLOR_RESET + """
+                                                            """ + VarGenYConst.colorPj + """
+                \t\t\t\t\t     o""" + VarGenYConst.COLOR_RESET + """
                 \t   | |
-                ██                                         """ + colorPj + """
-                \t\t\t\t\t    /L""" + COLOR_RESET + """
+                ██                                         """ + VarGenYConst.colorPj + """
+                \t\t\t\t\t    /L""" + VarGenYConst.COLOR_RESET + """
                      | |
-                █                                          """ + colorPj + """
-                \t\t\t\t\t    |""" + COLOR_RESET + """
+                █                                          """ + VarGenYConst.colorPj + """
+                \t\t\t\t\t    |""" + VarGenYConst.COLOR_RESET + """
                 \t    █
                 █                                         ███████████
                 █                                         ███████████
@@ -99,7 +100,7 @@ public class Jugar {
      * @param salirJuego Variable de salida del juego 
      * @throws IOException
      */
-    private static void jugarDificil(int dificultad, String colorPj, String COLOR_RESET, String colorPo, boolean salirJuego) throws IOException {
+    private static void jugarDificil(int dificultad, boolean salirJuego) throws IOException {
         Boolean lvlPasado = false; // Variable que comprueba si te has pasdo un nivel.
         int reAcertadas = 0;
         int enunciado = 0;
@@ -108,11 +109,11 @@ public class Jugar {
         int reJugador;
         String[] opciones;
         String respuestaElegida;
-        Escapista escapista = new Escapista(colorPj);
-        Policia policia = new Policia(colorPo, 5);
+        Escapista escapista = new Escapista(VarGenYConst.colorPj);
+        Policia policia = new Policia(VarGenYConst.colorPo, 5);
         GestionPreguntas gp = new GestionPreguntas();
         Pregunta p = gp.getPregunta(dificultad, enunciado);
-        String[] pantallas = gestorPantallas(colorPj, COLOR_RESET);
+        String[] pantallas = gestorPantallas();
         int mostrarPantalla = 0;
         String pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
         do {
@@ -374,7 +375,7 @@ public class Jugar {
      * @param salirJuego Variable de salida del juego 
      * @throws IOException
      */
-    private static void jugarFaMe(int dificultad, String colorPj, String COLOR_RESET, String colorPo, boolean salirJuego) throws IOException {
+    private static void jugarFaMe(int dificultad, boolean salirJuego) throws IOException {
         Boolean lvlPasado = false; // Variable que comprueba si te has pasdo un nivel.
         int min = 1;
         int max = 4;
@@ -385,7 +386,7 @@ public class Jugar {
         String respuestaElegida;
         GestionPreguntas gp = new GestionPreguntas();
         Pregunta p = gp.getPregunta(dificultad, enunciado);
-        String[] pantallas = gestorPantallas(colorPj, COLOR_RESET);
+        String[] pantallas = gestorPantallas();
         int mostrarPantalla = 0;
         String pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
 
@@ -551,7 +552,7 @@ public class Jugar {
      * @param bf
      * @throws IOException
      */
-    public static void jugar(String[] MOSTRARMENUS, String colorPj, String colorPo, int dificultad, String COLOR_RESET)
+    public static void jugar(String[] MOSTRARMENUS, int dificultad)
             throws IOException {
         // Respuestas del juego
         int opcionMenu = 1;
@@ -580,10 +581,10 @@ public class Jugar {
 
                 if (dificultad == 2) {
                     // Llama al metodo jugarDificil para gestionar el juego en esa dificultad 
-                    jugarDificil(dificultad, colorPj, COLOR_RESET, colorPo, salirJuego); 
+                    jugarDificil(dificultad, salirJuego); 
                 } else {
                     // Llama al metodo jugarFaMe para gestionar el juego en facil y medio
-                    jugarFaMe(dificultad, colorPj, COLOR_RESET, colorPo, salirJuego);
+                    jugarFaMe(dificultad, salirJuego);
                 }
 
             } else { // Si eliges no jugar
