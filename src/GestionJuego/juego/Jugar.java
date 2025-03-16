@@ -5,8 +5,9 @@
  */
 package gestionjuego.juego;
 
-import java.io.IOError;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import gestionjuego.juego.JugarDificil;
 import gestionjuego.juego.JugarFaMe;
@@ -35,6 +36,7 @@ public class Jugar {
 
 
 
+
         VarGenYConst.salirJuego = false; // Pone en false el salir. Si has jugado sin recargar el programa te sacaria en
                             // la primera seleccion de salir.
 
@@ -45,6 +47,8 @@ public class Jugar {
             re1 = Utilidades.leerSN();
 
             if (re1 == 'S') {
+                VarGenYConst.fechaIncioPartida= LocalDate.now();
+                VarGenYConst.horaIncioPartida = LocalTime.now();
                 jugar = true; // Variable para entrar al juego
             } else if (re1 == 'N') {
                 jugar = false; // Variable para entrar al juego

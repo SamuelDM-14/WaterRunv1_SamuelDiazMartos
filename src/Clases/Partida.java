@@ -105,7 +105,7 @@ public class Partida {
     public void setDificultadJugada(int dificultadJugada) {
         this.dificultadJugada = dificultadJugada;
     }
-    
+
     // ------------ TOSTRING DE PARTIDA ------------
     @Override
     public String toString() {
@@ -114,5 +114,4 @@ public class Partida {
                 + ", respuestasAcertadas=" + respuestasAcertadas + ", nivelPasado=" + nivelPasado
                 + ", dificultadJugada=" + dificultadJugada + "]";
     }
-
 }

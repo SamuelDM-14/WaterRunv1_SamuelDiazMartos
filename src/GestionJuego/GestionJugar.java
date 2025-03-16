@@ -42,7 +42,7 @@ public class GestionJugar {
             VarGenYConst.opcionMenu = 0;
             System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
     
-            eleccion=Utilidades.leerEnteroValidado(VarGenYConst.min, VarGenYConst.max); //Lee la entrada.
+            eleccion=Utilidades.leerEnteroValidado(); //Lee la entrada.
     
             switch (eleccion) { 
     
@@ -90,7 +90,7 @@ public class GestionJugar {
         int lecturaDif = 0;
         do{
                 System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
-                lecturaDif=Utilidades.leerEnteroValidado(VarGenYConst.min, VarGenYConst.max);
+                lecturaDif=Utilidades.leerEnteroValidado();
                 switch (lecturaDif) {
                     case 0:
                         VarGenYConst.dificultad = lecturaDif;
@@ -133,7 +133,7 @@ public class GestionJugar {
         VarGenYConst.min = 1;
         VarGenYConst.opcionMenu = 6;
         System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
-        eleccionHistorial=Utilidades.leerEnteroValidado(VarGenYConst.min, VarGenYConst.max); //Lee la elección
+        eleccionHistorial=Utilidades.leerEnteroValidado(); //Lee la elección
         switch (eleccionHistorial) { //Selecciona según haya elegido.
             case 1:
                 System.out.println("Ha selecionado \'Jugar partida guardada\', Este menú aun no esta disponible.");
@@ -141,7 +141,10 @@ public class GestionJugar {
             case 2:
                 System.out.println("Ha selecionado \'Revisar elecciónes de partida.\', Este menú aun no esta disponible.");
                 break;
-            case 3:
+            case 3: 
+                datosPartida();
+                break;
+            case 4:
                 System.out.println("Ha selecionado salir. Volviendo al menú principal");
                 salirHistorial=true; //Vuelve al menú principal.
                 break;    
@@ -154,7 +157,10 @@ public class GestionJugar {
 
     }
     
-    
+    private static void datosPartida(){
+        System.out.println("Ha selecionado \\'Datos de partida guardada.\\'.");
+        System.out.println(VarGenYConst.partida.toString());
+    }
     /**
      * Bienvenida al juego. Comprueba que solo pongas un enter.
      * @author SDM 

@@ -1,5 +1,10 @@
 package utilidades;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import clases.Partida;
+
 public class VarGenYConst {
 
     // Todos los menús del juego estan aqui. Accederemos a ellos mencionando
@@ -11,7 +16,7 @@ public class VarGenYConst {
             "Has elegido la opción de aspecto.\nEn este menú, puedes personalizar el color de tu personaje entre la siguiente selección y el color del agua también.\n¿Que quieres personalizar?\n\t1) Color del personaje.\n\t2) Color del Policia.\n\t3) Salir.",
             "Elige un color para tu personaje:\n\t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir",
             "Elige un color para el policia:\n\t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir",
-            "Este menú aun no esta disponible. Pulse 3 para salir.\n\t1) Jugar una partida guardada. (Proximamente)\n\t2) Revisar elecciónes de partida. (Proximamente)\n\t3) Salir."
+            "Has seleccionado el menú de historial. Pulse 4 para salir.\n\t1) Jugar una partida guardada. (Proximamente)\n\t2) Revisar elecciónes de partida. (Proximamente)\n\t3) Datos de partida guardada.\n\t4) Salir."
     };
     // Variable para mostrar el menú adecuado. En cada metodo cambia.
     public static int opcionMenu = 0;
@@ -62,8 +67,16 @@ public class VarGenYConst {
             "¡Has acertado! Tu personaje empieza a abrir la cerradura.",
             "Has fallado.",
             "Oh no, el agua subió demasiado rápido, has perdido.",
-
+            "¡Has acertado! Tu personaje ha huido."
     };
     public static String mensajePoli = "¡Has acertado! Tu personaje avan...\n¡OH NO! El policia ha acertado el disparo, el escapista permanece inmovil 1 turno.";
-    public static final int MENSAJEFIN = 4;
+    public static final int MENSAJEDER = 3;
+    public static final int MENSAJEVIC = 4;
+
+    public static LocalDate fechaIncioPartida;
+    public static LocalTime horaIncioPartida;
+    public static LocalDate fechaFinPartida;
+    public static LocalTime horaFinPartida;
+
+    public static Partida partida; 
 }

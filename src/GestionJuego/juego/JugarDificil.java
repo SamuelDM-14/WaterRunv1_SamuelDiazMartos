@@ -1,9 +1,14 @@
 package gestionjuego.juego;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import javax.naming.PartialResultException;
 
 import clases.Escapista;
 import clases.GestionPreguntas;
+import clases.Partida;
 import clases.Policia;
 import clases.Pregunta;
 import utilidades.Utilidades;
@@ -11,7 +16,7 @@ import utilidades.VarGenYConst;
 
 public class JugarDificil {
     
-        /**
+    /**
      * Metodo que gestiona la partida de dificultad Dificil
      * 
      * @param dificultad Dificultad de la partida
@@ -19,6 +24,8 @@ public class JugarDificil {
      * @throws IOException
      */
     public static void jugarDificil() throws IOException {
+
+
         Boolean lvlPasado = false; // Variable que comprueba si te has pasdo un nivel.
         int reAcertadas = 0;
         int enunciado = 0;
@@ -27,30 +34,28 @@ public class JugarDificil {
 
         int msglvl=0;;
         int reJugador;
-        String[] opciones;
+        boolean frenado = false;
+        boolean acertada = false;
         String respuestaElegida;
+
         Escapista escapista = new Escapista(VarGenYConst.colorPj);
         Policia policia = new Policia(VarGenYConst.colorPo, 5);
+        
         GestionPreguntas gp = new GestionPreguntas();
         Pregunta p = gp.getPregunta(VarGenYConst.dificultad, enunciado);
+        
         String[] pantallas = Utilidades.gestorPantallas();
         int mostrarPantalla = 0;
         String pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
-
+        
 
         do {
-            opciones = p.getOpciones();
+
             reAcertadas = 0;
             pantalla = pantallas[mostrarPantalla];
-            System.out.println(pantalla);
-            System.out.println(p.getEnunciado());
-            for (int i = 0; i < opciones.length; i++) {
-                if (!opciones[i].isEmpty()) {
-                    System.out.println((i + 1) + ") " + opciones[i]);
-                }
-            }
-            reJugador = Utilidades.leerEnteroValidado(min, max); // Comprueba la respuesta 1
-            respuestaElegida = opciones[reJugador - 1];
+            
+            Utilidades.mostrarPregunta(p, pantalla);
+            respuestaElegida=Utilidades.leerRespuesta(p);
 
 
             if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
@@ -58,22 +63,13 @@ public class JugarDificil {
                 reAcertadas++;
                 enunciado++;
                 p = gp.getPregunta(VarGenYConst.dificultad, enunciado);
-                opciones = p.getOpciones();
 
                 if (policia.disparar(escapista, VarGenYConst.dificultad)) {
-
+                    frenado = true;
                     System.out.println(VarGenYConst.mensajePoli);
 
-                    System.out.println(pantalla);
-
-                    System.out.println(p.getEnunciado());
-                    for (int i = 0; i < opciones.length; i++) {
-                        if (!opciones[i].isEmpty()) {
-                            System.out.println((i + 1) + ") " + opciones[i]);
-                        }
-                    }
-                    reJugador = Utilidades.leerEnteroValidado(min, max); // Comprueba la respuesta 1
-                    respuestaElegida = opciones[reJugador - 1];
+                    Utilidades.mostrarPregunta(p, pantalla);
+                    respuestaElegida=Utilidades.leerRespuesta(p);
 
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                         //configuraciones variables
@@ -81,31 +77,22 @@ public class JugarDificil {
                         reAcertadas++;
                         enunciado++;
                         p = gp.getPregunta(VarGenYConst.dificultad, enunciado);
-                        opciones = p.getOpciones();
                         pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
 
                         //Se muestra por pantalla
                         System.out.println(VarGenYConst.mensajesJuego[msglvl]);
-                        System.out.println(pantalla);
-                        System.out.println(p.getEnunciado());
-                        for (int i = 0; i < opciones.length; i++) {
-                            if (!opciones[i].isEmpty()) {
-                                System.out.println((i + 1) + ") " + opciones[i]);
-                            }
-                        }
-                        reJugador = Utilidades.leerEnteroValidado(min, max); // Comprueba la respuesta 1
-                        respuestaElegida = opciones[reJugador - 1];
+                        Utilidades.mostrarPregunta(p, pantalla);
+                        respuestaElegida=Utilidades.leerRespuesta(p);
 
                         if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
-                            msglvl = 1;
-                            System.out.println(VarGenYConst.mensajesJuego[msglvl]);
-                            System.out.println(VarGenYConst.mensajesJuego[VarGenYConst.MENSAJEFIN]);
-                            VarGenYConst.salirJuego = true; // Te saca del juego tras perder
+                            reAcertadas++;
+                            acertada = true;
+                            Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                            
                         } else {
-                            msglvl = 2;
-                            System.out.println(VarGenYConst.mensajesJuego[msglvl]);
-                            System.out.println(VarGenYConst.mensajesJuego[VarGenYConst.MENSAJEFIN]);
-                            VarGenYConst.salirJuego = true; // Te saca del juego tras perder
+
+                            Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                            
                         }
 
 
@@ -145,21 +132,15 @@ public class JugarDificil {
                     mostrarPantalla++;
                     System.out.println("¡Has acertado! Tu personaje avanza hasta la rendija de salida.");
                     pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
-                    System.out.println(pantalla);
 
-                    System.out.println(p.getEnunciado());
-                    for (int i = 0; i < opciones.length; i++) {
-                        if (!opciones[i].isEmpty()) {
-                            System.out.println((i + 1) + ") " + opciones[i]);
-                        }
-                    }
-                    reJugador = Utilidades.leerEnteroValidado(min, max); // Comprueba la respuesta 1
-                    respuestaElegida = opciones[reJugador - 1];
+                    Utilidades.mostrarPregunta(p, pantalla);
+                    respuestaElegida=Utilidades.leerRespuesta(p);
+        
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                         reAcertadas = reAcertadas + 1;
                         enunciado++;
                         p = gp.getPregunta(VarGenYConst.dificultad, enunciado);
-                        opciones = p.getOpciones();
+
                         if (policia.disparar(escapista, VarGenYConst.dificultad)) {
                             System.out.println(
                                     "¡OH NO! El policia ha acertado el disparo, el escapista permanece inmovil 1 turno.");
@@ -186,19 +167,13 @@ public class JugarDificil {
                         } else {
                             pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y
                                                                    // del agua
-                            System.out.println(pantalla);
-                            System.out.println(p.getEnunciado());
-                            for (int i = 0; i < opciones.length; i++) {
-                                if (!opciones[i].isEmpty()) {
-                                    System.out.println((i + 1) + ") " + opciones[i]);
-                                }
-                            }
-                            reJugador = Utilidades.leerEnteroValidado(min, max); // Comprueba la respuesta 1
-                            respuestaElegida = opciones[reJugador - 1];
+                            Utilidades.mostrarPregunta(p, pantalla);
+                            respuestaElegida=Utilidades.leerRespuesta(p);
+                                                       
                             if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
-                                System.out.println("¡Has acertado! Tu personaje ha huido.");
+                                Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
                                 lvlPasado = true; // pone lvlPasado en true para salir del bucle.
-                                VarGenYConst.salirJuego = true; // Te manda al menú princial.
+                                Utilidades.guardarPartida(reAcertadas, lvlPasado);
                             } else {
                                 System.out.println("Has fallado.");
                                 System.out.println("Oh no, el agua subió demasiado rápido, has perdido.");

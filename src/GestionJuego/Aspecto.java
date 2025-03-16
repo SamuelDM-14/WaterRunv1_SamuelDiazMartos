@@ -50,7 +50,7 @@ public class Aspecto {
         //Muestra las opciones de colores.
         System.out.println("Has elegido cambiar el aspecto de tu personaje.");
         System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
-        eleccionColorPJ = Utilidades.leerEnteroValidado(VarGenYConst.min, VarGenYConst.max); //Lee la elección del color
+        eleccionColorPJ = Utilidades.leerEnteroValidado(); //Lee la elección del color
         switch (eleccionColorPJ) { //Según la elección se mete en el case correspondiente.
             case 1:
             System.out.println("Has elegido el color rojo.");
@@ -106,7 +106,7 @@ public class Aspecto {
             //Muestra las opciones de colores.
             System.out.println("Has elegido cambiar el aspecto del Policia.");
             System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
-            eleccioncolorPo = Utilidades.leerEnteroValidado(VarGenYConst.min, VarGenYConst.max); //Lee el color elegido.
+            eleccioncolorPo = Utilidades.leerEnteroValidado(); //Lee el color elegido.
             switch (eleccioncolorPo) { //selecciona segun el número elegido.
                 case 1:
                     System.out.println("Has elegido el color rojo.");
@@ -172,7 +172,7 @@ public class Aspecto {
             //Muestra opciones de aspecto.
             System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
 
-            reAspecto = Utilidades.leerEnteroValidado(VarGenYConst.min, VarGenYConst.max); //Lee respuesta y la guarda en reAspecto
+            reAspecto = Utilidades.leerEnteroValidado(); //Lee respuesta y la guarda en reAspecto
 
             switch (reAspecto) {
                 case 1:
