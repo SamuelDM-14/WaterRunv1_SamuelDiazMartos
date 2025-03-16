@@ -11,7 +11,8 @@ package clases;
 public class Jugador {
     //Atributos del jugador
     private String nombre = "";
-
+    //Puedo tener un arraylist de objetos partidas
+    
     //Metodo constructor de jugador
     public Jugador( String nombre) {
         this.nombre = nombre;

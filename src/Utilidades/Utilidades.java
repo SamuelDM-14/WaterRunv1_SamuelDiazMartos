@@ -75,6 +75,76 @@ public class Utilidades {
         return valor;
     }
 
+    /**
+     * Metodo qeu devuelve un array de pantallas para mostrar en el juego.
+     * 
+     * @return Devuelve un array con las pantallas a mostrar.
+     */
+    public static String[] gestorPantallas() {
+
+        // pantalla1 del juego
+        String pantalla1 = """
+                █████████████████████████████████████████████████████
+                █                                                   █
+                ██                                                  █
+                                                                   | |
+                                                                   | |
+                ██                                                 | |
+                █                                                   █
+                █                                         ███████████
+                █                                         ███████████
+                █                                         ███████████
+                █                                         ███████████
+                █                                         ███████████
+                █                                         ███████████
+                █                               █████████████████████
+                █                               █████████████████████
+                █                               █████████████████████
+                █""" + VarGenYConst.colorPj + """
+                \t  o  """ + VarGenYConst.COLOR_RESET + """
+                                     █████████████████████
+                █""" + VarGenYConst.colorPj + """
+                \t /L """ + VarGenYConst.COLOR_RESET + """
+                                     █████████████████████
+                █""" + VarGenYConst.colorPj + """
+                \t | """ + VarGenYConst.COLOR_RESET + """
+                                      █████████████████████
+                █████████████████████████████████████████████████████
+                        """;
+        // pantalla 2 del juego.
+        String pantalla2 = """
+                █████████████████████████████████████████████████████
+                █                                                   █
+                ██                                                  █
+                                                                   | |
+                                                            """ + VarGenYConst.colorPj + """
+                \t\t\t\t\t     o""" + VarGenYConst.COLOR_RESET + """
+                \t   | |
+                ██                                         """ + VarGenYConst.colorPj + """
+                \t\t\t\t\t    /L""" + VarGenYConst.COLOR_RESET + """
+                     | |
+                █                                          """ + VarGenYConst.colorPj + """
+                \t\t\t\t\t    |""" + VarGenYConst.COLOR_RESET + """
+                \t    █
+                █                                         ███████████
+                █                                         ███████████
+                █                                         ███████████
+                █                                         ███████████
+                █                                         ███████████
+                █                                         ███████████
+                █                               █████████████████████
+                █                               █████████████████████
+                █                               █████████████████████
+                █                               █████████████████████
+                █                               █████████████████████
+                █                               █████████████████████
+                █████████████████████████████████████████████████████
+                    """;
+
+        // Array de pantallas
+        String[] pantallas = { pantalla1, pantalla2 };
+        return pantallas;
+    }
 
 
 }

@@ -10,17 +10,6 @@ import java.io.IOException;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 public class Aspecto {
-        //Variable para mostrar el menú adecuado. En cada metodo cambia.
-        private static int opcionMenu=0;
-
-        //Variables utilizadas para leer números enteros y validar las respuestas.
-        private static int max = 5;
-        private static int min = 0;
-
- 
-
-
-
     /**
      * Gestiona la eleccion de los colores del Escapista comprobando que no estes eligiendo el mismo color que el Policia
      * @param eleccionColor
@@ -52,16 +41,16 @@ public class Aspecto {
      * @param bf
      * @throws IOException
      */
-    private static void cambiarAspectoPJ(String[] MOSTRARMENUS) throws IOException{
+    private static void cambiarAspectoPJ() throws IOException{
         //cambias el aspecto del Personaje
         int eleccionColorPJ;
-        opcionMenu= 4;
-        max=9;
-        min=1;
+        VarGenYConst.opcionMenu= 4;
+        VarGenYConst.max=9;
+        VarGenYConst.min=1;
         //Muestra las opciones de colores.
         System.out.println("Has elegido cambiar el aspecto de tu personaje.");
-        System.out.println(MOSTRARMENUS[opcionMenu]);
-        eleccionColorPJ = Utilidades.leerEnteroValidado(min, max); //Lee la elección del color
+        System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
+        eleccionColorPJ = Utilidades.leerEnteroValidado(VarGenYConst.min, VarGenYConst.max); //Lee la elección del color
         switch (eleccionColorPJ) { //Según la elección se mete en el case correspondiente.
             case 1:
             System.out.println("Has elegido el color rojo.");
@@ -109,15 +98,15 @@ public class Aspecto {
      * @param bf
      * @throws IOException
      */
-    private static void cambiarAspectoPo(String[] MOSTRARMENUS) throws IOException{
+    private static void cambiarAspectoPo() throws IOException{
         int eleccioncolorPo;
-        opcionMenu= 5;
-        max=9;
-        min=1;
+        VarGenYConst.opcionMenu= 5;
+        VarGenYConst.max=9;
+        VarGenYConst.min=1;
             //Muestra las opciones de colores.
             System.out.println("Has elegido cambiar el aspecto del Policia.");
-            System.out.println(MOSTRARMENUS[opcionMenu]);
-            eleccioncolorPo = Utilidades.leerEnteroValidado(min, max); //Lee el color elegido.
+            System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
+            eleccioncolorPo = Utilidades.leerEnteroValidado(VarGenYConst.min, VarGenYConst.max); //Lee el color elegido.
             switch (eleccioncolorPo) { //selecciona segun el número elegido.
                 case 1:
                     System.out.println("Has elegido el color rojo.");
@@ -166,7 +155,7 @@ public class Aspecto {
      * @param bf
      * @throws IOException
      */
-    public static void cambiarAspecto(String[] MOSTRARMENUS) throws IOException{
+    public static void cambiarAspecto() throws IOException{
 
         //Respuestas aspecto
         int reAspecto;// respuesta de elección de aspecto.
@@ -177,20 +166,20 @@ public class Aspecto {
         salirAspecto=false; //Pone salirAspecto en false, ya que sino cuando eligieras cualquier cosa dentro de los submenús
         //Te sacaraía instantaneamente al menú general. 
         do { //Repite hasta que el usuario seleccione salir.
-            opcionMenu= 3;
-            max=3;
-            min=1;
+            VarGenYConst.opcionMenu= 3;
+            VarGenYConst.max=3;
+            VarGenYConst.min=1;
             //Muestra opciones de aspecto.
-            System.out.println(MOSTRARMENUS[opcionMenu]);
+            System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
 
-            reAspecto = Utilidades.leerEnteroValidado(min, max); //Lee respuesta y la guarda en reAspecto
+            reAspecto = Utilidades.leerEnteroValidado(VarGenYConst.min, VarGenYConst.max); //Lee respuesta y la guarda en reAspecto
 
             switch (reAspecto) {
                 case 1:
-                    cambiarAspectoPJ(MOSTRARMENUS);// Llama al meteodo cambiarAspectoPJ y le envia el BufferedReader
+                    cambiarAspectoPJ();// Llama al meteodo cambiarAspectoPJ y le envia el BufferedReader
                     break;
                 case 2:
-                    cambiarAspectoPo(MOSTRARMENUS);// Llama al meteodo cambiarAspectoPo y le envia el BufferedReader
+                    cambiarAspectoPo();// Llama al meteodo cambiarAspectoPo y le envia el BufferedReader
                     break;
                 case 3: 
                     System.out.println("Has elegido salir. Volviendo al menú principal.");

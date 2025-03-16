@@ -5,6 +5,9 @@
  */
 package clases;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 /**
  * La clase partida se encarga de gestionar la hora de inicio, la hora de fin
  * las respuestas correctas, la dificultad de las preguntas y si ha pasado el
@@ -12,16 +15,16 @@ package clases;
  */
 public class Partida {
     // ------------ VARIABELS DE PARTIDA ------------
-    private String fechaIncioPartida = "";
-    private String fechaFinPartida = "";
-    private String horaIncioPartida = "";
-    private String horaFinPartida = "";
+    private LocalDate fechaIncioPartida;
+    private LocalDate fechaFinPartida;
+    private LocalTime horaIncioPartida;
+    private LocalTime horaFinPartida;
     private int respuestasAcertadas = 0;
     private boolean nivelPasado = false;
     private int dificultadJugada = 0;
 
     // ------------ CONSTRUCTOR DE PARTIDA ------------
-    public Partida(String fechaIncioPartida, String fechaFinPartida, String horaIncioPartida, String horaFinPartida,
+    public Partida(LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida, LocalTime horaFinPartida,
             int respuestasAcertadas, int dificultadJugada, boolean nivelPasado) {
         this.fechaIncioPartida = fechaIncioPartida;
         this.fechaFinPartida = fechaFinPartida;
@@ -34,42 +37,42 @@ public class Partida {
 
     // ------------ GETTERS Y SETTERS DE PARTIDA ------------
     // ------------ GET DE FECHA DE INICIO DE PARTIDA ------------
-    public String getFechaIncioPartida() {
+    public LocalDate getFechaIncioPartida() {
         return fechaIncioPartida;
     }
 
     // ------------ SET DE FECHA DE INICIO DE PARTIDA ------------
-    public void setFechaIncioPartida(String fechaIncioPartida) {
+    public void setFechaIncioPartida(LocalDate fechaIncioPartida) {
         this.fechaIncioPartida = fechaIncioPartida;
     }
 
     // ------------ GET DE FECHA DE FIN DE PARTIDA ------------
-    public String getFechaFinPartida() {
+    public LocalDate getFechaFinPartida() {
         return fechaFinPartida;
     }
 
     // ------------ SET DE FECHA DE FIN DE PARTIDA ------------
-    public void setFechaFinPartida(String fechaFinPartida) {
+    public void setFechaFinPartida(LocalDate fechaFinPartida) {
         this.fechaFinPartida = fechaFinPartida;
     }
 
     // ------------ GET DE FECHA DE INICIO DE PARTIDA ------------
-    public String getHoraIncioPartida() {
+    public LocalTime getHoraIncioPartida() {
         return horaIncioPartida;
     }
 
     // ------------ SET DE FECHA DE INICIO DE PARTIDA ------------
-    public void setHoraIncioPartida(String horaIncioPartida) {
+    public void setHoraIncioPartida(LocalTime horaIncioPartida) {
         this.horaIncioPartida = horaIncioPartida;
     }
 
     // ------------ GET DE FECHA DE FIN DE PARTIDA ------------
-    public String getHoraFinPartida() {
+    public LocalTime getHoraFinPartida() {
         return horaFinPartida;
     }
 
     // ------------ SET DE FECHA DE FIN DE PARTIDA ------------
-    public void setHoraFinPartida(String horaFinPartida) {
+    public void setHoraFinPartida(LocalTime horaFinPartida) {
         this.horaFinPartida = horaFinPartida;
     }
 
