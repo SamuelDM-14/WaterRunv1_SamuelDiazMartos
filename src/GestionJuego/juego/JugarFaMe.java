@@ -62,6 +62,7 @@ public class JugarFaMe {
                     Utilidades.mostrarPregunta(p, pantalla);
                     respuestaElegida = Utilidades.leerRespuesta(p);
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
+                        reAcertadas++;
                         acertada = true;
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
                         lvlPasado = true; // pone lvlPasado en true para salir del bucle.
@@ -80,6 +81,7 @@ public class JugarFaMe {
                     Utilidades.mostrarPregunta(p, pantalla);
                     respuestaElegida = Utilidades.leerRespuesta(p);
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
+                        reAcertadas++;
                         acertada = true;
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
                         Utilidades.guardarPartida(reAcertadas, lvlPasado);
@@ -109,6 +111,7 @@ public class JugarFaMe {
                     Utilidades.mostrarPregunta(p, pantalla);
                     respuestaElegida = Utilidades.leerRespuesta(p);
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
+                        reAcertadas++;
                         acertada = true;
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
                         Utilidades.guardarPartida(reAcertadas, lvlPasado);
@@ -127,6 +130,7 @@ public class JugarFaMe {
                     respuestaElegida = Utilidades.leerRespuesta(p);
 
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
+                        reAcertadas++;
                         acertada = true;
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
                         Utilidades.guardarPartida(reAcertadas, lvlPasado);

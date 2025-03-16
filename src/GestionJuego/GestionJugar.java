@@ -129,7 +129,7 @@ public class GestionJugar {
     //Te sacaria en cuanto eligieras algo que te mueva a este menú.
     do{ //Repite hasta que el usuario seleccione salir.
         //Muestra las opciones. (No disponible de momento.)
-        VarGenYConst.max = 3;
+        VarGenYConst.max = 4;
         VarGenYConst.min = 1;
         VarGenYConst.opcionMenu = 6;
         System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
