@@ -13,7 +13,7 @@ import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
 /**
- * Esta clase se encarga de toda la gestion del apartado jugar en concreto.
+ * Esta clase se encarga de toda la gestion general de jugar.
  */
 public class Jugar {
 
