@@ -11,10 +11,7 @@ import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import clases.Escapista;
-import clases.GestionPreguntas;
 import clases.Partida;
-import clases.Policia;
 import clases.Pregunta;
 
 /**
@@ -154,6 +151,12 @@ public class Utilidades {
         return pantallas;
     }
 
+    /**
+     * Muestra las preguntas del juego.
+     * 
+     * @param p        Recibe el objeto pregunta.
+     * @param pantalla Recibe el String que muestra las pantallas de juego.
+     */
     public static void mostrarPregunta(Pregunta p, String pantalla) {
 
         System.out.println(pantalla);
@@ -167,31 +170,34 @@ public class Utilidades {
 
     }
 
+    /**
+     * Lee las respuestas del usuario por pregunta y devuelve el dato de la
+     * respuesta.
+     * 
+     * @param p Recibe el objeto pregunta.
+     * @return Devuelve el dato de la respuesta.
+     * @throws IOException Excepción para poder leer con BufferedReader.
+     */
     public static String leerRespuesta(Pregunta p) throws IOException {
         int respuesta = leerEnteroValidado(); // Comprueba la respuesta 1
         return p.getOpciones()[respuesta - 1];
     }
 
-    private static void fJElse(int msglvl) {
-        msglvl = 2;
-        System.out.println(VarGenYConst.mensajesJuego[msglvl]);
-        System.out.println(VarGenYConst.mensajesJuego[VarGenYConst.MENSAJEDER]);
-        VarGenYConst.salirJuego = true; // Te saca del juego tras perder
-
-    }
-
     /**
-     * Este método se encarga de ejecutar todos los finales posibles en la dificultad dificil.
-     * @param acertada Manda si la última pregunta fue acertada o no.
+     * Este método se encarga de ejecutar todos los finales posibles en la
+     * dificultad dificil.
+     * 
+     * @param acertada    Manda si la última pregunta fue acertada o no.
      * @param reAcertadas Manda el número de respuestas acertadas.
-     * @param msglvl Manda un entero para mostrar el mensaje adecuado.
-     * @param frenado Manda si el jugador fue frenado en alguna pregunta o no.
+     * @param msglvl      Manda un entero para mostrar el mensaje adecuado.
+     * @param frenado     Manda si el jugador fue frenado en alguna pregunta o no.
      */
     public static void finalizarJuegoDificil(boolean acertada, int reAcertadas, int msglvl, boolean frenado) {
         switch (reAcertadas) {
 
             case 0:
-                fJElse(msglvl);
+                msglvl = 0;
+                msgGeneral(msglvl);
                 break;
 
             case 1:
@@ -199,10 +205,11 @@ public class Utilidades {
                     msglvl = 0;
                     msgGeneral(msglvl);
                 } else if (acertada && frenado) {
-                    msglvl= 0;
+                    msglvl = 0;
                     msgGeneral(msglvl);
                 } else {
-                    fJElse(msglvl);
+                    msglvl = 0;
+                    msgGeneral(msglvl);
                 }
                 break;
 
@@ -214,10 +221,11 @@ public class Utilidades {
                     msglvl = 0;
                     msgGeneral(msglvl);
                 } else if (!acertada) {
-                    msglvl = 0;
+                    msglvl = 2;
                     msgGeneral(msglvl);
                 } else {
-                    fJElse(msglvl);
+                    msglvl = 0;
+                    msgGeneral(msglvl);
                 }
                 break;
             case 3:
@@ -229,16 +237,32 @@ public class Utilidades {
         }
     }
 
-    private static void msgGeneral(int msglvl){
+    /**
+     * Manda un mensjae general Cuando pierdes.
+     * 
+     * @param msglvl Entero que indica que mensaje mandar.
+     */
+    private static void msgGeneral(int msglvl) {
         System.out.println(VarGenYConst.mensajesJuego[msglvl]);
         System.out.println(VarGenYConst.mensajesJuego[VarGenYConst.MENSAJEDER]);
         VarGenYConst.salirJuego = true; // Te saca del juego tras perder
     }
+
+    /**
+     * Manda los mensajes de finalización de juego de las dificultades fácil y
+     * media.
+     * 
+     * @param acertada    Recibe si ha acertado la última pregunta.
+     * @param reAcertadas Recibe el total de las respuestas acertadas.
+     * @param msglvl      Recibe un entero que se usará para seleccionar un mensaje
+     *                    específico.
+     */
     public static void finalizarJuegoFaMe(boolean acertada, int reAcertadas, int msglvl) {
         switch (reAcertadas) {
 
             case 0:
-                fJElse(msglvl);
+                msglvl = 2;
+                msgGeneral(msglvl);
                 break;
 
             case 1:
@@ -246,7 +270,8 @@ public class Utilidades {
                     msglvl = 0;
                     msgGeneral(msglvl);
                 } else {
-                    fJElse(msglvl);
+                    msglvl = 2;
+                    msgGeneral(msglvl);
                 }
                 break;
 
@@ -255,10 +280,11 @@ public class Utilidades {
                     msglvl = 1;
                     msgGeneral(msglvl);
                 } else if (!acertada) {
-                    msglvl = 0;
+                    msglvl = 2;
                     msgGeneral(msglvl);
                 } else {
-                    fJElse(msglvl);
+                    msglvl = 2;
+                    msgGeneral(msglvl);
                 }
                 break;
             case 3:
@@ -270,14 +296,18 @@ public class Utilidades {
         }
     }
 
-    public static void finalizarJuegoPasado() {
-
-    }
-
+    /**
+     * Guarda los datos de las partidas.
+     * 
+     * @param reAcertadas Recibe el número de respuestas acertadas.
+     * @param lvlPasado   Recibe si el nivel se ha pasado o no.
+     */
     public static void guardarPartida(int reAcertadas, boolean lvlPasado) {
         VarGenYConst.fechaFinPartida = LocalDate.now();
         VarGenYConst.horaFinPartida = LocalTime.now();
         VarGenYConst.partida = new Partida(VarGenYConst.fechaIncioPartida, VarGenYConst.fechaFinPartida,
-                VarGenYConst.horaIncioPartida, VarGenYConst.horaFinPartida, reAcertadas, VarGenYConst.dificultad, lvlPasado);
+                VarGenYConst.horaIncioPartida, VarGenYConst.horaFinPartida, reAcertadas, VarGenYConst.dificultad,
+                lvlPasado);
     }
+
 }

@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import gestionjuego.juego.JugarDificil;
-import gestionjuego.juego.JugarFaMe;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
@@ -27,27 +25,25 @@ public class Jugar {
      * @param bf
      * @throws IOException
      */
-    public static void jugar() throws IOException{
+    public static void jugar() throws IOException {
         // Respuestas del juego
         VarGenYConst.opcionMenu = 1;
 
         char re1; // Respuesta jugar o no jugar.
         Boolean jugar = false; // Comprobar si el jugador quiere jugar o no.
 
-
-
-
         VarGenYConst.salirJuego = false; // Pone en false el salir. Si has jugado sin recargar el programa te sacaria en
-                            // la primera seleccion de salir.
+                                         // la primera seleccion de salir.
 
         do { // Repite hasta que el jugador indique que quiera salir. Más adelante, cuando se
              // pase un nivel, le dará la opcion de guardar y de salir.
-            System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]); // Explicación de como funcionan las respuestas y como
-                                                          // funciona el juego.
+            System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]); // Explicación de como funcionan las
+                                                                                    // respuestas y como
+            // funciona el juego.
             re1 = Utilidades.leerSN();
 
             if (re1 == 'S') {
-                VarGenYConst.fechaIncioPartida= LocalDate.now();
+                VarGenYConst.fechaIncioPartida = LocalDate.now();
                 VarGenYConst.horaIncioPartida = LocalTime.now();
                 jugar = true; // Variable para entrar al juego
             } else if (re1 == 'N') {
