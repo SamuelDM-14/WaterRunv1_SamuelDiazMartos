@@ -24,6 +24,16 @@ public class Partida {
     private int dificultadJugada = 0;
 
     // ------------ CONSTRUCTOR DE PARTIDA ------------
+    /**
+     * Constructor de Partida.
+     * @param fechaIncioPartida Recibe la fecha de incio de partida.
+     * @param fechaFinPartida Recibe la fecha de fin de partida.
+     * @param horaIncioPartida Recibe la hora de incio de partida.
+     * @param horaFinPartida Recibe la hora de fin de partida.
+     * @param respuestasAcertadas Recibe las respuestas acertadas.
+     * @param dificultadJugada Recibe la dificultdad jugada.
+     * @param nivelPasado Recibe si se ha pasado la partida o ha perdido.
+     */
     public Partida(LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida, LocalTime horaFinPartida,
             int respuestasAcertadas, int dificultadJugada, boolean nivelPasado) {
         this.fechaIncioPartida = fechaIncioPartida;
@@ -109,9 +119,27 @@ public class Partida {
     // ------------ TOSTRING DE PARTIDA ------------
     @Override
     public String toString() {
-        return "Partida [fechaIncioPartida=" + fechaIncioPartida + ", fechaFinPartida=" + fechaFinPartida
-                + ", horaIncioPartida=" + horaIncioPartida + ", horaFinPartida=" + horaFinPartida
-                + ", respuestasAcertadas=" + respuestasAcertadas + ", nivelPasado=" + nivelPasado
-                + ", dificultadJugada=" + dificultadJugada + "]";
+        return """
+                ___________________________________
+                |       DATOS DE LA PARTIDA       |
+                |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
+                | Fecha de inicio:  """ + fechaIncioPartida + """
+                      |
+                | Fecha de fin:  """ + fechaFinPartida + """
+                         |
+                | Hora inicio:  """ + horaIncioPartida + """
+                  |
+                | Hora Fin: """ + horaFinPartida + """
+                     |
+                | Respuestas acertadas:  """ + respuestasAcertadas + """
+                          |
+                | Nivel pasado:  """ + nivelPasado + """
+                               |
+                | Dificultad jugada:  """ + dificultadJugada + """
+                             |
+                +---------------------------------+
+                |       DATOS DE LA PARTIDA       |
+                ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯       
+                """;
     }
 }
