@@ -1,9 +1,11 @@
+/**
+ * JugarDifícil
+ * @author SDM
+ * 17-03-2025
+ */
 package gestionjuego.juego;
 
 import java.io.IOException;
-
-
-
 
 import clases.Escapista;
 import clases.GestionPreguntas;
@@ -12,6 +14,10 @@ import clases.Pregunta;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
+/**
+ * Esta clase se encarga de gestionar la partida en la
+ * dificultad difícil.
+ */
 public class JugarDificil {
 
     /**
