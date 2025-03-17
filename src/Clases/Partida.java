@@ -47,71 +47,127 @@ public class Partida {
 
     // ------------ GETTERS Y SETTERS DE PARTIDA ------------
     // ------------ GET DE FECHA DE INICIO DE PARTIDA ------------
+    /**
+     * Devuelve la fecha de inicio de la partida.
+     * @return fecha de inicio de la partida.
+     */
     public LocalDate getFechaIncioPartida() {
         return fechaIncioPartida;
     }
 
     // ------------ SET DE FECHA DE INICIO DE PARTIDA ------------
+    /**
+     * Establece la fecha de inicio de la partida
+     * @param fechaIncioPartida fecha de incio de la partida
+     */
     public void setFechaIncioPartida(LocalDate fechaIncioPartida) {
         this.fechaIncioPartida = fechaIncioPartida;
     }
 
     // ------------ GET DE FECHA DE FIN DE PARTIDA ------------
+    /**
+     * Devuelve la fecha de fin de la partida
+     * @return fecha de fin de la partida
+     */
     public LocalDate getFechaFinPartida() {
         return fechaFinPartida;
     }
 
     // ------------ SET DE FECHA DE FIN DE PARTIDA ------------
+    /**
+     * Establece la fecha de fin de la partida
+     * @param fechaFinPartida fecha de fin de la partida
+     */
     public void setFechaFinPartida(LocalDate fechaFinPartida) {
         this.fechaFinPartida = fechaFinPartida;
     }
 
     // ------------ GET DE FECHA DE INICIO DE PARTIDA ------------
+    /**
+     * Devuelve la hora de inicio de la partida.
+     * @return hora de inicio de la partida.
+     */
     public LocalTime getHoraIncioPartida() {
         return horaIncioPartida;
     }
 
     // ------------ SET DE FECHA DE INICIO DE PARTIDA ------------
+    /**
+     * Establece la hora de inicio de la partida
+     * @param horaIncioPartida hora de inicio de la partida
+     */
     public void setHoraIncioPartida(LocalTime horaIncioPartida) {
         this.horaIncioPartida = horaIncioPartida;
     }
 
     // ------------ GET DE FECHA DE FIN DE PARTIDA ------------
+    /**
+     * Devuelve la hora de fin de la partida
+     * @return hora de fin de la partida
+     */
     public LocalTime getHoraFinPartida() {
         return horaFinPartida;
     }
 
     // ------------ SET DE FECHA DE FIN DE PARTIDA ------------
+    /**
+     * Establece la hora de fin de la partida
+     * @param horaFinPartida hora de fin de la partida
+     */
     public void setHoraFinPartida(LocalTime horaFinPartida) {
         this.horaFinPartida = horaFinPartida;
     }
 
     // ------------ GET DE RESPUESTAS ACERTADAS DE PARTIDA ------------
+    /**
+     * Devuelve las respuestas acert adas
+     * @return respuestasAcertadas
+     */
     public int getRespuestasAcertadas() {
         return respuestasAcertadas;
     }
 
     // ------------ SET DE RESPUESTAS ACERTADAS DE PARTIDA ------------
+    /**
+     * Establece las respuestas acertadas
+     * @param respuestasAcertadas respuestas acertadas
+     */
     public void setRespuestasAcertadas(int respuestasAcertadas) {
         this.respuestasAcertadas = respuestasAcertadas;
     }
 
     // ------------ GET DE NIVEL PASADO DE PARTIDA ------------
+    /**
+     * Devuelve el nivel pasado
+     * @return nivel pasado
+     */
     public boolean getNivelPasado() {
         return nivelPasado;
     }
 
     // ------------ SET DE NIVEL PASADO DE PARTIDA ------------
+    /**
+     * Establece el nivel pasado
+     * @param nivelPasado nivel pasado
+     */
     public void setNivelPasado(boolean nivelPasado) {
         this.nivelPasado = nivelPasado;
     }
 
     // ------------ GET DE DIFICULTAD DE PARTIDA ------------
+    /**
+     * Devuelve la dificultad jugada.
+     * @return dificultad Jugada
+     */
     public int getDificultadJugada() {
         return dificultadJugada;
     }
 
     // ------------ SET DE DIFICULTAD DE PARTIDA ------------
+    /**
+     * Establece la dificultad jugada
+     * @param dificultadJugada Dificultad jugada
+     */
     public void setDificultadJugada(int dificultadJugada) {
         this.dificultadJugada = dificultadJugada;
     }

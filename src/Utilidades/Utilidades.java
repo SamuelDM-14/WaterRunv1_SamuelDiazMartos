@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Arrays;
+
 
 import clases.Partida;
 import clases.Pregunta;
@@ -307,6 +307,7 @@ public class Utilidades {
      * 
      * @param reAcertadas Recibe el número de respuestas acertadas.
      * @param lvlPasado   Recibe si el nivel se ha pasado o no.
+     * @param partida     Recibe el objeto partida.
      */
     public static void guardarPartida(int reAcertadas, boolean lvlPasado, Partida partida) {
         VarGenYConst.existe = true;
@@ -321,6 +322,10 @@ public class Utilidades {
         VarGenYConst.autoIncremental++;
     }
     
+    /**
+     * Se encarga de mostrar los datos de las partidas.
+     * @param partidas recibe un array de partidas.
+     */
     public static void mostrarPartida(Partida[] partidas){
         for (int i = 0; i < partidas.length; i++) {
             if (partidas[i] != null) {
