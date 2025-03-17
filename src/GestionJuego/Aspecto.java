@@ -9,6 +9,10 @@ import java.io.IOException;
 
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
+
+/**
+ * Clase que gestiona todo lo relacionado con Aspecto.
+ */
 public class Aspecto {
     /**
      * Gestiona la eleccion de los colores del Escapista comprobando que no estes eligiendo el mismo color que el Policia
