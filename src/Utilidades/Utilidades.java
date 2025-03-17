@@ -289,7 +289,7 @@ public class Utilidades {
                 break;
             case 3:
                 System.out.println(VarGenYConst.mensajesJuego[VarGenYConst.MENSAJEVIC]);
-                VarGenYConst.salirJuego = true; // Te saca del juego tras perder
+                VarGenYConst.salirJuego = true; // Te saca del juego 
                 break;
             default:
                 break;
