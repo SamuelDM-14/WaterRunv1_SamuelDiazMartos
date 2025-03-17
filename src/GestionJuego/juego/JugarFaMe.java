@@ -1,3 +1,8 @@
+/**
+ * Pregunta
+ * @author SDM
+ * 17-03-2025
+ */
 package gestionjuego.juego;
 
 import java.io.IOException;
@@ -7,6 +12,10 @@ import clases.Pregunta;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
+/**
+ * Esta clase se encarga de gestionar la partida jugando en
+ * dificultad fácil y media.
+ */
 public class JugarFaMe {
 
     /**
