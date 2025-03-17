@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import clases.Escapista;
 import clases.GestionPreguntas;
+import clases.Partida;
 import clases.Policia;
 import clases.Pregunta;
 import utilidades.Utilidades;
@@ -27,7 +28,7 @@ public class JugarDificil {
      * @param salirJuego Variable de salida del juego
      * @throws IOException
      */
-    public static void jugarDificil() throws IOException {
+    public static void jugarDificil(Partida partida) throws IOException {
 
         Boolean lvlPasado = false; // Variable que comprueba si te has pasdo un nivel.
         int reAcertadas = 0;
@@ -87,10 +88,10 @@ public class JugarDificil {
                             reAcertadas++;
                             acertada = true;
                             Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                            Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                            Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                         } else {
                             Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                            Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                            Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                         }
 
                     } else {
@@ -106,10 +107,10 @@ public class JugarDificil {
                             reAcertadas++;
                             acertada = true;
                             Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                            Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                            Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                         } else {
                             Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                            Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                            Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                         }
                     }
 
@@ -138,10 +139,10 @@ public class JugarDificil {
                                 reAcertadas++;
                                 acertada = true;
                                 Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                                Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                                Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                             } else {
                                 Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                                Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                                Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                             }
                         } else {
                             msglvl = 1;
@@ -156,10 +157,10 @@ public class JugarDificil {
                                 acertada = true;
                                 Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
                                 lvlPasado = true; // pone lvlPasado en true para salir del bucle.
-                                Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                                Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                             } else {
                                 Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                                Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                                Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                             }
 
                         }
@@ -176,10 +177,10 @@ public class JugarDificil {
                             reAcertadas++;
                             acertada = true;
                             Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                            Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                            Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                         } else {
                             Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                            Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                            Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                         }
                     }
 
@@ -210,10 +211,10 @@ public class JugarDificil {
                         reAcertadas++;
                         acertada = true;
                         Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     } else {
                         Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
                 } else {
                     enunciado++;
@@ -227,10 +228,10 @@ public class JugarDificil {
                         reAcertadas++;
                         acertada = true;
                         Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     } else {
                         Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
 
                 }

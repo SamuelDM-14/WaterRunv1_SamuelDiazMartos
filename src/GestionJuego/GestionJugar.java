@@ -166,7 +166,7 @@ public class GestionJugar {
     private static void datosPartida() {
         System.out.println("Ha selecionado \\'Datos de partida guardada.\\'.");
         if (VarGenYConst.existe==true) {
-            System.out.println(VarGenYConst.partida.toString());
+            Utilidades.mostrarPartida(VarGenYConst.partidas);
         }else{
             System.out.println("Aun no se ha jugado ninguna partida.");
         }

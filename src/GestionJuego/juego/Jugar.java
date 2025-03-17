@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import clases.Partida;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
@@ -16,6 +17,9 @@ import utilidades.VarGenYConst;
  * Esta clase se encarga de toda la gestion general de jugar.
  */
 public class Jugar {
+
+    public static LocalDate fechaFinPartida;// Guarda la fecha del fin de la partida.
+    public static LocalTime horaFinPartida;// Guarda la hora de fin de partida.
 
     /**
      * Jugar. Muestra el juego, el cual va sacando preguntas y respuestas y
@@ -43,8 +47,6 @@ public class Jugar {
             re1 = Utilidades.leerSN();
 
             if (re1 == 'S') {
-                VarGenYConst.fechaIncioPartida = LocalDate.now();
-                VarGenYConst.horaIncioPartida = LocalTime.now();
                 jugar = true; // Variable para entrar al juego
             } else if (re1 == 'N') {
                 jugar = false; // Variable para entrar al juego
@@ -54,13 +56,15 @@ public class Jugar {
             }
 
             if (jugar == true) { // Inicio del juego
-
+                LocalDate fechaIncioPartida = LocalDate.now();
+                LocalTime horaIncioPartida = LocalTime.now();
+                Partida partida = new Partida(fechaIncioPartida, null, horaIncioPartida, null, 0, VarGenYConst.dificultad, false);
                 if (VarGenYConst.dificultad == 2) {
                     // Llama al metodo jugarDificil para gestionar el juego en esa dificultad
-                    JugarDificil.jugarDificil();
+                    JugarDificil.jugarDificil(partida);
                 } else {
                     // Llama al metodo jugarFaMe para gestionar el juego en facil y medio
-                    JugarFaMe.jugarFaMe();
+                    JugarFaMe.jugarFaMe(partida);
                 }
 
             } else { // Si eliges no jugar

@@ -88,12 +88,10 @@ public class VarGenYConst {
         // Constante para acceder al mensaje de victoria.
         public static final int MENSAJEVIC = 4;
 
-        // ------------ VARIABLES PARA PARTIDA ------------
-        public static LocalDate fechaIncioPartida;// Guarda la fecha del inicio de la partida.
-        public static LocalTime horaIncioPartida;// Guarda la hora de inicio de la partida.
-        public static LocalDate fechaFinPartida;// Guarda la fecha del fin de la partida.
-        public static LocalTime horaFinPartida;// Guarda la hora de fin de partida.
 
-        public static Partida partida; // Crea el objeto partida.
+
+        // ------------ VARIABLES PARA PARTIDA ------------
+        public static int autoIncremental;
+        public static Partida[] partidas = new Partida[10];
         public static boolean existe = false; // reivsa que exista partida
 }

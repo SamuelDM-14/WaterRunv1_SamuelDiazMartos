@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Arrays;
 
 import clases.Partida;
 import clases.Pregunta;
@@ -80,6 +81,11 @@ public class Utilidades {
         return valor;
     }
 
+
+    // MODULARIZAR 
+    // HACER UN ARCHIVOS UTILIDADESJUEGO O ALGOD EL ESTILO
+
+    
     /**
      * Metodo qeu devuelve un array de pantallas para mostrar en el juego.
      * 
@@ -302,13 +308,26 @@ public class Utilidades {
      * @param reAcertadas Recibe el número de respuestas acertadas.
      * @param lvlPasado   Recibe si el nivel se ha pasado o no.
      */
-    public static void guardarPartida(int reAcertadas, boolean lvlPasado) {
-        VarGenYConst.fechaFinPartida = LocalDate.now();
-        VarGenYConst.horaFinPartida = LocalTime.now();
-        VarGenYConst.partida = new Partida(VarGenYConst.fechaIncioPartida, VarGenYConst.fechaFinPartida,
-                VarGenYConst.horaIncioPartida, VarGenYConst.horaFinPartida, reAcertadas, VarGenYConst.dificultad,
-                lvlPasado);
+    public static void guardarPartida(int reAcertadas, boolean lvlPasado, Partida partida) {
         VarGenYConst.existe = true;
+        LocalDate fechaDeFin = LocalDate.now();
+        LocalTime horaDeFin = LocalTime.now();
+        
+        partida.setFechaFinPartida(fechaDeFin);
+        partida.setHoraFinPartida(horaDeFin);
+        partida.setNivelPasado(lvlPasado);
+        partida.setRespuestasAcertadas(reAcertadas);
+        VarGenYConst.partidas[VarGenYConst.autoIncremental] = partida;
+        VarGenYConst.autoIncremental++;
+    }
+    
+    public static void mostrarPartida(Partida[] partidas){
+        for (int i = 0; i < partidas.length; i++) {
+            if (partidas[i] != null) {
+                System.out.println(partidas[i].toString());
+            }
+        }
+
     }
 
 }

@@ -8,6 +8,7 @@ package gestionjuego.juego;
 import java.io.IOException;
 
 import clases.GestionPreguntas;
+import clases.Partida;
 import clases.Pregunta;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
@@ -25,7 +26,7 @@ public class JugarFaMe {
      * @param salirJuego Variable de salida del juego
      * @throws IOException
      */
-    public static void jugarFaMe() throws IOException {
+    public static void jugarFaMe(Partida partida) throws IOException {
 
         Boolean lvlPasado = false; // Variable que comprueba si te has pasdo un nivel.
 
@@ -75,10 +76,10 @@ public class JugarFaMe {
                         acertada = true;
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
                         lvlPasado = true; // pone lvlPasado en true para salir del bucle.
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     } else {
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
                 } else {
                     enunciado++;
@@ -93,10 +94,10 @@ public class JugarFaMe {
                         reAcertadas++;
                         acertada = true;
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     } else {
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
                 }
             } else {
@@ -123,10 +124,10 @@ public class JugarFaMe {
                         reAcertadas++;
                         acertada = true;
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     } else {
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
                 } else {
                     enunciado++;
@@ -142,10 +143,10 @@ public class JugarFaMe {
                         reAcertadas++;
                         acertada = true;
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     } else {
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado);
+                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
 
                 }
