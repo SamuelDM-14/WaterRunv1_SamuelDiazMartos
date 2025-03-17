@@ -95,4 +95,5 @@ public class VarGenYConst {
         public static LocalTime horaFinPartida;// Guarda la hora de fin de partida.
 
         public static Partida partida; // Crea el objeto partida.
+        public static boolean existe = false; // reivsa que exista partida
 }

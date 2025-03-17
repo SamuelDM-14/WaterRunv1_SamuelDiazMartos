@@ -308,6 +308,7 @@ public class Utilidades {
         VarGenYConst.partida = new Partida(VarGenYConst.fechaIncioPartida, VarGenYConst.fechaFinPartida,
                 VarGenYConst.horaIncioPartida, VarGenYConst.horaFinPartida, reAcertadas, VarGenYConst.dificultad,
                 lvlPasado);
+        VarGenYConst.existe = true;
     }
 
 }
