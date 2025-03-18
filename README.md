@@ -7,7 +7,7 @@ ___________________________________________
 |---------------------|-------------------|
 | **Autor**           |     SDM           |
 | **Fecha de Inicio** |   v1 18/11/2024   |
-| **Última versión**  |   v6 07/03/2025   |
+| **Última versión**  |   v7 17/03/2025   |
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 
 ## Contenido del Proyecto
@@ -19,9 +19,14 @@ ___________________________________________
 - **Java (`Policia.java`)**: Subclase de Personaje con atributos y metodos diferentes a escapista.
 - **Java (`Escapista.java`)**: Subclase de Personaje con atributos y metodos diferentes a policia.
 - **Java (`Jugador.java`)**: Clase que se encargará de registrar los datos del jugador.
+- **Java (`Partida.java`)**: Clase que se encargará de registrar los datos de la partida.
 - **Java (`Utilidades.java`)**: Clase encargada de gestionar todas las validaciones de respuestas.
+- **Java (`VarGenYConst.java`)**: Clase encargada de gestionar todas las variables genéricas y constantes.
 - **Java (`GestionJugar.java`)**: Clase con el codigo general. Se encarga de gestionar los menús.
+- **Java (`Aspecto.java`)**: Clase que se encarga de gestionar la gestión de colores.
 - **Java (`Jugar.java`)**: Clase que gestiona la opción de Jugar. 
+- **Java (`JugarFaMe.java`)**: Clase que gestiona la partida en dificultad fácil y media. 
+- **Java (`JugarDificil.java`)**: Clase que gestiona  la partida en dificultad difícil. 
 - **Jar (`WaterRun.jar`)**: Versión ejecutable del juego.
 - **Manifest (`Manifest.txt`)**: Archivo para crear el WaterRun.Jar.
 
@@ -44,11 +49,18 @@ WATERRUNVX_SAMUELDIAZMARTOS/
             Policia.class
             Escapista.class   
             Jugador.class
+            Partida.class
         utilidades/     #Carpeta de Utilidades
             Utilidades.class
+            VarGenYConst.class
         gestionjuego/   #Carpeta de gestión del juego
+            juego/      #Carpeta del juego
+                Jugar.class
+                JugarFaMe.class
+                JugarDificil.class
+            Aspecto.class
             GestionJugar.class
-            Jugar.class
+
         Manifest.txt
     src/            # Carpeta con el código fuente
         WaterRun.java
@@ -58,12 +70,18 @@ WATERRUNVX_SAMUELDIAZMARTOS/
             GestionPreguntas.java
             Policia.java
             Escapista.java 
-            Jugadro.java
+            Jugador.java
+            Partida.java
         utilidades/     #Carpeta de Utilidades
             Utilidades.java
+            VarGenYConst.java
         gestionjuego/   #Carpeta de gestión del juego
+            juego/      #Carpeta del juego
+                Jugar.java
+                JugarFaMe.java
+                JugarDificil.java
             GestionJugar.java
-            Jugar.java           
+            Aspecto.java
         Manifest.txt
 ```
 
@@ -92,7 +110,7 @@ WATERRUNVX_SAMUELDIAZMARTOS/
 - **jugar**: Se encarga de mostrar el juego, comprobar las respuestas y mostrarte si has acertado o fallado. También te muestra si has ganado o perdido y las preguntas cambian en función de la dificultad.
 - **dificultadDelJuego**: Se encarga de gestionar la dificultad del juego.
 - **cambiarAspecto**: Se encarga de mostrar una selección de colores para elegir de personaje o del agua. Valida la respuesta y asigna dichos colores.
-- **historial**: Muestra un menú que actualmente está en proceso.
+- **historial**: Muestra los datos de la última partida.
 - **Validaciones**: Impide avanzar entre menús si pones un caracter incorrecto. 
 - **Colores**: Puedes elegir tanto el color del agua como el color de tu personaje.
 - **Victoria**: Si respondes a todas las preguntas correctamente ganarás y se te devolverá al menú principal.
