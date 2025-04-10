@@ -61,7 +61,7 @@ public class Jugar {
             if (jugar == true) { // Inicio del juego
                 LocalDate fechaIncioPartida = LocalDate.now();
                 VarGenYConst.horaDeinicio = LocalTime.now();
-                Partida partida = new Partida(fechaIncioPartida, null, 0, VarGenYConst.dificultad, false);
+                Partida partida = new Partida(fechaIncioPartida, null, horaFinPartida, null, 0, VarGenYConst.dificultad, false);
                 if (VarGenYConst.dificultad == 2) {
                     // Llama al metodo jugarDificil para gestionar el juego en esa dificultad
                     JugarDificil.jugarDificil(partida);

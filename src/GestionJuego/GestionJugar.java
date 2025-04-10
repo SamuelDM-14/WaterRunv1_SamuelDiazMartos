@@ -196,11 +196,9 @@ public class GestionJugar {
                     ██   ██ ██ ██      ██  ██ ██  ██  ██  ██      ██  ██ ██ ██ ██   ██ ██    ██
                     ██████  ██ ███████ ██   ████   ████   ███████ ██   ████ ██ ██████   ██████
 
-                    
-                    Escriba su nickname
-
                 """);
-        VarGenYConst.nickname=bf.readLine();
+        System.out.println("Escriba su nickname");
+        VarGenYConst.nombreJugador=bf.readLine();
 
         System.out.println("Pulsa \'Enter\' para continuar");
 
