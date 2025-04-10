@@ -176,6 +176,22 @@ public class GestionJugar {
     }
 
     /**
+     * 
+     * @throws IOException
+     */
+    private static void validacionUsuario() throws IOException{
+        String cuenta;
+        System.out.println("¿Tienes cuenta?");
+        cuenta=Utilidades.leerSNString();
+        if (cuenta.equals("S")) {
+            
+        } else {
+
+        }
+        System.out.println("Escriba su nickname");
+        VarGenYConst.nombreJugador=bf.readLine();
+    }
+    /**
      * Bienvenida al juego. Comprueba que solo pongas un enter.
      * 
      * @author SDM
@@ -197,8 +213,8 @@ public class GestionJugar {
                     ██████  ██ ███████ ██   ████   ████   ███████ ██   ████ ██ ██████   ██████
 
                 """);
-        System.out.println("Escriba su nickname");
-        VarGenYConst.nombreJugador=bf.readLine();
+
+        validacionUsuario();
 
         System.out.println("Pulsa \'Enter\' para continuar");
 

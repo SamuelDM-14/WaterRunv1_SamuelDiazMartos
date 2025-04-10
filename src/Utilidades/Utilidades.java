@@ -52,6 +52,29 @@ public class Utilidades {
         return c;
     }
 
+    public static String leerSNString() throws IOException {
+        boolean valido = false;
+        String caracter = " "; // variable donde guardaremos la elección
+        do { // Repite hasta que escribas el caracter correcto.
+
+            caracter = bf.readLine(); // Guarda la respuesta en un string.
+
+            if (caracter.length() == 1) { // Comprueba que el string sea de 1 caracter.
+
+                caracter.toUpperCase();// pasa el re1 a mayusculas y lo guarda de nuevo en re1
+                if (caracter.equals("S") || caracter.equals("N")) {
+                    valido = true;
+                } else {
+                    System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
+                }
+            } else {
+                System.out.println("No has escrito un único caracter. Prueba otra vez.");
+            }
+        } while (!valido);
+
+        return caracter;
+    }
+
     /**
      * Lee un número entero, validando que esté entre min y max.
      * Si el usuario escribe algo inválido (caracteres no numéricos o número fuera
