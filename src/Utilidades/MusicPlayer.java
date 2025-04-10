@@ -31,4 +31,13 @@ public class MusicPlayer {
             clip.close();
         }
     }
+    public void setVolume(float level) {
+        if (clip != null) {
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            // El valor debe estar en el rango del control (usualmente entre -80.0f y 6.0f)
+            float clampedLevel = Math.max(gainControl.getMinimum(), Math.min(level, gainControl.getMaximum()));
+            gainControl.setValue(clampedLevel);
+        }
+    }
+    
 }

@@ -61,8 +61,7 @@ public class Utilidades {
 
             if (caracter.length() == 1) { // Comprueba que el string sea de 1 caracter.
 
-                caracter.toUpperCase();// pasa el re1 a mayusculas y lo guarda de nuevo en re1
-                if (caracter.equals("S") || caracter.equals("N")) {
+                if (caracter.equalsIgnoreCase("s") || caracter.equalsIgnoreCase("n")) {
                     valido = true;
                 } else {
                     System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");

@@ -16,6 +16,8 @@ import clases.Partida;
  */
 public class VarGenYConst {
         public static String nombreJugador;
+        public static String contraseña;
+
 
         // Todos los menús del juego estan aqui. Accederemos a ellos mencionando
         // directamente a MOSTRARMENUS.

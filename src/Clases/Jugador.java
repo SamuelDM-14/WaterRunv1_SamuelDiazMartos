@@ -14,24 +14,32 @@ import java.util.Map;
  */
 public class Jugador {
     //Atributos del jugador
+    private int id_Jugador;
     private String nombre = "";
     private String contraseña = "";
-    private Map<String, ArrayList<Partida>> partidas;
+    private ArrayList<Partida> partidas;
     //Puedo tener un arraylist de objetos partidas
     //Metodo constructor de jugador
-    public Jugador(String nombre, String contraseña, Map<String, ArrayList<Partida>> partidas) {
+    public Jugador(String nombre, String contraseña, ArrayList<Partida> partidas) {
+        this.nombre = nombre;
+        this.contraseña = contraseña;
+        this.partidas = partidas;
+    }
+
+    public Jugador(int id, String nombre, String contraseña, ArrayList<Partida> partidas) {
+        this.id_Jugador= id;
         this.nombre = nombre;
         this.contraseña = contraseña;
         this.partidas = partidas;
     }
 
 
-    public Map<String, ArrayList<Partida>> getPartidas() {
+    public ArrayList<Partida> getPartidas() {
         return partidas;
     }
 
 
-    public void setPartidas(Map<String, ArrayList<Partida>> partidas) {
+    public void setPartidas(ArrayList<Partida> partidas) {
         this.partidas = partidas;
     }
 

@@ -175,22 +175,7 @@ public class GestionJugar {
 
     }
 
-    /**
-     * 
-     * @throws IOException
-     */
-    private static void validacionUsuario() throws IOException{
-        String cuenta;
-        System.out.println("¿Tienes cuenta?");
-        cuenta=Utilidades.leerSNString();
-        if (cuenta.equals("S")) {
-            
-        } else {
 
-        }
-        System.out.println("Escriba su nickname");
-        VarGenYConst.nombreJugador=bf.readLine();
-    }
     /**
      * Bienvenida al juego. Comprueba que solo pongas un enter.
      * 
@@ -198,12 +183,8 @@ public class GestionJugar {
      * @throws IOException
      */
     public static void bienvenida() throws IOException {
-        // variables Bienvenida
-        boolean empezar = false; // Para comprobar que haya puesto un enter
-        String entrada = ""; // Leer una línea de texto.
-
+        
         // Bienvenida. Usamos tres comillas para poder escribir en varias lineas.
-        // Este recurso lo vamos a usar bastante a lo largo del codigo.
         System.out.println("""
 
                     ██████  ██ ███████ ███    ██ ██    ██ ███████ ███    ██ ██ ██████   ██████
@@ -214,8 +195,14 @@ public class GestionJugar {
 
                 """);
 
-        validacionUsuario();
+        GestionUsuario.validacionUsuario();
+        validacionEntrada();
+    }
 
+    private static void validacionEntrada() throws IOException{
+        // variables 
+        boolean empezar = false; // Para comprobar que haya puesto un enter
+        String entrada = ""; // Leer una línea de texto.
         System.out.println("Pulsa \'Enter\' para continuar");
 
         do {
