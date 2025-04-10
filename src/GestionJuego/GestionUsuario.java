@@ -96,26 +96,23 @@ public class GestionUsuario {
     }
 
 
-    
+
     private static void registroUsuario() {
-        System.out.println("[registroUsuario] Entrando al método..."); // ✅ debug
-    
-        String sql= "INSERT INTO Jugador(nombre, contrasena) VALUES (?, ?);"; // Usa 'contrasena' sin ñ
+
+        String sql= "INSERT INTO Jugador(nombre, contrasena) VALUES (?, ?);"; 
     
         try (Connection conexion = ConexionBD.obtenerConexion();
              PreparedStatement pstm2 = conexion.prepareStatement(sql)) {
-    
-            System.out.println("[registroUsuario] Preparando SQL...");
             pstm2.setString(1, VarGenYConst.nombreJugador);
             pstm2.setString(2, VarGenYConst.contraseña);
     
             pstm2.executeUpdate();
-            System.out.println("✅ Usuario creado correctamente");
+            System.out.println("Usuario creado correctamente");
     
         } catch (SQLException sqle) {
-            System.out.println("❌ Error SQL al insertar: " + sqle.getMessage());
+            System.out.println("Error: " + sqle.getMessage());
         } catch (Exception e) {
-            System.out.println("❌ Error general al insertar: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }
