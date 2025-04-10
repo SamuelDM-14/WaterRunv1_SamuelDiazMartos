@@ -28,6 +28,7 @@ public class Pregunta {
         this.respuestaCorrecta = respuestaCorrecta;
     }
 
+    
     public String getEnunciado() {
         return enunciado;
     }

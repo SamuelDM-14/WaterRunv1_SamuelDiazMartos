@@ -5,6 +5,7 @@
  */
 package clases;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -19,6 +20,7 @@ public class Partida {
     private LocalDate fechaFinPartida;
     private LocalTime horaIncioPartida;
     private LocalTime horaFinPartida;
+    private String duracion;
     private int respuestasAcertadas = 0;
     private boolean nivelPasado = false;
     private int dificultadJugada = 0;
@@ -26,15 +28,17 @@ public class Partida {
     // ------------ CONSTRUCTOR DE PARTIDA ------------
     /**
      * Constructor de Partida.
-     * @param fechaIncioPartida Recibe la fecha de incio de partida.
-     * @param fechaFinPartida Recibe la fecha de fin de partida.
-     * @param horaIncioPartida Recibe la hora de incio de partida.
-     * @param horaFinPartida Recibe la hora de fin de partida.
+     * 
+     * @param fechaIncioPartida   Recibe la fecha de incio de partida.
+     * @param fechaFinPartida     Recibe la fecha de fin de partida.
+     * @param horaIncioPartida    Recibe la hora de incio de partida.
+     * @param horaFinPartida      Recibe la hora de fin de partida.
      * @param respuestasAcertadas Recibe las respuestas acertadas.
-     * @param dificultadJugada Recibe la dificultdad jugada.
-     * @param nivelPasado Recibe si se ha pasado la partida o ha perdido.
+     * @param dificultadJugada    Recibe la dificultdad jugada.
+     * @param nivelPasado         Recibe si se ha pasado la partida o ha perdido.
      */
-    public Partida(LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida, LocalTime horaFinPartida,
+    public Partida(LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida,
+            LocalTime horaFinPartida,
             int respuestasAcertadas, int dificultadJugada, boolean nivelPasado) {
         this.fechaIncioPartida = fechaIncioPartida;
         this.fechaFinPartida = fechaFinPartida;
@@ -49,6 +53,7 @@ public class Partida {
     // ------------ GET DE FECHA DE INICIO DE PARTIDA ------------
     /**
      * Devuelve la fecha de inicio de la partida.
+     * 
      * @return fecha de inicio de la partida.
      */
     public LocalDate getFechaIncioPartida() {
@@ -58,6 +63,7 @@ public class Partida {
     // ------------ SET DE FECHA DE INICIO DE PARTIDA ------------
     /**
      * Establece la fecha de inicio de la partida
+     * 
      * @param fechaIncioPartida fecha de incio de la partida
      */
     public void setFechaIncioPartida(LocalDate fechaIncioPartida) {
@@ -67,6 +73,7 @@ public class Partida {
     // ------------ GET DE FECHA DE FIN DE PARTIDA ------------
     /**
      * Devuelve la fecha de fin de la partida
+     * 
      * @return fecha de fin de la partida
      */
     public LocalDate getFechaFinPartida() {
@@ -76,6 +83,7 @@ public class Partida {
     // ------------ SET DE FECHA DE FIN DE PARTIDA ------------
     /**
      * Establece la fecha de fin de la partida
+     * 
      * @param fechaFinPartida fecha de fin de la partida
      */
     public void setFechaFinPartida(LocalDate fechaFinPartida) {
@@ -85,6 +93,7 @@ public class Partida {
     // ------------ GET DE FECHA DE INICIO DE PARTIDA ------------
     /**
      * Devuelve la hora de inicio de la partida.
+     * 
      * @return hora de inicio de la partida.
      */
     public LocalTime getHoraIncioPartida() {
@@ -94,6 +103,7 @@ public class Partida {
     // ------------ SET DE FECHA DE INICIO DE PARTIDA ------------
     /**
      * Establece la hora de inicio de la partida
+     * 
      * @param horaIncioPartida hora de inicio de la partida
      */
     public void setHoraIncioPartida(LocalTime horaIncioPartida) {
@@ -103,6 +113,7 @@ public class Partida {
     // ------------ GET DE FECHA DE FIN DE PARTIDA ------------
     /**
      * Devuelve la hora de fin de la partida
+     * 
      * @return hora de fin de la partida
      */
     public LocalTime getHoraFinPartida() {
@@ -112,6 +123,7 @@ public class Partida {
     // ------------ SET DE FECHA DE FIN DE PARTIDA ------------
     /**
      * Establece la hora de fin de la partida
+     * 
      * @param horaFinPartida hora de fin de la partida
      */
     public void setHoraFinPartida(LocalTime horaFinPartida) {
@@ -121,6 +133,7 @@ public class Partida {
     // ------------ GET DE RESPUESTAS ACERTADAS DE PARTIDA ------------
     /**
      * Devuelve las respuestas acert adas
+     * 
      * @return respuestasAcertadas
      */
     public int getRespuestasAcertadas() {
@@ -130,6 +143,7 @@ public class Partida {
     // ------------ SET DE RESPUESTAS ACERTADAS DE PARTIDA ------------
     /**
      * Establece las respuestas acertadas
+     * 
      * @param respuestasAcertadas respuestas acertadas
      */
     public void setRespuestasAcertadas(int respuestasAcertadas) {
@@ -139,6 +153,7 @@ public class Partida {
     // ------------ GET DE NIVEL PASADO DE PARTIDA ------------
     /**
      * Devuelve el nivel pasado
+     * 
      * @return nivel pasado
      */
     public boolean getNivelPasado() {
@@ -148,6 +163,7 @@ public class Partida {
     // ------------ SET DE NIVEL PASADO DE PARTIDA ------------
     /**
      * Establece el nivel pasado
+     * 
      * @param nivelPasado nivel pasado
      */
     public void setNivelPasado(boolean nivelPasado) {
@@ -157,6 +173,7 @@ public class Partida {
     // ------------ GET DE DIFICULTAD DE PARTIDA ------------
     /**
      * Devuelve la dificultad jugada.
+     * 
      * @return dificultad Jugada
      */
     public int getDificultadJugada() {
@@ -166,10 +183,38 @@ public class Partida {
     // ------------ SET DE DIFICULTAD DE PARTIDA ------------
     /**
      * Establece la dificultad jugada
+     * 
      * @param dificultadJugada Dificultad jugada
      */
     public void setDificultadJugada(int dificultadJugada) {
         this.dificultadJugada = dificultadJugada;
+    }
+
+    /**
+     * Devuelve la duración de la partida
+     * 
+     * @return Duración de la partida
+     */
+    public String getDuracion() {
+        Duration duracionPartida = Duration.between(this.horaFinPartida, this.horaIncioPartida);
+        long segundosTotales = duracionPartida.getSeconds();
+        long horas = segundosTotales / 3600;
+        long minutos = (segundosTotales % 3600) / 60;
+        long segundos = segundosTotales % 60;
+
+        duracion = String.format("%02d:%02d:%02d", horas, minutos, segundos);
+
+        return duracion;
+    }
+
+    public void setDuracion() {
+        Duration duracionPartida = Duration.between(this.horaFinPartida, this.horaIncioPartida);
+        long segundosTotales = duracionPartida.getSeconds();
+        long horas = segundosTotales / 3600;
+        long minutos = (segundosTotales % 3600) / 60;
+        long segundos = segundosTotales % 60;
+
+        duracion = String.format("%02d:%02d:%02d", horas, minutos, segundos);                                                                                           
     }
 
     // ------------ TOSTRING DE PARTIDA ------------
@@ -195,7 +240,7 @@ public class Partida {
                              |
                 +---------------------------------+
                 |       DATOS DE LA PARTIDA       |
-                ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯       
+                ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
                 """;
     }
 }

@@ -79,7 +79,7 @@ public class GestionPreguntas {
      * 
      * @param dificultad     0 = fácil, 1 = media, 2 = difícil
      * @param indicePregunta 0..(NUM_PREGUNTAS-1)
-     * @return El objeto Pregunta correspondiente, o null si está fuera de rango.
+     * @return El objeto Pregunta correspondiente, o null si está fuera de rango.3
      */
     public Pregunta getPregunta(int dificultad, int indicePregunta) {
         Pregunta resultado = null;

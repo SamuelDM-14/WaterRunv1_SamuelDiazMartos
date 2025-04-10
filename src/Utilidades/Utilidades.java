@@ -317,9 +317,8 @@ public class Utilidades {
         partida.setFechaFinPartida(fechaDeFin);
         partida.setHoraFinPartida(horaDeFin);
         partida.setNivelPasado(lvlPasado);
-        partida.setRespuestasAcertadas(reAcertadas);
-        VarGenYConst.partidas[VarGenYConst.autoIncremental] = partida;
-        VarGenYConst.autoIncremental++;
+        partida.setRespuestasAcertadas(reAcertadas);        VarGenYConst.partidas.add(partida);
+         VarGenYConst.autoIncremental++;
     }
     
     /**

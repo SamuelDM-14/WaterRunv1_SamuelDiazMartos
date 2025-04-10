@@ -7,6 +7,7 @@ package utilidades;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import clases.Partida;
 
@@ -14,6 +15,7 @@ import clases.Partida;
  * Esta clase contiene todas las variables genericas y constantes del programa.
  */
 public class VarGenYConst {
+        public static String nickname;
 
         // Todos los menús del juego estan aqui. Accederemos a ellos mencionando
         // directamente a MOSTRARMENUS.
@@ -24,8 +26,9 @@ public class VarGenYConst {
                         "Has elegido la opción de aspecto.\nEn este menú, puedes personalizar el color de tu personaje entre la siguiente selección y el color del agua también.\n¿Que quieres personalizar?\n\t1) Color del personaje.\n\t2) Color del Policia.\n\t3) Salir.",
                         "Elige un color para tu personaje:\n\t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir",
                         "Elige un color para el policia:\n\t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir",
-                        "Has seleccionado el menú de historial. Pulse 4 para salir.\n\t1) Jugar una partida guardada. (Proximamente)\n\t2) Revisar elecciónes de partida. (Proximamente)\n\t3) Datos de partida guardada.\n\t4) Salir."
-        };
+                        "Has seleccionado el menú de historial. Pulse 4 para salir.\n\t1) Jugar una partida guardada. (Proximamente)\n\t2) Revisar elecciónes de partida. (Proximamente)\n\t3) Datos de partida guardada.\n\t4) Salir.",
+                        "Has seleccionado datos del perfil. \n\t1) Cambiar nombre.\n\t2) Cambiar contraseña\n\t3)Salir"
+                };
         // Variable para mostrar el menú adecuado. En cada metodo cambia.
         public static int opcionMenu = 0;
 
@@ -91,7 +94,8 @@ public class VarGenYConst {
 
 
         // ------------ VARIABLES PARA PARTIDA ------------
+        public static LocalTime horaDeinicio;
         public static int autoIncremental;
-        public static Partida[] partidas = new Partida[10];
+        public static ArrayList<Partida> partidas = new ArrayList<Partida>();
         public static boolean existe = false; // reivsa que exista partida
 }

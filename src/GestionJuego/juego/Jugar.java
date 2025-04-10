@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import clases.Partida;
+import utilidades.MusicPlayer;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
@@ -29,7 +30,7 @@ public class Jugar {
      * @param bf
      * @throws IOException
      */
-    public static void jugar() throws IOException {
+    public static void jugar(MusicPlayer player) throws IOException {
         // Respuestas del juego
         VarGenYConst.opcionMenu = 1;
 
@@ -48,6 +49,8 @@ public class Jugar {
 
             if (re1 == 'S') {
                 jugar = true; // Variable para entrar al juego
+                player.stopMusic();;
+                player.playMusic("src/Wavs/tetris.wav");
             } else if (re1 == 'N') {
                 jugar = false; // Variable para entrar al juego
                 VarGenYConst.salirJuego = true; // Variable para volver al menú
@@ -57,8 +60,8 @@ public class Jugar {
 
             if (jugar == true) { // Inicio del juego
                 LocalDate fechaIncioPartida = LocalDate.now();
-                LocalTime horaIncioPartida = LocalTime.now();
-                Partida partida = new Partida(fechaIncioPartida, null, horaIncioPartida, null, 0, VarGenYConst.dificultad, false);
+                VarGenYConst.horaDeinicio = LocalTime.now();
+                Partida partida = new Partida(fechaIncioPartida, null, 0, VarGenYConst.dificultad, false);
                 if (VarGenYConst.dificultad == 2) {
                     // Llama al metodo jugarDificil para gestionar el juego en esa dificultad
                     JugarDificil.jugarDificil(partida);
