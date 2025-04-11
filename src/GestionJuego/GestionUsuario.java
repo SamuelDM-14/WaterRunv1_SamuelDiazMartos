@@ -13,106 +13,118 @@ import conexionBD.ConexionBD;
 
 public class GestionUsuario {
     private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-
+    private static boolean dentro = false;
     /**
      * 
      * @throws IOException
      */
     public static void validacionUsuario() throws IOException {
         String cuenta;
-        System.out.println("¿Tienes cuenta? (S/N)");
-        cuenta = Utilidades.leerSNString();
-        if (cuenta.equals("S")) {
-            usuarioExistente();
-        } else {
-            crearUsuario();
-        }
+        
+        do{
+            System.out.println("¿Tienes cuenta? (S/N)");
+            cuenta = Utilidades.leerSNString();
+            if (cuenta.equals("S")) {
+                usuarioExistente();
+            } else {
+                crearUsuario();
+            }
+        }while (!dentro); 
     }
 
     private static void usuarioExistente() throws IOException {
-
-        System.out.println("Dime tu nickname: ");
-        VarGenYConst.nombreJugador = bf.readLine();
-        System.out.println("Escribe la contraseña: ");
-        VarGenYConst.contraseña = bf.readLine();
-
-        String sql = "Select nombre, contraseña from jugador where nombre=? and contraseña=?";
-        try (Connection conexion = ConexionBD.obtenerConexion();
-                PreparedStatement pstm = conexion.prepareStatement(sql);
-                Statement smtn = conexion.createStatement();
-                ResultSet rs = smtn.executeQuery(sql);) {
-
-            pstm.setString(1, VarGenYConst.nombreJugador);
-            pstm.setString(2, VarGenYConst.contraseña);
-
-            int filas = pstm.executeUpdate();
-
-            if (filas == 1) {
-                System.out.println("Has iniciado sesión con éxito.");
-            } else {
-                System.out.println("Tu usuario o contraseña no son correctos o los has escrito mal.");
-            }
-            conexion.close();
-        } catch (SQLException sqle) {
-            System.out.println("Error: " + sqle.getMessage());
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-
-    private static void crearUsuario() throws IOException {
-        System.out.println("Nesitas una cuenta para jugar. ¿Quieres crear una cuenta? (S/N)");
-        String crear = Utilidades.leerSNString();
-
-        if (crear.equals("S")) {
+        boolean sesionIniciada = false;
+        do {
             System.out.println("Dime tu nickname: ");
             VarGenYConst.nombreJugador = bf.readLine();
             System.out.println("Escribe la contraseña: ");
             VarGenYConst.contraseña = bf.readLine();
 
-            String sql = "Select nombre from jugador where nombre='"+VarGenYConst.nombreJugador+"';";
-
+            String sql = "Select nombre, contrasena from jugador where nombre='"+ VarGenYConst.nombreJugador+"' and contrasena='"+VarGenYConst.contraseña+"'";
             try (Connection conexion = ConexionBD.obtenerConexion();
                     Statement stm = conexion.createStatement();
                     ResultSet rs = stm.executeQuery(sql);
-            ) {
+                    ) {
 
-                
-                
                 if (rs.next()) {
-                    System.out.println("Este usuario ya existe.");
+                    System.out.println("Has iniciado sesión con éxito.");
+                    dentro=true;
+                    sesionIniciada= true;
                 } else {
-                    registroUsuario();
+                    System.out.println("Tu usuario o contraseña no son correctos o los has escrito mal.");
                 }
-                rs.close();
+                conexion.close();
             } catch (SQLException sqle) {
                 System.out.println("Error: " + sqle.getMessage());
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
             }
-        } else {
-            System.out.println("Saliendo del juego.");
-        }
+        } while (!sesionIniciada);
+        
+    }
+
+    private static void crearUsuario() throws IOException {
+        boolean usuExistente=false;
+        do {
+            System.out.println("Nesitas una cuenta para jugar. ¿Quieres crear una cuenta? (S/N)");
+            String crear = Utilidades.leerSNString();
+
+            if (crear.equals("S")) {
+                System.out.println("Dime tu nickname: ");
+                VarGenYConst.nombreJugador = bf.readLine();
+                System.out.println("Escribe la contraseña: ");
+                VarGenYConst.contraseña = bf.readLine();
+
+                String sql = "Select nombre from jugador where nombre='"+VarGenYConst.nombreJugador+"';";
+
+                try (Connection conexion = ConexionBD.obtenerConexion();
+                        Statement stm = conexion.createStatement();
+                        ResultSet rs = stm.executeQuery(sql);
+                ) {
+    
+                    if (rs.next()) {
+                        System.out.println("Este usuario ya existe.");
+                        usuExistente=true;
+                    } else {
+                        registroUsuario();
+                        usuExistente=true;
+                    }
+                    rs.close();
+                } catch (SQLException sqle) {
+                    System.out.println("Error: " + sqle.getMessage());
+                } catch (Exception e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+            } else {
+                System.out.println("Saliendo del juego.");
+            }
+        } while (!usuExistente);
+        
     }
 
 
 
     private static void registroUsuario() {
-
-        String sql= "INSERT INTO Jugador(nombre, contrasena) VALUES (?, ?);"; 
+        boolean usuCreado= false;
+        do {
+            String sql= "INSERT INTO Jugador(nombre, contrasena) VALUES (?, ?);"; 
     
-        try (Connection conexion = ConexionBD.obtenerConexion();
-             PreparedStatement pstm2 = conexion.prepareStatement(sql)) {
-            pstm2.setString(1, VarGenYConst.nombreJugador);
-            pstm2.setString(2, VarGenYConst.contraseña);
-    
-            pstm2.executeUpdate();
-            System.out.println("Usuario creado correctamente");
-    
-        } catch (SQLException sqle) {
-            System.out.println("Error: " + sqle.getMessage());
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+            try (Connection conexion = ConexionBD.obtenerConexion();
+                PreparedStatement pstm2 = conexion.prepareStatement(sql)) {
+                pstm2.setString(1, VarGenYConst.nombreJugador);
+                pstm2.setString(2, VarGenYConst.contraseña);
+        
+                pstm2.executeUpdate();
+                System.out.println("Usuario creado correctamente");
+                usuCreado= true;
+                dentro=true;
+                
+            } catch (SQLException sqle) {
+                System.out.println("Error: " + sqle.getMessage());
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        } while (!usuCreado);
+        
     }
 }
