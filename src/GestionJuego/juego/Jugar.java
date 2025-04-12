@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import clases.Partida;
-import utilidades.MusicPlayer;
+import utilidades.ReproductorMusica;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
@@ -30,7 +30,7 @@ public class Jugar {
      * @param bf
      * @throws IOException
      */
-    public static void jugar(MusicPlayer player) throws IOException {
+    public static void jugar(ReproductorMusica jugador) throws IOException {
         // Respuestas del juego
         VarGenYConst.opcionMenu = 1;
 
@@ -49,8 +49,8 @@ public class Jugar {
 
             if (re1 == 'S') {
                 jugar = true; // Variable para entrar al juego
-                player.stopMusic();;
-                player.playMusic("src/Wavs/tetris.wav");
+                jugador.detener();;
+                jugador.reproducir("src/Wavs/tetris.wav");
             } else if (re1 == 'N') {
                 jugar = false; // Variable para entrar al juego
                 VarGenYConst.salirJuego = true; // Variable para volver al menú
@@ -69,7 +69,8 @@ public class Jugar {
                     // Llama al metodo jugarFaMe para gestionar el juego en facil y medio
                     JugarFaMe.jugarFaMe(partida);
                 }
-
+                jugador.detener();;
+                jugador.reproducir("src/Wavs/resonant.wav");
             } else { // Si eliges no jugar
                 System.out.println("Volviendo al menú principal.");
                 VarGenYConst.salirJuego = true; // Variable salir del bucle juego.

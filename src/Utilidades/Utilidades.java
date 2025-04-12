@@ -14,7 +14,7 @@ import java.time.LocalTime;
 
 import clases.Partida;
 import clases.Pregunta;
-
+import log.Log;
 /**
  * Archivo Utilidades que usaremos para metodos de validación
  */
@@ -95,8 +95,9 @@ public class Utilidades {
                             "Error: Debes escribir un número entre " + VarGenYConst.min + " y " + VarGenYConst.max
                                     + ". Inténtalo de nuevo.");
                 }
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException NFe) {
                 System.out.println("Error: No has escrito un número válido. Inténtalo de nuevo.");
+                Log.guardarError(NFe, NFe.getMessage());
             }
         }
         // Cuando salgamos del while, 'valido == true', y 'valor' está en rango

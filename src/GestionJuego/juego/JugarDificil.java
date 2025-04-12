@@ -34,6 +34,8 @@ public class JugarDificil {
         int reAcertadas = 0;
         int enunciado = 0;
 
+        VarGenYConst.min = 1;
+        VarGenYConst.max = 4;
         int msglvl = 0;
         boolean frenado = false;
         boolean acertada = false;

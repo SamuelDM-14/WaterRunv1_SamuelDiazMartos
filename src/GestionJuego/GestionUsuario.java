@@ -10,6 +10,8 @@ import java.sql.*;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 import conexionBD.ConexionBD;
+import log.Log;
+
 
 public class GestionUsuario {
     private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
@@ -55,9 +57,11 @@ public class GestionUsuario {
                 }
                 conexion.close();
             } catch (SQLException sqle) {
-                System.out.println("Error: " + sqle.getMessage());
+                System.out.println("Ha ocurrido un error al buscar tu usuario.");
+                Log.guardarError(sqle, sqle.getMessage());
             } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("Ha ocurrido un error.");
+                Log.guardarError(e, e.getMessage());
             }
         } while (!sesionIniciada);
         
@@ -91,9 +95,11 @@ public class GestionUsuario {
                     }
                     rs.close();
                 } catch (SQLException sqle) {
-                    System.out.println("Error: " + sqle.getMessage());
+                    System.out.println("Ha ocurrido un error al buscar tu usuario.");
+                    Log.guardarError(sqle, sqle.getMessage());
                 } catch (Exception e) {
-                    System.out.println("Error: " + e.getMessage());
+                    System.out.println("Ha ocurrido un error.");
+                    Log.guardarError(e, e.getMessage());
                 }
             } else {
                 System.out.println("Saliendo del juego.");
@@ -120,9 +126,11 @@ public class GestionUsuario {
                 dentro=true;
                 
             } catch (SQLException sqle) {
-                System.out.println("Error: " + sqle.getMessage());
+                System.out.println("Ha ocurrido un error al buscar tu usuario.");
+                Log.guardarError(sqle, sqle.getMessage());
             } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("Ha ocurrido un error.");
+                Log.guardarError(e, e.getMessage());
             }
         } while (!usuCreado);
         

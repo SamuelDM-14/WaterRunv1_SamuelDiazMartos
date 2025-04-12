@@ -1,0 +1,20 @@
+---- ERROR ----
+Mensaje: For input string: "A"
+Fecha: Sun Apr 13 00:10:15 CEST 2025
+Excepción: java.lang.NumberFormatException: For input string: "A"
+
+---- ERROR ----
+Mensaje: For input string: "dadaw"
+Fecha: Sun Apr 13 00:10:17 CEST 2025
+Excepción: java.lang.NumberFormatException: For input string: "dadaw"
+
+---- ERROR ----
+Mensaje: For input string: "adadwa"
+Fecha: Sun Apr 13 00:10:20 CEST 2025
+Excepción: java.lang.NumberFormatException: For input string: "adadwa"
+
+---- ERROR ----
+Mensaje: For input string: "dawd"
+Fecha: Sun Apr 13 00:10:21 CEST 2025
+Excepción: java.lang.NumberFormatException: For input string: "dawd"
+

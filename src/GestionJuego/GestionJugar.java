@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import gestionjuego.juego.Jugar;
-import utilidades.MusicPlayer;
+import utilidades.ReproductorMusica;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
@@ -20,7 +20,7 @@ import utilidades.VarGenYConst;
  * generales.
  */
 public class GestionJugar {
-    private static MusicPlayer player = new MusicPlayer();
+    private static ReproductorMusica jugador = new ReproductorMusica();
 
     // Usamos BufferedReader para leer. Creación del objeto.
     private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
@@ -49,7 +49,7 @@ public class GestionJugar {
 
                 case 1:
                     // Entra en caso de elegir Jugar
-                    Jugar.jugar(player); // Llama al metodo jugar y le envia el bufferedReader
+                    Jugar.jugar(jugador); // Llama al metodo jugar y le envia el bufferedReader
                     break;
 
                 case 2:
@@ -58,7 +58,7 @@ public class GestionJugar {
                     break;
                 case 3:
                     // Entra en caso de elegir Aspecto
-                    Aspecto.cambiarAspecto();// Llama al metodo cambiarAspecto y le envia el bufferedReader
+                    GestionAspecto.cambiarAspecto();// Llama al metodo cambiarAspecto y le envia el bufferedReader
                     break;
 
                 case 4:
@@ -210,7 +210,7 @@ public class GestionJugar {
             if (entrada.isEmpty()) { // Comprueba que la entrada esté vacía
                 System.out.println("¡Vamos a empezar a jugar!\n");
                 // 🔊 Reproducir música de fondo
-                player.playMusic("src/Wavs/resonant.wav");
+                jugador.reproducir("src/Wavs/resonant.wav");
                 empezar = true;// Cambia la variable a verdadero para salir del bucle.
             } else {
                 System.out.println("Has introducido un caracter incorrecto, pulse enter para empezar.");

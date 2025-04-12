@@ -29,7 +29,8 @@ public class JugarFaMe {
     public static void jugarFaMe(Partida partida) throws IOException {
 
         Boolean lvlPasado = false; // Variable que comprueba si te has pasdo un nivel.
-
+        VarGenYConst.min = 1;
+        VarGenYConst.max = 4;
         int reAcertadas = 0;
         int enunciado = 0;
         String respuestaElegida;
@@ -48,6 +49,7 @@ public class JugarFaMe {
             respuestaElegida = Utilidades.leerRespuesta(p);
 
             if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
+                VarGenYConst.max = 3;
                 reAcertadas++;
                 enunciado++;
                 msglvl = 0;
@@ -62,6 +64,7 @@ public class JugarFaMe {
                 respuestaElegida = Utilidades.leerRespuesta(p);
 
                 if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
+                    VarGenYConst.max = 4;
                     reAcertadas++;
                     enunciado++;
                     msglvl = 1;
@@ -82,6 +85,7 @@ public class JugarFaMe {
                         Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
                 } else {
+                    VarGenYConst.max = 4;
                     enunciado++;
                     msglvl = 2;
                     p = gp.getPregunta(VarGenYConst.dificultad, enunciado);
@@ -91,6 +95,7 @@ public class JugarFaMe {
                     Utilidades.mostrarPregunta(p, pantalla);
                     respuestaElegida = Utilidades.leerRespuesta(p);
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
+
                         reAcertadas++;
                         acertada = true;
                         Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
@@ -101,6 +106,7 @@ public class JugarFaMe {
                     }
                 }
             } else {
+                VarGenYConst.max = 3;
                 enunciado++;
                 msglvl = 2;
                 p = gp.getPregunta(VarGenYConst.dificultad, enunciado);
@@ -110,6 +116,7 @@ public class JugarFaMe {
                 Utilidades.mostrarPregunta(p, pantalla);
                 respuestaElegida = Utilidades.leerRespuesta(p);
                 if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
+                    VarGenYConst.max = 4;
                     reAcertadas++;
                     enunciado++;
                     msglvl = 0;
@@ -130,6 +137,7 @@ public class JugarFaMe {
                         Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
                 } else {
+                    VarGenYConst.max = 4;
                     enunciado++;
                     p = gp.getPregunta(VarGenYConst.dificultad, enunciado);
                     msglvl = 2;
