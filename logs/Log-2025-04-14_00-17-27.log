@@ -1,0 +1,5 @@
+---- ERROR ----
+Mensaje: Column 'dificultad_jugada' not found.
+Fecha: Mon Apr 14 00:17:27 CEST 2025
+Excepción: java.sql.SQLSyntaxErrorException: Column 'dificultad_jugada' not found.
+

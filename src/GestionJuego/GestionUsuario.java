@@ -8,9 +8,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.List;
-
-import clases.Jugador;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 import conexionBD.ConexionBD;
@@ -57,7 +54,8 @@ public class GestionUsuario {
 
                 if (rs.next()) {
                     System.out.println("Has iniciado sesión con éxito.");
-                    cargarJugadorYPartidas();
+                    cargarPartidas();
+                    cargarJugador();
                     dentro = true;
                     sesionIniciada = true;
                 } else {
@@ -132,6 +130,7 @@ public class GestionUsuario {
 
                 pstm2.executeUpdate();
                 System.out.println("Usuario creado correctamente");
+                cargarJugador();
                 usuCreado = true;
                 dentro = true;
 
@@ -145,10 +144,10 @@ public class GestionUsuario {
         } while (!usuCreado);
     }
 
-    private static void cargarJugadorYPartidas() {
+    private static void cargarPartidas() {
         String sql = "SELECT p.* FROM partidas p inner join partidas_jugador pj on pj.id_partida = p.id_partida inner join jugador j on pj.id_jugador = j.id_jugador where j.nombre = '"
                 + nombreJugador + "'";
-        List<Partida> partidas = new ArrayList<>();
+        VarGenYConst.partidas = new ArrayList<>();
         try {
             Connection conexion = ConexionBD.obtenerConexion();
             Statement stm = conexion.createStatement();
@@ -156,27 +155,53 @@ public class GestionUsuario {
 
             while (rs.next()) {
                 int id = rs.getInt("id_partida");
-                LocalDate fechaInicio = rs.getDate("fecha_inicio_partida").toLocalDate();
-                LocalDate fechaFin = rs.getDate("fecha_fin_partida").toLocalDate();
-                LocalTime horaInicio = rs.getTime("hora_inicio_partida").toLocalTime();
-                LocalTime horaFin = rs.getTime("hora_fin_partida").toLocalTime();
+                LocalDate fechaInicio = rs.getDate("fecha_inicio").toLocalDate();
+                LocalDate fechaFin = rs.getDate("fecha_fin").toLocalDate();
+                LocalTime horaInicio = rs.getTime("hora_inicio").toLocalTime();
+                LocalTime horaFin = rs.getTime("hora_fin").toLocalTime();
                 int respuestasAcertadas = rs.getInt("respuestas_acertadas");
                 boolean nivelPasado = rs.getBoolean("nivel_pasado");
-                int dificultad = rs.getInt("dificultad_jugada");
+                int dificultad = rs.getInt("dificultad");
 
                 Partida partida = new Partida(id, fechaInicio, fechaFin, horaInicio, horaFin,
                         respuestasAcertadas, nivelPasado, dificultad);
-                partidas.add(partida);
+                VarGenYConst.partidas.add(partida);
             }
 
             conexion.close();
         } catch (SQLException sqle) {
-            System.out.println("Ha ocurrido un error al crear el usuario.");
+            System.out.println("Ha ocurrido un error al cargar las partidas.");
             Log.guardarError(sqle, sqle.getMessage());
         } catch (Exception e) {
             System.out.println("Ha ocurrido un error.");
             Log.guardarError(e, e.getMessage());
         }
 
+    }
+
+    private static void cargarJugador() {
+        String sql = "SELECT id_jugador FROM jugador where nombre = '" + nombreJugador + "'";
+        try {
+            Connection conexion = ConexionBD.obtenerConexion();
+            Statement stm = conexion.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()) {
+                int id_jugador = rs.getInt("id_jugador");
+
+                VarGenYConst.jugador.setId_Jugador(id_jugador);
+                VarGenYConst.jugador.setNombre(nombreJugador);
+                VarGenYConst.jugador.setContraseña(contraseña);
+                VarGenYConst.jugador.setPartidas(VarGenYConst.partidas);
+            }
+            rs.close();
+            stm.close();
+            conexion.close();
+        } catch (SQLException sqle) {
+            System.out.println("Ha ocurrido un error al cargar el jugador.");
+            Log.guardarError(sqle, sqle.getMessage());
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error.");
+            Log.guardarError(e, e.getMessage());
+        }
     }
 }

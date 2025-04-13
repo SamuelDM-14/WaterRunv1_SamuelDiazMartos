@@ -1,0 +1,5 @@
+---- ERROR ----
+Mensaje: Before start of result set
+Fecha: Mon Apr 14 00:01:56 CEST 2025
+Excepción: java.sql.SQLException: Before start of result set
+

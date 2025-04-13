@@ -37,6 +37,7 @@ public class Partida {
         this.respuestasAcertadas = respuestasAcertadas;
         this.nivelPasado = nivelPasado;
         this.dificultadJugada = dificultadJugada;
+        this.duracion = obtenerDuracion();
     }
 
     public Partida(LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida,
@@ -206,7 +207,7 @@ public class Partida {
      * 
      * @return Duración de la partida
      */
-    public String getDuracion() {
+    public String obtenerDuracion() {
         Duration duracionPartida = Duration.between(this.horaFinPartida, this.horaIncioPartida);
         long segundosTotales = duracionPartida.getSeconds();
         long horas = segundosTotales / 3600;
@@ -218,40 +219,42 @@ public class Partida {
         return duracion;
     }
 
-    public void setDuracion() {
-        Duration duracionPartida = Duration.between(this.horaFinPartida, this.horaIncioPartida);
-        long segundosTotales = duracionPartida.getSeconds();
-        long horas = segundosTotales / 3600;
-        long minutos = (segundosTotales % 3600) / 60;
-        long segundos = segundosTotales % 60;
 
-        duracion = String.format("%02d:%02d:%02d", horas, minutos, segundos);
+    public String getDuracion(){
+        return duracion;
+    }
+
+    public void setDuracion(String duracion) {
+        this.duracion = duracion;
     }
 
     // ------------ TOSTRING DE PARTIDA ------------
     @Override
     public String toString() {
-        return """
-                ___________________________________
-                |       DATOS DE LA PARTIDA       |
-                |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
-                | Fecha de inicio:  """ + fechaIncioPartida + """
-                      |
-                | Fecha de fin:  """ + fechaFinPartida + """
-                         |
-                | Hora inicio:  """ + horaIncioPartida + """
-                  |
-                | Hora Fin: """ + horaFinPartida + """
-                     |
-                | Respuestas acertadas:  """ + respuestasAcertadas + """
-                          |
-                | Nivel pasado:  """ + nivelPasado + """
-                               |
-                | Dificultad jugada:  """ + dificultadJugada + """
-                             |
-                +---------------------------------+
-                |       DATOS DE LA PARTIDA       |
-                ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-                """;
+        return String.format(
+            """
+
+            +-----------------------------------------------+
+            |           DATOS DE LA PARTIDA                 |
+            +--------------------------+--------------------+
+            | %-24s | %-18s |
+            | %-24s | %-18s |
+            | %-24s | %-18s |
+            | %-24s | %-18s |
+            | %-24s | %-18s |
+            | %-24s | %-18d |
+            | %-24s | %-18s |
+            | %-24s | %-18d |
+            +--------------------------+--------------------+
+            """,
+            "Fecha de inicio", fechaIncioPartida,
+            "Fecha de fin", fechaFinPartida,
+            "Hora de inicio", horaIncioPartida,
+            "Hora de fin", horaFinPartida,
+            "Duración", duracion,
+            "Respuestas acertadas", respuestasAcertadas,
+            "Nivel pasado", nivelPasado ? "Sí" : "No",
+            "Dificultad jugada", dificultadJugada
+        );
     }
 }

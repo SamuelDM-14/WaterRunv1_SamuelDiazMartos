@@ -15,9 +15,6 @@ import clases.Partida;
  * Esta clase contiene todas las variables genericas y constantes del programa.
  */
 public class VarGenYConst {
-        public static String nombreJugador;
-        public static String contraseña;
-
 
         // Todos los menús del juego estan aqui. Accederemos a ellos mencionando
         // directamente a MOSTRARMENUS.
@@ -102,5 +99,5 @@ public class VarGenYConst {
         public static ArrayList<Partida> partidas = new ArrayList<Partida>();
         public static boolean existe = false; // reivsa que exista partida
 
-        public static Jugador jugador;
+        public static Jugador jugador = new Jugador(0, null, null, null);
 }
