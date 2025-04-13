@@ -45,14 +45,23 @@ public class Policia extends Personajes {
     }
     
     // Getters y setters
+    /**
+     * 
+     * @return
+     */
     public int getExperiencia() {
         return experiencia;
     }
 
+    /**
+     * 
+     * @param experiencia
+     */
     public void setExperiencia(int experiencia) {
         this.experiencia = experiencia;
     }
 
+    
     @Override
     public String toString() {
         return "Policia { experiencia=" + experiencia + ", color=" + getColor() + " }";

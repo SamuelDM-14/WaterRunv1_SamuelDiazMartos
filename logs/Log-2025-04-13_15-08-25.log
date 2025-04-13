@@ -1,0 +1,66 @@
+---- ERROR ----
+Mensaje: No has escrito un único caracter. Prueba otra vez. 
+
+Fecha: Sun Apr 13 15:08:25 CEST 2025
+Excepción: excepciones.MasCaracteresPermitidosException: No has escrito un único caracter. Prueba otra vez. 
+
+
+---- ERROR ----
+Mensaje: No has escrito un único caracter. Prueba otra vez. 
+
+Fecha: Sun Apr 13 15:08:31 CEST 2025
+Excepción: excepciones.MasCaracteresPermitidosException: No has escrito un único caracter. Prueba otra vez. 
+
+
+---- ERROR ----
+Mensaje: No has escrito un único caracter. Prueba otra vez. 
+
+Fecha: Sun Apr 13 15:08:31 CEST 2025
+Excepción: excepciones.MasCaracteresPermitidosException: No has escrito un único caracter. Prueba otra vez. 
+
+
+---- ERROR ----
+Mensaje: No has escrito un único caracter. Prueba otra vez. 
+
+Fecha: Sun Apr 13 15:08:31 CEST 2025
+Excepción: excepciones.MasCaracteresPermitidosException: No has escrito un único caracter. Prueba otra vez. 
+
+
+---- ERROR ----
+Mensaje: No has escrito un único caracter. Prueba otra vez. 
+
+Fecha: Sun Apr 13 15:08:32 CEST 2025
+Excepción: excepciones.MasCaracteresPermitidosException: No has escrito un único caracter. Prueba otra vez. 
+
+
+---- ERROR ----
+Mensaje: No has escrito un único caracter. Prueba otra vez. 
+
+Fecha: Sun Apr 13 15:08:32 CEST 2025
+Excepción: excepciones.MasCaracteresPermitidosException: No has escrito un único caracter. Prueba otra vez. 
+
+
+---- ERROR ----
+Mensaje: No has escrito un único caracter. Prueba otra vez. 
+
+Fecha: Sun Apr 13 15:08:32 CEST 2025
+Excepción: excepciones.MasCaracteresPermitidosException: No has escrito un único caracter. Prueba otra vez. 
+
+
+---- ERROR ----
+Mensaje: No has escrito un único caracter. Prueba otra vez. 
+
+Fecha: Sun Apr 13 15:08:33 CEST 2025
+Excepción: excepciones.MasCaracteresPermitidosException: No has escrito un único caracter. Prueba otra vez. 
+
+
+---- ERROR ----
+Mensaje: For input string: "	3"
+Fecha: Sun Apr 13 15:08:37 CEST 2025
+Excepción: java.lang.NumberFormatException: For input string: "	3"
+
+---- ERROR ----
+Mensaje: For input string: ""
+Fecha: Sun Apr 13 15:08:39 CEST 2025
+Excepción: java.lang.NumberFormatException: For input string: ""
+

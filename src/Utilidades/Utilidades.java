@@ -11,10 +11,12 @@ import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-
 import clases.Partida;
 import clases.Pregunta;
+import excepciones.CaracterIncorrectoException;
+import excepciones.MasCaracteresPermitidosException;
 import log.Log;
+
 /**
  * Archivo Utilidades que usaremos para metodos de validación
  */
@@ -35,17 +37,25 @@ public class Utilidades {
         do { // Repite hasta que escribas el caracter correcto.
 
             String caracter = bf.readLine(); // Guarda la respuesta en un string.
+            try {
+                if (caracter.length() == 1) { // Comprueba que el string sea de 1 caracter.
+                    c = caracter.charAt(0); // combierte el string en caracter y lo guarda en re1
+                    c = Character.toUpperCase(c); // pasa el re1 a mayusculas y lo guarda de nuevo en re1
 
-            if (caracter.length() == 1) { // Comprueba que el string sea de 1 caracter.
-                c = caracter.charAt(0); // combierte el string en caracter y lo guarda en re1
-                c = Character.toUpperCase(c); // pasa el re1 a mayusculas y lo guarda de nuevo en re1
-                if (c == 'S' || c == 'N') {
-                    valido = true;
+                    if (c == 'S' || c == 'N') {
+                        valido = true;
+                    } else {
+                        System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
+                        throw new CaracterIncorrectoException("No has escrito ninguna de las 2 opciones.");
+                    }
                 } else {
-                    System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
+                    System.out.println("No has escrito un único caracter. Prueba otra vez.");
+                    throw new MasCaracteresPermitidosException("No has escrito un único caracter");
                 }
-            } else {
-                System.out.println("No has escrito un único caracter. Prueba otra vez.");
+            } catch (CaracterIncorrectoException CIe) {
+                Log.guardarError(CIe, CIe.getMessage());
+            } catch (MasCaracteresPermitidosException MCPe) {
+                Log.guardarError(MCPe, MCPe.getMessage());
             }
         } while (!valido);
 
@@ -104,11 +114,9 @@ public class Utilidades {
         return valor;
     }
 
-
-    // MODULARIZAR 
+    // MODULARIZAR
     // HACER UN ARCHIVOS UTILIDADESJUEGO O ALGOD EL ESTILO
 
-    
     /**
      * Metodo qeu devuelve un array de pantallas para mostrar en el juego.
      * 
@@ -318,7 +326,7 @@ public class Utilidades {
                 break;
             case 3:
                 System.out.println(VarGenYConst.mensajesJuego[VarGenYConst.MENSAJEVIC]);
-                VarGenYConst.salirJuego = true; // Te saca del juego 
+                VarGenYConst.salirJuego = true; // Te saca del juego
                 break;
             default:
                 break;
@@ -336,19 +344,21 @@ public class Utilidades {
         VarGenYConst.existe = true;
         LocalDate fechaDeFin = LocalDate.now();
         LocalTime horaDeFin = LocalTime.now();
-        
+
         partida.setFechaFinPartida(fechaDeFin);
         partida.setHoraFinPartida(horaDeFin);
         partida.setNivelPasado(lvlPasado);
-        partida.setRespuestasAcertadas(reAcertadas);        VarGenYConst.partidas.add(partida);
-         VarGenYConst.autoIncremental++;
+        partida.setRespuestasAcertadas(reAcertadas);
+        VarGenYConst.partidas.add(partida);
+        VarGenYConst.autoIncremental++;
     }
-    
+
     /**
      * Se encarga de mostrar los datos de las partidas.
+     * 
      * @param partidas recibe un array de partidas.
      */
-    public static void mostrarPartida(Partida[] partidas){
+    public static void mostrarPartida(Partida[] partidas) {
         for (int i = 0; i < partidas.length; i++) {
             if (partidas[i] != null) {
                 System.out.println(partidas[i].toString());

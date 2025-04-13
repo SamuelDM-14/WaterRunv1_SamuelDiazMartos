@@ -28,7 +28,8 @@ public class VarGenYConst {
                         "Elige un color para tu personaje:\n\t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir",
                         "Elige un color para el policia:\n\t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir",
                         "Has seleccionado el menú de historial. Pulse 4 para salir.\n\t1) Jugar una partida guardada. (Proximamente)\n\t2) Revisar elecciónes de partida. (Proximamente)\n\t3) Datos de partida guardada.\n\t4) Salir.",
-                        "Has seleccionado datos del perfil. \n\t1) Cambiar nombre.\n\t2) Cambiar contraseña\n\t3)Salir"
+                        "Has seleccionado datos del perfil. \n\t1) Cambiar nombre.\n\t2) Cambiar contraseña\n\t3)Salir",
+                        "Has seleccionado Opciones de Música. \n\t1) Establecer volumen. \n\t2) Subir volumen. \n\t3) Bajar volumen. \n\t4) Detener música. \n\t5) Reproducir música. \n\t6) Salir."
                 };
         // Variable para mostrar el menú adecuado. En cada metodo cambia.
         public static int opcionMenu = 0;
@@ -92,7 +93,7 @@ public class VarGenYConst {
         // Constante para acceder al mensaje de victoria.
         public static final int MENSAJEVIC = 4;
 
-
+        public static boolean iniciar = true;
 
         // ------------ VARIABLES PARA PARTIDA ------------
         public static LocalTime horaDeinicio;

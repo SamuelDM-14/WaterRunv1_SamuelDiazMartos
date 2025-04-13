@@ -30,7 +30,7 @@ public class Jugar {
      * @param bf
      * @throws IOException
      */
-    public static void jugar(ReproductorMusica jugador) throws IOException {
+    public static void jugar(ReproductorMusica musica) throws IOException {
         // Respuestas del juego
         VarGenYConst.opcionMenu = 1;
 
@@ -49,8 +49,8 @@ public class Jugar {
 
             if (re1 == 'S') {
                 jugar = true; // Variable para entrar al juego
-                jugador.detener();;
-                jugador.reproducir("src/Wavs/tetris.wav");
+                musica.detener();
+                musica.reproducir("src/Wavs/tetris.wav");
             } else if (re1 == 'N') {
                 jugar = false; // Variable para entrar al juego
                 VarGenYConst.salirJuego = true; // Variable para volver al menú
@@ -61,7 +61,8 @@ public class Jugar {
             if (jugar == true) { // Inicio del juego
                 LocalDate fechaIncioPartida = LocalDate.now();
                 VarGenYConst.horaDeinicio = LocalTime.now();
-                Partida partida = new Partida(fechaIncioPartida, null, horaFinPartida, null, 0, VarGenYConst.dificultad, false);
+                Partida partida = new Partida(fechaIncioPartida, null, horaFinPartida, null, 0, VarGenYConst.dificultad,
+                        false);
                 if (VarGenYConst.dificultad == 2) {
                     // Llama al metodo jugarDificil para gestionar el juego en esa dificultad
                     JugarDificil.jugarDificil(partida);
@@ -69,14 +70,13 @@ public class Jugar {
                     // Llama al metodo jugarFaMe para gestionar el juego en facil y medio
                     JugarFaMe.jugarFaMe(partida);
                 }
-                jugador.detener();;
-                jugador.reproducir("src/Wavs/resonant.wav");
+                musica.detener();
+                musica.reproducir("src/Wavs/resonant.wav");
             } else { // Si eliges no jugar
                 System.out.println("Volviendo al menú principal.");
                 VarGenYConst.salirJuego = true; // Variable salir del bucle juego.
             }
         } while (VarGenYConst.salirJuego == false);
-
     }
 
 }

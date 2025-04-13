@@ -54,6 +54,7 @@ public class GestionUsuario {
                     sesionIniciada= true;
                 } else {
                     System.out.println("Tu usuario o contraseña no son correctos o los has escrito mal.");
+
                 }
                 conexion.close();
             } catch (SQLException sqle) {
@@ -69,6 +70,7 @@ public class GestionUsuario {
 
     private static void crearUsuario() throws IOException {
         boolean usuExistente=false;
+        boolean salirCrearUsu=false;
         do {
             System.out.println("Nesitas una cuenta para jugar. ¿Quieres crear una cuenta? (S/N)");
             String crear = Utilidades.leerSNString();
@@ -103,8 +105,11 @@ public class GestionUsuario {
                 }
             } else {
                 System.out.println("Saliendo del juego.");
+                dentro=true;
+                salirCrearUsu=true;
+                VarGenYConst.iniciar = false;
             }
-        } while (!usuExistente);
+        } while (!usuExistente || !salirCrearUsu);
         
     }
 
@@ -126,7 +131,7 @@ public class GestionUsuario {
                 dentro=true;
                 
             } catch (SQLException sqle) {
-                System.out.println("Ha ocurrido un error al buscar tu usuario.");
+                System.out.println("Ha ocurrido un error al crear el usuario.");
                 Log.guardarError(sqle, sqle.getMessage());
             } catch (Exception e) {
                 System.out.println("Ha ocurrido un error.");
