@@ -8,11 +8,14 @@ package utilidades;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 import clases.Partida;
 import clases.Pregunta;
+import conexionBD.ConexionBD;
 import excepciones.CaracterIncorrectoException;
 import excepciones.MasCaracteresPermitidosException;
 import log.Log;
@@ -344,7 +347,20 @@ public class Utilidades {
         VarGenYConst.existe = true;
         LocalDate fechaDeFin = LocalDate.now();
         LocalTime horaDeFin = LocalTime.now();
+        String sql = "INSERT INTO partidas VALUES(default, )";
+        String sql2 = "INSERT INTO partidas_jugador values (?, ?)";
+        String sql3 = "SELECT id_jugador from jugador where nombre = '" + VarGenYConst.jugador.getNombre() + "'";
+        String sql4 = "select max(id_partida) from partidas";
+        try {
+            Connection conexion = ConexionBD.obtenerConexion();
 
+         } catch (SQLException sqle) {
+            System.out.println("Ha ocurrido un error al crear el usuario.");
+            Log.guardarError(sqle, sqle.getMessage());
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error.");
+            Log.guardarError(e, e.getMessage());
+        }
         partida.setFechaFinPartida(fechaDeFin);
         partida.setHoraFinPartida(horaDeFin);
         partida.setNivelPasado(lvlPasado);

@@ -16,6 +16,7 @@ import java.time.LocalTime;
  */
 public class Partida {
     // ------------ VARIABELS DE PARTIDA ------------
+    private int id;
     private LocalDate fechaIncioPartida;
     private LocalDate fechaFinPartida;
     private LocalTime horaIncioPartida;
@@ -25,28 +26,30 @@ public class Partida {
     private boolean nivelPasado = false;
     private int dificultadJugada = 0;
 
-    // ------------ CONSTRUCTOR DE PARTIDA ------------
-    /**
-     * Constructor de Partida.
-     * 
-     * @param fechaIncioPartida   Recibe la fecha de incio de partida.
-     * @param fechaFinPartida     Recibe la fecha de fin de partida.
-     * @param horaIncioPartida    Recibe la hora de incio de partida.
-     * @param horaFinPartida      Recibe la hora de fin de partida.
-     * @param respuestasAcertadas Recibe las respuestas acertadas.
-     * @param dificultadJugada    Recibe la dificultdad jugada.
-     * @param nivelPasado         Recibe si se ha pasado la partida o ha perdido.
-     */
-    public Partida(LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida,
-            LocalTime horaFinPartida,
-            int respuestasAcertadas, int dificultadJugada, boolean nivelPasado) {
+    public Partida(int id, LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida,
+            LocalTime horaFinPartida, int respuestasAcertadas, boolean nivelPasado,
+            int dificultadJugada) {
+        this.id = id;
         this.fechaIncioPartida = fechaIncioPartida;
         this.fechaFinPartida = fechaFinPartida;
         this.horaIncioPartida = horaIncioPartida;
         this.horaFinPartida = horaFinPartida;
         this.respuestasAcertadas = respuestasAcertadas;
-        this.dificultadJugada = dificultadJugada;
         this.nivelPasado = nivelPasado;
+        this.dificultadJugada = dificultadJugada;
+    }
+
+    public Partida(LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida,
+            LocalTime horaFinPartida, int respuestasAcertadas, boolean nivelPasado,
+            int dificultadJugada) {
+
+        this.fechaIncioPartida = fechaIncioPartida;
+        this.fechaFinPartida = fechaFinPartida;
+        this.horaIncioPartida = horaIncioPartida;
+        this.horaFinPartida = horaFinPartida;
+        this.respuestasAcertadas = respuestasAcertadas;
+        this.nivelPasado = nivelPasado;
+        this.dificultadJugada = dificultadJugada;
     }
 
     // ------------ GETTERS Y SETTERS DE PARTIDA ------------
@@ -88,6 +91,14 @@ public class Partida {
      */
     public void setFechaFinPartida(LocalDate fechaFinPartida) {
         this.fechaFinPartida = fechaFinPartida;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     // ------------ GET DE FECHA DE INICIO DE PARTIDA ------------
@@ -214,7 +225,7 @@ public class Partida {
         long minutos = (segundosTotales % 3600) / 60;
         long segundos = segundosTotales % 60;
 
-        duracion = String.format("%02d:%02d:%02d", horas, minutos, segundos);                                                                                           
+        duracion = String.format("%02d:%02d:%02d", horas, minutos, segundos);
     }
 
     // ------------ TOSTRING DE PARTIDA ------------

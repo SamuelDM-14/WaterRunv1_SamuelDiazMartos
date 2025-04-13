@@ -58,12 +58,12 @@ public class Jugador {
     }
 
     // Metodo para ver el nickcname del jugador.
-    public String getnickcname() {
+    public String getNombre() {
         return nombre;
     }
 
     // Metodo para modificar el nickcname del jugador.
-    public void setnombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 

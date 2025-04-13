@@ -19,8 +19,6 @@ import utilidades.VarGenYConst;
  */
 public class Jugar {
 
-    public static LocalDate fechaFinPartida;// Guarda la fecha del fin de la partida.
-    public static LocalTime horaFinPartida;// Guarda la hora de fin de partida.
 
     /**
      * Jugar. Muestra el juego, el cual va sacando preguntas y respuestas y
@@ -61,8 +59,7 @@ public class Jugar {
             if (jugar == true) { // Inicio del juego
                 LocalDate fechaIncioPartida = LocalDate.now();
                 VarGenYConst.horaDeinicio = LocalTime.now();
-                Partida partida = new Partida(fechaIncioPartida, null, horaFinPartida, null, 0, VarGenYConst.dificultad,
-                        false);
+                Partida partida = new Partida(fechaIncioPartida, null, VarGenYConst.horaDeinicio, null, 0, false, VarGenYConst.dificultad);
                 if (VarGenYConst.dificultad == 2) {
                     // Llama al metodo jugarDificil para gestionar el juego en esa dificultad
                     JugarDificil.jugarDificil(partida);

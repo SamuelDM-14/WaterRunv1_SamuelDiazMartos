@@ -8,6 +8,7 @@ package utilidades;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+import clases.Jugador;
 import clases.Partida;
 
 /**
@@ -21,7 +22,7 @@ public class VarGenYConst {
         // Todos los menús del juego estan aqui. Accederemos a ellos mencionando
         // directamente a MOSTRARMENUS.
         public static final String[] MOSTRARMENUS = {
-                        "Elige una opcón del menú.\n\t1) Jugar.\n\t2) Dificultad\n\t3) Aspecto\n\t4) Historial de juego.\n\t5) Salir.",
+                        "Elige una opcón del menú.\n\t1) Jugar.\n\t2) Dificultad\n\t3) Aspecto\n\t4) Historial de juego.\n\t5) Opciones de música. \n\t6) Opciones del Perfil. \n\t7) Salir.",
                         "Has elegico jugar.\nPara ponerte en contexto, eres un prisionero condenado injustametne a muerte por ahogamiento.\nTu desafío inicial es encontrar la manera de escapar de la sala que se irá inundando.\nPara ello, deberas resolver una serie de acertijos o preguntas que te iremos mostrando.\nAl responder las preguntas o acertijos deberas de poner el número correspondiente indicado.\nEjemplo: ¿Cuantas letras tiene Hola?\n1) 4 \t\t 2) 7 \t\t 3) 5 \t\t 4) 1 \nEn este caso tendrias que poner como respuesta \'1\'. \nSi fallas al responder o ponea un caracter no valido se contará como error.\n¿Estas preparado? (Respuesta con 'S' para si y 'N' para no)\n",
                         "Selecciona la dificultad en la que desea jugar. Por defecto esta la dificultad FÁCIL.\n\t 0) FÁCIL\n\t 1) MEDIA\n\t 2) DIFÍCIL\n\t 3) SALIR",
                         "Has elegido la opción de aspecto.\nEn este menú, puedes personalizar el color de tu personaje entre la siguiente selección y el color del agua también.\n¿Que quieres personalizar?\n\t1) Color del personaje.\n\t2) Color del Policia.\n\t3) Salir.",
@@ -100,4 +101,6 @@ public class VarGenYConst {
         public static int autoIncremental;
         public static ArrayList<Partida> partidas = new ArrayList<Partida>();
         public static boolean existe = false; // reivsa que exista partida
+
+        public static Jugador jugador;
 }

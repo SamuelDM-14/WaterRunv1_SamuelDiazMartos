@@ -38,7 +38,7 @@ public class GestionJugar {
         int eleccion = 0;// Lee la elección del primer menú.
 
         do { // Bucle menú (Se repite hasta indicar salir.)
-            VarGenYConst.max = 5;
+            VarGenYConst.max = 6;
             VarGenYConst.min = 1;
             VarGenYConst.opcionMenu = 0;
             System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
@@ -48,26 +48,34 @@ public class GestionJugar {
             switch (eleccion) {
 
                 case 1:
-                    // Entra en caso de elegir Jugar
-                    Jugar.jugar(musica); // Llama al metodo jugar y le envia el bufferedReader
+                    // Entra en caso de elegir Jugar.
+                    Jugar.jugar(musica); // Llama al metodo jugar y le envia el objeto ReproductorMusica.
                     break;
 
                 case 2:
-                    // Entra en caso de elegir Dificultad
-                    dificultadDelJuego();// Llama al metodo dificultadDelJuego y le envia el BufferedReader
+                    // Entra en caso de elegir Dificultad.
+                    dificultadDelJuego();// Llama al metodo dificultadDelJuego.
                     break;
                 case 3:
-                    // Entra en caso de elegir Aspecto
-                    GestionAspecto.cambiarAspecto();// Llama al metodo cambiarAspecto y le envia el bufferedReader
+                    // Entra en caso de elegir Aspecto.
+                    GestionAspecto.cambiarAspecto();// Llama al metodo cambiarAspecto.
                     break;
 
                 case 4:
-                    // Entra en caso de elegir Historial
-                    historial();// Llama al metodo historial y le envia el bufferedReader
+                    // Entra en caso de elegir Historial.
+                    historial();// Llama al metodo historial.
                     break;
 
                 case 5:
-                    // Entra en caso de elegir Salir
+                    // Entra en caso de elegir Opciones de Música.
+                    GestionMusica.menuMusica(musica);// Llama al metodo menuMusica y le envia un objeto ReproductorMusica.
+                    break;
+                case 6:
+                    // Entra en caso de elegir Opciones de Música.
+                    GestionPerfil.menuPerfil();// Llama al metodo menuPerfil.
+                    break;
+                case 7:
+                    // Entra en caso de elegir Salir.
                     System.out.println("Saliendo del juego");
                     salir = true; // Pone salir en true para salir del bucle del menú.
                     break;
@@ -167,14 +175,13 @@ public class GestionJugar {
      */
     private static void datosPartida() {
         System.out.println("Ha selecionado \\'Datos de partida guardada.\\'.");
-        if (VarGenYConst.existe==true) {
-            System.out.println(VarGenYConst.partidas); 
-        }else{
+        if (VarGenYConst.existe == true) {
+            System.out.println(VarGenYConst.partidas);
+        } else {
             System.out.println("Aun no se ha jugado ninguna partida.");
         }
 
     }
-
 
     /**
      * Bienvenida al juego. Comprueba que solo pongas un enter.
@@ -183,7 +190,7 @@ public class GestionJugar {
      * @throws IOException
      */
     public static void bienvenida() throws IOException {
-        
+
         // Bienvenida. Usamos tres comillas para poder escribir en varias lineas.
         System.out.println("""
 
@@ -202,8 +209,8 @@ public class GestionJugar {
         }
     }
 
-    private static void validacionEntrada() throws IOException{
-        // variables 
+    private static void validacionEntrada() throws IOException {
+        // variables
         boolean empezar = false; // Para comprobar que haya puesto un enter
         String entrada = ""; // Leer una línea de texto.
         System.out.println("Pulsa \'Enter\' para continuar");
@@ -217,7 +224,7 @@ public class GestionJugar {
                 empezar = true;// Cambia la variable a verdadero para salir del bucle.
             } else {
                 System.out.println("Has introducido un caracter incorrecto, pulse enter para empezar.");
-            }   
+            }
         } while (empezar == false);
         // Llamamos al metodo menu1 y le enviamos el bufferedReader
         menu1();
