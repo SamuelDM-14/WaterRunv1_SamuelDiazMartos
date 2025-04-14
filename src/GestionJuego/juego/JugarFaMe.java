@@ -10,7 +10,6 @@ import java.io.IOException;
 import clases.GestionPreguntas;
 import clases.Partida;
 import clases.Pregunta;
-import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
 /**
@@ -38,15 +37,15 @@ public class JugarFaMe {
         boolean acertada = false;
         GestionPreguntas gp = new GestionPreguntas();
         Pregunta p = gp.getPregunta(VarGenYConst.dificultad, enunciado);
-        String[] pantallas = Utilidades.gestorPantallas();
+        String[] pantallas = UtilidadesJuego.gestorPantallas();
         int mostrarPantalla = 0;
         String pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
 
         do {
             reAcertadas = 0;
             pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
-            Utilidades.mostrarPregunta(p, pantalla);
-            respuestaElegida = Utilidades.leerRespuesta(p);
+            UtilidadesJuego.mostrarPregunta(p, pantalla);
+            respuestaElegida = UtilidadesJuego.leerRespuesta(p);
 
             if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                 VarGenYConst.max = 3;
@@ -60,8 +59,8 @@ public class JugarFaMe {
                 mostrarPantalla++;
                 pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
 
-                Utilidades.mostrarPregunta(p, pantalla);
-                respuestaElegida = Utilidades.leerRespuesta(p);
+                UtilidadesJuego.mostrarPregunta(p, pantalla);
+                respuestaElegida = UtilidadesJuego.leerRespuesta(p);
 
                 if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                     VarGenYConst.max = 4;
@@ -72,17 +71,17 @@ public class JugarFaMe {
 
                     System.out.println(VarGenYConst.mensajesJuego[msglvl]);
                     pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
-                    Utilidades.mostrarPregunta(p, pantalla);
-                    respuestaElegida = Utilidades.leerRespuesta(p);
+                    UtilidadesJuego.mostrarPregunta(p, pantalla);
+                    respuestaElegida = UtilidadesJuego.leerRespuesta(p);
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                         reAcertadas++;
                         acertada = true;
-                        Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
+                        UtilidadesJuego.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
                         lvlPasado = true; // pone lvlPasado en true para salir del bucle.
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                        GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                     } else {
-                        Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                        UtilidadesJuego.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
+                        GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
                 } else {
                     VarGenYConst.max = 4;
@@ -92,17 +91,17 @@ public class JugarFaMe {
 
                     System.out.println(VarGenYConst.mensajesJuego[msglvl]);
                     pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
-                    Utilidades.mostrarPregunta(p, pantalla);
-                    respuestaElegida = Utilidades.leerRespuesta(p);
+                    UtilidadesJuego.mostrarPregunta(p, pantalla);
+                    respuestaElegida = UtilidadesJuego.leerRespuesta(p);
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
 
                         reAcertadas++;
                         acertada = true;
-                        Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                        UtilidadesJuego.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
+                        GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                     } else {
-                        Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                        UtilidadesJuego.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
+                        GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
                 }
             } else {
@@ -113,8 +112,8 @@ public class JugarFaMe {
 
                 System.out.println(VarGenYConst.mensajesJuego[msglvl]);
                 pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
-                Utilidades.mostrarPregunta(p, pantalla);
-                respuestaElegida = Utilidades.leerRespuesta(p);
+                UtilidadesJuego.mostrarPregunta(p, pantalla);
+                respuestaElegida = UtilidadesJuego.leerRespuesta(p);
                 if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                     VarGenYConst.max = 4;
                     reAcertadas++;
@@ -125,16 +124,16 @@ public class JugarFaMe {
                     System.out.println(VarGenYConst.mensajesJuego[msglvl]);
                     mostrarPantalla++;
                     pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
-                    Utilidades.mostrarPregunta(p, pantalla);
-                    respuestaElegida = Utilidades.leerRespuesta(p);
+                    UtilidadesJuego.mostrarPregunta(p, pantalla);
+                    respuestaElegida = UtilidadesJuego.leerRespuesta(p);
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                         reAcertadas++;
                         acertada = true;
-                        Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                        UtilidadesJuego.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
+                        GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                     } else {
-                        Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                        UtilidadesJuego.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
+                        GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
                 } else {
                     VarGenYConst.max = 4;
@@ -144,17 +143,17 @@ public class JugarFaMe {
                     System.out.println(VarGenYConst.mensajesJuego[msglvl]);
                     pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
 
-                    Utilidades.mostrarPregunta(p, pantalla);
-                    respuestaElegida = Utilidades.leerRespuesta(p);
+                    UtilidadesJuego.mostrarPregunta(p, pantalla);
+                    respuestaElegida = UtilidadesJuego.leerRespuesta(p);
 
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                         reAcertadas++;
                         acertada = true;
-                        Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                        UtilidadesJuego.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
+                        GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                     } else {
-                        Utilidades.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                        UtilidadesJuego.finalizarJuegoFaMe(acertada, reAcertadas, msglvl);
+                        GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
 
                 }

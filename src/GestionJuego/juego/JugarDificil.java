@@ -12,7 +12,6 @@ import clases.GestionPreguntas;
 import clases.Partida;
 import clases.Policia;
 import clases.Pregunta;
-import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
 /**
@@ -47,7 +46,7 @@ public class JugarDificil {
         GestionPreguntas gp = new GestionPreguntas();
         Pregunta p = gp.getPregunta(VarGenYConst.dificultad, enunciado);
 
-        String[] pantallas = Utilidades.gestorPantallas();
+        String[] pantallas = UtilidadesJuego.gestorPantallas();
         int mostrarPantalla = 0;
         String pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
 
@@ -56,8 +55,8 @@ public class JugarDificil {
             reAcertadas = 0;
             pantalla = pantallas[mostrarPantalla];
 
-            Utilidades.mostrarPregunta(p, pantalla);
-            respuestaElegida = Utilidades.leerRespuesta(p);
+            UtilidadesJuego.mostrarPregunta(p, pantalla);
+            respuestaElegida = UtilidadesJuego.leerRespuesta(p);
 
             if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
 
@@ -69,8 +68,8 @@ public class JugarDificil {
                     frenado = true;
                     System.out.println(VarGenYConst.mensajePoli);
 
-                    Utilidades.mostrarPregunta(p, pantalla);
-                    respuestaElegida = Utilidades.leerRespuesta(p);
+                    UtilidadesJuego.mostrarPregunta(p, pantalla);
+                    respuestaElegida = UtilidadesJuego.leerRespuesta(p);
 
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                         // configuraciones variables
@@ -83,17 +82,17 @@ public class JugarDificil {
 
                         // Se muestra por pantalla
                         System.out.println(VarGenYConst.mensajesJuego[msglvl]);
-                        Utilidades.mostrarPregunta(p, pantalla);
-                        respuestaElegida = Utilidades.leerRespuesta(p);
+                        UtilidadesJuego.mostrarPregunta(p, pantalla);
+                        respuestaElegida = UtilidadesJuego.leerRespuesta(p);
 
                         if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                             reAcertadas++;
                             acertada = true;
-                            Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                            Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                            UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                            GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                         } else {
-                            Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                            Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                            UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                            GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                         }
 
                     } else {
@@ -103,16 +102,16 @@ public class JugarDificil {
                         msglvl = 2;
 
                         System.out.println(VarGenYConst.mensajesJuego[msglvl]);
-                        Utilidades.mostrarPregunta(p, pantalla);
-                        respuestaElegida = Utilidades.leerRespuesta(p);
+                        UtilidadesJuego.mostrarPregunta(p, pantalla);
+                        respuestaElegida = UtilidadesJuego.leerRespuesta(p);
                         if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                             reAcertadas++;
                             acertada = true;
-                            Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                            Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                            UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                            GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                         } else {
-                            Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                            Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                            UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                            GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                         }
                     }
 
@@ -122,8 +121,8 @@ public class JugarDificil {
                     pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
 
                     System.out.println(VarGenYConst.mensajesJuego[msglvl]);
-                    Utilidades.mostrarPregunta(p, pantalla);
-                    respuestaElegida = Utilidades.leerRespuesta(p);
+                    UtilidadesJuego.mostrarPregunta(p, pantalla);
+                    respuestaElegida = UtilidadesJuego.leerRespuesta(p);
 
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                         reAcertadas++;
@@ -134,35 +133,35 @@ public class JugarDificil {
                             System.out.println(VarGenYConst.mensajePoli);
                             pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y
                                                                    // del agua
-                            Utilidades.mostrarPregunta(p, pantalla);
-                            respuestaElegida = Utilidades.leerRespuesta(p);
+                                                                   UtilidadesJuego.mostrarPregunta(p, pantalla);
+                            respuestaElegida = UtilidadesJuego.leerRespuesta(p);
 
                             if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                                 reAcertadas++;
                                 acertada = true;
-                                Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                                Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                                UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                                GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                             } else {
-                                Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                                Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                                UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                                GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                             }
                         } else {
                             msglvl = 1;
                             pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y
                                                                    // del agua
                             System.out.println(VarGenYConst.mensajesJuego[msglvl]);
-                            Utilidades.mostrarPregunta(p, pantalla);
-                            respuestaElegida = Utilidades.leerRespuesta(p);
+                            UtilidadesJuego.mostrarPregunta(p, pantalla);
+                            respuestaElegida = UtilidadesJuego.leerRespuesta(p);
 
                             if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                                 reAcertadas++;
                                 acertada = true;
-                                Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                                UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
                                 lvlPasado = true; // pone lvlPasado en true para salir del bucle.
-                                Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                                GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                             } else {
-                                Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                                Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                                UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                                GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                             }
 
                         }
@@ -173,16 +172,16 @@ public class JugarDificil {
                         System.out.println(VarGenYConst.mensajesJuego[msglvl]);
                         pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del
                                                                // agua
-                        Utilidades.mostrarPregunta(p, pantalla);
-                        respuestaElegida = Utilidades.leerRespuesta(p);
+                                                               UtilidadesJuego.mostrarPregunta(p, pantalla);
+                        respuestaElegida = UtilidadesJuego.leerRespuesta(p);
                         if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                             reAcertadas++;
                             acertada = true;
-                            Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                            Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                            UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                            GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                         } else {
-                            Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                            Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                            UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                            GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                         }
                     }
 
@@ -195,8 +194,8 @@ public class JugarDificil {
                 System.out.println(VarGenYConst.mensajesJuego[msglvl]);
                 pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
 
-                Utilidades.mostrarPregunta(p, pantalla);
-                respuestaElegida = Utilidades.leerRespuesta(p);
+                UtilidadesJuego.mostrarPregunta(p, pantalla);
+                respuestaElegida = UtilidadesJuego.leerRespuesta(p);
 
                 if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                     reAcertadas++;
@@ -207,16 +206,16 @@ public class JugarDificil {
                     mostrarPantalla++;
                     pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
 
-                    Utilidades.mostrarPregunta(p, pantalla);
-                    respuestaElegida = Utilidades.leerRespuesta(p);
+                    UtilidadesJuego.mostrarPregunta(p, pantalla);
+                    respuestaElegida = UtilidadesJuego.leerRespuesta(p);
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                         reAcertadas++;
                         acertada = true;
-                        Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                        UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                        GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                     } else {
-                        Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                        UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                        GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
                 } else {
                     enunciado++;
@@ -224,16 +223,16 @@ public class JugarDificil {
                     msglvl = 2;
                     System.out.println(VarGenYConst.mensajesJuego[msglvl]);
                     pantalla = pantallas[mostrarPantalla]; // Mas adelante, incluido el color del personaje y del agua
-                    Utilidades.mostrarPregunta(p, pantalla);
-                    respuestaElegida = Utilidades.leerRespuesta(p);
+                    UtilidadesJuego.mostrarPregunta(p, pantalla);
+                    respuestaElegida = UtilidadesJuego.leerRespuesta(p);
                     if (respuestaElegida.equals(p.getRespuestaCorrecta())) {
                         reAcertadas++;
                         acertada = true;
-                        Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                        UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                        GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                     } else {
-                        Utilidades.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
-                        Utilidades.guardarPartida(reAcertadas, lvlPasado, partida);
+                        UtilidadesJuego.finalizarJuegoDificil(acertada, reAcertadas, msglvl, frenado);
+                        GuardarPartidas.guardarPartida(reAcertadas, lvlPasado, partida);
                     }
 
                 }
