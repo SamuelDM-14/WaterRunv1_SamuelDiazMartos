@@ -1,6 +1,5 @@
 package gestionjuego;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,7 +13,7 @@ import utilidades.VarGenYConst;
 
 public class GestionPerfil {
 
-    public static void menuPerfil() throws IOException {
+    public static void menuPerfil() {
         VarGenYConst.opcionMenu = 7;
         VarGenYConst.max = 3;
         VarGenYConst.min = 1;
@@ -43,7 +42,7 @@ public class GestionPerfil {
 
     }
 
-    private static void cambiarContrasena() throws IOException {
+    private static void cambiarContrasena() {
         String cambioContraseña;
         String nuevaContrasena;
         System.out.println("Su contraseña actual es: " + VarGenYConst.jugador.getContrasena()
@@ -81,7 +80,7 @@ public class GestionPerfil {
         }
     }
 
-    private static void cambiarNombre() throws IOException {
+    private static void cambiarNombre() {
         String cambioNombre;
         String nuevoNombre;
         System.out.println("Su nombre actual es: " + VarGenYConst.jugador.getNombre()

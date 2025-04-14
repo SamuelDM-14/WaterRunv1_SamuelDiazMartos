@@ -1,23 +1,20 @@
 package gestionjuego;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import utilidades.ReproductorMusica;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
 public class GestionMusica {
     private static float cambiarVolumen = 10; 
-    private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-    public static void menuMusica(ReproductorMusica musica) throws IOException {
-        VarGenYConst.min=1;
-        VarGenYConst.max=6;
+    public static void menuMusica(ReproductorMusica musica) {
         VarGenYConst.opcionMenu=8;
 
         boolean salirVolumen = false;
         do {
+            VarGenYConst.min=1;
+            VarGenYConst.max=6;
+
+        
             float volumen = musica.obtenerVolumenActual();
             System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
             System.out.println("El volumen actual es: " + volumen);
@@ -50,10 +47,11 @@ public class GestionMusica {
 
     }
 
-    private static void establecerVolumen(ReproductorMusica musica) throws IOException{
-
+    private static void establecerVolumen(ReproductorMusica musica) {
+        VarGenYConst.max=100;
+        VarGenYConst.min=0;
         System.out.println("Pon un número del 0 al 100");
-        cambiarVolumen = Integer.parseInt(bf.readLine());
+        cambiarVolumen = Utilidades.leerEnteroValidado();
         musica.establecerVolumen(cambiarVolumen);
     }
 

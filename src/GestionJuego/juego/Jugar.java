@@ -28,7 +28,7 @@ public class Jugar {
      * @param bf
      * @throws IOException
      */
-    public static void jugar(ReproductorMusica musica) throws IOException {
+    public static void jugar(ReproductorMusica musica) {
         // Respuestas del juego
         VarGenYConst.opcionMenu = 1;
 

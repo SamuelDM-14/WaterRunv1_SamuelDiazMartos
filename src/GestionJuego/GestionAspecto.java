@@ -45,7 +45,7 @@ public class GestionAspecto {
      * @param bf
      * @throws IOException
      */
-    private static void cambiarAspectoPJ() throws IOException{
+    private static void cambiarAspectoPJ() {
         //cambias el aspecto del Personaje
         int eleccionColorPJ;
         VarGenYConst.opcionMenu= 4;
@@ -102,7 +102,7 @@ public class GestionAspecto {
      * @param bf
      * @throws IOException
      */
-    private static void cambiarAspectoPo() throws IOException{
+    private static void cambiarAspectoPo() {
         int eleccioncolorPo;
         VarGenYConst.opcionMenu= 5;
         VarGenYConst.max=9;
@@ -159,7 +159,7 @@ public class GestionAspecto {
      * @param bf
      * @throws IOException
      */
-    public static void cambiarAspecto() throws IOException{
+    public static void cambiarAspecto() {
 
         //Respuestas aspecto
         int reAspecto;// respuesta de elección de aspecto.

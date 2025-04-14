@@ -12,7 +12,7 @@ public class GestionHistorial {
      * @author SDM
      * @throws IOException
      */
-    public static void historial() throws IOException {
+    public static void historial() {
         // Respuestas Historial
         int eleccionHistorial;// Respuesta de elección de historial.
         boolean salirHistorial = false;

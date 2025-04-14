@@ -25,7 +25,7 @@ public class JugarFaMe {
      * @param salirJuego Variable de salida del juego
      * @throws IOException
      */
-    public static void jugarFaMe(Partida partida) throws IOException {
+    public static void jugarFaMe(Partida partida) {
 
         Boolean lvlPasado = false; // Variable que comprueba si te has pasdo un nivel.
         VarGenYConst.min = 1;

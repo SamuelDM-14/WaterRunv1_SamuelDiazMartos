@@ -28,64 +28,89 @@ public class Utilidades {
      * @return 'S' o 'N' en mayúscula
      * @throws IOException
      */
-    public static char leerSN() throws IOException {
+    public static char leerSN() {
         boolean valido = false;
         char c = ' '; // variable donde guardaremos la elección
-        do { // Repite hasta que escribas el caracter correcto.
+        try {
+            do { // Repite hasta que escribas el caracter correcto.
 
-            String caracter = bf.readLine(); // Guarda la respuesta en un string.
-            try {
-                if (caracter.length() == 1) { // Comprueba que el string sea de 1 caracter.
-                    c = caracter.charAt(0); // combierte el string en caracter y lo guarda en re1
-                    c = Character.toUpperCase(c); // pasa el re1 a mayusculas y lo guarda de nuevo en re1
+                String caracter = bf.readLine(); // Guarda la respuesta en un string.
+                try {
+                    if (caracter.length() == 1) { // Comprueba que el string sea de 1 caracter.
+                        c = caracter.charAt(0); // combierte el string en caracter y lo guarda en re1
+                        c = Character.toUpperCase(c); // pasa el re1 a mayusculas y lo guarda de nuevo en re1
 
-                    if (c == 'S' || c == 'N') {
-                        valido = true;
+                        if (c == 'S' || c == 'N') {
+                            valido = true;
+                        } else {
+                            System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
+                            throw new CaracterIncorrectoException("No has escrito ninguna de las 2 opciones.");
+                        }
                     } else {
-                        System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
-                        throw new CaracterIncorrectoException("No has escrito ninguna de las 2 opciones.");
+                        System.out.println("No has escrito un único caracter. Prueba otra vez.");
+                        throw new MasCaracteresPermitidosException("No has escrito un único caracter");
                     }
-                } else {
-                    System.out.println("No has escrito un único caracter. Prueba otra vez.");
-                    throw new MasCaracteresPermitidosException("No has escrito un único caracter");
+                } catch (CaracterIncorrectoException CIe) {
+                    Log.guardarError(CIe, CIe.getMessage());
+                } catch (MasCaracteresPermitidosException MCPe) {
+                    Log.guardarError(MCPe, MCPe.getMessage());
                 }
-            } catch (CaracterIncorrectoException CIe) {
-                Log.guardarError(CIe, CIe.getMessage());
-            } catch (MasCaracteresPermitidosException MCPe) {
-                Log.guardarError(MCPe, MCPe.getMessage());
-            }
-        } while (!valido);
+            } while (!valido);
+        } catch (IOException IOe) {
+            System.out.println("Ha ocurrido un error.");
+            Log.guardarError(IOe, IOe.getMessage());
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error.");
+            Log.guardarError(e, e.getMessage());
+        }
 
         return c;
     }
 
-    public static String leerSNCadena() throws IOException {
+    public static String leerSNCadena() {
         boolean valido = false;
         String caracter = " "; // variable donde guardaremos la elección
-        do { // Repite hasta que escribas el caracter correcto.
+        try {
+            do { // Repite hasta que escribas el caracter correcto.
 
-            caracter = bf.readLine(); // Guarda la respuesta en un string.
-            caracter= caracter.toUpperCase();
-            if (caracter.length() == 1) { // Comprueba que el string sea de 1 caracter.
+                caracter = bf.readLine(); // Guarda la respuesta en un string.
+                caracter = caracter.toUpperCase();
+                if (caracter.length() == 1) { // Comprueba que el string sea de 1 caracter.
 
-                if (caracter.equalsIgnoreCase("s") || caracter.equalsIgnoreCase("n")) {
-                    valido = true;
+                    if (caracter.equalsIgnoreCase("s") || caracter.equalsIgnoreCase("n")) {
+                        valido = true;
+                    } else {
+                        System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
+                    }
                 } else {
-                    System.out.println("No has escrito ninguna de las 2 opciones. Prueba otra vez.");
+                    System.out.println("No has escrito un único caracter. Prueba otra vez.");
                 }
-            } else {
-                System.out.println("No has escrito un único caracter. Prueba otra vez.");
-            }
-        } while (!valido);
+            } while (!valido);
+        } catch (IOException IOe) {
+            System.out.println("Ha ocurrido un error.");
+            Log.guardarError(IOe, IOe.getMessage());
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error.");
+            Log.guardarError(e, e.getMessage());
+        }
 
         return caracter;
     }
 
-    public static String leerCadena() throws IOException{
-        String cadena="";
-        cadena = bf.readLine();
+    public static String leerCadena() {
+        String cadena = "";
+        try {
+            cadena = bf.readLine();
+        } catch (IOException IOe) {
+            System.out.println("Ha ocurrido un error.");
+            Log.guardarError(IOe, IOe.getMessage());
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error.");
+            Log.guardarError(e, e.getMessage());
+        }
         return cadena;
     }
+
     /**
      * Lee un número entero, validando que esté entre min y max.
      * Si el usuario escribe algo inválido (caracteres no numéricos o número fuera
@@ -93,7 +118,7 @@ public class Utilidades {
      * 
      * @return el número entero válido que el usuario introduzca
      */
-    public static int leerEnteroValidado() throws IOException {
+    public static int leerEnteroValidado() {
         boolean valido = false;
         int valor = 0; // variable para guardar la lectura
         while (!valido) {
@@ -103,15 +128,22 @@ public class Utilidades {
                 if (valor >= VarGenYConst.min && valor <= VarGenYConst.max) {
                     valido = true; // se cumple la condición → marcamos como válido
                 } else {
-                    throw new NumeroFueraDeRangoException("No escribio un número dentro del rango entre " + VarGenYConst.min + " y " + VarGenYConst.max+ ".");
+                    throw new NumeroFueraDeRangoException("No escribio un número dentro del rango entre "
+                            + VarGenYConst.min + " y " + VarGenYConst.max + ".");
                 }
             } catch (NumeroFueraDeRangoException NFDRe) {
                 System.out.println("Debes escribir un número entre " + VarGenYConst.min + " y " + VarGenYConst.max
-                                    + ". Inténtalo de nuevo.");
+                        + ". Inténtalo de nuevo.");
                 Log.guardarError(NFDRe, NFDRe.getMessage());
             } catch (NumberFormatException NFe) {
                 System.out.println("No has escrito un número válido. Inténtalo de nuevo.");
                 Log.guardarError(NFe, NFe.getMessage());
+            } catch (IOException IOe) {
+                System.out.println("Ha ocurrido un error.");
+                Log.guardarError(IOe, IOe.getMessage());
+            } catch (Exception e) {
+                System.out.println("Ha ocurrido un error.");
+                Log.guardarError(e, e.getMessage());
             }
         }
         // Cuando salgamos del while, 'valido == true', y 'valor' está en rango

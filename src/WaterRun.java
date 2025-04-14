@@ -21,7 +21,7 @@ public class WaterRun {
      * @param args
      * @throws IOException
      */
-    public static void main(String[] args) throws IOException{        
+    public static void main(String[] args) {        
         //Llamamos al metodo bienvenida y le enviamos nuestro bufferedReader
         GestionJugar.bienvenida();
     }

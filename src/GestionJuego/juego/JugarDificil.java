@@ -27,7 +27,7 @@ public class JugarDificil {
      * @param salirJuego Variable de salida del juego
      * @throws IOException
      */
-    public static void jugarDificil(Partida partida) throws IOException {
+    public static void jugarDificil(Partida partida) {
 
         Boolean lvlPasado = false; // Variable que comprueba si te has pasdo un nivel.
         int reAcertadas = 0;

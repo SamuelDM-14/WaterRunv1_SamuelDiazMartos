@@ -1,9 +1,6 @@
 
 package gestionjuego;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,16 +12,11 @@ import clases.Partida;
 import log.Log;
 
 public class GestionUsuario {
-    private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     private static boolean dentro = false;
     private static String nombreJugador;
     private static String contrasena;
 
-    /**
-     * 
-     * @throws IOException
-     */
-    public static void validacionUsuario() throws IOException {
+    public static void validacionUsuario() {
         String cuenta;
 
         do {
@@ -38,13 +30,13 @@ public class GestionUsuario {
         } while (!dentro);
     }
 
-    private static void usuarioExistente() throws IOException {
+    private static void usuarioExistente() {
         boolean sesionIniciada = false;
         do {
             System.out.println("Dime tu nickname: ");
-            nombreJugador = bf.readLine();
+            nombreJugador = Utilidades.leerCadena();
             System.out.println("Escribe la contraseña: ");
-            contrasena = bf.readLine();
+            contrasena =  Utilidades.leerCadena();
 
             String sql = "Select nombre, contrasena from jugador where nombre='" + nombreJugador + "' and contrasena='"
                     + contrasena + "'";
@@ -74,7 +66,7 @@ public class GestionUsuario {
 
     }
 
-    private static void crearUsuario() throws IOException {
+    private static void crearUsuario() {
         boolean usuExistente = false;
         boolean salirCrearUsu = false;
         do {
@@ -83,9 +75,9 @@ public class GestionUsuario {
 
             if (crear.equals("S")) {
                 System.out.println("Dime tu nickname: ");
-                nombreJugador = bf.readLine();
+                nombreJugador = Utilidades.leerCadena();
                 System.out.println("Escribe la contraseña: ");
-                contrasena = bf.readLine();
+                contrasena = Utilidades.leerCadena();
 
                 String sql = "Select nombre from jugador where nombre='" + nombreJugador + "';";
 

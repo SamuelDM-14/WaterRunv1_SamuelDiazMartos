@@ -5,9 +5,6 @@
  */
 package gestionjuego;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 import gestionjuego.juego.Jugar;
 import utilidades.ReproductorMusica;
@@ -22,9 +19,6 @@ import utilidades.VarGenYConst;
 public class GestionJugar {
     private static ReproductorMusica musica = new ReproductorMusica();
 
-    // Usamos BufferedReader para leer. Creación del objeto.
-    private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-
     /**
      * Menu1. Muestra las diferentes opciones de menú y te manda según tu selección
      * al apartado correspondiente.
@@ -32,7 +26,7 @@ public class GestionJugar {
      * @author SDM
      * @throws IOException
      */
-    private static void menu1() throws IOException {
+    private static void menu1() {
         // variables menu1
         boolean salir = false;// variable para acabar el programa;
         int eleccion = 0;// Lee la elección del primer menú.
@@ -91,7 +85,7 @@ public class GestionJugar {
      * @author SDM
      * @throws IOException
      */
-    private static void dificultadDelJuego() throws IOException {
+    private static void dificultadDelJuego() {
         VarGenYConst.opcionMenu = 2;
         VarGenYConst.max = 3;
         VarGenYConst.min = 0;
@@ -129,7 +123,7 @@ public class GestionJugar {
      * @author SDM
      * @throws IOException
      */
-    public static void bienvenida() throws IOException {
+    public static void bienvenida() {
 
         // Bienvenida. Usamos tres comillas para poder escribir en varias lineas.
         System.out.println("""
@@ -149,14 +143,14 @@ public class GestionJugar {
         }
     }
 
-    private static void validacionEntrada() throws IOException {
+    private static void validacionEntrada() {
         // variables
         boolean empezar = false; // Para comprobar que haya puesto un enter
         String entrada = ""; // Leer una línea de texto.
         System.out.println("Pulsa \'Enter\' para continuar");
 
         do {
-            entrada = bf.readLine();// Guarda en entrada el caracter introducido.
+            entrada = Utilidades.leerCadena();// Guarda en entrada el caracter introducido.
             if (entrada.isEmpty()) { // Comprueba que la entrada esté vacía
                 System.out.println("¡Vamos a empezar a jugar!\n");
                 // 🔊 Reproducir música de fondo

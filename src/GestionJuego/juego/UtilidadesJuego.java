@@ -105,7 +105,7 @@ public class UtilidadesJuego {
      * @return Devuelve el dato de la respuesta.
      * @throws IOException Excepción para poder leer con BufferedReader.
      */
-    public static String leerRespuesta(Pregunta p) throws IOException {
+    public static String leerRespuesta(Pregunta p) {
         int respuesta = Utilidades.leerEnteroValidado(); // Comprueba la respuesta 1
         return p.getOpciones()[respuesta - 1];
     }
