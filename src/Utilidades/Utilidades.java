@@ -19,6 +19,7 @@ import clases.Pregunta;
 import conexionBD.ConexionBD;
 import excepciones.CaracterIncorrectoException;
 import excepciones.MasCaracteresPermitidosException;
+import excepciones.NumeroFueraDeRangoException;
 import log.Log;
 
 /**
@@ -66,13 +67,13 @@ public class Utilidades {
         return c;
     }
 
-    public static String leerSNString() throws IOException {
+    public static String leerSNCadena() throws IOException {
         boolean valido = false;
         String caracter = " "; // variable donde guardaremos la elección
         do { // Repite hasta que escribas el caracter correcto.
 
             caracter = bf.readLine(); // Guarda la respuesta en un string.
-
+            caracter= caracter.toUpperCase();
             if (caracter.length() == 1) { // Comprueba que el string sea de 1 caracter.
 
                 if (caracter.equalsIgnoreCase("s") || caracter.equalsIgnoreCase("n")) {
@@ -88,6 +89,11 @@ public class Utilidades {
         return caracter;
     }
 
+    public static String leerCadena() throws IOException{
+        String cadena="";
+        cadena = bf.readLine();
+        return cadena;
+    }
     /**
      * Lee un número entero, validando que esté entre min y max.
      * Si el usuario escribe algo inválido (caracteres no numéricos o número fuera
@@ -105,12 +111,14 @@ public class Utilidades {
                 if (valor >= VarGenYConst.min && valor <= VarGenYConst.max) {
                     valido = true; // se cumple la condición → marcamos como válido
                 } else {
-                    System.out.println(
-                            "Error: Debes escribir un número entre " + VarGenYConst.min + " y " + VarGenYConst.max
-                                    + ". Inténtalo de nuevo.");
+                    throw new NumeroFueraDeRangoException("No escribio un número dentro del rango entre " + VarGenYConst.min + " y " + VarGenYConst.max+ ".");
                 }
+            } catch (NumeroFueraDeRangoException NFDRe) {
+                System.out.println("Debes escribir un número entre " + VarGenYConst.min + " y " + VarGenYConst.max
+                                    + ". Inténtalo de nuevo.");
+                Log.guardarError(NFDRe, NFDRe.getMessage());
             } catch (NumberFormatException NFe) {
-                System.out.println("Error: No has escrito un número válido. Inténtalo de nuevo.");
+                System.out.println("No has escrito un número válido. Inténtalo de nuevo.");
                 Log.guardarError(NFe, NFe.getMessage());
             }
         }

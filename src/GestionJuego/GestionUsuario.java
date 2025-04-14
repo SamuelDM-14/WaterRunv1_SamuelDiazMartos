@@ -18,7 +18,7 @@ public class GestionUsuario {
     private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     private static boolean dentro = false;
     private static String nombreJugador;
-    private static String contraseña;
+    private static String contrasena;
 
     /**
      * 
@@ -29,7 +29,7 @@ public class GestionUsuario {
 
         do {
             System.out.println("¿Tienes cuenta? (S/N)");
-            cuenta = Utilidades.leerSNString();
+            cuenta = Utilidades.leerSNCadena();
             if (cuenta.equals("S")) {
                 usuarioExistente();
             } else {
@@ -44,10 +44,10 @@ public class GestionUsuario {
             System.out.println("Dime tu nickname: ");
             nombreJugador = bf.readLine();
             System.out.println("Escribe la contraseña: ");
-            contraseña = bf.readLine();
+            contrasena = bf.readLine();
 
             String sql = "Select nombre, contrasena from jugador where nombre='" + nombreJugador + "' and contrasena='"
-                    + contraseña + "'";
+                    + contrasena + "'";
             try (Connection conexion = ConexionBD.obtenerConexion();
                     Statement stm = conexion.createStatement();
                     ResultSet rs = stm.executeQuery(sql);) {
@@ -79,13 +79,13 @@ public class GestionUsuario {
         boolean salirCrearUsu = false;
         do {
             System.out.println("Nesitas una cuenta para jugar. ¿Quieres crear una cuenta? (S/N)");
-            String crear = Utilidades.leerSNString();
+            String crear = Utilidades.leerSNCadena();
 
             if (crear.equals("S")) {
                 System.out.println("Dime tu nickname: ");
                 nombreJugador = bf.readLine();
                 System.out.println("Escribe la contraseña: ");
-                contraseña = bf.readLine();
+                contrasena = bf.readLine();
 
                 String sql = "Select nombre from jugador where nombre='" + nombreJugador + "';";
 
@@ -126,7 +126,7 @@ public class GestionUsuario {
             try (Connection conexion = ConexionBD.obtenerConexion();
                     PreparedStatement pstm2 = conexion.prepareStatement(sql)) {
                 pstm2.setString(1, nombreJugador);
-                pstm2.setString(2, contraseña);
+                pstm2.setString(2, contrasena);
 
                 pstm2.executeUpdate();
                 System.out.println("Usuario creado correctamente");
@@ -190,7 +190,7 @@ public class GestionUsuario {
 
                 VarGenYConst.jugador.setId_Jugador(id_jugador);
                 VarGenYConst.jugador.setNombre(nombreJugador);
-                VarGenYConst.jugador.setContraseña(contraseña);
+                VarGenYConst.jugador.setContrasena(contrasena);
                 VarGenYConst.jugador.setPartidas(VarGenYConst.partidas);
             }
             rs.close();

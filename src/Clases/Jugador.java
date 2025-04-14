@@ -15,21 +15,21 @@ public class Jugador {
     // Atributos del jugador
     private int id_Jugador;
     private String nombre = "";
-    private String contraseña = "";
+    private String contrasena = "";
     private ArrayList<Partida> partidas;
 
     // Puedo tener un arraylist de objetos partidas
     // Metodo constructor de jugador
-    public Jugador(String nombre, String contraseña, ArrayList<Partida> partidas) {
+    public Jugador(String nombre, String contrasena, ArrayList<Partida> partidas) {
         this.nombre = nombre;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
         this.partidas = partidas;
     }
 
-    public Jugador(int id, String nombre, String contraseña, ArrayList<Partida> partidas) {
+    public Jugador(int id, String nombre, String contrasena, ArrayList<Partida> partidas) {
         this.id_Jugador = id;
         this.nombre = nombre;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
         this.partidas = partidas;
     }
 
@@ -49,12 +49,12 @@ public class Jugador {
         this.id_Jugador = id_Jugador;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     // Metodo para ver el nickcname del jugador.
@@ -69,7 +69,10 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "Jugador [nombre=" + nombre + ", partidas=" + partidas.size() + "]";
+        return "Jugador [id_Jugador=" + id_Jugador + ", nombre=" + nombre + ", contraseña=" + contrasena + ", partidas="
+                + partidas + "]";
     }
+
+
 
 }
