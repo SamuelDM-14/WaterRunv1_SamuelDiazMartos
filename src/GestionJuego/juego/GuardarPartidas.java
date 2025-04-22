@@ -54,6 +54,7 @@ public class GuardarPartidas {
         partida.setNivelPasado(lvlPasado);
         partida.setRespuestasAcertadas(reAcertadas);
         VarGenYConst.partidas.add(partida);
+        VarGenYConst.partidasSesion.add(partida);
         VarGenYConst.autoIncremental++;
     }
 

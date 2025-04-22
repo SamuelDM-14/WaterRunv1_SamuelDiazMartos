@@ -7,6 +7,7 @@ package gestionjuego;
 
 
 import gestionjuego.juego.Jugar;
+import gestionjuego.salir.GestionSalir;
 import utilidades.ReproductorMusica;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
@@ -70,7 +71,7 @@ public class GestionJugar {
                     break;
                 case 7:
                     // Entra en caso de elegir Salir.
-                    System.out.println("Saliendo del juego");
+                    GestionSalir.salir();
                     salir = true; // Pone salir en true para salir del bucle del menú.
                     break;
             }

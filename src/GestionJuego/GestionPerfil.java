@@ -92,6 +92,7 @@ public class GestionPerfil {
                 nuevoNombre = Utilidades.leerCadena();
                 if (nuevoNombre.equals(VarGenYConst.jugador.getNombre())) {
                     throw new MismoNombreException("Has escrito el mismo nombre. No se realizará ningun cambio.");
+                // poner otro if para revisar si ese nombre existe en la tabla
                 } else {
                     String sql = "UPDATE jugador set nombre = '" + nuevoNombre + "' where nombre = '"
                             + VarGenYConst.jugador.getNombre() + "'";

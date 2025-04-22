@@ -6,7 +6,6 @@
 
 import java.io.IOException;
 
-
 import gestionjuego.GestionJugar;
 /**
  * Clase WaterRun.
@@ -21,7 +20,7 @@ public class WaterRun {
      * @param args
      * @throws IOException
      */
-    public static void main(String[] args) {        
+    public static void main(String[] args) throws IOException {        
         //Llamamos al metodo bienvenida y le enviamos nuestro bufferedReader
         GestionJugar.bienvenida();
     }

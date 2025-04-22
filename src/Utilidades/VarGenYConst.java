@@ -97,7 +97,8 @@ public class VarGenYConst {
         public static LocalTime horaDeinicio;
         public static int autoIncremental;
         public static ArrayList<Partida> partidas = new ArrayList<Partida>();
-        public static boolean existe = false; // reivsa que exista partida
+        public static ArrayList<Partida> partidasSesion = new ArrayList<Partida>();
+
 
         public static Jugador jugador = new Jugador(0, null, null, null);
 }

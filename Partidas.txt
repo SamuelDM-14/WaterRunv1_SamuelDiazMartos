@@ -1,0 +1,77 @@
+----- PARTIDAS -----
+Fecha de sesion: Tue Apr 22 10:49:26 CEST 2025
+[
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-22         |
+| Fecha de fin             | 2025-04-22         |
+| Hora de inicio           | 10:49:22.073100400 |
+| Hora de fin              | 10:49:25.434471300 |
+| Duración                 | null               |
+| Respuestas acertadas     | 2                  |
+| Nivel pasado             | No                 |
+| Dificultad jugada        | 0                  |
++--------------------------+--------------------+
+]
+----- PARTIDAS -----
+Fecha de sesion: Tue Apr 22 10:49:55 CEST 2025
+[
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-22         |
+| Fecha de fin             | 2025-04-22         |
+| Hora de inicio           | 10:49:42.942730900 |
+| Hora de fin              | 10:49:44.130351500 |
+| Duración                 | null               |
+| Respuestas acertadas     | 1                  |
+| Nivel pasado             | No                 |
+| Dificultad jugada        | 0                  |
++--------------------------+--------------------+
+, 
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-22         |
+| Fecha de fin             | 2025-04-22         |
+| Hora de inicio           | 10:49:46.361217300 |
+| Hora de fin              | 10:49:48.876750300 |
+| Duración                 | null               |
+| Respuestas acertadas     | 3                  |
+| Nivel pasado             | Sí                 |
+| Dificultad jugada        | 0                  |
++--------------------------+--------------------+
+, 
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-22         |
+| Fecha de fin             | 2025-04-22         |
+| Hora de inicio           | 10:49:51.239852900 |
+| Hora de fin              | 10:49:52.678168300 |
+| Duración                 | null               |
+| Respuestas acertadas     | 1                  |
+| Nivel pasado             | No                 |
+| Dificultad jugada        | 0                  |
++--------------------------+--------------------+
+]
+----- PARTIDAS -----
+Fecha de sesion: Tue Apr 22 10:50:43 CEST 2025
+[
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-22         |
+| Fecha de fin             | 2025-04-22         |
+| Hora de inicio           | 10:50:40.328498500 |
+| Hora de fin              | 10:50:41.657739    |
+| Duración                 | null               |
+| Respuestas acertadas     | 1                  |
+| Nivel pasado             | No                 |
+| Dificultad jugada        | 0                  |
++--------------------------+--------------------+
+]
+----- PARTIDAS -----
+Fecha de sesion: Tue Apr 22 10:51:31 CEST 2025
+[]

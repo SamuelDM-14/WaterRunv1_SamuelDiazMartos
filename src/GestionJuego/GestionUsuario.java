@@ -32,6 +32,7 @@ public class GestionUsuario {
 
     private static void usuarioExistente() {
         boolean sesionIniciada = false;
+        boolean errorUsuExis = false;
         do {
             System.out.println("Dime tu nickname: ");
             nombreJugador = Utilidades.leerCadena();
@@ -58,17 +59,20 @@ public class GestionUsuario {
             } catch (SQLException sqle) {
                 System.out.println("Ha ocurrido un error al buscar tu usuario.");
                 Log.guardarError(sqle, sqle.getMessage());
+                errorUsuExis=true;
             } catch (Exception e) {
                 System.out.println("Ha ocurrido un error.");
                 Log.guardarError(e, e.getMessage());
+                errorUsuExis=true;
             }
-        } while (!sesionIniciada);
+        } while (!sesionIniciada && !errorUsuExis);
 
     }
 
     private static void crearUsuario() {
         boolean usuExistente = false;
         boolean salirCrearUsu = false;
+        boolean errorCrearUsu = false;
         do {
             System.out.println("Nesitas una cuenta para jugar. ¿Quieres crear una cuenta? (S/N)");
             String crear = Utilidades.leerSNCadena();
@@ -96,9 +100,11 @@ public class GestionUsuario {
                 } catch (SQLException sqle) {
                     System.out.println("Ha ocurrido un error al buscar tu usuario.");
                     Log.guardarError(sqle, sqle.getMessage());
+                    errorCrearUsu= true;
                 } catch (Exception e) {
                     System.out.println("Ha ocurrido un error.");
                     Log.guardarError(e, e.getMessage());
+                    errorCrearUsu=true;
                 }
             } else {
                 System.out.println("Saliendo del juego.");
@@ -106,12 +112,13 @@ public class GestionUsuario {
                 salirCrearUsu = true;
                 VarGenYConst.iniciar = false;
             }
-        } while (!usuExistente && !salirCrearUsu);
+        } while (!usuExistente && !salirCrearUsu && !errorCrearUsu);
 
     }
 
     private static void registroUsuario() {
         boolean usuCreado = false;
+        boolean errorRegistroUsu = false;
         do {
             String sql = "INSERT INTO Jugador(nombre, contrasena) VALUES (?, ?);";
 
@@ -129,11 +136,13 @@ public class GestionUsuario {
             } catch (SQLException sqle) {
                 System.out.println("Ha ocurrido un error al crear el usuario.");
                 Log.guardarError(sqle, sqle.getMessage());
+                errorRegistroUsu = true;
             } catch (Exception e) {
                 System.out.println("Ha ocurrido un error.");
                 Log.guardarError(e, e.getMessage());
+                errorRegistroUsu = true;
             }
-        } while (!usuCreado);
+        } while (!usuCreado && !errorRegistroUsu);
     }
 
     private static void cargarPartidas() {
