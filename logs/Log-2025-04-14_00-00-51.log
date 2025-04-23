@@ -1,5 +1,0 @@
----- ERROR ----
-Mensaje: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'jugador where nombre = '1234'' at line 1
-Fecha: Mon Apr 14 00:00:51 CEST 2025
-Excepción: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'jugador where nombre = '1234'' at line 1
-

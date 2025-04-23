@@ -1,3 +1,9 @@
+/**
+ * Log
+ * @author SDM
+ * 28-04-2025
+ */
+
 package log;
 
 import java.io.BufferedWriter;
@@ -7,11 +13,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/**
+ * 
+ */
 public class Log {
     private static boolean logCreado=false;
     private static String logNombre;
 
+    /**
+     * 
+     */
     private static void crearArchivoLog(){
         if (!logCreado) {
             String fechaLog = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
@@ -24,7 +35,11 @@ public class Log {
         }
 
     }
-
+    /**
+     * 
+     * @param e
+     * @param mensaje
+     */
     public static void guardarError(Exception e, String mensaje) {
 
         crearArchivoLog();

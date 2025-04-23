@@ -1,3 +1,8 @@
+/**
+ * GuardarPartidas
+ * @author SDM
+ * 28-04-2025
+ */
 package gestionjuego.juego;
 
 import java.sql.Connection;
@@ -11,6 +16,9 @@ import conexionBD.ConexionBD;
 import log.Log;
 import utilidades.VarGenYConst;
 
+/**
+ * 
+ */
 public class GuardarPartidas {
         /**
      * Guarda los datos de las partidas.
@@ -58,6 +66,10 @@ public class GuardarPartidas {
         VarGenYConst.autoIncremental++;
     }
 
+    /**
+     * 
+     * @param conexion
+     */
     private static void guardarPartidaJugador(Connection conexion) {
         String sql2 = "INSERT INTO partidas_jugador SELECT (SELECT id_jugador from jugador where nombre = '"
                 + VarGenYConst.jugador.getNombre() + "'), (select max(id_partida) from partidas)";

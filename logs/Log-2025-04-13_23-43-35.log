@@ -1,5 +1,0 @@
----- ERROR ----
-Mensaje: Cannot invoke "clases.Jugador.getNombre()" because "utilidades.VarGenYConst.jugador" is null
-Fecha: Sun Apr 13 23:43:35 CEST 2025
-Excepción: java.lang.NullPointerException: Cannot invoke "clases.Jugador.getNombre()" because "utilidades.VarGenYConst.jugador" is null
-

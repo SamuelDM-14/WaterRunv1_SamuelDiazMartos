@@ -1,5 +1,0 @@
----- ERROR ----
-Mensaje: Incorrect integer value: 'true' for column 'nivel_Pasado' at row 1
-Fecha: Sun Apr 13 23:43:05 CEST 2025
-Excepción: java.sql.SQLException: Incorrect integer value: 'true' for column 'nivel_Pasado' at row 1
-

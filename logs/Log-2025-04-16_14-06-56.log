@@ -1,5 +1,0 @@
----- ERROR ----
-Mensaje: Unknown column 'contrasena' in 'field list'
-Fecha: Wed Apr 16 14:06:56 CEST 2025
-Excepción: java.sql.SQLSyntaxErrorException: Unknown column 'contrasena' in 'field list'
-

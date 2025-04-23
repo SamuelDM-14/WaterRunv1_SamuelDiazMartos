@@ -101,4 +101,7 @@ public class VarGenYConst {
 
 
         public static Jugador jugador = new Jugador(0, null, null, null);
+
+        public static String preguntaJuego;
+        public static String respuestaJuego;
 }

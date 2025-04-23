@@ -1,5 +1,0 @@
----- ERROR ----
-Mensaje: Has escrito la misma contraseña. No se realizará ningun cambio.
-Fecha: Mon Apr 14 11:36:55 CEST 2025
-Excepción: excepciones.MismaContrasenaException: Has escrito la misma contraseña. No se realizará ningun cambio.
-

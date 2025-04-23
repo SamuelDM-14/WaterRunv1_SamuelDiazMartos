@@ -1,5 +1,0 @@
----- ERROR ----
-Mensaje: Column 'fecha_inicio_partida' not found.
-Fecha: Mon Apr 14 00:15:45 CEST 2025
-Excepción: java.sql.SQLSyntaxErrorException: Column 'fecha_inicio_partida' not found.
-

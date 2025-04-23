@@ -1,5 +1,0 @@
----- ERROR ----
-Mensaje: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':39:54.048414400, 23:39:54.048414400, 3, true, 0)' at line 1
-Fecha: Sun Apr 13 23:39:58 CEST 2025
-Excepción: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':39:54.048414400, 23:39:54.048414400, 3, true, 0)' at line 1
-

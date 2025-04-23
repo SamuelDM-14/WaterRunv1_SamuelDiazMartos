@@ -1,9 +1,19 @@
+/**
+ * GestionSalir
+ * @author SDM
+ * 28-04-2025
+ */
 package gestionjuego.salir;
 
 import utilidades.VarGenYConst;
-
+/**
+ * 
+ */
 public class GestionSalir {
 
+    /**
+     * 
+     */
     public static void salir(){
 
         if (VarGenYConst.partidasSesion.isEmpty()) {

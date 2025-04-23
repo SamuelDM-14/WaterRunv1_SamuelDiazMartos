@@ -5,6 +5,9 @@
  */
 package clases;
 
+
+import java.util.ArrayList;
+
 /**
  * Clase que representa una pregunta con un enunciado, sus opciones de respuesta
  * y la respuesta correcta (en texto).
@@ -12,7 +15,7 @@ package clases;
 public class Pregunta {
 
     private String enunciado;
-    private String[] opciones; // Ej: {"2", "4", "75", "185"}
+    private ArrayList<String> opciones; // Ej: {"2", "4", "75", "185"}
     private String respuestaCorrecta; // Texto exacto que es la respuesta correcta (por ejemplo, "4")
 
     /**
@@ -22,7 +25,7 @@ public class Pregunta {
      * @param opciones          Array con todas las opciones de respuesta.
      * @param respuestaCorrecta Cadena de texto que es la respuesta correcta.
      */
-    public Pregunta(String enunciado, String[] opciones, String respuestaCorrecta) {
+    public Pregunta(String enunciado, ArrayList<String> opciones, String respuestaCorrecta) {
         this.enunciado = enunciado;
         this.opciones = opciones;
         this.respuestaCorrecta = respuestaCorrecta;
@@ -37,11 +40,11 @@ public class Pregunta {
         this.enunciado = enunciado;
     }
 
-    public String[] getOpciones() {
+    public ArrayList<String> getOpciones() {
         return opciones;
     }
 
-    public void setOpciones(String[] opciones) {
+    public void setOpciones(ArrayList<String> opciones) {
         this.opciones = opciones;
     }
 

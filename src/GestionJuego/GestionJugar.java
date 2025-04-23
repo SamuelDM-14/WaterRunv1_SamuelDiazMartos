@@ -23,9 +23,6 @@ public class GestionJugar {
     /**
      * Menu1. Muestra las diferentes opciones de menú y te manda según tu selección
      * al apartado correspondiente.
-     * 
-     * @author SDM
-     * @throws IOException
      */
     private static void menu1() {
         // variables menu1
@@ -82,9 +79,6 @@ public class GestionJugar {
 
     /**
      * Dificultad. Te permite elegir la dificultad con la que jugar.
-     * 
-     * @author SDM
-     * @throws IOException
      */
     private static void dificultadDelJuego() {
         VarGenYConst.opcionMenu = 2;
@@ -120,9 +114,6 @@ public class GestionJugar {
 
     /**
      * Bienvenida al juego. Comprueba que solo pongas un enter.
-     * 
-     * @author SDM
-     * @throws IOException
      */
     public static void bienvenida() {
 
@@ -144,6 +135,9 @@ public class GestionJugar {
         }
     }
 
+    /**
+     * 
+     */
     private static void validacionEntrada() {
         // variables
         boolean empezar = false; // Para comprobar que haya puesto un enter

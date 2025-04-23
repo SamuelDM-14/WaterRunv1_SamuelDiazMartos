@@ -1,3 +1,8 @@
+/**
+ * GestionPerfil
+ * @author SDM
+ * 28-04-2025
+ */
 package gestionjuego;
 
 import java.sql.Connection;
@@ -10,9 +15,13 @@ import excepciones.MismoNombreException;
 import log.Log;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
-
+/**
+ * 
+ */
 public class GestionPerfil {
-
+    /**
+     * 
+     */
     public static void menuPerfil() {
         VarGenYConst.opcionMenu = 7;
         VarGenYConst.max = 3;
@@ -41,7 +50,9 @@ public class GestionPerfil {
         } while (!salirPerfil);
 
     }
-
+    /**
+     * 
+     */
     private static void cambiarContrasena() {
         String cambioContraseña;
         String nuevaContrasena;
@@ -79,7 +90,9 @@ public class GestionPerfil {
             Log.guardarError(e, e.getMessage());
         }
     }
-
+    /**
+     * 
+     */
     private static void cambiarNombre() {
         String cambioNombre;
         String nuevoNombre;

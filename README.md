@@ -7,7 +7,7 @@ ___________________________________________
 |---------------------|-------------------|
 | **Autor**           |     SDM           |
 | **Fecha de Inicio** |   v1 18/11/2024   |
-| **Última versión**  |   v7 17/03/2025   |
+| **Última versión**  |   v8 28/04/2025   |
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 
 ## Contenido del Proyecto
@@ -50,38 +50,78 @@ WATERRUNVX_SAMUELDIAZMARTOS/
             Escapista.class   
             Jugador.class
             Partida.class
+        excepciones/
+            CaracterIncorrectoException.class
+            MasCaracteresPermitidosException.class
+            MismaConstrasenaException.class
+            MismoNombreException.class
+            NumeroFueraDeRangoException.class
         utilidades/     #Carpeta de Utilidades
             Utilidades.class
             VarGenYConst.class
+            ReproductorMusica.class
         gestionjuego/   #Carpeta de gestión del juego
             juego/      #Carpeta del juego
+                GuardarRespuesta.class
+                GuardarPartidas.class
+                UtilidadesJuego.class
                 Jugar.class
                 JugarFaMe.class
                 JugarDificil.class
-            Aspecto.class
+            salir/
+                GestionSalir.class
+                PartidasTxt.class
+            GestionHistorial.class
+            GestionMusica.class
+            GestionPerfil.class
+            GestionUsuario.class
+            GestionAspecto.class
             GestionJugar.class
-
+        log/
+            Log.class
         Manifest.txt
+    lib/            # Carpeta que contiene las librerias externas 
+        mysql-connector-j-9.2.0.jar
+    logs/           # Carpeta que contiene los logs con los errores al ejecutar
     src/            # Carpeta con el código fuente
-        WaterRun.java
+         WaterRun.java
         clases/         #Carpeta con las clases
             Preguntas.java
             Personajes.java
             GestionPreguntas.java
             Policia.java
-            Escapista.java 
+            Escapista.java   
             Jugador.java
             Partida.java
+        excepciones/
+            CaracterIncorrectoException.java
+            MasCaracteresPermitidosException.java
+            MismaConstrasenaException.java
+            MismoNombreException.java
+            NumeroFueraDeRangoException.java
         utilidades/     #Carpeta de Utilidades
             Utilidades.java
             VarGenYConst.java
+            ReproductorMusica.java
         gestionjuego/   #Carpeta de gestión del juego
             juego/      #Carpeta del juego
+                GuardarRespuesta.java
+                GuardarPartidas.java
+                UtilidadesJuego.java
                 Jugar.java
                 JugarFaMe.java
                 JugarDificil.java
+            salir/
+                GestionSalir.java
+                PartidasTxt.java
+            GestionHistorial.java
+            GestionMusica.java
+            GestionPerfil.java
+            GestionUsuario.java
+            GestionAspecto.java
             GestionJugar.java
-            Aspecto.java
+        log/
+            Log.class
         Manifest.txt
 ```
 

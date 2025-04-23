@@ -1,5 +1,0 @@
----- ERROR ----
-Mensaje: Access denied for user 'root'@'localhost' (using password: YES)
-Fecha: Wed Apr 16 14:05:21 CEST 2025
-Excepción: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-

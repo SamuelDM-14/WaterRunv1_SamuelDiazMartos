@@ -1,6 +1,8 @@
 package gestionjuego.juego;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import clases.Pregunta;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
@@ -88,10 +90,10 @@ public class UtilidadesJuego {
 
         System.out.println(pantalla);
         System.out.println(p.getEnunciado());
-        String[] opciones = p.getOpciones();
-        for (int i = 0; i < opciones.length; i++) {
-            if (!opciones[i].isEmpty()) {
-                System.out.println((i + 1) + ") " + opciones[i]);
+        ArrayList<String> opciones = (ArrayList<String>) p.getOpciones();
+        for (int i = 0; i < opciones.size(); i++) {
+            if (!opciones.get(i).isEmpty()) {
+                System.out.println((i + 1) + ") " + opciones.get(i));
             }
         }
 
@@ -106,8 +108,15 @@ public class UtilidadesJuego {
      * @throws IOException Excepción para poder leer con BufferedReader.
      */
     public static String leerRespuesta(Pregunta p) {
-        int respuesta = Utilidades.leerEnteroValidado(); // Comprueba la respuesta 1
-        return p.getOpciones()[respuesta - 1];
+        int respuesta = Utilidades.leerEnteroValidado();
+        ArrayList<String> opciones = p.getOpciones();
+        
+        // Validación opcional
+        if (respuesta < 1 || respuesta > opciones.size()) {
+            return null; // o lanza una excepción según tu lógica
+        }
+    
+        return opciones.get(respuesta - 1);
     }
 
     /**

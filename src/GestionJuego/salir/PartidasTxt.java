@@ -1,3 +1,8 @@
+/**
+ * PartidasTxt
+ * @author SDM
+ * 28-04-2025
+ */
 package gestionjuego.salir;
 
 import java.io.BufferedReader;
@@ -11,11 +16,16 @@ import java.util.Date;
 import java.util.List;
 
 import utilidades.VarGenYConst;
-
+/**
+ * 
+ */
 public class PartidasTxt {
     private static boolean txtPartidasCreado = false;
     private static String txtPartidas;
 
+    /**
+     * 
+     */
     public static void GuardarPartidasTxt() {
         crearArchivoTxt();
         PrintWriter escribir = null;
@@ -38,13 +48,19 @@ public class PartidasTxt {
         ;
     }
 
+    /**
+     * 
+     */
     private static void crearArchivoTxt() {
         if (!txtPartidasCreado) {
             txtPartidas = "Partidas.txt";
             txtPartidasCreado = true;
         }
     }
-
+    
+    /**
+     * 
+     */
     public static void MostrarPartidasTxt() {
     crearArchivoTxt();
 
@@ -70,7 +86,7 @@ public class PartidasTxt {
     // Mostrar desde la última sesión en adelante
     if (ultimaSesionIndex != -1) {
         System.out.println("----- PARTIDAS DE LA ÚLTIMA SESIÓN -----");
-        for (int i = ultimaSesionIndex - 1; i < lineas.size(); i++) {
+        for (int i = ultimaSesionIndex; i < lineas.size(); i++) {
             // Comenzamos desde -1 para incluir el "----- PARTIDAS -----"
             if (i >= 0) System.out.println(lineas.get(i));
         }
