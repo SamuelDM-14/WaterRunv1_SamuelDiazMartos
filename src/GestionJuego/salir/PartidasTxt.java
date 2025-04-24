@@ -75,6 +75,7 @@ public class PartidasTxt {
     
     /**
      * Metodo que se encarga de mostrar las partidas de la sesión.
+     * MODIFICAR
      */
     public static void MostrarPartidasTxt() {
     crearArchivoTxt(); // Comprueba que haya partidas creadas.
@@ -101,7 +102,7 @@ public class PartidasTxt {
     // Mostrar desde la última sesión en adelante
     if (ultimaSesionIndex != -1) {
         System.out.println("----- PARTIDAS DE LA ÚLTIMA SESIÓN -----");
-        for (int i = ultimaSesionIndex; i < lineas.size(); i++) {
+        for (int i = ultimaSesionIndex -1; i < lineas.size(); i++) {
             if (i >= 0) System.out.println(lineas.get(i));
         }
     } else {

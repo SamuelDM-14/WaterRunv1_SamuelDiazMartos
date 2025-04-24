@@ -80,9 +80,9 @@ public class GestionPreguntas {
     /**
      * Devuelve el objeto Pregunta, dada la dificultad y el índice de pregunta.
      * 
-     * @param dificultad     0 = fácil, 1 = media, 2 = difícil
-     * @param indicePregunta 0..(NUM_PREGUNTAS-1)
-     * @return El objeto Pregunta correspondiente, o null si está fuera de rango.3
+     * @param dificultad     Recibe la dificultad
+     * @param indicePregunta Número para buscar la pregunta.
+     * @return El objeto Pregunta correspondiente, o null si está fuera de rango.
      */
     public Pregunta getPregunta(int dificultad, int indicePregunta) {
         Pregunta resultado = null;
@@ -95,7 +95,8 @@ public class GestionPreguntas {
     }
 
     /**
-     * Devuelve cuántas preguntas tiene cada dificultad (por ejemplo, 3).
+     * Devuelve cuántas preguntas tiene cada dificultad.
+     * @return
      */
     public int getNumPreguntas() {
         return NUM_PREGUNTAS;

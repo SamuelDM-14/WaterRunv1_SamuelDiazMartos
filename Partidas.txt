@@ -120,3 +120,19 @@ Fecha de sesión: Thu Apr 24 12:58:46 CEST 2025
 | Dificultad jugada        | 0                  |
 +--------------------------+--------------------+
 ]
+----- PARTIDAS -----
+Fecha de sesión: Thu Apr 24 15:45:38 CEST 2025
+[
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-24         |
+| Fecha de fin             | 2025-04-24         |
+| Hora de inicio           | 15:45:34.079619800 |
+| Hora de fin              | 15:45:36.656501800 |
+| Duración                 | null               |
+| Respuestas acertadas     | 3                  |
+| Nivel pasado             | Sí                 |
+| Dificultad jugada        | 0                  |
++--------------------------+--------------------+
+]
