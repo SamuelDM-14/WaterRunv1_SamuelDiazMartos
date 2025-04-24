@@ -82,16 +82,16 @@ public class GestionJugar {
      */
     private static void dificultadDelJuego() {
         VarGenYConst.opcionMenu = 2;
-        VarGenYConst.max = 3;
-        VarGenYConst.min = 0;
+        VarGenYConst.max = 4;
+        VarGenYConst.min = 1;
         boolean salirDificultad = false;
         int lecturaDif = 0;
         do {
             System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
-            lecturaDif = Utilidades.leerEnteroValidado();
+            lecturaDif = Utilidades.leerEnteroValidado()-1;
             switch (lecturaDif) {
                 case 0:
-                    VarGenYConst.dificultad = lecturaDif;
+                    VarGenYConst.dificultad = lecturaDif ;
                     System.out.println("Has elegido la dificultad \"FÁCIL\".");
                     break;
                 case 1:
@@ -136,7 +136,8 @@ public class GestionJugar {
     }
 
     /**
-     * 
+     * Metodo que se encarga de comprobar que introduces el caracter correcto
+     * para empezar el juego. 
      */
     private static void validacionEntrada() {
         // variables

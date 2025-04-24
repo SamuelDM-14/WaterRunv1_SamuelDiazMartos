@@ -75,3 +75,48 @@ Fecha de sesion: Tue Apr 22 10:50:43 CEST 2025
 ----- PARTIDAS -----
 Fecha de sesion: Tue Apr 22 10:51:31 CEST 2025
 []
+----- PARTIDAS -----
+Fecha de sesion: Thu Apr 24 12:31:51 CEST 2025
+[
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-24         |
+| Fecha de fin             | 2025-04-24         |
+| Hora de inicio           | 12:31:21.942699900 |
+| Hora de fin              | 12:31:31.009612900 |
+| Duración                 | null               |
+| Respuestas acertadas     | 2                  |
+| Nivel pasado             | No                 |
+| Dificultad jugada        | 2                  |
++--------------------------+--------------------+
+, 
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-24         |
+| Fecha de fin             | 2025-04-24         |
+| Hora de inicio           | 12:31:37.356454800 |
+| Hora de fin              | 12:31:45.789192800 |
+| Duración                 | null               |
+| Respuestas acertadas     | 3                  |
+| Nivel pasado             | Sí                 |
+| Dificultad jugada        | 2                  |
++--------------------------+--------------------+
+]
+----- PARTIDAS -----
+Fecha de sesión: Thu Apr 24 12:58:46 CEST 2025
+[
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-24         |
+| Fecha de fin             | 2025-04-24         |
+| Hora de inicio           | 12:58:40.387132100 |
+| Hora de fin              | 12:58:44.597849300 |
+| Duración                 | null               |
+| Respuestas acertadas     | 3                  |
+| Nivel pasado             | Sí                 |
+| Dificultad jugada        | 0                  |
++--------------------------+--------------------+
+]
