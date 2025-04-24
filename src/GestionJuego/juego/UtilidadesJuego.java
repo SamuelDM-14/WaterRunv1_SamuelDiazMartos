@@ -1,12 +1,21 @@
+/**
+ * UtilidadesJuego
+ * @author SDM
+ * @version 1.8
+ * 28-04-2025
+ */
 package gestionjuego.juego;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import clases.Pregunta;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
+/**
+ * UtilidadesJuego
+ * Guarda metodos usados a la hora de jugar.
+ */
 public class UtilidadesJuego {
     
     /**
@@ -105,7 +114,6 @@ public class UtilidadesJuego {
      * 
      * @param p Recibe el objeto pregunta.
      * @return Devuelve el dato de la respuesta.
-     * @throws IOException Excepción para poder leer con BufferedReader.
      */
     public static String leerRespuesta(Pregunta p) {
         int respuesta = Utilidades.leerEnteroValidado();

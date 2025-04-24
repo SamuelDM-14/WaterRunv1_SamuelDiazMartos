@@ -1,6 +1,7 @@
 /**
  * Partida
  * @author SDM
+ * @version 1.7 
  * 14-03-2025
  */
 package clases;
@@ -26,6 +27,18 @@ public class Partida {
     private boolean nivelPasado = false;
     private int dificultadJugada = 0;
 
+    /**
+     * Constructor de una partida.
+     * 
+     * @param id                  Recibe el id de la partida.
+     * @param fechaIncioPartida   Recibe la fecha de inicio.
+     * @param fechaFinPartida     Recibe la fecha de fin.
+     * @param horaIncioPartida    Recibe la hora de inicio.
+     * @param horaFinPartida      Recibe la hora de fin.
+     * @param respuestasAcertadas Recibe la cantidad de respuestas acertadas.
+     * @param nivelPasado         Recibe booleano de nivel pasado.
+     * @param dificultadJugada    Recibe la dificultad jugada.
+     */
     public Partida(int id, LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida,
             LocalTime horaFinPartida, int respuestasAcertadas, boolean nivelPasado,
             int dificultadJugada) {
@@ -40,6 +53,17 @@ public class Partida {
         this.duracion = obtenerDuracion();
     }
 
+    /**
+     * Constructor de una partida sin id y sin duración.
+     * 
+     * @param fechaIncioPartida   Recibe la fecha de inicio.
+     * @param fechaFinPartida     Recibe la fecha de fin.
+     * @param horaIncioPartida    Recibe la hora de inicio.
+     * @param horaFinPartida      Recibe la hora de fin.
+     * @param respuestasAcertadas Recibe la cantidad de respuestas acertadas.
+     * @param nivelPasado         Recibe booleano de nivel pasado.
+     * @param dificultadJugada    Recibe la dificultad jugada.
+     */
     public Partida(LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida,
             LocalTime horaFinPartida, int respuestasAcertadas, boolean nivelPasado,
             int dificultadJugada) {
@@ -94,10 +118,20 @@ public class Partida {
         this.fechaFinPartida = fechaFinPartida;
     }
 
+    /**
+     * Establece el id de la partida.
+     * 
+     * @param id id de la partida.
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Devuelve el id de la partida.
+     * 
+     * @return id de la partida.
+     */
     public int getId() {
         return id;
     }
@@ -219,11 +253,20 @@ public class Partida {
         return duracion;
     }
 
-
-    public String getDuracion(){
+    /**
+     * Devuelve la duración de la partida.
+     * 
+     * @return duración de la partida.
+     */
+    public String getDuracion() {
         return duracion;
     }
 
+    /**
+     * Establece la duración de la partida.
+     * 
+     * @param duracion duración de la partida,
+     */
     public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
@@ -232,29 +275,28 @@ public class Partida {
     @Override
     public String toString() {
         return String.format(
-            """
+                """
 
-            +-----------------------------------------------+
-            |           DATOS DE LA PARTIDA                 |
-            +--------------------------+--------------------+
-            | %-24s | %-18s |
-            | %-24s | %-18s |
-            | %-24s | %-18s |
-            | %-24s | %-18s |
-            | %-24s | %-18s |
-            | %-24s | %-18d |
-            | %-24s | %-18s |
-            | %-24s | %-18d |
-            +--------------------------+--------------------+
-            """,
-            "Fecha de inicio", fechaIncioPartida,
-            "Fecha de fin", fechaFinPartida,
-            "Hora de inicio", horaIncioPartida,
-            "Hora de fin", horaFinPartida,
-            "Duración", duracion,
-            "Respuestas acertadas", respuestasAcertadas,
-            "Nivel pasado", nivelPasado ? "Sí" : "No",
-            "Dificultad jugada", dificultadJugada
-        );
+                        +-----------------------------------------------+
+                        |           DATOS DE LA PARTIDA                 |
+                        +--------------------------+--------------------+
+                        | %-24s | %-18s |
+                        | %-24s | %-18s |
+                        | %-24s | %-18s |
+                        | %-24s | %-18s |
+                        | %-24s | %-18s |
+                        | %-24s | %-18d |
+                        | %-24s | %-18s |
+                        | %-24s | %-18d |
+                        +--------------------------+--------------------+
+                        """,
+                "Fecha de inicio", fechaIncioPartida,
+                "Fecha de fin", fechaFinPartida,
+                "Hora de inicio", horaIncioPartida,
+                "Hora de fin", horaFinPartida,
+                "Duración", duracion,
+                "Respuestas acertadas", respuestasAcertadas,
+                "Nivel pasado", nivelPasado ? "Sí" : "No",
+                "Dificultad jugada", dificultadJugada);
     }
 }

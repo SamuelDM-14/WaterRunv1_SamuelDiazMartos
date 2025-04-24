@@ -1,16 +1,24 @@
+/**
+ * GestionHistorial
+ * @author SDM
+ * @version 1.8
+ * 28-04-2025
+ */
 package gestionjuego;
-
-import java.io.IOException;
 
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
+/**
+ * GestionHistorial
+ * Se encarga de gestionar el menú del historial y actualmente
+ * de mostrar las partidas del jugador.
+ */
 public class GestionHistorial {
-        /**
-     * Historial. Actualmente sin funcionamiento.
-     * 
-     * @author SDM
-     * @throws IOException
+    
+    /**
+     * Muestra el menú del historial y llama a los metodos
+     * correspondientes para sus funcionalidades.
      */
     public static void historial() {
         // Respuestas Historial
@@ -54,9 +62,6 @@ public class GestionHistorial {
 
     /**
      * Metodo que se encarga de mostrar los datos de la partida.
-     * Actualmente solo se guarda los datos de la última partida.
-     * 
-     * @author SDM
      */
     private static void datosPartida() {
         System.out.println("Ha selecionado Datos de partida guardada.");

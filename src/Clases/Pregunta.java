@@ -1,10 +1,10 @@
 /**
  * Pregunta
  * @author SDM
+ * @version 1.6
  * 07-03-2025
  */
 package clases;
-
 
 import java.util.ArrayList;
 
@@ -33,6 +33,7 @@ public class Pregunta {
 
     /**
      * Devuelve el enunciado de la pregunta.
+     * 
      * @return Cadena con el enunciado de la pregunta.
      */
     public String getEnunciado() {
@@ -41,6 +42,7 @@ public class Pregunta {
 
     /**
      * Modifica el enunciado de la pregunta.
+     * 
      * @param enunciado Recibe el enunciado de la pregunta.
      */
     public void setEnunciado(String enunciado) {
@@ -49,6 +51,7 @@ public class Pregunta {
 
     /**
      * Devuelve las opciones de las preguntas.
+     * 
      * @return Devuelve las opciones.
      */
     public ArrayList<String> getOpciones() {
@@ -57,6 +60,7 @@ public class Pregunta {
 
     /**
      * Modifica el enunciado de la pregunta.
+     * 
      * @param opciones Recibe el enunciado de la pregunta.
      */
     public void setOpciones(ArrayList<String> opciones) {
@@ -65,6 +69,7 @@ public class Pregunta {
 
     /**
      * Modifica la respuesta correcta de la pregunta.
+     * 
      * @param respuestaCorrecta Recibe la respuesta correcta.
      */
     public void setRespuestaCorrecta(String respuestaCorrecta) {
@@ -73,6 +78,7 @@ public class Pregunta {
 
     /**
      * Devuelve la respuesta correcta de la pregunta.
+     * 
      * @return respuestaCorrecta.
      */
     public String getRespuestaCorrecta() {

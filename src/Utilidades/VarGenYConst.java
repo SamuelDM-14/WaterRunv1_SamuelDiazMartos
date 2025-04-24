@@ -1,6 +1,7 @@
 /**
  * Variables Genericas y Constantes
  * @author SDM
+ * @version 1.7
  * 17-03-2025
  */
 package utilidades;
@@ -95,7 +96,6 @@ public class VarGenYConst {
 
         // ------------ VARIABLES PARA PARTIDA ------------
         public static LocalTime horaDeinicio;
-        public static int autoIncremental;
         public static ArrayList<Partida> partidas = new ArrayList<Partida>();
         public static ArrayList<Partida> partidasSesion = new ArrayList<Partida>();
 

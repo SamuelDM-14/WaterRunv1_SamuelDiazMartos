@@ -1,11 +1,11 @@
 /**
  * Jugar
  * @author SDM
+ * @version 1.6
  * 07-03-2025
  */
 package gestionjuego.juego;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -19,14 +19,12 @@ import utilidades.VarGenYConst;
  */
 public class Jugar {
 
-
     /**
-     * Jugar. Muestra el juego, el cual va sacando preguntas y respuestas y
-     * comprobandolas.
+     * Metodo que muestra el mensaje explicativo del funcionamiento
+     * del juego y dependiendo de la respuesta del jugador vuelve al
+     * menú principal o inicia el juego.
      * 
-     * @author SDM
-     * @param bf
-     * @throws IOException
+     * @param musica Recibe un objeto ReproductorMusica.
      */
     public static void jugar(ReproductorMusica musica) {
         // Respuestas del juego

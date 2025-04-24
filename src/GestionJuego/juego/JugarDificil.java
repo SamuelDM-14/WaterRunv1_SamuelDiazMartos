@@ -1,11 +1,10 @@
 /**
  * JugarDifícil
  * @author SDM
+ * @version 1.7
  * 17-03-2025
  */
 package gestionjuego.juego;
-
-import java.io.IOException;
 
 import clases.Escapista;
 import clases.GestionPreguntas;
@@ -21,11 +20,9 @@ import utilidades.VarGenYConst;
 public class JugarDificil {
 
     /**
-     * Metodo que gestiona la partida de dificultad Dificil
+     * Metodo que gestiona la partida de dificultad Difícil.
      * 
-     * @param dificultad Dificultad de la partida
-     * @param salirJuego Variable de salida del juego
-     * @throws IOException
+     * @param partida Recibe un objeto Partida.
      */
     public static void jugarDificil(Partida partida) {
 

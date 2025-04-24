@@ -1,11 +1,31 @@
+/**
+ * GestionMusica
+ * @author SDM
+ * @version 1.8
+ * 28-04-2025
+ */
 package gestionjuego;
 
 import utilidades.ReproductorMusica;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
+/**
+ * GestionMusica
+ * Se encarga de gestionar todo lo relacionado con la 
+ * música del juego.
+ */
 public class GestionMusica {
-    private static float cambiarVolumen = 10; 
+    // Asigna a una variable el valor por el cual se va a aumentar o 
+    // disminuir el volumen.
+    private static float cambiarVolumen = 10;  
+    
+    /**
+     * Metodo que muestra el menú de opciones de música y gestiona
+     * sus opciones.
+     * 
+     * @param musica Recibe un objeto ReproductorMusica.
+     */
     public static void menuMusica(ReproductorMusica musica) {
         VarGenYConst.opcionMenu=8;
 
@@ -47,6 +67,11 @@ public class GestionMusica {
 
     }
 
+    /**
+     * Metodo para establecer volumen de la música. 
+     * 
+     * @param musica Recibe un objeto ReproductorMusica.
+     */
     private static void establecerVolumen(ReproductorMusica musica) {
         VarGenYConst.max=100;
         VarGenYConst.min=0;
@@ -55,18 +80,42 @@ public class GestionMusica {
         musica.establecerVolumen(cambiarVolumen);
     }
 
+    /**
+     * Metodo para subir volumen de manera automatica.
+     * Sube una cantidad de volumen como el número asignado 
+     * en la variable cambiarVolumen.
+     * 
+     * @param musica Recibe un objeto ReproductorMusica.
+     */
     private static void subirVolumen(ReproductorMusica musica){
         musica.subirVolumen(cambiarVolumen);
     }
     
+    /**
+     * Metodo para bajar el volumen de manera automatica.
+     * Sube una cantidad de volumen como el número asignado 
+     * en la variable cambiarVolumen.
+     * 
+     * @param musica Recibe un objeto ReproductorMuscia.
+     */
     private static void bajarVolumen(ReproductorMusica musica){
         musica.bajarVolumen(cambiarVolumen);
     }
     
+    /**
+     * Metodo para detener la música.
+     * 
+     * @param musica Recibe un objeto ReproductorMusica.
+     */
     private static void detenerMusica(ReproductorMusica musica){
         musica.detener();
     }
     
+    /**
+     * Metodo que empieza a reproducir música.
+     * 
+     * @param musica Recibe un objeto ReproductorMusica.
+     */
     private static void reproducirMusica(ReproductorMusica musica){
         musica.reproducir("src/Wavs/resonant.wav");
     }

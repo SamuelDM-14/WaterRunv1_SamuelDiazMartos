@@ -11,14 +11,15 @@ package excepciones;
  * Clase de tipo exception que se encarga de gestionar
  * la exception de Usuario Existente.
  */
-public class UsuarioExistenteException extends Exception{
+public class UsuarioExistenteException extends Exception {
 
     /**
-     * Excepción que salta cuando el usuario, pone un 
+     * Excepción que salta cuando el usuario, pone un
      * nombre ya guardado en la base de datos.
+     * 
      * @param mensaje Recibe el mensaje de error.
      */
-    public UsuarioExistenteException (String mensaje){
+    public UsuarioExistenteException(String mensaje) {
         super(mensaje);
     }
 }

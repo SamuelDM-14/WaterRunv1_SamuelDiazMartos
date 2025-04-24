@@ -1,6 +1,7 @@
 /**
  * Utilidades
  * @author SDM
+ * @version 1.6
  * 07-03-2025
  */
 package utilidades;
@@ -67,6 +68,12 @@ public class Utilidades {
         return c;
     }
 
+    /**
+     * Metodo que se encarga de leer una cadena y valida que sea 'S' o 'N' la
+     * respuesta.
+     * 
+     * @return Devuelve un String con el caracter 'S' o 'N'
+     */
     public static String leerSNCadena() {
         boolean valido = false;
         String caracter = " "; // variable donde guardaremos la elección
@@ -97,6 +104,11 @@ public class Utilidades {
         return caracter;
     }
 
+    /**
+     * Metodo que se encarga de leer una cadena.
+     * 
+     * @return Devuelve la cadena leida.
+     */
     public static String leerCadena() {
         String cadena = "";
         try {

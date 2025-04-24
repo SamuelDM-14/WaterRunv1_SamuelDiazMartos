@@ -1,6 +1,7 @@
 /**
  * GestionPregunta
  * @author SDM
+ * @version 1.6
  * 07-03-2025
  */
 package clases;

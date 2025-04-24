@@ -1,11 +1,10 @@
 /**
  * JugarFaME
  * @author SDM
+ * @version 1.7
  * 17-03-2025
  */
 package gestionjuego.juego;
-
-import java.io.IOException;
 
 import clases.GestionPreguntas;
 import clases.Partida;
@@ -19,11 +18,9 @@ import utilidades.VarGenYConst;
 public class JugarFaMe {
 
     /**
-     * Metodo que gestiona la partida de dificultad Facil y Medio
+     * Metodo que gestiona la partida de dificultad Facil y Medio.
      * 
-     * @param dificultad Dificultad de la partida
-     * @param salirJuego Variable de salida del juego
-     * @throws IOException
+     * @param partida Recibe un objeto Partida.
      */
     public static void jugarFaMe(Partida partida) {
 

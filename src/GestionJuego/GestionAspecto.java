@@ -1,11 +1,10 @@
 /**
  * Aspecto
  * @author SDM
+ * @version 1.7
  * 14-03-2025
  */
 package gestionjuego;
-
-import java.io.IOException;
 
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
@@ -42,8 +41,6 @@ public class GestionAspecto {
 
     /**
      * cambiarAspectoPJ. Te permite elegir el color del personaje.
-     * @param bf
-     * @throws IOException
      */
     private static void cambiarAspectoPJ() {
         //cambias el aspecto del Personaje
@@ -99,8 +96,6 @@ public class GestionAspecto {
 
     /**
      * cambiarAspectoPo. Te permite elegir el color del policia (AUN NO INCLUIDO EN EL JUEGO).
-     * @param bf
-     * @throws IOException
      */
     private static void cambiarAspectoPo() {
         int eleccioncolorPo;
@@ -154,10 +149,8 @@ public class GestionAspecto {
         }
     
     /**
-     * Aspecto. Te permite cambiar el Aspecto del personaje.
-     * @author SDM
-     * @param bf
-     * @throws IOException
+     * Muestra el menú del cambio de aspecto y llama al metodo
+     * correspondiente para cada caso.
      */
     public static void cambiarAspecto() {
 
