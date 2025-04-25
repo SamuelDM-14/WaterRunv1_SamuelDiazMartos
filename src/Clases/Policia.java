@@ -1,6 +1,7 @@
 /**
  * Policia
  * @author SDM
+ * @version 1.6
  * 07-03-2025
  */
 package clases;
@@ -23,7 +24,7 @@ public class Policia extends Personajes {
     /**
      * Dispara a un objetivo, si la dificultad es alta (2).
      * @param objetivo Personaje al que se dispara.
-     * @param dificultad nivel de dificultad del juego (0=fácil,1=media,2=difícil)
+     * @param dificultad nivel de dificultad del juego (0=fácil,1=media,2=difícil).
      * @return true si el disparo causó retraso/daño, false en caso contrario.
      */
     public boolean disparar(Personajes objetivo, int dificultad) {
@@ -46,16 +47,16 @@ public class Policia extends Personajes {
     
     // Getters y setters
     /**
-     * 
-     * @return
+     * Devuelve la experiencia del policía.
+     * @return Experiencia del policía.
      */
     public int getExperiencia() {
         return experiencia;
     }
 
     /**
-     * 
-     * @param experiencia
+     * Modifica la experiencia del policía.
+     * @param experiencia experiencia del policía.
      */
     public void setExperiencia(int experiencia) {
         this.experiencia = experiencia;
