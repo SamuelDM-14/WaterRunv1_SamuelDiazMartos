@@ -50,6 +50,8 @@ public class PartidasTxt {
             // Escribe la fecha de sesión, y las partidas guardadas.
             escribir.println("----- PARTIDAS -----");
             escribir.println("Fecha de sesión: " + new Date());
+            escribir.println("ID del Jugador: " + VarGenYConst.jugador.getId_Jugador());
+            escribir.println("Nombre del Jugador: " + VarGenYConst.jugador.getNombre());
             escribir.println(VarGenYConst.partidasSesion);
 
             bw.close(); // Cierra el BufferedWriter.
@@ -94,13 +96,13 @@ public class PartidasTxt {
         }
         return contador;
     }
-
+    private static int lineasIniciales = contarLineasArchivo();
     /**
      * Método que muestra solo las partidas desde que se inició el programa.
      */
     public static void MostrarPartidasTxt() {
         crearArchivoTxt(); // Asegura que el archivo está definido
-        int lineasIniciales = contarLineasArchivo();
+        
         List<String> lineas = new ArrayList<>();
         boolean lecturaExitosa = true;
 

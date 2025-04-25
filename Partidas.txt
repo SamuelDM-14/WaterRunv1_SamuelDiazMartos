@@ -278,3 +278,105 @@ Fecha de sesión: Fri Apr 25 12:40:55 CEST 2025
 | Dificultad jugada        | 2                  |
 +--------------------------+--------------------+
 ]
+----- PARTIDAS -----
+Fecha de sesión: Fri Apr 25 15:20:09 CEST 2025
+[
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-25         |
+| Fecha de fin             | 2025-04-25         |
+| Hora de inicio           | 15:19:09.397792400 |
+| Hora de fin              | 15:19:10.872103500 |
+| Duración                 | null               |
+| Respuestas acertadas     | 1                  |
+| Nivel pasado             | No                 |
+| Dificultad jugada        | 0                  |
++--------------------------+--------------------+
+, 
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-25         |
+| Fecha de fin             | 2025-04-25         |
+| Hora de inicio           | 15:19:16.559584800 |
+| Hora de fin              | 15:19:18.717271400 |
+| Duración                 | null               |
+| Respuestas acertadas     | 3                  |
+| Nivel pasado             | Sí                 |
+| Dificultad jugada        | 0                  |
++--------------------------+--------------------+
+, 
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-25         |
+| Fecha de fin             | 2025-04-25         |
+| Hora de inicio           | 15:19:30.825044200 |
+| Hora de fin              | 15:19:34.699231900 |
+| Duración                 | null               |
+| Respuestas acertadas     | 0                  |
+| Nivel pasado             | No                 |
+| Dificultad jugada        | 1                  |
++--------------------------+--------------------+
+, 
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-25         |
+| Fecha de fin             | 2025-04-25         |
+| Hora de inicio           | 15:19:45.966024300 |
+| Hora de fin              | 15:19:51.433327900 |
+| Duración                 | null               |
+| Respuestas acertadas     | 3                  |
+| Nivel pasado             | Sí                 |
+| Dificultad jugada        | 2                  |
++--------------------------+--------------------+
+]
+----- PARTIDAS -----
+Fecha de sesión: Fri Apr 25 15:21:05 CEST 2025
+[
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-25         |
+| Fecha de fin             | 2025-04-25         |
+| Hora de inicio           | 15:21:00.844491500 |
+| Hora de fin              | 15:21:03.076076100 |
+| Duración                 | null               |
+| Respuestas acertadas     | 1                  |
+| Nivel pasado             | No                 |
+| Dificultad jugada        | 2                  |
++--------------------------+--------------------+
+]
+----- PARTIDAS -----
+Fecha de sesión: Fri Apr 25 15:25:48 CEST 2025
+ID del Jugador: 6
+Nombre del Jugador: S
+[
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-25         |
+| Fecha de fin             | 2025-04-25         |
+| Hora de inicio           | 15:25:21.448450200 |
+| Hora de fin              | 15:25:26.073997700 |
+| Duración                 | null               |
+| Respuestas acertadas     | 3                  |
+| Nivel pasado             | Sí                 |
+| Dificultad jugada        | 0                  |
++--------------------------+--------------------+
+, 
++-----------------------------------------------+
+|           DATOS DE LA PARTIDA                 |
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-25         |
+| Fecha de fin             | 2025-04-25         |
+| Hora de inicio           | 15:25:36.121141700 |
+| Hora de fin              | 15:25:45.624507100 |
+| Duración                 | null               |
+| Respuestas acertadas     | 3                  |
+| Nivel pasado             | Sí                 |
+| Dificultad jugada        | 2                  |
++--------------------------+--------------------+
+]

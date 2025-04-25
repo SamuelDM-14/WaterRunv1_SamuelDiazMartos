@@ -6,6 +6,7 @@
  */
 package gestionjuego;
 
+import java.io.Console;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -61,8 +62,15 @@ public class GestionUsuario {
         do {
             System.out.println("Dime tu nickname: "); // Pide el nombre del usuario.
             nombreJugador = Utilidades.leerCadena(); // Lee la respuesta del usuario.
-            System.out.println("Escribe la contraseña: "); // Pide la contraseña al usuario.
-            contrasena = Utilidades.leerCadena(); // Lee la respuesta del usuario.
+            Console console = System.console();
+            if (console != null) {
+                char[] passwordChars = console.readPassword("Escribe la contraseña: ");
+                contrasena = new String(passwordChars);
+            } else {
+                // Fallback si System.console() no está disponible (por ejemplo, desde la terminal de VS Code)
+                System.out.println("Escribe la contraseña: ");
+                contrasena = Utilidades.leerCadena();
+            }
             // Sentencia sql que comprueba si hay un usuario con ese nombre y esa
             // contraseña.
             String sql = "Select nombre, contrasena from jugador where nombre='" + nombreJugador + "' and contrasena='"
