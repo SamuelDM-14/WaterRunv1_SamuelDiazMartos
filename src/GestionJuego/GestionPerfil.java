@@ -167,7 +167,7 @@ public class GestionPerfil {
                         // Ejecuta las sql2 para actualizar el nombre del usuario.
                         stm.execute(sql2);
                         // Actualiza internamente en el código el nombre del jugador.
-                        VarGenYConst.jugador.setContrasena(nuevoNombre);
+                        VarGenYConst.jugador.setNombre(nuevoNombre);
                         System.out.println("Se ha actualizado el nombre correctamente.");
 
                     }

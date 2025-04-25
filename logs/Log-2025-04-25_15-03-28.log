@@ -1,0 +1,5 @@
+---- ERROR ----
+Mensaje: No se ha encontrado el usuario con esa contraseña. Contraseña erronea o el usuario no esta en la base de datos
+Fecha: Fri Apr 25 15:03:28 CEST 2025
+Excepción: excepciones.UsuarioNoEncontradoException: No se ha encontrado el usuario con esa contraseña. Contraseña erronea o el usuario no esta en la base de datos
+

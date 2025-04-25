@@ -16,14 +16,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import log.Log;
 import utilidades.VarGenYConst;
+
 /**
  * PartidasTxt
  * Se encarga de guardar las partidas y mostrarlas.
  */
 public class PartidasTxt {
     // Variable de control para comprobar que existe el archivo.
-    private static boolean txtPartidasCreado = false; 
+    private static boolean txtPartidasCreado = false;
     // Variable que guardará el nombre del archivo.
     private static String txtPartidas;
 
@@ -36,7 +38,8 @@ public class PartidasTxt {
         // Crea una variable escritura de tipo PrintWriter inicializada a null.
         PrintWriter escribir = null;
         try {
-            // Crea un FileWriter en modo de añadir true, para no sobrescribir el contenido existente.
+            // Crea un FileWriter en modo de añadir true, para no sobrescribir el contenido
+            // existente.
             FileWriter fw = new FileWriter(txtPartidas, true);
             // Mejora el rendimiento de escritura usando un BufferedWriter.
             BufferedWriter bw = new BufferedWriter(fw);
@@ -52,7 +55,7 @@ public class PartidasTxt {
             bw.close(); // Cierra el BufferedWriter.
             fw.close(); // Cierra el FileWriter.
 
-        }catch (IOException IOe){ // Recibe una excepción de escritura.
+        } catch (IOException IOe) { // Recibe una excepción de escritura.
             // Muestra el error por pantalla.
             System.err.println("No se pudo escribir en el archivo de log: " + IOe.getMessage());
         } finally { // Siempre, al terminar entra.
@@ -72,42 +75,57 @@ public class PartidasTxt {
             txtPartidasCreado = true; // Pone la variable de control a true.
         }
     }
-    
+
     /**
-     * Metodo que se encarga de mostrar las partidas de la sesión.
-     * MODIFICAR
+     * Cuenta las líneas del archivo al iniciar la sesión.
+     */
+    private static int contarLineasArchivo() {
+        crearArchivoTxt(); // Asegura que el archivo está definido
+        int contador = 0;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(txtPartidas));
+            while (br.readLine() != null) {
+                contador++;
+            }
+            br.close();
+        } catch (IOException e) {
+            System.err.println("No se pudo contar líneas del archivo: " + e.getMessage());
+            Log.guardarError(e, e.getMessage());
+        }
+        return contador;
+    }
+
+    /**
+     * Método que muestra solo las partidas desde que se inició el programa.
      */
     public static void MostrarPartidasTxt() {
-    crearArchivoTxt(); // Comprueba que haya partidas creadas.
+        crearArchivoTxt(); // Asegura que el archivo está definido
+        int lineasIniciales = contarLineasArchivo();
+        List<String> lineas = new ArrayList<>();
+        boolean lecturaExitosa = true;
 
-    List<String> lineas = new ArrayList<>();
-    try (BufferedReader br = new BufferedReader(new FileReader(txtPartidas))) {
-        String linea;
-        while ((linea = br.readLine()) != null) {
-            lineas.add(linea);
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(txtPartidas));
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                lineas.add(linea);
+            }
+            br.close();
+        } catch (IOException e) {
+            System.err.println("No se pudo leer el archivo: " + e.getMessage());
+            Log.guardarError(e, e.getMessage());
+            lecturaExitosa = false;
         }
-    } catch (IOException e) {
-        System.err.println("No se pudo leer el archivo: " + e.getMessage());
-        return;
-    }
 
-    // Buscar el índice de la última "Fecha de sesion:"
-    int ultimaSesionIndex = -1;
-    for (int i = 0; i < lineas.size(); i++) {
-        if (lineas.get(i).startsWith("Fecha de sesion:")) {
-            ultimaSesionIndex = i;
+        if (lecturaExitosa) {
+            if (lineasIniciales < lineas.size()) {
+                System.out.println("----- PARTIDAS DE LA SESIÓN ACTUAL -----");
+                for (int i = lineasIniciales; i < lineas.size(); i++) {
+                    System.out.println(lineas.get(i));
+                }
+            } else {
+                System.out.println("No hay nuevas partidas desde que se inició el programa.");
+            }
         }
     }
-
-    // Mostrar desde la última sesión en adelante
-    if (ultimaSesionIndex != -1) {
-        System.out.println("----- PARTIDAS DE LA ÚLTIMA SESIÓN -----");
-        for (int i = ultimaSesionIndex -1; i < lineas.size(); i++) {
-            if (i >= 0) System.out.println(lineas.get(i));
-        }
-    } else {
-        System.out.println("No se encontró ninguna sesión registrada.");
-    }
-}
-
 }
