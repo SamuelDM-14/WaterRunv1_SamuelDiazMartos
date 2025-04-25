@@ -85,30 +85,31 @@ public class GestionJugar {
         VarGenYConst.opcionMenu = 2;
         VarGenYConst.max = 4;
         VarGenYConst.min = 1;
-        boolean salirDificultad = false;
         int lecturaDif = 0;
-        do {
+
             System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
             lecturaDif = Utilidades.leerEnteroValidado()-1;
             switch (lecturaDif) {
                 case 0:
                     VarGenYConst.dificultad = lecturaDif ;
                     System.out.println("Has elegido la dificultad \"FÁCIL\".");
+                    System.out.println("Volviendo al menú principal.");
                     break;
                 case 1:
                     VarGenYConst.dificultad = lecturaDif;
                     System.out.println("Has elegido la dificultad \"MEDIA\".");
+                    System.out.println("Volviendo al menú principal.");
                     break;
                 case 2:
                     VarGenYConst.dificultad = lecturaDif;
                     System.out.println("Has elegido la dificultad \"DIFÍCIL\".");
+                    System.out.println("Volviendo al menú principal.");
                     break;
                 case 3:
                     System.out.println("Has elegido \"SALIR\". Volviendo al menú principal.");
-                    salirDificultad = true;
                     break;
             }
-        } while (salirDificultad == false);
+
     }
 
 
