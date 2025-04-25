@@ -10,6 +10,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import utilidades.VarGenYConst;
+
 /**
  * La clase partida se encarga de gestionar la hora de inicio, la hora de fin
  * las respuestas correctas, la dificultad de las preguntas y si ha pasado el
@@ -274,29 +276,39 @@ public class Partida {
     // ------------ TOSTRING DE PARTIDA ------------
     @Override
     public String toString() {
-        return String.format(
-                """
 
-                        +-----------------------------------------------+
-                        |           DATOS DE LA PARTIDA                 |
-                        +--------------------------+--------------------+
-                        | %-24s | %-18s |
-                        | %-24s | %-18s |
-                        | %-24s | %-18s |
-                        | %-24s | %-18s |
-                        | %-24s | %-18s |
-                        | %-24s | %-18d |
-                        | %-24s | %-18s |
-                        | %-24s | %-18d |
-                        +--------------------------+--------------------+
-                        """,
-                "Fecha de inicio", fechaIncioPartida,
-                "Fecha de fin", fechaFinPartida,
-                "Hora de inicio", horaIncioPartida,
-                "Hora de fin", horaFinPartida,
-                "Duración", duracion,
-                "Respuestas acertadas", respuestasAcertadas,
-                "Nivel pasado", nivelPasado ? "Sí" : "No",
-                "Dificultad jugada", dificultadJugada);
-    }
+        return String.format(
+            VarGenYConst.COLORESPJ[3] + """
+                    
+                    +-----------------------------------------------+
+                    |""" + VarGenYConst.COLORESPJ[6] + "             DATOS DE LA PARTIDA               " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    +--------------------------+--------------------+
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18s " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18s " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18s " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18s " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18s " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18d " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18s " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18d " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    +--------------------------+--------------------+
+                    """ + VarGenYConst.COLOR_RESET,
+            "Fecha de inicio", fechaIncioPartida,
+            "Fecha de fin", fechaFinPartida,
+            "Hora de inicio", horaIncioPartida,
+            "Hora de fin", horaFinPartida,
+            "Duración", duracion,
+            "Respuestas acertadas", respuestasAcertadas,
+            "Nivel pasado", nivelPasado ? "Sí" : "No",
+            "Dificultad jugada", dificultadJugada);
+}
 }

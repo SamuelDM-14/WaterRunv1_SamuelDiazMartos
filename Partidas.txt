@@ -380,3 +380,63 @@ Nombre del Jugador: S
 | Dificultad jugada        | 2                  |
 +--------------------------+--------------------+
 ]
+----- PARTIDAS -----
+Fecha de sesión: Fri Apr 25 15:55:19 CEST 2025
+ID del Jugador: 1
+Nombre del Jugador: 1234
+[[34m
++-----------------------------------------------+
+|[0mDATOS DE LA PARTIDA[34m|
++--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-25         |
+| Fecha de fin             | 2025-04-25         |
+| Hora de inicio           | 15:55:14.505876800 |
+| Hora de fin              | 15:55:16.375209900 |
+| Duración                 | null               |
+| Respuestas acertadas     | 1                  |
+| Nivel pasado             | No                 |
+| Dificultad jugada        | 0                  |
++--------------------------+--------------------+
+]
+----- PARTIDAS -----
+Fecha de sesión: Fri Apr 25 16:09:59 CEST 2025
+ID del Jugador: 1
+Nombre del Jugador: 1234
+----- PARTIDAS -----
+Fecha de sesión: Fri Apr 25 16:11:46 CEST 2025
+ID del Jugador: 1
+Nombre del Jugador: 1234
+[[34m
++-----------------------------------------------+
+|[0mDATOS DE LA PARTIDA[34m|[0m+--------------------------+--------------------+
+| Fecha de inicio          | 2025-04-25         |
+| Fecha de fin             | 2025-04-25         |
+| Hora de inicio           | 16:11:43.998918400 |
+| Hora de fin              | 16:11:45.484385300 |
+| Duración                 | null               |
+| Respuestas acertadas     | 1                  |
+| Nivel pasado             | No                 |
+| Dificultad jugada        | 0                  |
++--------------------------+--------------------+
+]
+----- PARTIDAS -----
+Fecha de sesión: Fri Apr 25 16:12:47 CEST 2025
+ID del Jugador: 1
+Nombre del Jugador: 1234
+----- PARTIDAS -----
+Fecha de sesión: Fri Apr 25 16:18:12 CEST 2025
+ID del Jugador: 1
+Nombre del Jugador: 1234
+[[34m
++-----------------------------------------------+
+|[37m           DATOS DE LA PARTIDA           [34m|
++--------------------------+--------------------+
+|[37m Fecha de inicio          [34m|[37m 2025-04-25         [34m|
+|[37m Fecha de fin             [34m|[37m 2025-04-25         [34m|
+|[37m Hora de inicio           [34m|[37m 16:18:08.609793500 [34m|
+|[37m Hora de fin              [34m|[37m 16:18:11.073475700 [34m|
+|[37m Duración                 [34m|[37m null               [34m|
+|[37m Respuestas acertadas     [34m|[37m 0                  [34m|
+|[37m Nivel pasado             [34m|[37m No                 [34m|
+|[37m Dificultad jugada        [34m|[37m 0                  [34m|
++--------------------------+--------------------+[0m]
