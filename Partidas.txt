@@ -440,3 +440,21 @@ Nombre del Jugador: 1234
 |[37m Nivel pasado             [34m|[37m No                 [34m|
 |[37m Dificultad jugada        [34m|[37m 0                  [34m|
 +--------------------------+--------------------+[0m]
+----- PARTIDAS -----
+Fecha de sesión: Sun Apr 27 01:23:44 CEST 2025
+ID del Jugador: 11
+Nombre del Jugador: 
+[[34m
++-----------------------------------------------+
+|[37m             DATOS DE LA PARTIDA               [34m|
++--------------------------+--------------------+
+|[37m Fecha de inicio          [34m|[37m 2025-04-27         [34m|
+|[37m Fecha de fin             [34m|[37m 2025-04-27         [34m|
+|[37m Hora de inicio           [34m|[37m 01:23:24           [34m|
+|[37m Hora de fin              [34m|[37m 01:23:28           [34m|
+|[37m Duración                 [34m|[37m 00:00:04           [34m|
+|[37m Respuestas acertadas     [34m|[37m 3                  [34m|
+|[37m Nivel pasado             [34m|[37m Sí                 [34m|
+|[37m Dificultad jugada        [34m|[37m 0                  [34m|
++--------------------------+--------------------+
+[0m]

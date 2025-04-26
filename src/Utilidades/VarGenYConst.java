@@ -50,7 +50,6 @@ public class VarGenYConst {
         public static String colorPo = "\u001B[40m";
 
         // Colores para los personajes.
-
         public static final String[] COLORESPJ = {
                         "\u001B[31m", // 0=Rojo
                         "\u001B[32m", // 1=Verde

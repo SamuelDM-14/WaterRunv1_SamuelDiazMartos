@@ -9,6 +9,7 @@ package clases;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import utilidades.VarGenYConst;
 
@@ -28,7 +29,7 @@ public class Partida {
     private int respuestasAcertadas = 0;
     private boolean nivelPasado = false;
     private int dificultadJugada = 0;
-
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
     /**
      * Constructor de una partida.
      * 
@@ -244,7 +245,7 @@ public class Partida {
      * @return Duración de la partida
      */
     public String obtenerDuracion() {
-        Duration duracionPartida = Duration.between(this.horaFinPartida, this.horaIncioPartida);
+        Duration duracionPartida = Duration.between(this.horaIncioPartida, this.horaFinPartida);
         long segundosTotales = duracionPartida.getSeconds();
         long horas = segundosTotales / 3600;
         long minutos = (segundosTotales % 3600) / 60;
@@ -304,8 +305,8 @@ public class Partida {
                     """ + VarGenYConst.COLOR_RESET,
             "Fecha de inicio", fechaIncioPartida,
             "Fecha de fin", fechaFinPartida,
-            "Hora de inicio", horaIncioPartida,
-            "Hora de fin", horaFinPartida,
+            "Hora de inicio", horaIncioPartida.format(formatter),
+            "Hora de fin", horaFinPartida.format(formatter),
             "Duración", duracion,
             "Respuestas acertadas", respuestasAcertadas,
             "Nivel pasado", nivelPasado ? "Sí" : "No",

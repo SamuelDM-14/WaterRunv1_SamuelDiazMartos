@@ -39,11 +39,13 @@ public class GuardarPartidas {
         partida.setHoraFinPartida(horaDeFin);
         partida.setNivelPasado(lvlPasado);
         partida.setRespuestasAcertadas(reAcertadas);
+        String duracionPartida = partida.obtenerDuracion();
+        partida.setDuracion(duracionPartida);
 
         // Sentencia sql que inserta los datos de la partida en la base de datos.
         String sql = "INSERT INTO partidas VALUES(default, '" + partida.getFechaIncioPartida() + "', '"
                 + partida.getFechaFinPartida() + "', '" +
-                partida.getHoraIncioPartida() + "', '" + partida.getHoraIncioPartida() + "', '"
+                partida.getHoraIncioPartida() + "', '" + partida.getHoraFinPartida() + "', '"
                 + partida.getRespuestasAcertadas() + "', " + partida.getNivelPasado() + ", '"
                 + partida.getDificultadJugada() + "')";
 
