@@ -62,7 +62,6 @@ WATERRUNVX_SAMUELDIAZMARTOS/
             ReproductorMusica.class
         gestionjuego/   #Carpeta de gestión del juego
             juego/      #Carpeta del juego
-                GuardarRespuesta.class
                 GuardarPartidas.class
                 UtilidadesJuego.class
                 Jugar.class
@@ -105,7 +104,6 @@ WATERRUNVX_SAMUELDIAZMARTOS/
             ReproductorMusica.java
         gestionjuego/   #Carpeta de gestión del juego
             juego/      #Carpeta del juego
-                GuardarRespuesta.java
                 GuardarPartidas.java
                 UtilidadesJuego.java
                 Jugar.java
@@ -131,14 +129,18 @@ WATERRUNVX_SAMUELDIAZMARTOS/
 - Entorno de desarrollo integrado (IDE) recomendado: Visual Studio Code.
 
 ## Instrucciones de Ejecución
-1. Abre el proyecto en **Visual Studio Code**
-2. Asegúrate de que JDK 21 esté correctamente configurado.
-3. Ve a la carpeta `src/` y selecciona el archivo que deseas ejecutar
+1. Abre mySqlWorkBench y conectate a un usuario.
+2. Abre el script.sql llamado WaterRun.sql que se encuentra en la raíz del proyecto.
+3. Ejecuta WaterRun.sql dentro del WorkBench.
+4. Abre el proyecto en **Visual Studio Code**
+5. En el archivo ConexionBD, cambia al usuario usado en la base de datos y la contraseña. 
+6. Asegúrate de que JDK 21 esté correctamente configurado.
+7. Ve a la carpeta `src/` y selecciona el archivo que deseas ejecutar
 (`WaterRun.java` o `WaterRun.jar`)
-4. En caso de elegir `WaterRun.java` complia y ejecuta el programa.
+8. En caso de elegir `WaterRun.java` complia y ejecuta el programa.
    En caso de elegir `WaterRun.jar` selecciona en la parte superior izquierda
    `Terminal` y ejecuta el siguietne comando: `java -jar WaterRun.jar`
-5. En caso de que al seleccionar un color no se muestre en el cmd y se
+9. En caso de que al seleccionar un color no se muestre en el cmd y se
    muestren unos caracteres, escriba este comando en la terminal y reiniciela.
     `reg add HKEY_CURRENT_USER\Console /v VirtualTerminalLevel /t REG_DWORD /d 1`
 
@@ -160,8 +162,13 @@ WATERRUNVX_SAMUELDIAZMARTOS/
 ## Notas Adicionales
 
 Este proyecto está diseñado para la asignatura `Fundamentos de programación` donde implementamos código en `java` y aprendemos a programar en dicho lenguaje.
+Hay unas cuantas mejoras por hacer proximamente, como no permitir usuarios nulos, modularizar más los modulos, guardar las respuestas según se juega
+la partida y poder entrar a una partida que has dejado a medias.
+El aspecto gráfico también tiene mucho que mejorar, falta implementar el agua que vaya subiendo y el policía que te dispara en la dificultad difícil.
 
 **Este proyecto conitene:**
+- **Conexion a base de datos**: Conectamos, insertamos, actualizamos, creamos y descargamos datos de la base de datos.
+- **Ficheros**: Creamos, leemos y cargamos datos en ficheros. 
 - **Modularización**: Descomposición del programa en métodos y archivos diferentes.
 - **Empaquetado**: Mantener un orden de paquetes en el programa.
 - **Documentación**: Creación de un documento de análisis técnico del software.
