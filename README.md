@@ -14,22 +14,38 @@ ___________________________________________
 
 - **Java (`WaterRun.java`)**: Codigo base.
 - **Java (`Pregunta.java`)**: Clase para las preguntas.
-- **Java (`GestionPregunta.java`)**: Clase para gestionar las preguntas.
-- **Java (`Personaje.java`)**: Superclase de tipos de personajes.
+- **Java (`GestionPreguntas.java`)**: Clase para gestionar las preguntas.
+- **Java (`Personajes.java`)**: Superclase de tipos de personajes.
 - **Java (`Policia.java`)**: Subclase de Personaje con atributos y metodos diferentes a escapista.
 - **Java (`Escapista.java`)**: Subclase de Personaje con atributos y metodos diferentes a policia.
 - **Java (`Jugador.java`)**: Clase que se encargará de registrar los datos del jugador.
 - **Java (`Partida.java`)**: Clase que se encargará de registrar los datos de la partida.
+- **Java (`CaracterIncorrectoException.java`)**:
+- **Java (`MasCaracteresPermitidosException.java`)**:
+- **Java (`MismaConstrasenaException.java`)**:
+- **Java (`MismoNombreException.java`)**:
+- **Java (`NumeroFueraDeRangoException.java`)**:
+- **Java (`GestionHistorial.java`)**:
+- **Java (`GestionPerfil.java`)**:
+- **Java (`GestionMusica.java`)**:
+- **Java (`GestionUsuario.java`)**:
+- **Java (`Log.java`)**:
+- **Java (`PartidasTxt.java`)**:       
+- **Java (`GestionSalir.java`)**:
+- **Java (`UtilidadesJuego.java`)**:
+- **Java (`GuardarPartidas.java`)**:            
+- **Java (`ReproductorMusica.java`)**:            
 - **Java (`Utilidades.java`)**: Clase encargada de gestionar todas las validaciones de respuestas.
 - **Java (`VarGenYConst.java`)**: Clase encargada de gestionar todas las variables genéricas y constantes.
 - **Java (`GestionJugar.java`)**: Clase con el codigo general. Se encarga de gestionar los menús.
-- **Java (`Aspecto.java`)**: Clase que se encarga de gestionar la gestión de colores.
+- **Java (`GestionAspecto.java`)**: Clase que se encarga de gestionar la gestión de colores.
 - **Java (`Jugar.java`)**: Clase que gestiona la opción de Jugar. 
 - **Java (`JugarFaMe.java`)**: Clase que gestiona la partida en dificultad fácil y media. 
 - **Java (`JugarDificil.java`)**: Clase que gestiona  la partida en dificultad difícil. 
 - **Jar (`WaterRun.jar`)**: Versión ejecutable del juego.
 - **Manifest (`Manifest.txt`)**: Archivo para crear el WaterRun.Jar.
-
+- **SQL (`WaterRun.sql`)**:
+- **Partidas (`Partidas.txt`)**:
 
 
 ## Estructura del Proyecto
@@ -43,7 +59,7 @@ WATERRUNVX_SAMUELDIAZMARTOS/
     bin/            # Carpeta con los .Class de los archivos
         WaterRun.class
         clases/         #Carpeta con las clases
-            Preguntas.class
+            Pregunta.class
             Personajes.class
             GestionPreguntas.class
             Policia.class
@@ -85,7 +101,7 @@ WATERRUNVX_SAMUELDIAZMARTOS/
     src/            # Carpeta con el código fuente
         WaterRun.java
         clases/         #Carpeta con las clases
-            Preguntas.java
+            Pregunta.java
             Personajes.java
             GestionPreguntas.java
             Policia.java
