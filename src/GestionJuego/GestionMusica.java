@@ -75,9 +75,10 @@ public class GestionMusica {
     private static void establecerVolumen(ReproductorMusica musica) {
         VarGenYConst.max=100;
         VarGenYConst.min=0;
+        float cambioVolumen = 0;
         System.out.println("Pon un número del 0 al 100");
-        cambiarVolumen = Utilidades.leerEnteroValidado();
-        musica.establecerVolumen(cambiarVolumen);
+        cambioVolumen = Utilidades.leerEnteroValidado();
+        musica.establecerVolumen(cambioVolumen);
     }
 
     /**
