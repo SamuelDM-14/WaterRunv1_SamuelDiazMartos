@@ -83,7 +83,7 @@ WATERRUNVX_SAMUELDIAZMARTOS/
         mysql-connector-j-9.2.0.jar
     logs/           # Carpeta que contiene los logs con los errores al ejecutar
     src/            # Carpeta con el código fuente
-         WaterRun.java
+        WaterRun.java
         clases/         #Carpeta con las clases
             Preguntas.java
             Personajes.java
@@ -119,8 +119,11 @@ WATERRUNVX_SAMUELDIAZMARTOS/
             GestionAspecto.java
             GestionJugar.java
         log/
-            Log.class
+            Log.java
         Manifest.txt
+    Partidas.txt
+    WaterRun.jar
+    WaterRun.sql
 ```
 
 ## Requisitos del Sistema
@@ -146,24 +149,35 @@ WATERRUNVX_SAMUELDIAZMARTOS/
 
 
 ## Funcionalidades Principales
-
+         
+- **GestionUsuario**: Se encarga de validar al usuario al inicio de la sesión.
 - **bienvenida**: Se encarga de mostrar el mensaje de bienvenida.
-- **menu1**: Se encarga de mostrar el menú principal del juego donde nos dejará elegir entre: `Jugar`, `Dificultad`, `Aspecto`, `Historial` o `Salir`
-- **jugar**: Se encarga de mostrar el juego, comprobar las respuestas y mostrarte si has acertado o fallado. También te muestra si has ganado o perdido y las preguntas cambian en función de la dificultad.
+- **menu1**: Se encarga de mostrar el menú principal del juego donde nos dejará elegir entre: `Jugar`, `Dificultad`, `Aspecto`, `Historial`, `Opciones de  Música`,`Opciones de Perfil` o `Salir`.
+- **Jugar**: Se encarga de validar si el jugador quiere jugar o no y mandarlo a `JugarFaMe` o `JugarDificil` en función de la dificultad elegida.
+- **JugarDificil**: Se encarga de mostrar el juego, comprobar las respuestas y mostrarte si has acertado o fallado en dificultad difícil. También te muestra si has ganado o perdido.
+- **JugarFaMe**: Se encarga de mostrar el juego, comprobar las respuestas y mostrarte si has acertado o fallado en las dificultades fácil y media. También te muestra si has ganado o perdido.
+- **UtilidadesJuego**: Se encarga de gestionar todos los metodos usados a la hora de jugar.
+- **GuardarPartidas**: Se encarga de guardar las partidas en la base de datos una vez terminan. También las almacena para guardarlas en un archivo.txt.
+- **VarGenYConst**: Gestiona las variables genericas y constantes del juego.
+- **Utilidades**: Se encarga de gestionar metodos genericos usados en todo el juego.
 - **dificultadDelJuego**: Se encarga de gestionar la dificultad del juego.
-- **cambiarAspecto**: Se encarga de mostrar una selección de colores para elegir de personaje o del agua. Valida la respuesta y asigna dichos colores.
-- **historial**: Muestra los datos de la última partida.
+- **GestionAspecto**: Se encarga de mostrar una selección de colores para elegir de personaje o del agua. Valida la respuesta y asigna dichos colores.
+- **GestionHistorial**: Muestra los datos de la última partida.
 - **Validaciones**: Impide avanzar entre menús si pones un caracter incorrecto. 
 - **Colores**: Puedes elegir tanto el color del agua como el color de tu personaje.
 - **Victoria**: Si respondes a todas las preguntas correctamente ganarás y se te devolverá al menú principal.
 - **Derrota**: Si fallas, cuando el agua cubra toda la sala se mostrará un mensaje de derrota.
+- **Log**: En caso de ocurrir algún error en el juego, lo guarda en formato de texto.
+- **GestionMusica**: Se encarga de gestionar el menú de música y todas las opciones relacionadas. 
+- **GestionPerfil**: Se encarga de gestionar el menú del perfil y sus opciones.
+- **Excepciones**: Se encargan de registrar los errores del juego para guardaelos en el log.
+- **PartidasTxt**: Se encarga de guardar en un fichero.txt las partidas de la sesión junto al nombre del usuario y mostrarlo al final de la partida.
 
 
 ## Notas Adicionales
 
 Este proyecto está diseñado para la asignatura `Fundamentos de programación` donde implementamos código en `java` y aprendemos a programar en dicho lenguaje.
-Hay unas cuantas mejoras por hacer proximamente, como no permitir usuarios nulos, modularizar más los modulos, guardar las respuestas según se juega
-la partida y poder entrar a una partida que has dejado a medias.
+Hay unas cuantas mejoras por hacer proximamente, como no permitir usuarios nulos, modularizar más los modulos, guardar las respuestas según se juega la partida y poder entrar a una partida que has dejado a medias.
 El aspecto gráfico también tiene mucho que mejorar, falta implementar el agua que vaya subiendo y el policía que te dispara en la dificultad difícil.
 
 **Este proyecto conitene:**
