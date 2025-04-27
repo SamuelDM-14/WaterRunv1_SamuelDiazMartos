@@ -24,6 +24,7 @@ public class GestionJugar {
     /**
      * Menu1. Muestra las diferentes opciones de menú y te manda según tu selección
      * al apartado correspondiente.
+     * 
      */
     private static void menu1() {
         // variables menu1
