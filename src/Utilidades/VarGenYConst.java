@@ -1,13 +1,15 @@
 /**
  * Variables Genericas y Constantes
  * @author SDM
+ * @version 1.7
  * 17-03-2025
  */
 package utilidades;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
+import clases.Jugador;
 import clases.Partida;
 
 /**
@@ -18,14 +20,16 @@ public class VarGenYConst {
         // Todos los menús del juego estan aqui. Accederemos a ellos mencionando
         // directamente a MOSTRARMENUS.
         public static final String[] MOSTRARMENUS = {
-                        "Elige una opcón del menú.\n\t1) Jugar.\n\t2) Dificultad\n\t3) Aspecto\n\t4) Historial de juego.\n\t5) Salir.",
+                        "Elige una opcón del menú.\n\t1) Jugar.\n\t2) Dificultad\n\t3) Aspecto\n\t4) Historial de juego.\n\t5) Opciones de música. \n\t6) Datos del Perfil. \n\t7) Salir.",
                         "Has elegico jugar.\nPara ponerte en contexto, eres un prisionero condenado injustametne a muerte por ahogamiento.\nTu desafío inicial es encontrar la manera de escapar de la sala que se irá inundando.\nPara ello, deberas resolver una serie de acertijos o preguntas que te iremos mostrando.\nAl responder las preguntas o acertijos deberas de poner el número correspondiente indicado.\nEjemplo: ¿Cuantas letras tiene Hola?\n1) 4 \t\t 2) 7 \t\t 3) 5 \t\t 4) 1 \nEn este caso tendrias que poner como respuesta \'1\'. \nSi fallas al responder o ponea un caracter no valido se contará como error.\n¿Estas preparado? (Respuesta con 'S' para si y 'N' para no)\n",
-                        "Selecciona la dificultad en la que desea jugar. Por defecto esta la dificultad FÁCIL.\n\t 0) FÁCIL\n\t 1) MEDIA\n\t 2) DIFÍCIL\n\t 3) SALIR",
+                        "Selecciona la dificultad en la que desea jugar. Por defecto esta la dificultad FÁCIL.\n\t 1) FÁCIL\n\t 2) MEDIA\n\t 3) DIFÍCIL\n\t 4) SALIR",
                         "Has elegido la opción de aspecto.\nEn este menú, puedes personalizar el color de tu personaje entre la siguiente selección y el color del agua también.\n¿Que quieres personalizar?\n\t1) Color del personaje.\n\t2) Color del Policia.\n\t3) Salir.",
                         "Elige un color para tu personaje:\n\t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir",
                         "Elige un color para el policia:\n\t1)Rojo\t2)Verde\t3)Amarillo\t4)Azul\t5)Morado\t6)Cian\t7)Blanco\t8)Negro\t9)Salir",
-                        "Has seleccionado el menú de historial. Pulse 4 para salir.\n\t1) Jugar una partida guardada. (Proximamente)\n\t2) Revisar elecciónes de partida. (Proximamente)\n\t3) Datos de partida guardada.\n\t4) Salir."
-        };
+                        "Has seleccionado el menú de historial. Pulse 4 para salir.\n\t1) Jugar una partida guardada. (Proximamente)\n\t2) Revisar elecciónes de partida. (Proximamente)\n\t3) Datos de partida guardada.\n\t4) Salir.",
+                        "Has seleccionado datos del perfil. \n\t1) Cambiar nombre. \n\t2) Cambiar contraseña. \n\t3) Salir",
+                        "Has seleccionado Opciones de Música. \n\t1) Establecer volumen. \n\t2) Subir volumen. \n\t3) Bajar volumen. \n\t4) Detener música. \n\t5) Reproducir música. \n\t6) Salir."
+                };
         // Variable para mostrar el menú adecuado. En cada metodo cambia.
         public static int opcionMenu = 0;
 
@@ -46,7 +50,6 @@ public class VarGenYConst {
         public static String colorPo = "\u001B[40m";
 
         // Colores para los personajes.
-
         public static final String[] COLORESPJ = {
                         "\u001B[31m", // 0=Rojo
                         "\u001B[32m", // 1=Verde
@@ -88,10 +91,16 @@ public class VarGenYConst {
         // Constante para acceder al mensaje de victoria.
         public static final int MENSAJEVIC = 4;
 
-
+        public static boolean iniciar = true;
 
         // ------------ VARIABLES PARA PARTIDA ------------
-        public static int autoIncremental;
-        public static Partida[] partidas = new Partida[10];
-        public static boolean existe = false; // reivsa que exista partida
+        public static LocalTime horaDeinicio;
+        public static ArrayList<Partida> partidas = new ArrayList<Partida>();
+        public static ArrayList<Partida> partidasSesion = new ArrayList<Partida>();
+
+
+        public static Jugador jugador = new Jugador(0, null, null, null);
+
+        public static String preguntaJuego;
+        public static String respuestaJuego;
 }

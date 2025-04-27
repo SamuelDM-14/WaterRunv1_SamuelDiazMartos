@@ -1,0 +1,15 @@
+---- ERROR ----
+Mensaje: Usuario ya existente en la base de datos.
+Fecha: Fri Apr 25 15:15:34 CEST 2025
+Excepción: excepciones.UsuarioExistenteException: Usuario ya existente en la base de datos.
+
+---- ERROR ----
+Mensaje: No escribio un número dentro del rango entre 1 y 3.
+Fecha: Fri Apr 25 15:15:49 CEST 2025
+Excepción: excepciones.NumeroFueraDeRangoException: No escribio un número dentro del rango entre 1 y 3.
+
+---- ERROR ----
+Mensaje: For input string: "e"
+Fecha: Fri Apr 25 15:15:51 CEST 2025
+Excepción: java.lang.NumberFormatException: For input string: "e"
+

@@ -1,15 +1,15 @@
 /**
  * GestionJugar
  * @author SDM
+ * @version 1.6
  * 07-03-2025
  */
 package gestionjuego;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 import gestionjuego.juego.Jugar;
+import gestionjuego.salir.GestionSalir;
+import utilidades.ReproductorMusica;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
@@ -19,24 +19,19 @@ import utilidades.VarGenYConst;
  * generales.
  */
 public class GestionJugar {
-
-    // Usamos BufferedReader para leer. Creación del objeto.
-    private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+    private static ReproductorMusica musica = new ReproductorMusica();
 
     /**
      * Menu1. Muestra las diferentes opciones de menú y te manda según tu selección
      * al apartado correspondiente.
-     * 
-     * @author SDM
-     * @throws IOException
      */
-    private static void menu1() throws IOException {
+    private static void menu1() {
         // variables menu1
         boolean salir = false;// variable para acabar el programa;
         int eleccion = 0;// Lee la elección del primer menú.
 
         do { // Bucle menú (Se repite hasta indicar salir.)
-            VarGenYConst.max = 5;
+            VarGenYConst.max = 7;
             VarGenYConst.min = 1;
             VarGenYConst.opcionMenu = 0;
             System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
@@ -46,27 +41,35 @@ public class GestionJugar {
             switch (eleccion) {
 
                 case 1:
-                    // Entra en caso de elegir Jugar
-                    Jugar.jugar(); // Llama al metodo jugar y le envia el bufferedReader
+                    // Entra en caso de elegir Jugar.
+                    Jugar.jugar(musica); // Llama al metodo jugar y le envia el objeto ReproductorMusica.
                     break;
 
                 case 2:
-                    // Entra en caso de elegir Dificultad
-                    dificultadDelJuego();// Llama al metodo dificultadDelJuego y le envia el BufferedReader
+                    // Entra en caso de elegir Dificultad.
+                    dificultadDelJuego();// Llama al metodo dificultadDelJuego.
                     break;
                 case 3:
-                    // Entra en caso de elegir Aspecto
-                    Aspecto.cambiarAspecto();// Llama al metodo cambiarAspecto y le envia el bufferedReader
+                    // Entra en caso de elegir Aspecto.
+                    GestionAspecto.cambiarAspecto();// Llama al metodo cambiarAspecto.
                     break;
 
                 case 4:
-                    // Entra en caso de elegir Historial
-                    historial();// Llama al metodo historial y le envia el bufferedReader
+                    // Entra en caso de elegir Historial.
+                    GestionHistorial.historial();;// Llama al metodo historial.
                     break;
 
                 case 5:
-                    // Entra en caso de elegir Salir
-                    System.out.println("Saliendo del juego");
+                    // Entra en caso de elegir Opciones de Música.
+                    GestionMusica.menuMusica(musica);// Llama al metodo menuMusica y le envia un objeto ReproductorMusica.
+                    break;
+                case 6:
+                    // Entra en caso de elegir Opciones de Música.
+                    GestionPerfil.menuPerfil();// Llama al metodo menuPerfil.
+                    break;
+                case 7:
+                    // Entra en caso de elegir Salir.
+                    GestionSalir.salir();
                     salir = true; // Pone salir en true para salir del bucle del menú.
                     break;
             }
@@ -77,115 +80,46 @@ public class GestionJugar {
 
     /**
      * Dificultad. Te permite elegir la dificultad con la que jugar.
-     * 
-     * @author SDM
-     * @throws IOException
      */
-    private static void dificultadDelJuego() throws IOException {
+    private static void dificultadDelJuego() {
         VarGenYConst.opcionMenu = 2;
-        VarGenYConst.max = 3;
-        VarGenYConst.min = 0;
-        boolean salirDificultad = false;
+        VarGenYConst.max = 4;
+        VarGenYConst.min = 1;
         int lecturaDif = 0;
-        do {
+
             System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
-            lecturaDif = Utilidades.leerEnteroValidado();
+            lecturaDif = Utilidades.leerEnteroValidado()-1;
             switch (lecturaDif) {
                 case 0:
-                    VarGenYConst.dificultad = lecturaDif;
+                    VarGenYConst.dificultad = lecturaDif ;
                     System.out.println("Has elegido la dificultad \"FÁCIL\".");
+                    System.out.println("Volviendo al menú principal.");
                     break;
                 case 1:
                     VarGenYConst.dificultad = lecturaDif;
                     System.out.println("Has elegido la dificultad \"MEDIA\".");
+                    System.out.println("Volviendo al menú principal.");
                     break;
                 case 2:
                     VarGenYConst.dificultad = lecturaDif;
                     System.out.println("Has elegido la dificultad \"DIFÍCIL\".");
+                    System.out.println("Volviendo al menú principal.");
                     break;
                 case 3:
                     System.out.println("Has elegido \"SALIR\". Volviendo al menú principal.");
-                    salirDificultad = true;
-                    break;
-            }
-        } while (salirDificultad == false);
-    }
-
-    /**
-     * Historial. Actualmente sin funcionamiento.
-     * 
-     * @author SDM
-     * @throws IOException
-     */
-    private static void historial() throws IOException {
-        // Respuestas Historial
-        int eleccionHistorial;// Respuesta de elección de historial.
-        boolean salirHistorial = false;
-
-        // Historial
-        salirHistorial = false; // Pone en false el salirHistorial. Si has seleccionado previamente esta opción
-                                // y has salido,
-        // Te sacaria en cuanto eligieras algo que te mueva a este menú.
-        do { // Repite hasta que el usuario seleccione salir.
-             // Muestra las opciones. (No disponible de momento.)
-            VarGenYConst.max = 4;
-            VarGenYConst.min = 1;
-            VarGenYConst.opcionMenu = 6;
-            System.out.println(VarGenYConst.MOSTRARMENUS[VarGenYConst.opcionMenu]);
-            eleccionHistorial = Utilidades.leerEnteroValidado(); // Lee la elección
-            switch (eleccionHistorial) { // Selecciona según haya elegido.
-                case 1:
-                    System.out.println("Ha selecionado \'Jugar partida guardada\', Este menú aun no esta disponible.");
-                    break;
-                case 2:
-                    System.out.println(
-                            "Ha selecionado \'Revisar elecciónes de partida.\', Este menú aun no esta disponible.");
-                    break;
-                case 3:
-                    datosPartida();
-                    break;
-                case 4:
-                    System.out.println("Ha selecionado salir. Volviendo al menú principal");
-                    salirHistorial = true; // Vuelve al menú principal.
-                    break;
-                default:
-                    // No pongo nada debido a que las validaciones correspondientes estan hechas.
                     break;
             }
 
-        } while (salirHistorial == false);
-
     }
 
-    /**
-     * Metodo que se encarga de mostrar los datos de la partida.
-     * Actualmente solo se guarda los datos de la última partida.
-     * 
-     * @author SDM
-     */
-    private static void datosPartida() {
-        System.out.println("Ha selecionado \\'Datos de partida guardada.\\'.");
-        if (VarGenYConst.existe==true) {
-            Utilidades.mostrarPartida(VarGenYConst.partidas);
-        }else{
-            System.out.println("Aun no se ha jugado ninguna partida.");
-        }
 
-    }
 
     /**
      * Bienvenida al juego. Comprueba que solo pongas un enter.
-     * 
-     * @author SDM
-     * @throws IOException
      */
-    public static void bienvenida() throws IOException {
-        // variables Bienvenida
-        boolean empezar = false; // Para comprobar que haya puesto un enter
-        String entrada = ""; // Leer una línea de texto.
+    public static void bienvenida() {
 
         // Bienvenida. Usamos tres comillas para poder escribir en varias lineas.
-        // Este recurso lo vamos a usar bastante a lo largo del codigo.
         System.out.println("""
 
                     ██████  ██ ███████ ███    ██ ██    ██ ███████ ███    ██ ██ ██████   ██████
@@ -194,14 +128,31 @@ public class GestionJugar {
                     ██   ██ ██ ██      ██  ██ ██  ██  ██  ██      ██  ██ ██ ██ ██   ██ ██    ██
                     ██████  ██ ███████ ██   ████   ████   ███████ ██   ████ ██ ██████   ██████
 
-
-                    Pulsa \'Enter\' para continuar
                 """);
 
+        GestionUsuario.validacionUsuario();
+
+        if (VarGenYConst.iniciar) {
+            validacionEntrada();
+        }
+    }
+
+    /**
+     * Metodo que se encarga de comprobar que introduces el caracter correcto
+     * para empezar el juego. 
+     */
+    private static void validacionEntrada() {
+        // variables
+        boolean empezar = false; // Para comprobar que haya puesto un enter
+        String entrada = ""; // Leer una línea de texto.
+        System.out.println("Pulsa \'Enter\' para continuar");
+
         do {
-            entrada = bf.readLine();// Guarda en entrada el caracter introducido.
+            entrada = Utilidades.leerCadena();// Guarda en entrada el caracter introducido.
             if (entrada.isEmpty()) { // Comprueba que la entrada esté vacía
                 System.out.println("¡Vamos a empezar a jugar!\n");
+                // 🔊 Reproducir música de fondo
+                musica.reproducir("src/Wavs/resonant.wav");
                 empezar = true;// Cambia la variable a verdadero para salir del bucle.
             } else {
                 System.out.println("Has introducido un caracter incorrecto, pulse enter para empezar.");

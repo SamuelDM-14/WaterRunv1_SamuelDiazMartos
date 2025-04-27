@@ -1,0 +1,5 @@
+---- ERROR ----
+Mensaje: No has escrito ninguna de las 2 opciones.
+Fecha: Fri Apr 25 15:19:45 CEST 2025
+Excepción: excepciones.CaracterIncorrectoException: No has escrito ninguna de las 2 opciones.
+
