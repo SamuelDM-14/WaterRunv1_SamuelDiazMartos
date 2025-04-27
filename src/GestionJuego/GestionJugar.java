@@ -153,7 +153,7 @@ public class GestionJugar {
             if (entrada.isEmpty()) { // Comprueba que la entrada esté vacía
                 System.out.println("¡Vamos a empezar a jugar!\n");
                 // 🔊 Reproducir música de fondo
-                musica.reproducir("src/Wavs/resonant.wav");
+                musica.reproducir("Wavs/resonant.wav");
                 empezar = true;// Cambia la variable a verdadero para salir del bucle.
             } else {
                 System.out.println("Has introducido un caracter incorrecto, pulse enter para empezar.");

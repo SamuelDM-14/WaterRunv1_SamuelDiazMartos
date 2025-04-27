@@ -118,7 +118,7 @@ public class GestionMusica {
      * @param musica Recibe un objeto ReproductorMusica.
      */
     private static void reproducirMusica(ReproductorMusica musica){
-        musica.reproducir("src/Wavs/resonant.wav");
+        musica.reproducir("Wavs/resonant.wav");
     }
 
 }
