@@ -1,5 +1,0 @@
----- ERROR ----
-Mensaje: For input string: ""
-Fecha: Fri Apr 25 16:12:44 CEST 2025
-Excepción: java.lang.NumberFormatException: For input string: ""
-

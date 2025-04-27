@@ -1,5 +1,0 @@
----- ERROR ----
-Mensaje: No escribio un número dentro del rango entre 1 y 4.
-Fecha: Sun Apr 27 01:21:01 CEST 2025
-Excepción: excepciones.NumeroFueraDeRangoException: No escribio un número dentro del rango entre 1 y 4.
-
