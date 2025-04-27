@@ -26,10 +26,10 @@ public class GestionSalir {
             System.out.println("Saliendo del juego");
         }else{ // Si el ArrayList de partidasSesion contiene algo, entra.
             // Llama al metodo GuardarPartidasTxt.
-            PartidasTxt.GuardarPartidasTxt();
+            PartidasTxt.guardarPartidasTxt();
             System.out.println("Estas han sido tus partidas: ");
             // LLama al metodo MostarPartidasTxt.
-            PartidasTxt.MostrarPartidasTxt();
+            PartidasTxt.mostrarPartidasTxt();
             System.out.println("Saliendo del juego"); 
         }
 

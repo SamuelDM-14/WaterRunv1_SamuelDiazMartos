@@ -32,7 +32,7 @@ public class PartidasTxt {
     /**
      * Metodo que se encarga de guardar las partidas.
      */
-    public static void GuardarPartidasTxt() {
+    public static void guardarPartidasTxt() {
         // Llama al metodo crearArchibo para crear el archivo.txt
         crearArchivoTxt();
         // Crea una variable escritura de tipo PrintWriter inicializada a null.
@@ -100,7 +100,7 @@ public class PartidasTxt {
     /**
      * Método que muestra solo las partidas desde que se inició el programa.
      */
-    public static void MostrarPartidasTxt() {
+    public static void mostrarPartidasTxt() {
         crearArchivoTxt(); // Asegura que el archivo está definido
         
         List<String> lineas = new ArrayList<>();
