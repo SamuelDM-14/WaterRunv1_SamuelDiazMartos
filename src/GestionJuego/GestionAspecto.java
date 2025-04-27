@@ -1,11 +1,10 @@
 /**
  * Aspecto
  * @author SDM
+ * @version 1.7
  * 14-03-2025
  */
 package gestionjuego;
-
-import java.io.IOException;
 
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
@@ -13,7 +12,7 @@ import utilidades.VarGenYConst;
 /**
  * Clase que gestiona todo lo relacionado con Aspecto.
  */
-public class Aspecto {
+public class GestionAspecto {
     /**
      * Gestiona la eleccion de los colores del Escapista comprobando que no estes eligiendo el mismo color que el Policia
      * @param eleccionColor
@@ -42,10 +41,8 @@ public class Aspecto {
 
     /**
      * cambiarAspectoPJ. Te permite elegir el color del personaje.
-     * @param bf
-     * @throws IOException
      */
-    private static void cambiarAspectoPJ() throws IOException{
+    private static void cambiarAspectoPJ() {
         //cambias el aspecto del Personaje
         int eleccionColorPJ;
         VarGenYConst.opcionMenu= 4;
@@ -99,10 +96,8 @@ public class Aspecto {
 
     /**
      * cambiarAspectoPo. Te permite elegir el color del policia (AUN NO INCLUIDO EN EL JUEGO).
-     * @param bf
-     * @throws IOException
      */
-    private static void cambiarAspectoPo() throws IOException{
+    private static void cambiarAspectoPo() {
         int eleccioncolorPo;
         VarGenYConst.opcionMenu= 5;
         VarGenYConst.max=9;
@@ -154,12 +149,10 @@ public class Aspecto {
         }
     
     /**
-     * Aspecto. Te permite cambiar el Aspecto del personaje.
-     * @author SDM
-     * @param bf
-     * @throws IOException
+     * Muestra el menú del cambio de aspecto y llama al metodo
+     * correspondiente para cada caso.
      */
-    public static void cambiarAspecto() throws IOException{
+    public static void cambiarAspecto() {
 
         //Respuestas aspecto
         int reAspecto;// respuesta de elección de aspecto.
@@ -193,7 +186,6 @@ public class Aspecto {
                     //No pongo nada debido a que las validaciones correspondientes estan hechas.
                     break;
             }
-
 
        }while (salirAspecto==false);
     }

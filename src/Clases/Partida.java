@@ -1,6 +1,7 @@
 /**
  * Partida
  * @author SDM
+ * @version 1.7 
  * 14-03-2025
  */
 package clases;
@@ -8,6 +9,9 @@ package clases;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+import utilidades.VarGenYConst;
 
 /**
  * La clase partida se encarga de gestionar la hora de inicio, la hora de fin
@@ -16,6 +20,7 @@ import java.time.LocalTime;
  */
 public class Partida {
     // ------------ VARIABELS DE PARTIDA ------------
+    private int id;
     private LocalDate fechaIncioPartida;
     private LocalDate fechaFinPartida;
     private LocalTime horaIncioPartida;
@@ -24,29 +29,55 @@ public class Partida {
     private int respuestasAcertadas = 0;
     private boolean nivelPasado = false;
     private int dificultadJugada = 0;
-
-    // ------------ CONSTRUCTOR DE PARTIDA ------------
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
     /**
-     * Constructor de Partida.
+     * Constructor de una partida.
      * 
-     * @param fechaIncioPartida   Recibe la fecha de incio de partida.
-     * @param fechaFinPartida     Recibe la fecha de fin de partida.
-     * @param horaIncioPartida    Recibe la hora de incio de partida.
-     * @param horaFinPartida      Recibe la hora de fin de partida.
-     * @param respuestasAcertadas Recibe las respuestas acertadas.
-     * @param dificultadJugada    Recibe la dificultdad jugada.
-     * @param nivelPasado         Recibe si se ha pasado la partida o ha perdido.
+     * @param id                  Recibe el id de la partida.
+     * @param fechaIncioPartida   Recibe la fecha de inicio.
+     * @param fechaFinPartida     Recibe la fecha de fin.
+     * @param horaIncioPartida    Recibe la hora de inicio.
+     * @param horaFinPartida      Recibe la hora de fin.
+     * @param respuestasAcertadas Recibe la cantidad de respuestas acertadas.
+     * @param nivelPasado         Recibe booleano de nivel pasado.
+     * @param dificultadJugada    Recibe la dificultad jugada.
      */
-    public Partida(LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida,
-            LocalTime horaFinPartida,
-            int respuestasAcertadas, int dificultadJugada, boolean nivelPasado) {
+    public Partida(int id, LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida,
+            LocalTime horaFinPartida, int respuestasAcertadas, boolean nivelPasado,
+            int dificultadJugada) {
+        this.id = id;
         this.fechaIncioPartida = fechaIncioPartida;
         this.fechaFinPartida = fechaFinPartida;
         this.horaIncioPartida = horaIncioPartida;
         this.horaFinPartida = horaFinPartida;
         this.respuestasAcertadas = respuestasAcertadas;
-        this.dificultadJugada = dificultadJugada;
         this.nivelPasado = nivelPasado;
+        this.dificultadJugada = dificultadJugada;
+        this.duracion = obtenerDuracion();
+    }
+
+    /**
+     * Constructor de una partida sin id y sin duración.
+     * 
+     * @param fechaIncioPartida   Recibe la fecha de inicio.
+     * @param fechaFinPartida     Recibe la fecha de fin.
+     * @param horaIncioPartida    Recibe la hora de inicio.
+     * @param horaFinPartida      Recibe la hora de fin.
+     * @param respuestasAcertadas Recibe la cantidad de respuestas acertadas.
+     * @param nivelPasado         Recibe booleano de nivel pasado.
+     * @param dificultadJugada    Recibe la dificultad jugada.
+     */
+    public Partida(LocalDate fechaIncioPartida, LocalDate fechaFinPartida, LocalTime horaIncioPartida,
+            LocalTime horaFinPartida, int respuestasAcertadas, boolean nivelPasado,
+            int dificultadJugada) {
+
+        this.fechaIncioPartida = fechaIncioPartida;
+        this.fechaFinPartida = fechaFinPartida;
+        this.horaIncioPartida = horaIncioPartida;
+        this.horaFinPartida = horaFinPartida;
+        this.respuestasAcertadas = respuestasAcertadas;
+        this.nivelPasado = nivelPasado;
+        this.dificultadJugada = dificultadJugada;
     }
 
     // ------------ GETTERS Y SETTERS DE PARTIDA ------------
@@ -88,6 +119,24 @@ public class Partida {
      */
     public void setFechaFinPartida(LocalDate fechaFinPartida) {
         this.fechaFinPartida = fechaFinPartida;
+    }
+
+    /**
+     * Establece el id de la partida.
+     * 
+     * @param id id de la partida.
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Devuelve el id de la partida.
+     * 
+     * @return id de la partida.
+     */
+    public int getId() {
+        return id;
     }
 
     // ------------ GET DE FECHA DE INICIO DE PARTIDA ------------
@@ -195,8 +244,8 @@ public class Partida {
      * 
      * @return Duración de la partida
      */
-    public String getDuracion() {
-        Duration duracionPartida = Duration.between(this.horaFinPartida, this.horaIncioPartida);
+    public String obtenerDuracion() {
+        Duration duracionPartida = Duration.between(this.horaIncioPartida, this.horaFinPartida);
         long segundosTotales = duracionPartida.getSeconds();
         long horas = segundosTotales / 3600;
         long minutos = (segundosTotales % 3600) / 60;
@@ -207,40 +256,60 @@ public class Partida {
         return duracion;
     }
 
-    public void setDuracion() {
-        Duration duracionPartida = Duration.between(this.horaFinPartida, this.horaIncioPartida);
-        long segundosTotales = duracionPartida.getSeconds();
-        long horas = segundosTotales / 3600;
-        long minutos = (segundosTotales % 3600) / 60;
-        long segundos = segundosTotales % 60;
+    /**
+     * Devuelve la duración de la partida.
+     * 
+     * @return duración de la partida.
+     */
+    public String getDuracion() {
+        return duracion;
+    }
 
-        duracion = String.format("%02d:%02d:%02d", horas, minutos, segundos);                                                                                           
+    /**
+     * Establece la duración de la partida.
+     * 
+     * @param duracion duración de la partida,
+     */
+    public void setDuracion(String duracion) {
+        this.duracion = duracion;
     }
 
     // ------------ TOSTRING DE PARTIDA ------------
     @Override
     public String toString() {
-        return """
-                ___________________________________
-                |       DATOS DE LA PARTIDA       |
-                |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
-                | Fecha de inicio:  """ + fechaIncioPartida + """
-                      |
-                | Fecha de fin:  """ + fechaFinPartida + """
-                         |
-                | Hora inicio:  """ + horaIncioPartida + """
-                  |
-                | Hora Fin: """ + horaFinPartida + """
-                     |
-                | Respuestas acertadas:  """ + respuestasAcertadas + """
-                          |
-                | Nivel pasado:  """ + nivelPasado + """
-                               |
-                | Dificultad jugada:  """ + dificultadJugada + """
-                             |
-                +---------------------------------+
-                |       DATOS DE LA PARTIDA       |
-                ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-                """;
-    }
+
+        return String.format(
+            VarGenYConst.COLORESPJ[3] + """
+                    
+                    +-----------------------------------------------+
+                    |""" + VarGenYConst.COLORESPJ[6] + "             DATOS DE LA PARTIDA               " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    +--------------------------+--------------------+
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18s " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18s " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18s " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18s " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18s " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18d " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18s " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    |""" + VarGenYConst.COLORESPJ[6] + " %-24s " + VarGenYConst.COLORESPJ[3] + "|" + VarGenYConst.COLORESPJ[6] + " %-18d " + VarGenYConst.COLORESPJ[3] + """
+                    |
+                    +--------------------------+--------------------+
+                    """ + VarGenYConst.COLOR_RESET,
+            "Fecha de inicio", fechaIncioPartida,
+            "Fecha de fin", fechaFinPartida,
+            "Hora de inicio", horaIncioPartida.format(formatter),
+            "Hora de fin", horaFinPartida.format(formatter),
+            "Duración", duracion,
+            "Respuestas acertadas", respuestasAcertadas,
+            "Nivel pasado", nivelPasado ? "Sí" : "No",
+            "Dificultad jugada", dificultadJugada);
+}
 }

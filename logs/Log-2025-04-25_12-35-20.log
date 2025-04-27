@@ -1,0 +1,70 @@
+---- ERROR ----
+Mensaje: For input string: "h"
+Fecha: Fri Apr 25 12:35:20 CEST 2025
+Excepción: java.lang.NumberFormatException: For input string: "h"
+
+---- ERROR ----
+Mensaje: No escribio un número dentro del rango entre 1 y 7.
+Fecha: Fri Apr 25 12:35:22 CEST 2025
+Excepción: excepciones.NumeroFueraDeRangoException: No escribio un número dentro del rango entre 1 y 7.
+
+---- ERROR ----
+Mensaje: For input string: "h"
+Fecha: Fri Apr 25 12:36:03 CEST 2025
+Excepción: java.lang.NumberFormatException: For input string: "h"
+
+---- ERROR ----
+Mensaje: Has escrito la misma contraseña.
+Fecha: Fri Apr 25 12:37:34 CEST 2025
+Excepción: excepciones.MismaContrasenaException: Has escrito la misma contraseña.
+
+---- ERROR ----
+Mensaje: No has escrito ninguna de las 2 opciones.
+Fecha: Fri Apr 25 12:37:58 CEST 2025
+Excepción: excepciones.CaracterIncorrectoException: No has escrito ninguna de las 2 opciones.
+
+---- ERROR ----
+Mensaje: No has escrito un único caracter
+Fecha: Fri Apr 25 12:38:02 CEST 2025
+Excepción: excepciones.MasCaracteresPermitidosException: No has escrito un único caracter
+
+---- ERROR ----
+Mensaje: No has escrito un único caracter
+Fecha: Fri Apr 25 12:38:04 CEST 2025
+Excepción: excepciones.MasCaracteresPermitidosException: No has escrito un único caracter
+
+---- ERROR ----
+Mensaje: For input string: ""
+Fecha: Fri Apr 25 12:38:14 CEST 2025
+Excepción: java.lang.NumberFormatException: For input string: ""
+
+---- ERROR ----
+Mensaje: Column 'id_Jugador' cannot be null
+Fecha: Fri Apr 25 12:38:15 CEST 2025
+Excepción: java.sql.SQLIntegrityConstraintViolationException: Column 'id_Jugador' cannot be null
+
+---- ERROR ----
+Mensaje: No has escrito un único caracter
+Fecha: Fri Apr 25 12:38:25 CEST 2025
+Excepción: excepciones.MasCaracteresPermitidosException: No has escrito un único caracter
+
+---- ERROR ----
+Mensaje: Column 'id_Jugador' cannot be null
+Fecha: Fri Apr 25 12:38:34 CEST 2025
+Excepción: java.sql.SQLIntegrityConstraintViolationException: Column 'id_Jugador' cannot be null
+
+---- ERROR ----
+Mensaje: Column 'id_Jugador' cannot be null
+Fecha: Fri Apr 25 12:39:07 CEST 2025
+Excepción: java.sql.SQLIntegrityConstraintViolationException: Column 'id_Jugador' cannot be null
+
+---- ERROR ----
+Mensaje: No has escrito un único caracter
+Fecha: Fri Apr 25 12:39:14 CEST 2025
+Excepción: excepciones.MasCaracteresPermitidosException: No has escrito un único caracter
+
+---- ERROR ----
+Mensaje: Column 'id_Jugador' cannot be null
+Fecha: Fri Apr 25 12:39:36 CEST 2025
+Excepción: java.sql.SQLIntegrityConstraintViolationException: Column 'id_Jugador' cannot be null
+

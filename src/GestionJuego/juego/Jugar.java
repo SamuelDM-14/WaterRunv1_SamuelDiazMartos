@@ -1,16 +1,16 @@
 /**
  * Jugar
  * @author SDM
+ * @version 1.6
  * 07-03-2025
  */
 package gestionjuego.juego;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 import clases.Partida;
-import utilidades.MusicPlayer;
+import utilidades.ReproductorMusica;
 import utilidades.Utilidades;
 import utilidades.VarGenYConst;
 
@@ -19,18 +19,14 @@ import utilidades.VarGenYConst;
  */
 public class Jugar {
 
-    public static LocalDate fechaFinPartida;// Guarda la fecha del fin de la partida.
-    public static LocalTime horaFinPartida;// Guarda la hora de fin de partida.
-
     /**
-     * Jugar. Muestra el juego, el cual va sacando preguntas y respuestas y
-     * comprobandolas.
+     * Metodo que muestra el mensaje explicativo del funcionamiento
+     * del juego y dependiendo de la respuesta del jugador vuelve al
+     * menú principal o inicia el juego.
      * 
-     * @author SDM
-     * @param bf
-     * @throws IOException
+     * @param musica Recibe un objeto ReproductorMusica.
      */
-    public static void jugar(MusicPlayer player) throws IOException {
+    public static void jugar(ReproductorMusica musica) {
         // Respuestas del juego
         VarGenYConst.opcionMenu = 1;
 
@@ -49,8 +45,8 @@ public class Jugar {
 
             if (re1 == 'S') {
                 jugar = true; // Variable para entrar al juego
-                player.stopMusic();;
-                player.playMusic("src/Wavs/tetris.wav");
+                musica.detener();
+                musica.reproducir("src/Wavs/tetris.wav");
             } else if (re1 == 'N') {
                 jugar = false; // Variable para entrar al juego
                 VarGenYConst.salirJuego = true; // Variable para volver al menú
@@ -61,7 +57,7 @@ public class Jugar {
             if (jugar == true) { // Inicio del juego
                 LocalDate fechaIncioPartida = LocalDate.now();
                 VarGenYConst.horaDeinicio = LocalTime.now();
-                Partida partida = new Partida(fechaIncioPartida, null, horaFinPartida, null, 0, VarGenYConst.dificultad, false);
+                Partida partida = new Partida(fechaIncioPartida, null, VarGenYConst.horaDeinicio, null, 0, false, VarGenYConst.dificultad);
                 if (VarGenYConst.dificultad == 2) {
                     // Llama al metodo jugarDificil para gestionar el juego en esa dificultad
                     JugarDificil.jugarDificil(partida);
@@ -69,13 +65,13 @@ public class Jugar {
                     // Llama al metodo jugarFaMe para gestionar el juego en facil y medio
                     JugarFaMe.jugarFaMe(partida);
                 }
-
+                musica.detener();
+                musica.reproducir("src/Wavs/resonant.wav");
             } else { // Si eliges no jugar
                 System.out.println("Volviendo al menú principal.");
                 VarGenYConst.salirJuego = true; // Variable salir del bucle juego.
             }
         } while (VarGenYConst.salirJuego == false);
-
     }
 
 }

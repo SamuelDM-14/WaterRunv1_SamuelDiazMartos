@@ -7,29 +7,45 @@ ___________________________________________
 |---------------------|-------------------|
 | **Autor**           |     SDM           |
 | **Fecha de Inicio** |   v1 18/11/2024   |
-| **Última versión**  |   v7 17/03/2025   |
+| **Última versión**  |   v8 28/04/2025   |
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 
 ## Contenido del Proyecto
 
 - **Java (`WaterRun.java`)**: Codigo base.
 - **Java (`Pregunta.java`)**: Clase para las preguntas.
-- **Java (`GestionPregunta.java`)**: Clase para gestionar las preguntas.
-- **Java (`Personaje.java`)**: Superclase de tipos de personajes.
+- **Java (`GestionPreguntas.java`)**: Clase para gestionar las preguntas.
+- **Java (`Personajes.java`)**: Superclase de tipos de personajes.
 - **Java (`Policia.java`)**: Subclase de Personaje con atributos y metodos diferentes a escapista.
 - **Java (`Escapista.java`)**: Subclase de Personaje con atributos y metodos diferentes a policia.
 - **Java (`Jugador.java`)**: Clase que se encargará de registrar los datos del jugador.
 - **Java (`Partida.java`)**: Clase que se encargará de registrar los datos de la partida.
+- **Java (`CaracterIncorrectoException.java`)**: Excepción que se lanza cuando escribes un caracter incorrecto.
+- **Java (`MasCaracteresPermitidosException.java`)**: Excepción que se lanza cuando escribes más caracteres de los permitidos.
+- **Java (`MismaConstrasenaException.java`)**: Excepción que se lanza cuando escribes la misma contraseña que tenias previamente.
+- **Java (`MismoNombreException.java`)**: Excepción que se lanza cuando escribes el mismo nombre de otro usuario o que teneias previamente.
+- **Java (`NumeroFueraDeRangoException.java`)**: Excepción que se lanza cuando escribres un número fuera del rango asignado.
+- **Java (`GestionHistorial.java`)**: Clase que se encarga de gestionar el menú del historial y sus funciones.
+- **Java (`GestionPerfil.java`)**: Clase que se encarga de gestionar el menú del perfil y sus funciones.
+- **Java (`GestionMusica.java`)**: Clase que se encarga de gestionar el menú de la música y sus funciones.
+- **Java (`GestionUsuario.java`)**: Clase que se encarga de guardar el usuario en la base de datos y cargarlo con sus partidas correspondientes.
+- **Java (`Log.java`)**: Clase que se encarga de lanzar a un fichero.log todas las excepciones que ocurran en el programa.
+- **Java (`PartidasTxt.java`)**: Clase que se encarga de lanzar a un fichero.txt las partidas de la sesión sin pisar las anteriores. También muestra esas partidas al terminar el programa.
+- **Java (`GestionSalir.java`)**: Clase que se encarga de gestionar la finalización del programa.
+- **Java (`UtilidadesJuego.java`)**: Clase que gestiona todas los metodos usados a la hora de jugar.
+- **Java (`GuardarPartidas.java`)**: Clase que se encarga de guardar las partidas en la base de datos.
+- **Java (`ReproductorMusica.java`)**: Clase para el objeto que reproduce la música.
 - **Java (`Utilidades.java`)**: Clase encargada de gestionar todas las validaciones de respuestas.
 - **Java (`VarGenYConst.java`)**: Clase encargada de gestionar todas las variables genéricas y constantes.
-- **Java (`GestionJugar.java`)**: Clase con el codigo general. Se encarga de gestionar los menús.
-- **Java (`Aspecto.java`)**: Clase que se encarga de gestionar la gestión de colores.
+- **Java (`GestionJugar.java`)**: Clase con el codigo general. Se encarga de gestionar el menú inicial y llama al resto de clases.
+- **Java (`GestionAspecto.java`)**: Clase que se encarga de gestionar la gestión de colores.
 - **Java (`Jugar.java`)**: Clase que gestiona la opción de Jugar. 
 - **Java (`JugarFaMe.java`)**: Clase que gestiona la partida en dificultad fácil y media. 
 - **Java (`JugarDificil.java`)**: Clase que gestiona  la partida en dificultad difícil. 
 - **Jar (`WaterRun.jar`)**: Versión ejecutable del juego.
 - **Manifest (`Manifest.txt`)**: Archivo para crear el WaterRun.Jar.
-
+- **SQL (`WaterRun.sql`)**: Archivo para crear la base de datos.
+- **Partidas (`Partidas.txt`)**: Archivo que guarda las partidas.
 
 
 ## Estructura del Proyecto
@@ -43,46 +59,87 @@ WATERRUNVX_SAMUELDIAZMARTOS/
     bin/            # Carpeta con los .Class de los archivos
         WaterRun.class
         clases/         #Carpeta con las clases
-            Preguntas.class
+            Pregunta.class
             Personajes.class
             GestionPreguntas.class
             Policia.class
             Escapista.class   
             Jugador.class
             Partida.class
+        excepciones/
+            CaracterIncorrectoException.class
+            MasCaracteresPermitidosException.class
+            MismaConstrasenaException.class
+            MismoNombreException.class
+            NumeroFueraDeRangoException.class
         utilidades/     #Carpeta de Utilidades
             Utilidades.class
             VarGenYConst.class
+            ReproductorMusica.class
         gestionjuego/   #Carpeta de gestión del juego
             juego/      #Carpeta del juego
+                GuardarPartidas.class
+                UtilidadesJuego.class
                 Jugar.class
                 JugarFaMe.class
                 JugarDificil.class
-            Aspecto.class
+            salir/
+                GestionSalir.class
+                PartidasTxt.class
+            GestionHistorial.class
+            GestionMusica.class
+            GestionPerfil.class
+            GestionUsuario.class
+            GestionAspecto.class
             GestionJugar.class
-
+        log/
+            Log.class
         Manifest.txt
+    lib/            # Carpeta que contiene las librerias externas 
+        mysql-connector-j-9.2.0.jar
+    logs/           # Carpeta que contiene los logs con los errores al ejecutar
     src/            # Carpeta con el código fuente
         WaterRun.java
         clases/         #Carpeta con las clases
-            Preguntas.java
+            Pregunta.java
             Personajes.java
             GestionPreguntas.java
             Policia.java
-            Escapista.java 
+            Escapista.java   
             Jugador.java
             Partida.java
+        excepciones/
+            CaracterIncorrectoException.java
+            MasCaracteresPermitidosException.java
+            MismaConstrasenaException.java
+            MismoNombreException.java
+            NumeroFueraDeRangoException.java
         utilidades/     #Carpeta de Utilidades
             Utilidades.java
             VarGenYConst.java
+            ReproductorMusica.java
         gestionjuego/   #Carpeta de gestión del juego
             juego/      #Carpeta del juego
+                GuardarPartidas.java
+                UtilidadesJuego.java
                 Jugar.java
                 JugarFaMe.java
                 JugarDificil.java
+            salir/
+                GestionSalir.java
+                PartidasTxt.java
+            GestionHistorial.java
+            GestionMusica.java
+            GestionPerfil.java
+            GestionUsuario.java
+            GestionAspecto.java
             GestionJugar.java
-            Aspecto.java
+        log/
+            Log.java
         Manifest.txt
+    Partidas.txt
+    WaterRun.jar
+    WaterRun.sql
 ```
 
 ## Requisitos del Sistema
@@ -91,37 +148,76 @@ WATERRUNVX_SAMUELDIAZMARTOS/
 - Entorno de desarrollo integrado (IDE) recomendado: Visual Studio Code.
 
 ## Instrucciones de Ejecución
-1. Abre el proyecto en **Visual Studio Code**
-2. Asegúrate de que JDK 21 esté correctamente configurado.
-3. Ve a la carpeta `src/` y selecciona el archivo que deseas ejecutar
-(`WaterRun.java` o `WaterRun.jar`)
-4. En caso de elegir `WaterRun.java` complia y ejecuta el programa.
-   En caso de elegir `WaterRun.jar` selecciona en la parte superior izquierda
-   `Terminal` y ejecuta el siguietne comando: `java -jar WaterRun.jar`
-5. En caso de que al seleccionar un color no se muestre en el cmd y se
-   muestren unos caracteres, escriba este comando en la terminal y reiniciela.
-    `reg add HKEY_CURRENT_USER\Console /v VirtualTerminalLevel /t REG_DWORD /d 1`
+- **Descargado del .zip**.
+    1. Abre mySqlWorkBench y conectate a un usuario.
+    2. Abre el script.sql llamado WaterRun.sql que se encuentra en la raíz del proyecto.
+    3. Ejecuta WaterRun.sql dentro del WorkBench.
+    4. Abre el proyecto en **Visual Studio Code**
+    5. En el archivo ConexionBD, cambia al usuario usado en la base de datos y la contraseña(puede ser que tengas que cambiar la URL también, hazlo si es necesario). 
+    6. Asegúrate de que JDK 21 esté correctamente configurado.
+    7. Ve a la carpeta `src/` y selecciona el archivo que deseas ejecutar
+    (`WaterRun.java` o `WaterRun.jar`)
+    8. En caso de elegir `WaterRun.java` complia y ejecuta el programa.
+    En caso de elegir `WaterRun.jar` selecciona en la parte superior izquierda
+    `Terminal` y ejecuta el siguietne comando: `java -jar WaterRun.jar`
+    9. En caso de que al seleccionar un color no se muestre en el cmd y se
+    muestren unos caracteres, escriba este comando en la terminal y reiniciela.
+        `reg add HKEY_CURRENT_USER\Console /v VirtualTerminalLevel /t REG_DWORD /d 1`
+
+- **Clonado de github**.
+    1. Copia este link: https://github.com/SamuelDM-14/WaterRunv1_SamuelDiazMartos.git
+    2. Abre **Visual Studio Code**.
+    3. Clicka en `Clonar Repositorio`.
+    4. Pega el link copiado y pulsa `enter`.
+    5. Selecciona la ruta donde quieras guardarlo.
+    6. Una vez clonado, si no se abrió el proyecto, selecciona `open folder`, busca la ruta donde lo guardaste y abre el proyecto.
+    7. Abre mySqlWorkBench y conectate a un usuario.
+    8. Abre el script.sql llamado WaterRun.sql que se encuentra en la raíz del proyecto.
+    9. Ejecuta WaterRun.sql dentro del WorkBench.
+    10. En **Visual Studio Code**, en el archivo ConexionBD, cambia al usuario usado en la base de datos y la contraseña (puede ser que tengas que cambiar la URL también, hazlo si es necesario). 
+    11. Asegúrate de que JDK 21 esté correctamente configurado.
+    12. Ve a la carpeta `src/` y selecciona el archivo que deseas ejecutar (`WaterRun.java` o `WaterRun.jar`)
+    13. En caso de elegir `WaterRun.java` complia y ejecuta el programa. En caso de elegir `WaterRun.jar` selecciona en la parte superior izquierda `Terminal` y ejecuta el siguietne comando: `java -jar WaterRun.jar`
+    14. En caso de que al seleccionar un color no se muestre en el cmd y se
+    muestren unos caracteres, escriba este comando en la terminal y reiniciela.
+        `reg add HKEY_CURRENT_USER\Console /v VirtualTerminalLevel /t REG_DWORD /d 1`
 
 
 ## Funcionalidades Principales
-
+         
+- **GestionUsuario**: Se encarga de validar al usuario al inicio de la sesión.
 - **bienvenida**: Se encarga de mostrar el mensaje de bienvenida.
-- **menu1**: Se encarga de mostrar el menú principal del juego donde nos dejará elegir entre: `Jugar`, `Dificultad`, `Aspecto`, `Historial` o `Salir`
-- **jugar**: Se encarga de mostrar el juego, comprobar las respuestas y mostrarte si has acertado o fallado. También te muestra si has ganado o perdido y las preguntas cambian en función de la dificultad.
+- **menu1**: Se encarga de mostrar el menú principal del juego donde nos dejará elegir entre: `Jugar`, `Dificultad`, `Aspecto`, `Historial`, `Opciones de  Música`,`Opciones de Perfil` o `Salir`.
+- **Jugar**: Se encarga de validar si el jugador quiere jugar o no y mandarlo a `JugarFaMe` o `JugarDificil` en función de la dificultad elegida.
+- **JugarDificil**: Se encarga de mostrar el juego, comprobar las respuestas y mostrarte si has acertado o fallado en dificultad difícil. También te muestra si has ganado o perdido.
+- **JugarFaMe**: Se encarga de mostrar el juego, comprobar las respuestas y mostrarte si has acertado o fallado en las dificultades fácil y media. También te muestra si has ganado o perdido.
+- **UtilidadesJuego**: Se encarga de gestionar todos los metodos usados a la hora de jugar.
+- **GuardarPartidas**: Se encarga de guardar las partidas en la base de datos una vez terminan. También las almacena para guardarlas en un archivo.txt.
+- **VarGenYConst**: Gestiona las variables genericas y constantes del juego.
+- **Utilidades**: Se encarga de gestionar metodos genericos usados en todo el juego.
 - **dificultadDelJuego**: Se encarga de gestionar la dificultad del juego.
-- **cambiarAspecto**: Se encarga de mostrar una selección de colores para elegir de personaje o del agua. Valida la respuesta y asigna dichos colores.
-- **historial**: Muestra los datos de la última partida.
+- **GestionAspecto**: Se encarga de mostrar una selección de colores para elegir de personaje o del agua. Valida la respuesta y asigna dichos colores.
+- **GestionHistorial**: Muestra los datos de la última partida.
 - **Validaciones**: Impide avanzar entre menús si pones un caracter incorrecto. 
 - **Colores**: Puedes elegir tanto el color del agua como el color de tu personaje.
 - **Victoria**: Si respondes a todas las preguntas correctamente ganarás y se te devolverá al menú principal.
 - **Derrota**: Si fallas, cuando el agua cubra toda la sala se mostrará un mensaje de derrota.
+- **Log**: En caso de ocurrir algún error en el juego, lo guarda en formato de texto.
+- **GestionMusica**: Se encarga de gestionar el menú de música y todas las opciones relacionadas. 
+- **GestionPerfil**: Se encarga de gestionar el menú del perfil y sus opciones.
+- **Excepciones**: Se encargan de registrar los errores del juego para guardaelos en el log.
+- **PartidasTxt**: Se encarga de guardar en un fichero.txt las partidas de la sesión junto al nombre del usuario y mostrarlo al final de la partida.
 
 
 ## Notas Adicionales
 
 Este proyecto está diseñado para la asignatura `Fundamentos de programación` donde implementamos código en `java` y aprendemos a programar en dicho lenguaje.
+Hay unas cuantas mejoras por hacer proximamente, como no permitir usuarios nulos, modularizar más los modulos, guardar las respuestas según se juega la partida y poder entrar a una partida que has dejado a medias.
+El aspecto gráfico también tiene mucho que mejorar, falta implementar el agua que vaya subiendo y el policía que te dispara en la dificultad difícil.
 
 **Este proyecto conitene:**
+- **Conexion a base de datos**: Conectamos, insertamos, actualizamos, creamos y descargamos datos de la base de datos.
+- **Ficheros**: Creamos, leemos y cargamos datos en ficheros. 
 - **Modularización**: Descomposición del programa en métodos y archivos diferentes.
 - **Empaquetado**: Mantener un orden de paquetes en el programa.
 - **Documentación**: Creación de un documento de análisis técnico del software.
